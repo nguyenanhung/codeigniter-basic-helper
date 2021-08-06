@@ -1,0 +1,37 @@
+{
+    "name": "nguyenanhung/codeigniter-basic-helper",
+    "type": "library",
+    "description": "CodeIgniter - Basic Helper",
+    "keywords": [
+        "php",
+        "codeigniter",
+        "helper"
+    ],
+    "homepage": "https://github.com/nguyenanhung/codeigniter-basic-helper",
+    "license": "GPL-3.0",
+    "authors": [
+        {
+            "name": "Nguyen An Hung",
+            "email": "dev@nguyenanhung.com",
+            "homepage": "https://nguyenanhung.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=5.4",
+        "ext-curl": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "nguyenanhung\\CodeIgniter\\BasicHelper\\": "src/"
+        },
+        "files": [
+            "helpers/helpers.php",
+            "helpers/image_helper.php",
+            "helpers/ip_helper.php",
+            "helpers/assets_helper.php",
+            "helpers/array_helper.php",
+            "helpers/debug_helper.php"
+        ]
+    }
+}
