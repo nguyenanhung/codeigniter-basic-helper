@@ -27,7 +27,6 @@ if (!function_exists('arrayToObject')) {
         $countArray = count($array);
         if ($countArray > 0) {
             foreach ($array as $name => $value) {
-                $name = trim($name);
                 if (!empty($name)) {
                     $object->$name = arrayToObject($value);
                 }
