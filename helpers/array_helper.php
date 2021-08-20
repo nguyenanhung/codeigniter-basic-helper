@@ -11,14 +11,14 @@ if (!function_exists('arrayToObject')) {
     /**
      * Function arrayToObject
      *
-     * @param array $array
+     * @param array|mixed $array
      *
      * @return array|false|\stdClass
      * @author   : 713uk13m <dev@nguyenanhung.com>
      * @copyright: 713uk13m <dev@nguyenanhung.com>
      * @time     : 07/27/2021 36:10
      */
-    function arrayToObject(array $array = array())
+    function arrayToObject($array = array())
     {
         if (!is_array($array)) {
             return $array;
@@ -43,15 +43,15 @@ if (!function_exists('arrayToXml')) {
     /**
      * Function arrayToXml
      *
-     * @param array  $array
-     * @param string $namespace
-     * @param null   $file_output
+     * @param array|mixed $array
+     * @param string      $namespace
+     * @param null        $file_output
      *
      * @return bool|string|null
      * @throws \Exception
      * @author   : 713uk13m <dev@nguyenanhung.com>
      * @copyright: 713uk13m <dev@nguyenanhung.com>
-     * @time     : 08/07/2021 19:29
+     * @time     : 08/20/2021 13:21
      */
     function arrayToXml($array = array(), $namespace = '', $file_output = NULL)
     {
@@ -60,7 +60,7 @@ if (!function_exists('arrayToXml')) {
             convertArrayToXml($array, $xml_object); // function call to convert array to xml
             $xml_file = $file_output !== NULL ? $xml_object->asXML($file_output) : $xml_object->asXML(); // saving generated xml file
 
-            return $xml_file ? $xml_file : NULL;
+            return !empty($xml_file) ? $xml_file : NULL;
         }
 
         return NULL;

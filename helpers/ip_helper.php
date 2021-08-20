@@ -11,7 +11,7 @@ if (!function_exists('getIPAddress')) {
     /**
      * Function getIPAddress
      *
-     * @param false $convertToInteger
+     * @param bool $convertToInteger
      *
      * @return false|int|string
      * @author   : 713uk13m <dev@nguyenanhung.com>

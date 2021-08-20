@@ -11,9 +11,9 @@ if (!function_exists('google_image_resize')) {
     /**
      * Function google_image_resize
      *
-     * @param string $url
-     * @param int    $width
-     * @param null   $height
+     * @param string   $url
+     * @param int      $width
+     * @param null|int $height
      *
      * @return string
      * @author   : 713uk13m <dev@nguyenanhung.com>
@@ -22,22 +22,7 @@ if (!function_exists('google_image_resize')) {
      */
     function google_image_resize($url = '', $width = 100, $height = NULL)
     {
-        $proxyUrl       = 'https://images1-focus-opensocial.googleusercontent.com/gadgets/proxy';
-        $proxyContainer = 'focus';
-        $proxyRefresh   = 2592000;
-        // Start
-        $params             = array();
-        $params['url']      = $url;
-        $params['resize_w'] = $width;
-        if (!empty($height)) {
-            $params['resize_h'] = $height;
-        }
-        $params['container'] = $proxyContainer;
-        $params['refresh']   = $proxyRefresh;
-        // Result URL
-        $url = $proxyUrl . '?' . urldecode(http_build_query($params));
-
-        return trim($url);
+        return nguyenanhung\CodeIgniter\BasicHelper\ImageHelper::googleGadgetsProxy($url, $width, $height);
     }
 }
 if (!function_exists('wordpress_proxy')) {
@@ -54,11 +39,6 @@ if (!function_exists('wordpress_proxy')) {
      */
     function wordpress_proxy($imageUrl = '', $server = 'i3')
     {
-        $imageUrl = str_replace('https://', '', $imageUrl);
-        $imageUrl = str_replace('http://', '', $imageUrl);
-        $imageUrl = str_replace('//', '', $imageUrl);
-        $url      = 'https://' . trim($server) . '.wp.com/' . $imageUrl;
-
-        return trim($url);
+        return nguyenanhung\CodeIgniter\BasicHelper\ImageHelper::wordpressProxy($imageUrl, $server);
     }
 }

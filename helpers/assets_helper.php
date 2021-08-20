@@ -11,8 +11,8 @@ if (!function_exists('assets_url')) {
     /**
      * Function assets_url
      *
-     * @param string $uri
-     * @param null   $protocol
+     * @param string      $uri
+     * @param null|string $protocol
      *
      * @return string
      * @author   : 713uk13m <dev@nguyenanhung.com>
@@ -40,8 +40,8 @@ if (!function_exists('templates_url')) {
     /**
      * Function templates_url
      *
-     * @param string $uri
-     * @param null   $protocol
+     * @param string      $uri
+     * @param null|string $protocol
      *
      * @return string
      * @author   : 713uk13m <dev@nguyenanhung.com>
