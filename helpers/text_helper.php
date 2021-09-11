@@ -342,7 +342,9 @@ if (!function_exists('clean_title')) {
         if ($output != '') {
             $output = clean_text($output);
             $output = strip_tags($output);
-            $output = html_escape($output);
+            if (function_exists('html_escape')) {
+                $output = html_escape($output);
+            }
             $output = trim($output);
         }
 

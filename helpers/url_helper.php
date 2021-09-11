@@ -26,13 +26,18 @@ if (!function_exists('share_url')) {
      */
     function share_url($href = '', $platform = '', $app_id = '', $redirect = '', $display = '', $images = '', $title = '')
     {
+        if (function_exists('base_url')) {
+            $baseUrl = base_url();
+        } else {
+            $baseUrl = '';
+        }
         if ($href == '') {
-            $share_link = urlencode(base_url());
+            $share_link = urlencode($baseUrl);
         } else {
             $share_link = urlencode($href);
         }
         if ($redirect == '' || empty($redirect)) {
-            $redirect_link = urlencode(base_url());
+            $redirect_link = urlencode($baseUrl);
         } else {
             $redirect_link = urlencode($redirect);
         }

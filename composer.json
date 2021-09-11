@@ -22,9 +22,6 @@
         "ext-curl": "*",
         "ext-json": "*"
     },
-    "require-dev": {
-        "nguyenanhung/codeigniter-framework": "^3.1.11"
-    },
     "autoload": {
         "psr-4": {
             "nguyenanhung\\CodeIgniter\\BasicHelper\\": "src/"
