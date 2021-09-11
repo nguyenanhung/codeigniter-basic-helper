@@ -23,9 +23,9 @@ class SimpleCurl implements Environment
 {
     use Version;
 
-    protected $useragent          = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.63 Safari/537.36';
+    protected $userAgent          = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.63 Safari/537.36';
     protected $url;
-    protected $followlocation;
+    protected $followLocation;
     protected $timeout;
     protected $maxRedirects;
     protected $cookieFileLocation = './cookies.txt';
@@ -35,31 +35,47 @@ class SimpleCurl implements Environment
     protected $session;
     protected $webpage;
     protected $headers;
-    protected $header_out;
+    protected $headerOut;
     protected $includeHeader;
     protected $noBody;
     protected $status;
     protected $binaryTransfer;
-    protected $user_options;
+    protected $userOptions;
     public    $authentication     = 0;
-    public    $auth_name          = '';
-    public    $auth_pass          = '';
+    public    $authUsername       = '';
+    public    $authPassword       = '';
 
+    /**
+     * SimpleCurl constructor.
+     *
+     * @param string $url
+     * @param array  $options
+     *
+     * @author   : 713uk13m <dev@nguyenanhung.com>
+     * @copyright: 713uk13m <dev@nguyenanhung.com>
+     */
     public function __construct($url = '', $options = array())
     {
         $this->url            = $url;
-        $this->followlocation = false;
+        $this->followLocation = false;
         $this->timeout        = 30;
         $this->maxRedirects   = 3;
         $this->noBody         = false;
         $this->includeHeader  = false;
-        $this->header_out     = true;
+        $this->headerOut      = true;
         $this->binaryTransfer = false;
         $this->headers[]      = "Connection: keep-alive";
         $this->headers[]      = "Keep-Alive: 300";
         $this->headers[]      = "Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7";
         $this->headers[]      = "Accept-Language: en-us,en;q=0.5";
-        $this->user_options   = $options;
+        $this->userOptions    = $options;
+    }
+
+    public function setBinaryTransfer($binaryTransfer = true)
+    {
+        $this->binaryTransfer = $binaryTransfer;
+
+        return $this;
     }
 
     public function setCookieFileLocation($cookieFileLocation = '')
@@ -75,36 +91,50 @@ class SimpleCurl implements Environment
         if ($use == true) {
             $this->authentication = 1;
         }
+
+        return $this;
     }
 
-    public function setName($name)
+    public function setAuthUsername($authUsername)
     {
-        $this->auth_name = $name;
+        $this->authUsername = $authUsername;
+
+        return $this;
     }
 
-    public function setPass($pass)
+    public function setAuthPassword($authPassword)
     {
-        $this->auth_pass = $pass;
+        $this->authPassword = $authPassword;
+
+        return $this;
     }
 
     public function setUrl($url)
     {
         $this->url = $url;
+
+        return $this;
     }
 
     public function setReferer($referer)
     {
         $this->referer = $referer;
+
+        return $this;
     }
 
     public function setHeader($header)
     {
         $this->headers[] = $header;
+
+        return $this;
     }
 
     public function includeHeader($includeHeader = true)
     {
         $this->includeHeader = $includeHeader;
+
+        return $this;
     }
 
     public function setPost($postFields)
@@ -114,11 +144,15 @@ class SimpleCurl implements Environment
         }
         $this->post       = true;
         $this->postFields = $postFields;
+
+        return $this;
     }
 
     public function setUserAgent($userAgent)
     {
-        $this->useragent = $userAgent;
+        $this->userAgent = $userAgent;
+
+        return $this;
     }
 
     public function createCurl($url = 'null')
@@ -132,15 +166,15 @@ class SimpleCurl implements Environment
         curl_setopt($s, CURLOPT_TIMEOUT, $this->timeout);
         curl_setopt($s, CURLOPT_MAXREDIRS, $this->maxRedirects);
         curl_setopt($s, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($s, CURLOPT_FOLLOWLOCATION, $this->followlocation);
+        curl_setopt($s, CURLOPT_FOLLOWLOCATION, $this->followLocation);
         curl_setopt($s, CURLOPT_COOKIEJAR, $this->cookieFileLocation);
         curl_setopt($s, CURLOPT_COOKIEFILE, $this->cookieFileLocation);
         curl_setopt($s, CURLOPT_SSL_VERIFYHOST, 0);
         curl_setopt($s, CURLOPT_SSL_VERIFYPEER, 0);
-        curl_setopt($s, CURLINFO_HEADER_OUT, $this->header_out);
+        curl_setopt($s, CURLINFO_HEADER_OUT, $this->headerOut);
         curl_setopt($s, CURLOPT_FILETIME, 1);
         if ($this->authentication == 1) {
-            curl_setopt($s, CURLOPT_USERPWD, $this->auth_name . ':' . $this->auth_pass);
+            curl_setopt($s, CURLOPT_USERPWD, $this->authUsername . ':' . $this->authPassword);
         }
         if ($this->post) {
             curl_setopt($s, CURLOPT_POST, true);
@@ -152,18 +186,17 @@ class SimpleCurl implements Environment
         if ($this->noBody) {
             curl_setopt($s, CURLOPT_NOBODY, true);
         }
-        /*
-        if($this->_binary)
-        {
-        curl_setopt($s,CURLOPT_BINARYTRANSFER,true);
+        if ($this->binaryTransfer) {
+            curl_setopt($s, CURLOPT_BINARYTRANSFER, true);
         }
-        */
-        curl_setopt($s, CURLOPT_USERAGENT, $this->useragent);
+        curl_setopt($s, CURLOPT_USERAGENT, $this->userAgent);
         curl_setopt($s, CURLOPT_REFERER, $this->referer);
-        curl_setopt_array($s, $this->user_options);
+        curl_setopt_array($s, $this->userOptions);
         $this->webpage = curl_exec($s);
         $this->status  = curl_getinfo($s);
         $this->session = $s;
+
+        return $this;
     }
 
     public function closeCurl()
