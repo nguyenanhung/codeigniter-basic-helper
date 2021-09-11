@@ -21,6 +21,9 @@
         "php": ">=5.4",
         "ext-curl": "*"
     },
+    "require-dev": {
+        "nguyenanhung/codeigniter-framework": "^3.1.11"
+    },
     "autoload": {
         "psr-4": {
             "nguyenanhung\\CodeIgniter\\BasicHelper\\": "src/"
@@ -31,7 +34,13 @@
             "helpers/ip_helper.php",
             "helpers/assets_helper.php",
             "helpers/array_helper.php",
-            "helpers/debug_helper.php"
+            "helpers/debug_helper.php",
+            "helpers/alphaid_helper.php",
+            "helpers/uuid_helper.php",
+            "helpers/xml_helper.php",
+            "helpers/html_helper.php",
+            "helpers/text_helper.php",
+            "helpers/url_helper.php"
         ]
     }
 }
