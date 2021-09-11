@@ -11,16 +11,16 @@
 namespace nguyenanhung\CodeIgniter\BasicHelper;
 
 /**
- * Interface ProjectInterface
+ * Interface Environment
  *
  * @package   nguyenanhung\CodeIgniter\BasicHelper
  * @author    713uk13m <dev@nguyenanhung.com>
  * @copyright 713uk13m <dev@nguyenanhung.com>
  */
-interface ProjectInterface
+interface Environment
 {
-    const VERSION       = '1.0.1';
-    const LAST_MODIFIED = '2021-08-20';
+    const VERSION       = '1.0.2';
+    const LAST_MODIFIED = '2021-09-11';
     const AUTHOR_NAME   = 'Hung Nguyen';
     const AUTHOR_EMAIL  = 'dev@nguyenanhung.com';
     const PROJECT_NAME  = 'CodeIgniter - Basic Helper';

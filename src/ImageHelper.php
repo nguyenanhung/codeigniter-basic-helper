@@ -10,6 +10,8 @@
 
 namespace nguyenanhung\CodeIgniter\BasicHelper;
 
+use nguyenanhung\CodeIgniter\BasicHelper\Traits\Version;
+
 /**
  * Class ImageHelper
  *
@@ -17,9 +19,9 @@ namespace nguyenanhung\CodeIgniter\BasicHelper;
  * @author    713uk13m <dev@nguyenanhung.com>
  * @copyright 713uk13m <dev@nguyenanhung.com>
  */
-class ImageHelper implements ProjectInterface
+class ImageHelper implements Environment
 {
-    use VersionTrait;
+    use Version;
 
     /**
      * Function googleGadgetsProxy
@@ -33,7 +35,7 @@ class ImageHelper implements ProjectInterface
      * @copyright: 713uk13m <dev@nguyenanhung.com>
      * @time     : 08/20/2021 11:20
      */
-    public static function googleGadgetsProxy($url = '', $width = 100, $height = NULL)
+    public static function googleGadgetsProxy($url = '', $width = 100, $height = null)
     {
         $proxyUrl       = 'https://images1-focus-opensocial.googleusercontent.com/gadgets/proxy';
         $proxyContainer = 'focus';

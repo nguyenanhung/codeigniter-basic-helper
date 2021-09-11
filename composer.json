@@ -19,7 +19,8 @@
     ],
     "require": {
         "php": ">=5.4",
-        "ext-curl": "*"
+        "ext-curl": "*",
+        "ext-json": "*"
     },
     "require-dev": {
         "nguyenanhung/codeigniter-framework": "^3.1.11"
@@ -40,7 +41,10 @@
             "helpers/xml_helper.php",
             "helpers/html_helper.php",
             "helpers/text_helper.php",
-            "helpers/url_helper.php"
+            "helpers/url_helper.php",
+            "helpers/common_helper.php",
+            "helpers/file_helper.php",
+            "helpers/paging_helper.php"
         ]
     }
 }

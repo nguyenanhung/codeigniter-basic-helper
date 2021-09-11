@@ -8,16 +8,16 @@
  * Time: 01:07
  */
 
-namespace nguyenanhung\CodeIgniter\BasicHelper;
+namespace nguyenanhung\CodeIgniter\BasicHelper\Traits;
 
 /**
- * Trait VersionTrait
+ * Trait Version
  *
- * @package   nguyenanhung\CodeIgniter\BasicHelper
+ * @package   nguyenanhung\CodeIgniter\BasicHelper\Traits
  * @author    713uk13m <dev@nguyenanhung.com>
  * @copyright 713uk13m <dev@nguyenanhung.com>
  */
-trait VersionTrait
+trait Version
 {
     /**
      * Function getVersion
