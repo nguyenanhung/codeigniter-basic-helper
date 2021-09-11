@@ -11,17 +11,19 @@ if (!function_exists('dd')) {
     /**
      * Function dd
      *
-     * @param $str
+     * @param $var
      *
      * @author   : 713uk13m <dev@nguyenanhung.com>
      * @copyright: 713uk13m <dev@nguyenanhung.com>
-     * @time     : 08/07/2021 16:17
+     * @time     : 09/11/2021 18:15
      */
-    function dd($str)
+    function dd($var)
     {
-        echo "<pre>";
-        var_dump($str);
-        echo "</pre>";
+        echo '<pre>';
+        array_map(function ($var) {
+            var_dump($var);
+        }, func_get_args());
+        die;
     }
 }
 if (!function_exists('ddd')) {

@@ -7,25 +7,6 @@
  * Date: 09/11/2021
  * Time: 09:17
  */
-if (!function_exists('dd')) {
-    /**
-     * Function dd
-     *
-     * @param $var
-     *
-     * @author   : 713uk13m <dev@nguyenanhung.com>
-     * @copyright: 713uk13m <dev@nguyenanhung.com>
-     * @time     : 09/11/2021 18:15
-     */
-    function dd($var)
-    {
-        echo '<pre>';
-        array_map(function ($var) {
-            var_dump($var);
-        }, func_get_args());
-        die;
-    }
-}
 if (!function_exists('isEmpty')) {
     /**
      * Function isEmpty
