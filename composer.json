@@ -22,9 +22,6 @@
         "ext-curl": "*",
         "ext-json": "*"
     },
-    "require-dev": {
-        "hidehalo/nanoid-php": "^1.1"
-    },
     "autoload": {
         "psr-4": {
             "nguyenanhung\\CodeIgniter\\BasicHelper\\": "src/"
