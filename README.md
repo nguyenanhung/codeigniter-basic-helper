@@ -14,20 +14,21 @@ Dưới đây là danh sách các Helper được hỗ trợ trong bộ thư vi�
 
 ### AlphaID Helper
 
-- [x] Helper Function: `generateAlphaId`
+- [x] Helper Function: `generateAlphaId` - Hàm giúp tạo 1 Id unique `4ew68i32xc` dựa trên 1 int đầu vào như `1234`
 
 ### Array Helper
 
-- [x] Helper Function: `arrayToObject`
-- [x] Helper Function: `arrayToXml`
-- [x] Helper Function: `convertArrayToXml`
+- [x] Helper Function: `arrayToObject `- Hàm giúp chuyển 1 array thành 1 object
+- [x] Helper Function: `arrayToXml` - Hàm giúp chuyển array thành 1 chuỗi XML
 
 ### Assets Helper
 
-- [x] Helper Function: `assets_url`
-- [x] Helper Function: `templates_url`
-- [x] Helper Function: `editor_url`
-- [x] Helper Function: `favicon_url`
+- [x] Helper Function: `assets_url` - Hàm lấy ra Assets Url, điều kiện tồn tại thư mục `assets` trong thư mục `public/`. Trong trường hợp trong file `config.php` tồn tại biến `assets_version` sẽ tự động thêm version vào đằng sau các file CSS, JS
+- [x] Helper Function: `templates_url` - Hàm lấy ra Assets Url, điều kiện tồn tại thư mục `templates` trong thư mục `public/`. Trong trường hợp trong file `config.php` tồn tại biến `assets_version` sẽ tự động thêm version vào đằng sau các file CSS, JS
+- [x] Helper Function: `editor_url` - Hàm lấy ra Assets Url, điều kiện tồn tại thư mục `assets/editors/` trong thư mục `public/`. Trong trường hợp trong file `config.php` tồn tại biến `assets_version` sẽ tự động thêm version vào đằng sau các file CSS, JS
+- [x] Helper Function: `favicon_url`- Hàm lấy ra Assets Url, điều kiện tồn tại thư mục `assets/favicon/` trong thư mục `public/`. Trong trường hợp trong file `config.php` tồn tại biến `assets_version` sẽ tự động thêm version vào đằng sau các file CSS, JS
+- [x] Helper Function: `storage_url` - Need config `storage_url` item in config.php file. VD: `$config['storage_url'] = 'https://storage.nguyenanhung.com/';`
+- [x] Helper Function: `go_url` - Need config `go_url` item in `config.php` file. VD: `$config['go_url'] = 'https://go.nguyenanhung.com/';`
 - [x] Helper Function: `assets_mobile`
 - [x] Helper Function: `assets_themes`
 - [x] Helper Function: `assets_themes_dashboard`
@@ -36,7 +37,7 @@ Dưới đây là danh sách các Helper được hỗ trợ trong bộ thư vi�
 
 ### Common Helper
 
-- [x] Helper Function: `isEmpty`
+- [x] Helper Function: `isEmpty `- Kiểm tra 1 input đầu vào xem có phải là rỗng hay không
 
 ### Debug Helper
 
@@ -63,15 +64,31 @@ Dưới đây là danh sách các Helper được hỗ trợ trong bộ thư vi�
 ### Image Helper
 
 - [x] Helper Function: `google_image_resize`
+- [x] Helper Function: `google_image_proxy_dns_prefetch`
 - [x] Helper Function: `wordpress_proxy`
+- [x] Helper Function: `wordpress_proxy_dns_prefetch`
 
 ### IP Helper
 
-- [x] Helper Function: `getIPAddress`
+- [x] Helper Function: `getIPAddress` - Hàm lấy ra địa chỉ IP thực tế của người dùng
 - [x] Helper Function: `validateIP`
 - [x] Helper Function: `validateIPV4`
 - [x] Helper Function: `validateIPV6`
 - [x] Helper Function: `getIpInformation`
+
+### Meta Helper
+
+- [x] Helper Function: `setupMetaDnsPrefetch` - Hàm hỗ trợ gen ra 1 đoạn HTML Dns Prefetch tương tự `<link href='//data.nguyenanhung.com/' rel='dns-prefetch' />`
+
+### NanoID Helper
+
+Helper này sử dụng gói `hidehalo/nanoid-php` để gen ra 1 mã random Id nhỏ, nhẹ và an toàn hơn nhiều so với UUID.
+
+Hiện tại việc sử dụng nanoid đang là xu hướng so với uuid truyền thống
+
+Để sử dụng được gói này, cần cài packages `hidehalo/nanoid-php` bằng lệnh `composer require hidehalo/nanoid-php`
+
+- [x] Helper Function: `randomNanoId`
 
 ### Paging Helper
 
@@ -94,6 +111,10 @@ Dưới đây là danh sách các Helper được hỗ trợ trong bộ thư vi�
 - [x] Helper Function: `tags_snippets`
 - [x] Helper Function: `tags_clean`
 
+### TinyUrl Helper
+
+- [x] Helper Function: `short_url_with_tinyurl` - Hàm hỗ trợ shortUrl dựa trên API của TinyURL
+
 ### URL Helper
 
 - [x] Helper Function: `share_url`
@@ -109,16 +130,6 @@ Dưới đây là danh sách các Helper được hỗ trợ trong bộ thư vi�
 ### UUID Helper
 
 - [x] Helper Function: `generate_uuid_v4`
-
-### NanoID Helper
-
-Helper này sử dụng gói `hidehalo/nanoid-php` để gen ra 1 mã random Id nhỏ, nhẹ và an toàn hơn nhiều so với UUID.
-
-Hiện tại việc sử dụng nanoid đang là xu hướng so với uuid truyền thống
-
-Để sử dụng được gói này, cần cài packages `hidehalo/nanoid-php` bằng lệnh `composer require hidehalo/nanoid-php`
-
-- [x] Helper Function: `randomNanoId`
 
 ### XML Helper
 

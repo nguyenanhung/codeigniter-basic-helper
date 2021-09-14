@@ -56,6 +56,19 @@ class ImageHelper implements Environment
     }
 
     /**
+     * Function googleGadgetsProxyDnsPrefetch
+     *
+     * @return string
+     * @author   : 713uk13m <dev@nguyenanhung.com>
+     * @copyright: 713uk13m <dev@nguyenanhung.com>
+     * @time     : 09/15/2021 34:32
+     */
+    public static function googleGadgetsProxyDnsPrefetch()
+    {
+        return "<link href='//images1-focus-opensocial.googleusercontent.com' rel='dns-prefetch' />" . PHP_EOL;
+    }
+
+    /**
      * Function wordpressProxy
      *
      * @param string $imageUrl
@@ -74,5 +87,23 @@ class ImageHelper implements Environment
         $url      = 'https://' . trim($server) . '.wp.com/' . $imageUrl;
 
         return trim($url);
+    }
+
+    /**
+     * Function wordpressProxyDnsPrefetch
+     *
+     * @return string
+     * @author   : 713uk13m <dev@nguyenanhung.com>
+     * @copyright: 713uk13m <dev@nguyenanhung.com>
+     * @time     : 09/15/2021 33:45
+     */
+    public static function wordpressProxyDnsPrefetch()
+    {
+        $html = "<link href='//i0.wp.com' rel='dns-prefetch' />" . PHP_EOL;
+        $html .= "<link href='//i1.wp.com' rel='dns-prefetch' />" . PHP_EOL;
+        $html .= "<link href='//i2.wp.com' rel='dns-prefetch' />" . PHP_EOL;
+        $html .= "<link href='//i3.wp.com' rel='dns-prefetch' />" . PHP_EOL;
+
+        return $html;
     }
 }
