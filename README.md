@@ -24,9 +24,12 @@ Dưới đây là danh sách các Helper được hỗ trợ trong bộ thư vi�
 ### Assets Helper
 
 - [x] Helper Function: `assets_url` - Hàm lấy ra Assets Url, điều kiện tồn tại thư mục `assets` trong thư mục `public/`. Trong trường hợp trong file `config.php` tồn tại biến `assets_version` sẽ tự động thêm version vào đằng sau các file CSS, JS
-- [x] Helper Function: `templates_url` - Hàm lấy ra Assets Url, điều kiện tồn tại thư mục `templates` trong thư mục `public/`. Trong trường hợp trong file `config.php` tồn tại biến `assets_version` sẽ tự động thêm version vào đằng sau các file CSS, JS
-- [x] Helper Function: `editor_url` - Hàm lấy ra Assets Url, điều kiện tồn tại thư mục `assets/editors/` trong thư mục `public/`. Trong trường hợp trong file `config.php` tồn tại biến `assets_version` sẽ tự động thêm version vào đằng sau các file CSS, JS
-- [x] Helper Function: `favicon_url`- Hàm lấy ra Assets Url, điều kiện tồn tại thư mục `assets/favicon/` trong thư mục `public/`. Trong trường hợp trong file `config.php` tồn tại biến `assets_version` sẽ tự động thêm version vào đằng sau các file CSS, JS
+- [x] Helper Function: `templates_url` - Hàm lấy ra Assets Url, điều kiện tồn tại thư mục `templates` trong thư mục `public/`. Trong trường hợp trong file `config.php` tồn tại biến `assets_version` sẽ tự động thêm version vào đằng sau các file CSS,
+  JS
+- [x] Helper Function: `editor_url` - Hàm lấy ra Assets Url, điều kiện tồn tại thư mục `assets/editors/` trong thư mục `public/`. Trong trường hợp trong file `config.php` tồn tại biến `assets_version` sẽ tự động thêm version vào đằng sau các file
+  CSS, JS
+- [x] Helper Function: `favicon_url`- Hàm lấy ra Assets Url, điều kiện tồn tại thư mục `assets/favicon/` trong thư mục `public/`. Trong trường hợp trong file `config.php` tồn tại biến `assets_version` sẽ tự động thêm version vào đằng sau các file
+  CSS, JS
 - [x] Helper Function: `storage_url` - Need config `storage_url` item in config.php file. VD: `$config['storage_url'] = 'https://storage.nguyenanhung.com/';`
 - [x] Helper Function: `go_url` - Need config `go_url` item in `config.php` file. VD: `$config['go_url'] = 'https://go.nguyenanhung.com/';`
 - [x] Helper Function: `assets_mobile`
@@ -47,8 +50,9 @@ Dưới đây là danh sách các Helper được hỗ trợ trong bộ thư vi�
 ### File Helper
 
 - [x] Helper Function: `formatSizeUnits`
-- [x] Helper Function: `genarateFileIndex`
-- [x] Helper Function: `genarateFileHtaccess`
+- [x] Helper Function: `genarateFileIndex` - Tự động tạo nội dung file `index.html`
+- [x] Helper Function: `genarateFileHtaccess` - Tự động tạo nội dung file `.htaccess`
+- [x] Helper Function: `genarateFileReadme` - Tự động tạo nội dung file `README.md`
 - [x] Helper Function: `makeNewFolder`
 - [x] Helper Function: `new_folder`
 

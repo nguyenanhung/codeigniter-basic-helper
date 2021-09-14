@@ -7,6 +7,85 @@
  * Date: 09/11/2021
  * Time: 09:20
  */
+if (!function_exists('write_file')) {
+    /**
+     * Write File
+     *
+     * Writes data to the file specified in the path.
+     * Creates a new file if non-existent.
+     *
+     * @param string $path File path
+     * @param string $data Data to write
+     * @param string $mode fopen() mode (default: 'wb')
+     *
+     * @return    bool
+     */
+    function write_file($path, $data, $mode = 'wb')
+    {
+        if (!$fp = @fopen($path, $mode)) {
+            return false;
+        }
+
+        flock($fp, LOCK_EX);
+
+        for ($result = $written = 0, $length = strlen($data); $written < $length; $written += $result) {
+            if (($result = fwrite($fp, substr($data, $written))) === false) {
+                break;
+            }
+        }
+
+        flock($fp, LOCK_UN);
+        fclose($fp);
+
+        return is_int($result);
+    }
+}
+if (!function_exists('delete_files')) {
+    /**
+     * Delete Files
+     *
+     * Deletes all files contained in the supplied directory path.
+     * Files must be writable or owned by the system in order to be deleted.
+     * If the second parameter is set to TRUE, any directories contained
+     * within the supplied base directory will be nuked as well.
+     *
+     * @param string $path    File path
+     * @param bool   $del_dir Whether to delete any directories found in the path
+     * @param bool   $htdocs  Whether to skip deleting .htaccess and index page files
+     * @param int    $_level  Current directory depth level (default: 0; internal use only)
+     *
+     * @return    bool
+     */
+    function delete_files($path, $del_dir = false, $htdocs = false, $_level = 0)
+    {
+        // Trim the trailing slash
+        $path = rtrim($path, '/\\');
+
+        if (!$current_dir = @opendir($path)) {
+            return false;
+        }
+
+        while (false !== ($filename = @readdir($current_dir))) {
+            if ($filename !== '.' && $filename !== '..') {
+                $filepath = $path . DIRECTORY_SEPARATOR . $filename;
+
+                if (is_dir($filepath) && $filename[0] !== '.' && !is_link($filepath)) {
+                    delete_files($filepath, $del_dir, $htdocs, $_level + 1);
+                } elseif ($htdocs !== true or !preg_match('/^(\.htaccess|index\.(html|htm|php)|web\.config)$/i', $filename)) {
+                    @unlink($filepath);
+                }
+            }
+        }
+
+        closedir($current_dir);
+
+        if (($del_dir === true && $_level > 0)) {
+            return @rmdir($path);
+        } else {
+            return true;
+        }
+    }
+}
 if (!function_exists('formatSizeUnits')) {
     /**
      * Function formatSizeUnits
