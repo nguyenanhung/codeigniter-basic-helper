@@ -138,6 +138,55 @@ if (!function_exists('genarateFileHtaccess')) {
         return false;
     }
 }
+if (!function_exists('genarateFileReadme')) {
+    /**
+     * Function genarateFileReadme
+     *
+     * @param string $file_path
+     * @param string $file_name
+     *
+     * @return bool
+     * @author   : 713uk13m <dev@nguyenanhung.com>
+     * @copyright: 713uk13m <dev@nguyenanhung.com>
+     * @time     : 09/15/2021 58:14
+     */
+    function genarateFileReadme($file_path = '', $file_name = 'README.md')
+    {
+        if (function_exists('log_message') && function_exists('write_file')) {
+            if ($file_path != '') {
+                if (is_dir($file_path) === false) {
+                    mkdir($file_path);
+                    log_message('debug', 'Genarate new Folder: ' . $file_path);
+                }
+                // SET file location
+                $file_location = $file_path . '/' . $file_name;
+                // Tạo file .htaccess nếu chưa có
+                if (file_exists($file_location) === false) {
+                    $file_content = "# README";
+                    write_file($file_location, $file_content);
+                    // PUT Logs
+                    log_message('debug', 'Genarate new file ' . $file_name . ' in Location ' . $file_location);
+
+                    // Return
+                    return true;
+                } else {
+                    // PUT Logs
+                    log_message('debug', 'File ' . $file_name . ' Exists in Location ' . $file_location);
+
+                    // Return
+                    return false;
+                }
+            } else {
+                log_message('debug', 'Genarate File ' . $file_name . ' failed');
+
+                // Return
+                return false;
+            }
+        }
+
+        return false;
+    }
+}
 if (!function_exists('makeNewFolder')) {
     /**
      * Function makeNewFolder
@@ -158,6 +207,7 @@ if (!function_exists('makeNewFolder')) {
             @mkdir($folderPath);
             genarateFileIndex($folderPath);
             genarateFileHtaccess($folderPath);
+            genarateFileReadme($folderPath);
 
             return true;
         }
