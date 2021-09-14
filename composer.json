@@ -22,6 +22,9 @@
         "ext-curl": "*",
         "ext-json": "*"
     },
+    "require-dev": {
+        "hidehalo/nanoid-php": "^1.1"
+    },
     "autoload": {
         "psr-4": {
             "nguyenanhung\\CodeIgniter\\BasicHelper\\": "src/"
@@ -34,6 +37,7 @@
             "helpers/array_helper.php",
             "helpers/debug_helper.php",
             "helpers/alphaid_helper.php",
+            "helpers/nanoid_helper.php",
             "helpers/uuid_helper.php",
             "helpers/xml_helper.php",
             "helpers/html_helper.php",
@@ -43,5 +47,10 @@
             "helpers/file_helper.php",
             "helpers/paging_helper.php"
         ]
+    },
+    "suggest": {
+        "ext-curl": "Need support CURL",
+        "ext-json": "Need support JSON",
+        "hidehalo/nanoid-php": "Need support for helper function randomNanoId()"
     }
 }

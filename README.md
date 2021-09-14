@@ -110,6 +110,12 @@ Dưới đây là danh sách các Helper được hỗ trợ trong bộ thư vi�
 
 - [x] Helper Function: `generate_uuid_v4`
 
+### NanoID Helper
+
+Helper này sử dụng gói `hidehalo/nanoid-php` để gen ra 1 mã random Id nhỏ, nhẹ và an toàn hơn nhiều so với UUID. Hiện tại việc sử dụng nanoid đang là xu hướng so với uuid truyền thống
+
+- [x] Helper Function: `randomNanoId`
+
 ### XML Helper
 
 - [x] Helper Function: `parse_sitemap_index`
