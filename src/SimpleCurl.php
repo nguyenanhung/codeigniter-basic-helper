@@ -214,7 +214,7 @@ class SimpleCurl implements Environment
         return $this->webpage;
     }
 
-    public function __tostring()
+    public function __toString()
     {
         return $this->webpage;
     }

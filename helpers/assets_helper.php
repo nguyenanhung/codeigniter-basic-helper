@@ -256,3 +256,53 @@ if (!function_exists('assets_themes_error')) {
         return assets_url($uri, $protocol);
     }
 }
+if (!function_exists('storage_url')) {
+    /**
+     * Function storage_url
+     *
+     * @param string $uri
+     *
+     * @return string
+     * @author   : 713uk13m <dev@nguyenanhung.com>
+     * @copyright: 713uk13m <dev@nguyenanhung.com>
+     * @time     : 08/07/2021 48:52
+     */
+    function storage_url($uri = '')
+    {
+        if (function_exists('config_item')) {
+            $fileExt = substr(trim($uri), strrpos(trim($uri), '.') + 1);
+            $fileExt = strtoupper($fileExt);
+            $version = '';
+            if ($fileExt == 'CSS' || $fileExt == 'JS') {
+                $version = config_item('assets_version');
+            }
+            $storageUrl = trim(config_item('storage_url')) . trim($uri) . $version;
+
+            return trim($storageUrl);
+        }
+
+        return $uri;
+    }
+}
+if (!function_exists('go_url')) {
+    /**
+     * Function go_url
+     *
+     * @param string $uri
+     *
+     * @return string
+     * @author   : 713uk13m <dev@nguyenanhung.com>
+     * @copyright: 713uk13m <dev@nguyenanhung.com>
+     * @time     : 08/16/2021 41:37
+     */
+    function go_url($uri = '')
+    {
+        if (function_exists('config_item')) {
+            $goUrl = trim(config_item('go_url')) . trim($uri);
+
+            return trim($goUrl);
+        }
+
+        return $uri;
+    }
+}
