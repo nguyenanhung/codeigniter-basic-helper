@@ -25,7 +25,7 @@ if (!function_exists('assets_url')) {
             $fileExt = substr(trim($uri), strrpos(trim($uri), '.') + 1);
             $fileExt = strtoupper($fileExt);
             $version = '';
-            if ($fileExt == 'CSS' || $fileExt == 'JS') {
+            if ($fileExt === 'CSS' || $fileExt === 'JS') {
                 $version = config_item('assets_version');
             }
 
@@ -54,7 +54,7 @@ if (!function_exists('templates_url')) {
             $fileExt = substr(trim($uri), strrpos(trim($uri), '.') + 1);
             $fileExt = strtoupper($fileExt);
             $version = '';
-            if ($fileExt == 'CSS' || $fileExt == 'JS') {
+            if ($fileExt === 'CSS' || $fileExt === 'JS') {
                 $version = config_item('assets_version');
             }
 
@@ -273,7 +273,7 @@ if (!function_exists('storage_url')) {
             $fileExt = substr(trim($uri), strrpos(trim($uri), '.') + 1);
             $fileExt = strtoupper($fileExt);
             $version = '';
-            if ($fileExt == 'CSS' || $fileExt == 'JS') {
+            if ($fileExt === 'CSS' || $fileExt === 'JS') {
                 $version = config_item('assets_version');
             }
             $storageUrl = trim(config_item('storage_url')) . trim($uri) . $version;

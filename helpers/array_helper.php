@@ -81,13 +81,13 @@ if (!function_exists('convertArrayToXml')) {
         foreach ($array as $key => $value) {
             if (is_array($value)) {
                 if (!is_numeric($key)) {
-                    $subNode = $SimpleXMLElement->addChild("$key");
+                    $subNode = $SimpleXMLElement->addChild((string) $key);
                 } else {
-                    $subNode = $SimpleXMLElement->addChild("item$key");
+                    $subNode = $SimpleXMLElement->addChild("item" . $key);
                 }
                 convertArrayToXml($value, $subNode);
             } else {
-                $SimpleXMLElement->addChild("$key", htmlspecialchars("$value"));
+                $SimpleXMLElement->addChild((string) $key, htmlspecialchars((string) $value));
             }
         }
     }

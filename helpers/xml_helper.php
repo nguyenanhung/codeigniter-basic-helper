@@ -11,10 +11,10 @@ if (!function_exists('parse_sitemap_index')) {
     /**
      * Function parse_sitemap_index
      *
-     * @param string $loc
-     * @param string $lastmod
-     * @param string $type
-     * @param string $newline
+     * @param string|array $loc
+     * @param string       $lastmod
+     * @param string       $type
+     * @param string       $newline
      *
      * @return string|null
      * @author   : 713uk13m <dev@nguyenanhung.com>

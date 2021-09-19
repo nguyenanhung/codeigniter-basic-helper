@@ -18,24 +18,25 @@ if (!function_exists('getIPAddress')) {
      * @copyright: 713uk13m <dev@nguyenanhung.com>
      * @time     : 10/09/2020 59:22
      */
-    function getIPAddress($convertToInteger = FALSE)
+    function getIPAddress($convertToInteger = false)
     {
         $ip_keys = array(
-            0 => 'HTTP_X_FORWARDED_FOR',
-            1 => 'HTTP_X_FORWARDED',
-            2 => 'HTTP_X_IPADDRESS',
-            3 => 'HTTP_X_CLUSTER_CLIENT_IP',
-            4 => 'HTTP_FORWARDED_FOR',
-            5 => 'HTTP_FORWARDED',
-            6 => 'HTTP_CLIENT_IP',
-            7 => 'HTTP_IP',
-            8 => 'REMOTE_ADDR'
+            0 => 'HTTP_CF_CONNECTING_IP',
+            1 => 'HTTP_X_FORWARDED_FOR',
+            2 => 'HTTP_X_FORWARDED',
+            3 => 'HTTP_X_IPADDRESS',
+            4 => 'HTTP_X_CLUSTER_CLIENT_IP',
+            5 => 'HTTP_FORWARDED_FOR',
+            6 => 'HTTP_FORWARDED',
+            7 => 'HTTP_CLIENT_IP',
+            8 => 'HTTP_IP',
+            9 => 'REMOTE_ADDR'
         );
         foreach ($ip_keys as $key) {
-            if (array_key_exists($key, $_SERVER) === TRUE) {
+            if (array_key_exists($key, $_SERVER) === true) {
                 foreach (explode(',', $_SERVER[$key]) as $ip) {
                     $ip = trim($ip);
-                    if ($convertToInteger === TRUE) {
+                    if ($convertToInteger === true) {
                         return ip2long($ip);
                     }
 
@@ -44,7 +45,7 @@ if (!function_exists('getIPAddress')) {
             }
         }
 
-        return FALSE;
+        return false;
     }
 }
 if (!function_exists('validateIP')) {
@@ -60,11 +61,7 @@ if (!function_exists('validateIP')) {
      */
     function validateIP($ip)
     {
-        if (filter_var($ip, FILTER_VALIDATE_IP) === FALSE) {
-            return FALSE;
-        }
-
-        return TRUE;
+        return !(filter_var($ip, FILTER_VALIDATE_IP) === false);
     }
 }
 if (!function_exists('validateIPV4')) {
@@ -80,11 +77,7 @@ if (!function_exists('validateIPV4')) {
      */
     function validateIPV4($ip)
     {
-        if (filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4) === FALSE) {
-            return FALSE;
-        }
-
-        return TRUE;
+        return !(filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4) === false);
     }
 }
 if (!function_exists('validateIPV6')) {
@@ -100,12 +93,7 @@ if (!function_exists('validateIPV6')) {
      */
     function validateIPV6($ip)
     {
-        if (filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_IPV6) === FALSE) {
-
-            return FALSE;
-        }
-
-        return TRUE;
+        return !(filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_IPV6) === false);
     }
 }
 if (!function_exists('getIpInformation')) {
@@ -129,7 +117,7 @@ if (!function_exists('getIpInformation')) {
             $curl     = curl_init();
             curl_setopt_array($curl, array(
                 CURLOPT_URL            => $endpoint,
-                CURLOPT_RETURNTRANSFER => TRUE,
+                CURLOPT_RETURNTRANSFER => true,
                 CURLOPT_ENCODING       => "",
                 CURLOPT_MAXREDIRS      => 10,
                 CURLOPT_TIMEOUT        => 30,
@@ -146,8 +134,7 @@ if (!function_exists('getIpInformation')) {
             }
 
             return $response;
-        }
-        catch (Exception $e) {
+        } catch (Exception $e) {
             if (function_exists('log_message')) {
                 log_message('error', $e->getMessage());
                 log_message('error', $e->getTraceAsString());

@@ -11,7 +11,7 @@ if (!function_exists('setupMetaDnsPrefetch')) {
     /**
      * Function setupMetaDnsPrefetch
      *
-     * @param string $dns
+     * @param string|array $dns
      *
      * @return string
      * @author   : 713uk13m <dev@nguyenanhung.com>
@@ -23,16 +23,14 @@ if (!function_exists('setupMetaDnsPrefetch')) {
         if (is_array($dns)) {
             $html = '';
             foreach ($dns as $domain) {
-                $domain = str_replace('https://', '', $domain);
-                $domain = str_replace('http://', '', $domain);
+                $domain = str_replace(array('https://', 'http://'), '', $domain);
                 $domain = trim($domain, '/');
                 $html   .= "<link href='//" . $domain . "/' rel='dns-prefetch' />" . PHP_EOL;
             }
 
             return $html;
         }
-        $dns = str_replace('https://', '', $dns);
-        $dns = str_replace('http://', '', $dns);
+        $dns = str_replace(array('https://', 'http://'), '', $dns);
         $dns = trim($dns, '/');
 
         return "<link href='//" . $dns . "/' rel='dns-prefetch' />" . PHP_EOL;

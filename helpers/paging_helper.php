@@ -42,29 +42,31 @@ if (!function_exists('view_paginations')) {
         if ($total <= 1) {
             return '';
         }
-        if ($page_number <> 1) {
-            if ($type == 'site_page') {
+        if ($page_number !== 1) {
+            if ($type === 'site_page') {
                 $main .= "\n<li class=\"waves-effect\"><a href=\"" . $page_links . ".html\"><i class=\"fa fa-angle-double-left\"></i></a></li>";
-            } elseif ($type == 'search_page') {
+            } elseif ($type === 'search_page') {
                 $main .= "\n<li class=\"waves-effect\"><a href=\"" . $page_links . "\"><i class=\"fa fa-angle-double-left\"></i></a></li>";
             } else {
                 $main .= "<li class=\"left\"><a href=\"" . $page_links . "/\" title=\"" . $title . "\">&nbsp;</a></li>";
             }
         }
         for ($num = 1; $num <= $total; $num++) {
-            if ($num < $page_number - $begin || $num > $page_number + $end) continue;
-            if ($num == $page_number) {
-                if ($type == 'site_page') {
+            if ($num < $page_number - $begin || $num > $page_number + $end) {
+                continue;
+            }
+            if ($num === $page_number) {
+                if ($type === 'site_page') {
                     $main .= "\n<li class=\"active\"><a href=\"" . $page_links . "/trang-" . $num . ".html\" title='" . $title . "'>" . $num . "</a></li>";
-                } elseif ($type == 'search_page') {
+                } elseif ($type === 'search_page') {
                     $main .= "\n<li class=\"active\"><a href=\"" . $page_links . "&page=" . $num . "\" title='" . $title . "'>" . $num . "</a></li>";
                 } else {
                     $main .= "<li class=\"selected\"><a href=\"" . $page_links . "/page/" . $num . "/\" title=\"" . $title . "\">" . $num . "</a></li>";
                 }
             } else {
-                if ($type == 'site_page') {
+                if ($type === 'site_page') {
                     $main .= "\n<li class=\"waves-effect\"><a href=\"" . $page_links . "/trang-" . $num . ".html\">" . $num . "</a></li>";
-                } elseif ($type == 'search_page') {
+                } elseif ($type === 'search_page') {
                     $main .= "\n<li class=\"waves-effect\"><a href=\"" . $page_links . "&page=" . $num . "\">" . $num . "</a></li>";
                 } else {
                     $main .= "<li><a href=\"" . $page_links . "/page/" . $num . "/\" title=\"" . $title . " trang " . $num . "\">" . $num . "</a></li>";
@@ -72,10 +74,10 @@ if (!function_exists('view_paginations')) {
             }
         }
         unset($num);
-        if ($page_number <> $total) {
-            if ($type == 'site_page') {
+        if ($page_number !== $total) {
+            if ($type === 'site_page') {
                 $main .= "\n<li class=\"waves-effect\"><a href=\"" . $page_links . "/trang-" . $total . ".html\"><i class=\"fa fa-angle-double-right\"></i></a></li>";
-            } elseif ($type == 'search_page') {
+            } elseif ($type === 'search_page') {
                 $main .= "\n<li class=\"waves-effect\"><a href=\"" . $page_links . "&page=" . $total . "\"><i class=\"fa fa-angle-double-right\"></i></a></li>";
             } else {
                 $main .= "<li class=\"right\"><a href=\"" . $page_links . "/page/" . $total . "/\" title=\"" . $title . " trang cuối\">&nbsp;</a></li>";
@@ -106,20 +108,22 @@ if (!function_exists('view_more')) {
         $is_total = ceil($page_total / $page_size);
         if ($is_total <= 1) {
             return '';
-        } elseif ($is_total == $page_number) {
+        }
+
+        if ($is_total === $page_number) {
             $back_page = $page_number - 1;
-            if ($more_type == 'search') {
+            if ($more_type === 'search') {
                 $main = '<a title="' . $title . ' trang ' . $back_page . '" href="' . $url . '&page=' . $back_page . '">Trang trước</a>';
             } else {
                 $main = '<a title="' . $title . ' trang ' . $back_page . '" href="' . $url . '/trang-' . $back_page . '.html">Trang trước</a>';
             }
         } else {
-            if (!empty($page_number) && $page_number != 0) {
+            if (!empty($page_number) && $page_number !== 0) {
                 $next_page = $page_number + 1;
             } else {
                 $next_page = $page_number + 2;
             }
-            if ($more_type == 'search') {
+            if ($more_type === 'search') {
                 $main = '<a title="' . $title . ' trang ' . $next_page . '" href="' . $url . '&page=' . $next_page . '">Xem thêm</a>';
             } else {
                 $main = '<a title="' . $title . ' trang ' . $next_page . '" href="' . $url . '/trang-' . $next_page . '.html">Xem thêm</a>';
@@ -168,22 +172,22 @@ if (!function_exists('select_page')) {
         if ($total <= 1) {
             return '';
         }
-        if ($page_number <> 1) {
-            if ($type == 'select_page') {
+        if ($page_number !== 1) {
+            if ($type === 'select_page') {
                 $main .= "<li class=\"left\"><a href=\"" . $page_links . ".html\" title=\"" . $title . "\">&nbsp;</a></li>";
             } else {
                 $main .= "";
             }
         }
         for ($num = 1; $num <= $total; $num++) {
-            if ($num == $page_number) {
-                if ($type == 'select_page') {
+            if ($num === $page_number) {
+                if ($type === 'select_page') {
                     $main .= "<li class=\"selected\"><a href=\"" . $page_links . "/trang-" . $num . ".html\" title=\"" . $title . " trang " . $num . "\">" . $num . "</a></li>";
                 } else {
                     $main .= "<option selected value=\"" . $num . "\">Trang " . $num . "</option>";
                 }
             } else {
-                if ($type == 'select_page') {
+                if ($type === 'select_page') {
                     $main .= "<li><a href=\"" . $page_links . "/trang-" . $num . ".html\" title=\"" . $title . " trang " . $num . "\">" . $num . "</a></li>";
                 } else {
                     $main .= "<option value=\"" . $num . "\">Trang " . $num . "</option>";
@@ -191,8 +195,8 @@ if (!function_exists('select_page')) {
             }
         }
         unset($num);
-        if ($page_number <> $total) {
-            if ($type == 'select_page') {
+        if ($page_number !== $total) {
+            if ($type === 'select_page') {
                 $main .= "<li class=\"right\"><a href=\"" . $page_links . "/trang-" . $total . ".html\" title=\"" . $title . " trang cuối\">&nbsp;</a></li>";
             } else {
                 $main .= "<option value=\"" . $total . "\">Trang cuối</option>";
@@ -233,6 +237,6 @@ if (!function_exists('get_paginations_number')) {
     {
         $str = str_replace('trang-', '', $str);
 
-        return intval($str);
+        return (int) $str;
     }
 }

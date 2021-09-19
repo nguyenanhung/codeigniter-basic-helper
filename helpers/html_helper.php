@@ -25,10 +25,10 @@ if (!function_exists('meta_property')) {
     /**
      * Function meta_property
      *
-     * @param string $property
-     * @param string $content
-     * @param string $type
-     * @param string $newline
+     * @param string|array $property
+     * @param string       $content
+     * @param string       $type
+     * @param string       $newline
      *
      * @return string
      * @author   : 713uk13m <dev@nguyenanhung.com>
@@ -124,7 +124,7 @@ if (!function_exists('strip_only_tags')) {
         $content = '';
         if (!is_array($tags)) {
             $tags = (strpos($str, '>') !== false ? explode('>', str_replace('<', '', $tags)) : array($tags));
-            if (end($tags) == '') {
+            if (end($tags) === '') {
                 array_pop($tags);
             }
         }

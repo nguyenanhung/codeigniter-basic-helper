@@ -44,7 +44,7 @@ class ImageHelper implements Environment
         $params             = array();
         $params['url']      = $url;
         $params['resize_w'] = $width;
-        if (!empty($height)) {
+        if ($height !== null) {
             $params['resize_h'] = $height;
         }
         $params['container'] = $proxyContainer;
@@ -81,9 +81,7 @@ class ImageHelper implements Environment
      */
     public static function wordpressProxy($imageUrl = '', $server = 'i3')
     {
-        $imageUrl = str_replace('https://', '', $imageUrl);
-        $imageUrl = str_replace('http://', '', $imageUrl);
-        $imageUrl = str_replace('//', '', $imageUrl);
+        $imageUrl = str_replace(array('https://', 'http://', '//'), '', $imageUrl);
         $url      = 'https://' . trim($server) . '.wp.com/' . $imageUrl;
 
         return trim($url);

@@ -24,8 +24,8 @@ if (!function_exists('randomNanoId')) {
             $client = new Hidehalo\Nanoid\Client();
 
             return $client->generateId($size);
-        } else {
-            return uniqid('HungNG_');
         }
+
+        return uniqid('HungNG_', true);
     }
 }

@@ -81,9 +81,9 @@ if (!function_exists('delete_files')) {
 
         if (($del_dir === true && $_level > 0)) {
             return @rmdir($path);
-        } else {
-            return true;
         }
+
+        return true;
     }
 }
 if (!function_exists('formatSizeUnits')) {
@@ -106,9 +106,9 @@ if (!function_exists('formatSizeUnits')) {
         } elseif ($bytes >= 1024) {
             $bytes = number_format($bytes / 1024, 2) . ' KB';
         } elseif ($bytes > 1) {
-            $bytes = $bytes . ' bytes';
-        } elseif ($bytes == 1) {
-            $bytes = $bytes . ' byte';
+            $bytes .= ' bytes';
+        } elseif ($bytes === 1) {
+            $bytes .= ' byte';
         } else {
             $bytes = '0 bytes';
         }
@@ -131,9 +131,11 @@ if (!function_exists('genarateFileIndex')) {
     function genarateFileIndex($file_path = '', $file_name = 'index.html')
     {
         if (function_exists('log_message') && function_exists('write_file')) {
-            if ($file_path != '') {
+            if ($file_path !== '') {
                 if (is_dir($file_path) === false) {
-                    mkdir($file_path);
+                    if (!mkdir($file_path) && !is_dir($file_path)) {
+                        throw new RuntimeException(sprintf('Directory "%s" was not created', $file_path));
+                    }
                     log_message('debug', 'Genarate new Folder: ' . $file_path);
                 }
                 // SET file location
@@ -147,19 +149,19 @@ if (!function_exists('genarateFileIndex')) {
 
                     // Return
                     return true;
-                } else {
-                    // PUT Logs
-                    log_message('debug', 'File Index.html Exists in Location ' . $file_location);
-
-                    // Return
-                    return false;
                 }
-            } else {
-                log_message('debug', 'Genarate File Index.html failed');
+
+// PUT Logs
+                log_message('debug', 'File Index.html Exists in Location ' . $file_location);
 
                 // Return
                 return false;
             }
+
+            log_message('debug', 'Genarate File Index.html failed');
+
+            // Return
+            return false;
         }
 
         return false;
@@ -180,10 +182,12 @@ if (!function_exists('genarateFileHtaccess')) {
     function genarateFileHtaccess($file_path = '', $file_name = '.htaccess')
     {
         if (function_exists('log_message') && function_exists('write_file')) {
-            if ($file_path != '') {
+            if ($file_path !== '') {
                 // SET file Path
                 if (is_dir($file_path) === false) {
-                    mkdir($file_path);
+                    if (!mkdir($file_path) && !is_dir($file_path)) {
+                        throw new RuntimeException(sprintf('Directory "%s" was not created', $file_path));
+                    }
                     // PUT Logs
                     log_message('debug', 'Genarate new Folder: ' . $file_path);
                 }
@@ -198,20 +202,19 @@ if (!function_exists('genarateFileHtaccess')) {
 
                     // Return
                     return true;
-                } else {
-                    // PUT Logs
-                    log_message('debug', 'File .htaccess Exists in Location ' . $file_location);
-
-                    // Return
-                    return false;
                 }
-            } else // PUT Logs
-            {
-                log_message('debug', 'Genarate File .htaccess failed');
+
+// PUT Logs
+                log_message('debug', 'File .htaccess Exists in Location ' . $file_location);
 
                 // Return
                 return false;
             }
+
+            log_message('debug', 'Genarate File .htaccess failed');
+
+            // Return
+            return false;
         }
 
         return false;
@@ -232,9 +235,11 @@ if (!function_exists('genarateFileReadme')) {
     function genarateFileReadme($file_path = '', $file_name = 'README.md')
     {
         if (function_exists('log_message') && function_exists('write_file')) {
-            if ($file_path != '') {
+            if ($file_path !== '') {
                 if (is_dir($file_path) === false) {
-                    mkdir($file_path);
+                    if (!mkdir($file_path) && !is_dir($file_path)) {
+                        throw new RuntimeException(sprintf('Directory "%s" was not created', $file_path));
+                    }
                     log_message('debug', 'Genarate new Folder: ' . $file_path);
                 }
                 // SET file location
@@ -248,19 +253,19 @@ if (!function_exists('genarateFileReadme')) {
 
                     // Return
                     return true;
-                } else {
-                    // PUT Logs
-                    log_message('debug', 'File ' . $file_name . ' Exists in Location ' . $file_location);
-
-                    // Return
-                    return false;
                 }
-            } else {
-                log_message('debug', 'Genarate File ' . $file_name . ' failed');
+
+// PUT Logs
+                log_message('debug', 'File ' . $file_name . ' Exists in Location ' . $file_location);
 
                 // Return
                 return false;
             }
+
+            log_message('debug', 'Genarate File ' . $file_name . ' failed');
+
+            // Return
+            return false;
         }
 
         return false;
@@ -283,7 +288,9 @@ if (!function_exists('makeNewFolder')) {
             return false;
         }
         if (is_dir($folderPath) === false) {
-            @mkdir($folderPath);
+            if (!mkdir($folderPath) && !is_dir($folderPath)) {
+                throw new RuntimeException(sprintf('Directory "%s" was not created', $folderPath));
+            }
             genarateFileIndex($folderPath);
             genarateFileHtaccess($folderPath);
             genarateFileReadme($folderPath);

@@ -20,7 +20,7 @@ if (!function_exists('dd')) {
     function dd($var)
     {
         echo '<pre>';
-        array_map(function ($var) {
+        array_map(static function ($var) {
             var_dump($var);
         }, func_get_args());
         die;
