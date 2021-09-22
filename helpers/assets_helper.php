@@ -140,7 +140,7 @@ if (!function_exists('assets_themes')) {
         // Hooks format
         $themes = str_replace('itravels', 'iTravels', $themes);
         // Pattern
-        if ($themes != '') {
+        if ($themes !== '') {
             if ($asset_folder === 'no') {
                 $uri = 'themes/' . $themes . '/' . $uri;
             } else {
@@ -173,7 +173,7 @@ if (!function_exists('assets_themes_dashboard')) {
      */
     function assets_themes_dashboard($themes = '', $uri = '', $asset_folder = 'yes', $protocol = null)
     {
-        if ($themes != '') {
+        if ($themes !== '') {
             if ($asset_folder === 'no') {
                 $uri = 'themes/' . $themes . '/' . $uri;
             } else {
@@ -206,14 +206,14 @@ if (!function_exists('assets_themes_comingsoon')) {
      */
     function assets_themes_comingsoon($themes = '', $uri = '', $asset_folder = '', $protocol = null)
     {
-        if ($themes != '') {
-            if ($asset_folder != '') {
+        if ($themes !== '') {
+            if ($asset_folder !== '') {
                 $uri = 'themes/' . $themes . '/assets/' . $uri;
             } else {
                 $uri = 'themes/' . $themes . '/' . $uri;
             }
         } else {
-            if ($asset_folder != '') {
+            if ($asset_folder !== '') {
                 $uri = 'themes/assets/' . $uri;
             } else {
                 $uri = 'themes/' . $uri;
@@ -239,14 +239,14 @@ if (!function_exists('assets_themes_error')) {
      */
     function assets_themes_error($themes = '', $uri = '', $asset_folder = 'yes', $protocol = null)
     {
-        if ($themes != '') {
-            if ($asset_folder != '') {
+        if ($themes !== '') {
+            if ($asset_folder !== '') {
                 $uri = 'themes/' . $themes . '/assets/' . $uri;
             } else {
                 $uri = 'themes/' . $themes . '/' . $uri;
             }
         } else {
-            if ($asset_folder != '') {
+            if ($asset_folder !== '') {
                 $uri = 'themes/assets/' . $uri;
             } else {
                 $uri = 'themes/' . $uri;
