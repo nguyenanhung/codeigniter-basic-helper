@@ -50,6 +50,6 @@
     "suggest": {
         "ext-curl": "Need support CURL",
         "ext-json": "Need support JSON",
-        "hidehalo/nanoid-php": "Need support for helper function randomNanoId()"
+        "nguyenanhung/nanoid-helper": "Need support for helper function randomNanoId()"
     }
 }
