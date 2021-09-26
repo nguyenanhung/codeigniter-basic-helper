@@ -41,6 +41,7 @@ class SimpleCurl implements Environment
     protected $includeHeader;
     protected $noBody;
     protected $status;
+    protected $error;
     protected $binaryTransfer;
     protected $userOptions;
     protected $authentication = 0;
@@ -217,6 +218,7 @@ class SimpleCurl implements Environment
         curl_setopt_array($s, $this->userOptions);
         $this->webpage = curl_exec($s);
         $this->status  = curl_getinfo($s);
+        $this->error   = curl_error($s);
         $this->session = $s;
 
         return $this;
