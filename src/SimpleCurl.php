@@ -25,10 +25,12 @@ class SimpleCurl implements Environment
 
     protected $userAgent      = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.63 Safari/537.36';
     protected $url;
+    protected $data;
     protected $followLocation;
     protected $timeout;
     protected $maxRedirects;
     protected $cookieFileLocation;
+    protected $json;
     protected $post;
     protected $postFields;
     protected $referer        = "";
@@ -148,6 +150,25 @@ class SimpleCurl implements Environment
         return $this;
     }
 
+    public function setJson($postFields)
+    {
+        if (is_array($postFields)) {
+            $postFields = json_encode($postFields);
+        }
+        $this->json       = true;
+        $this->postFields = $postFields;
+        $this->headers[]  = "Content-Type: application/json";
+
+        return $this;
+    }
+
+    public function setData($data)
+    {
+        $this->data = $data;
+
+        return $this;
+    }
+
     public function setUserAgent($userAgent)
     {
         $this->userAgent = $userAgent;
@@ -178,7 +199,7 @@ class SimpleCurl implements Environment
         if ($this->authentication === 1) {
             curl_setopt($s, CURLOPT_USERPWD, $this->authUsername . ':' . $this->authPassword);
         }
-        if ($this->post) {
+        if ($this->post || $this->json) {
             curl_setopt($s, CURLOPT_POST, true);
             curl_setopt($s, CURLOPT_POSTFIELDS, $this->postFields);
         }
