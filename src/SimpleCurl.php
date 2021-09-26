@@ -23,15 +23,15 @@ class SimpleCurl implements Environment
 {
     use Version;
 
-    protected $userAgent          = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.63 Safari/537.36';
+    protected $userAgent      = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.63 Safari/537.36';
     protected $url;
     protected $followLocation;
     protected $timeout;
     protected $maxRedirects;
-    protected $cookieFileLocation = './cookies.txt';
+    protected $cookieFileLocation;
     protected $post;
     protected $postFields;
-    protected $referer            = "";
+    protected $referer        = "";
     protected $session;
     protected $webpage;
     protected $headers;
@@ -41,9 +41,9 @@ class SimpleCurl implements Environment
     protected $status;
     protected $binaryTransfer;
     protected $userOptions;
-    public    $authentication     = 0;
-    public    $authUsername       = '';
-    public    $authPassword       = '';
+    protected $authentication = 0;
+    protected $authUsername   = '';
+    protected $authPassword   = '';
 
     /**
      * SimpleCurl constructor.
@@ -57,9 +57,9 @@ class SimpleCurl implements Environment
     public function __construct($url = '', $options = array())
     {
         $this->url            = $url;
-        $this->followLocation = false;
-        $this->timeout        = 30;
-        $this->maxRedirects   = 3;
+        $this->followLocation = true;
+        $this->timeout        = 180;
+        $this->maxRedirects   = 10;
         $this->noBody         = false;
         $this->includeHeader  = false;
         $this->headerOut      = true;
@@ -88,7 +88,7 @@ class SimpleCurl implements Environment
     public function useAuth($use)
     {
         $this->authentication = 0;
-        if ($use == true) {
+        if ($use === true) {
             $this->authentication = 1;
         }
 
@@ -155,9 +155,9 @@ class SimpleCurl implements Environment
         return $this;
     }
 
-    public function createCurl($url = 'null')
+    public function createCurl($url = null)
     {
-        if ($url != 'null') {
+        if ($url !== null) {
             $this->url = $url;
         }
         $s = curl_init();
@@ -167,13 +167,15 @@ class SimpleCurl implements Environment
         curl_setopt($s, CURLOPT_MAXREDIRS, $this->maxRedirects);
         curl_setopt($s, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($s, CURLOPT_FOLLOWLOCATION, $this->followLocation);
-        curl_setopt($s, CURLOPT_COOKIEJAR, $this->cookieFileLocation);
-        curl_setopt($s, CURLOPT_COOKIEFILE, $this->cookieFileLocation);
-        curl_setopt($s, CURLOPT_SSL_VERIFYHOST, 0);
-        curl_setopt($s, CURLOPT_SSL_VERIFYPEER, 0);
+        if (!empty($this->cookieFileLocation)) {
+            curl_setopt($s, CURLOPT_COOKIEJAR, $this->cookieFileLocation);
+            curl_setopt($s, CURLOPT_COOKIEFILE, $this->cookieFileLocation);
+        }
+        //curl_setopt($s, CURLOPT_SSL_VERIFYHOST, 0);
+        //curl_setopt($s, CURLOPT_SSL_VERIFYPEER, 0);
         curl_setopt($s, CURLINFO_HEADER_OUT, $this->headerOut);
         curl_setopt($s, CURLOPT_FILETIME, 1);
-        if ($this->authentication == 1) {
+        if ($this->authentication === 1) {
             curl_setopt($s, CURLOPT_USERPWD, $this->authUsername . ':' . $this->authPassword);
         }
         if ($this->post) {

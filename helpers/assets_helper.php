@@ -102,160 +102,6 @@ if (!function_exists('favicon_url')) {
         return assets_url($uri, $protocol);
     }
 }
-if (!function_exists('assets_mobile')) {
-    /**
-     * Function assets_mobile
-     *
-     * @param string $uri
-     * @param null   $protocol
-     *
-     * @return string
-     * @author   : 713uk13m <dev@nguyenanhung.com>
-     * @copyright: 713uk13m <dev@nguyenanhung.com>
-     * @time     : 12/09/2020 47:34
-     */
-    function assets_mobile($uri = '', $protocol = null)
-    {
-        $uri = 'mobile/assets/' . $uri;
-
-        return assets_url($uri, $protocol);
-    }
-}
-if (!function_exists('assets_themes')) {
-    /**
-     * Function assets_themes
-     *
-     * @param string $themes
-     * @param string $uri
-     * @param string $asset_folder
-     * @param null   $protocol
-     *
-     * @return string
-     * @author   : 713uk13m <dev@nguyenanhung.com>
-     * @copyright: 713uk13m <dev@nguyenanhung.com>
-     * @time     : 12/09/2020 47:39
-     */
-    function assets_themes($themes = '', $uri = '', $asset_folder = 'yes', $protocol = null)
-    {
-        // Hooks format
-        $themes = str_replace('itravels', 'iTravels', $themes);
-        // Pattern
-        if ($themes !== '') {
-            if ($asset_folder === 'no') {
-                $uri = 'themes/' . $themes . '/' . $uri;
-            } else {
-                $uri = 'themes/' . $themes . '/assets/' . $uri;
-            }
-        } else {
-            if ($asset_folder === 'no') {
-                $uri = 'themes/' . $uri;
-            } else {
-                $uri = 'themes/assets/' . $uri;
-            }
-        }
-
-        return assets_url($uri, $protocol);
-    }
-}
-if (!function_exists('assets_themes_dashboard')) {
-    /**
-     * Function assets_themes_dashboard
-     *
-     * @param string $themes
-     * @param string $uri
-     * @param string $asset_folder
-     * @param null   $protocol
-     *
-     * @return string
-     * @author   : 713uk13m <dev@nguyenanhung.com>
-     * @copyright: 713uk13m <dev@nguyenanhung.com>
-     * @time     : 12/09/2020 48:37
-     */
-    function assets_themes_dashboard($themes = '', $uri = '', $asset_folder = 'yes', $protocol = null)
-    {
-        if ($themes !== '') {
-            if ($asset_folder === 'no') {
-                $uri = 'themes/' . $themes . '/' . $uri;
-            } else {
-                $uri = 'themes/' . $themes . '/assets/' . $uri;
-            }
-        } else {
-            if ($asset_folder === 'no') {
-                $uri = 'themes/' . $uri;
-            } else {
-                $uri = 'themes/assets/' . $uri;
-            }
-        }
-
-        return assets_url($uri, $protocol);
-    }
-}
-if (!function_exists('assets_themes_comingsoon')) {
-    /**
-     * Function assets_themes_comingsoon
-     *
-     * @param string $themes
-     * @param string $uri
-     * @param string $asset_folder
-     * @param null   $protocol
-     *
-     * @return string
-     * @author   : 713uk13m <dev@nguyenanhung.com>
-     * @copyright: 713uk13m <dev@nguyenanhung.com>
-     * @time     : 12/09/2020 48:22
-     */
-    function assets_themes_comingsoon($themes = '', $uri = '', $asset_folder = '', $protocol = null)
-    {
-        if ($themes !== '') {
-            if ($asset_folder !== '') {
-                $uri = 'themes/' . $themes . '/assets/' . $uri;
-            } else {
-                $uri = 'themes/' . $themes . '/' . $uri;
-            }
-        } else {
-            if ($asset_folder !== '') {
-                $uri = 'themes/assets/' . $uri;
-            } else {
-                $uri = 'themes/' . $uri;
-            }
-        }
-
-        return assets_url($uri, $protocol);
-    }
-}
-if (!function_exists('assets_themes_error')) {
-    /**
-     * Function assets_themes_error
-     *
-     * @param string $themes
-     * @param string $uri
-     * @param string $asset_folder
-     * @param null   $protocol
-     *
-     * @return string
-     * @author   : 713uk13m <dev@nguyenanhung.com>
-     * @copyright: 713uk13m <dev@nguyenanhung.com>
-     * @time     : 12/09/2020 48:14
-     */
-    function assets_themes_error($themes = '', $uri = '', $asset_folder = 'yes', $protocol = null)
-    {
-        if ($themes !== '') {
-            if ($asset_folder !== '') {
-                $uri = 'themes/' . $themes . '/assets/' . $uri;
-            } else {
-                $uri = 'themes/' . $themes . '/' . $uri;
-            }
-        } else {
-            if ($asset_folder !== '') {
-                $uri = 'themes/assets/' . $uri;
-            } else {
-                $uri = 'themes/' . $uri;
-            }
-        }
-
-        return assets_url($uri, $protocol);
-    }
-}
 if (!function_exists('storage_url')) {
     /**
      * Function storage_url
@@ -304,5 +150,115 @@ if (!function_exists('go_url')) {
         }
 
         return $uri;
+    }
+}
+if (!function_exists('assets_mobile')) {
+    /**
+     * Function assets_mobile
+     *
+     * @param string $uri
+     * @param null   $protocol
+     *
+     * @return string
+     * @author   : 713uk13m <dev@nguyenanhung.com>
+     * @copyright: 713uk13m <dev@nguyenanhung.com>
+     * @time     : 12/09/2020 47:34
+     */
+    function assets_mobile($uri = '', $protocol = null)
+    {
+        $uri = 'mobile/assets/' . $uri;
+
+        return assets_url($uri, $protocol);
+    }
+}
+if (!function_exists('assets_themes')) {
+    /**
+     * Function assets_themes
+     *
+     * @param string $themes
+     * @param string $uri
+     * @param string $folder
+     * @param null   $protocol
+     *
+     * @return string
+     * @author   : 713uk13m <dev@nguyenanhung.com>
+     * @copyright: 713uk13m <dev@nguyenanhung.com>
+     * @time     : 12/09/2020 47:39
+     */
+    function assets_themes($themes = '', $uri = '', $folder = 'yes', $protocol = null)
+    {
+        // Hooks format
+        $themes = str_replace('itravels', 'iTravels', $themes);
+        // Pattern
+        if ($themes !== '') {
+            if ($folder !== 'no') {
+                $uri = 'themes/' . $themes . '/assets/' . $uri;
+            } else {
+                $uri = 'themes/' . $themes . '/' . $uri;
+            }
+        } elseif ($folder === 'no') {
+            $uri = 'themes/' . $uri;
+        } else {
+            $uri = 'themes/assets/' . $uri;
+        }
+
+        return assets_url($uri, $protocol);
+    }
+}
+if (!function_exists('assets_themes_dashboard')) {
+    /**
+     * Function assets_themes_dashboard
+     *
+     * @param string $themes
+     * @param string $uri
+     * @param string $folder
+     * @param null   $protocol
+     *
+     * @return string
+     * @author   : 713uk13m <dev@nguyenanhung.com>
+     * @copyright: 713uk13m <dev@nguyenanhung.com>
+     * @time     : 12/09/2020 48:37
+     */
+    function assets_themes_dashboard($themes = '', $uri = '', $folder = 'yes', $protocol = null)
+    {
+        return assets_themes($themes, $uri, $folder, $protocol);
+    }
+}
+if (!function_exists('assets_themes_comingsoon')) {
+    /**
+     * Function assets_themes_comingsoon
+     *
+     * @param string $themes
+     * @param string $uri
+     * @param string $folder
+     * @param null   $protocol
+     *
+     * @return string
+     * @author   : 713uk13m <dev@nguyenanhung.com>
+     * @copyright: 713uk13m <dev@nguyenanhung.com>
+     * @time     : 12/09/2020 48:22
+     */
+    function assets_themes_comingsoon($themes = '', $uri = '', $folder = '', $protocol = null)
+    {
+        return assets_themes($themes, $uri, $folder, $protocol);
+    }
+}
+if (!function_exists('assets_themes_error')) {
+    /**
+     * Function assets_themes_error
+     *
+     * @param string $themes
+     * @param string $uri
+     * @param string $folder
+     * @param null   $protocol
+     *
+     * @return string
+     * @author   : 713uk13m <dev@nguyenanhung.com>
+     * @copyright: 713uk13m <dev@nguyenanhung.com>
+     * @time     : 12/09/2020 48:14
+     */
+    function assets_themes_error($themes = '', $uri = '', $folder = 'yes', $protocol = null)
+    {
+        return assets_themes($themes, $uri, $folder, $protocol);
     }
 }
