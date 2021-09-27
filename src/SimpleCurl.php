@@ -30,6 +30,7 @@ class SimpleCurl implements Environment
     protected $timeout;
     protected $maxRedirects;
     protected $cookieFileLocation;
+    protected $xml;
     protected $json;
     protected $post;
     protected $postFields;
@@ -159,7 +160,18 @@ class SimpleCurl implements Environment
         }
         $this->json       = true;
         $this->postFields = $postFields;
-        $this->headers[]  = "Content-Type: application/json";
+        $this->headers[]  = "Accept: application/json; charset=utf-8";
+        $this->headers[]  = "Content-Type: application/json; charset=utf-8";
+
+        return $this;
+    }
+
+    public function setXml($xmlData)
+    {
+        $this->xml        = true;
+        $this->postFields = $xmlData;
+        $this->headers[]  = "Accept: text/xml; charset=utf-8";
+        $this->headers[]  = "Content-Type: text/xml; charset=utf-8";
 
         return $this;
     }
@@ -190,7 +202,7 @@ class SimpleCurl implements Environment
         curl_setopt($s, CURLOPT_MAXREDIRS, $this->maxRedirects);
         curl_setopt($s, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($s, CURLOPT_FOLLOWLOCATION, $this->followLocation);
-        if (!empty($this->cookieFileLocation)) {
+        if (!empty($this->cookieFileLocation) && file_exists($this->cookieFileLocation)) {
             curl_setopt($s, CURLOPT_COOKIEJAR, $this->cookieFileLocation);
             curl_setopt($s, CURLOPT_COOKIEFILE, $this->cookieFileLocation);
         }
@@ -201,7 +213,7 @@ class SimpleCurl implements Environment
         if ($this->authentication === 1) {
             curl_setopt($s, CURLOPT_USERPWD, $this->authUsername . ':' . $this->authPassword);
         }
-        if ($this->post || $this->json) {
+        if ($this->post || $this->json || $this->xml) {
             curl_setopt($s, CURLOPT_POST, true);
             curl_setopt($s, CURLOPT_POSTFIELDS, $this->postFields);
         }
