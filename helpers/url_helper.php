@@ -26,16 +26,8 @@ if (!function_exists('share_url')) {
      */
     function share_url($href = '', $platform = '', $app_id = '', $redirect = '', $display = '', $images = '', $title = '')
     {
-        if (function_exists('base_url')) {
-            $baseUrl = base_url();
-        } else {
-            $baseUrl = '';
-        }
-        if ($href === '') {
-            $share_link = urlencode($baseUrl);
-        } else {
-            $share_link = urlencode($href);
-        }
+        $baseUrl    = function_exists('base_url') ? base_url() : '';
+        $share_link = $href === '' ? urlencode($baseUrl) : urlencode($href);
         if ($redirect === '' || empty($redirect)) {
             $redirect_link = urlencode($baseUrl);
         } else {
@@ -43,9 +35,9 @@ if (!function_exists('share_url')) {
         }
         if ($platform === 'fb_share') {
             if ($display !== '') {
-                $share_url = 'https://www.facebook.com/dialog/share?app_id=' . $app_id . '&amp;display=' . $display . '&amp;href=' . $share_link . '&amp;redirect_uri=' . $redirect_link;
+                $share_url = 'https://www.facebook.com/dialog/share?' . http_build_query(array('app_id' => $app_id, 'display' => $display, 'href' => $share_link, 'redirect_uri' => $redirect_link));
             } else {
-                $share_url = 'https://www.facebook.com/dialog/share?app_id=' . $app_id . '&amp;href=' . $share_link . '&amp;redirect_uri=' . $redirect_link;
+                $share_url = 'https://www.facebook.com/dialog/share?' . http_build_query(array('app_id' => $app_id, 'href' => $share_link, 'redirect_uri' => $redirect_link));
             }
         } elseif ($platform === 'fb_send') {
             if ($display !== '') {

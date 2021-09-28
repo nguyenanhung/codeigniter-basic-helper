@@ -69,9 +69,9 @@ if (!function_exists('delete_files')) {
             if ($filename !== '.' && $filename !== '..') {
                 $filepath = $path . DIRECTORY_SEPARATOR . $filename;
 
-                if (is_dir($filepath) && $filename[0] !== '.' && !is_link($filepath)) {
+                if (is_dir($filepath) && !is_link($filepath)) {
                     delete_files($filepath, $del_dir, $htdocs, $_level + 1);
-                } elseif ($htdocs !== true or !preg_match('/^(\.htaccess|index\.(html|htm|php)|web\.config)$/i', $filename)) {
+                } elseif ($htdocs !== true || !preg_match('/^(\.htaccess|index\.(html|htm|php)|web\.config)$/i', $filename)) {
                     @unlink($filepath);
                 }
             }

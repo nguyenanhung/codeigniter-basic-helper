@@ -20,24 +20,20 @@ if (!function_exists('isEmpty')) {
      */
     function isEmpty($input = '')
     {
-        if ($input === null) {
-            $output = true;
-        } elseif ($input === false) {
-            $output = true;
-        } else {
-            $isset = isset($input);
-            if ($isset === true) {
-                $empty = empty($input);
-                if ($empty) {
-                    $output = true;
-                } else {
-                    $output = false;
-                }
-            } else {
-                $output = true;
-            }
+        if ($input === null || $input === false) {
+            return true;
         }
-
+        $isset = isset($input);
+        if ($isset === true) {
+            $empty = empty($input);
+            if ($empty) {
+                $output = true;
+            } else {
+                $output = false;
+            }
+        } else {
+            $output = true;
+        }
         return $output;
     }
 }
