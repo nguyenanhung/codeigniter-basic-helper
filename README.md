@@ -49,12 +49,12 @@ Dưới đây là danh sách các Helper được hỗ trợ trong bộ thư vi�
 
 ### File Helper
 
-- [x] Helper Function: `formatSizeUnits`
+- [x] Helper Function: `formatSizeUnits` - Hàm format 1 int đầu vào thành 1 format để dễ đọc dung lượng file
 - [x] Helper Function: `genarateFileIndex` - Tự động tạo nội dung file `index.html`
 - [x] Helper Function: `genarateFileHtaccess` - Tự động tạo nội dung file `.htaccess`
 - [x] Helper Function: `genarateFileReadme` - Tự động tạo nội dung file `README.md`
-- [x] Helper Function: `makeNewFolder`
-- [x] Helper Function: `new_folder`
+- [x] Helper Function: `makeNewFolder` - Hàm tạo 1 thư mục mới và genre sẵn trong đó 3 file: `README.md`, `index.html`, `.htaccess`
+- [x] Helper Function: `new_folder` - Chức năng tương tự với hàm `makeNewFolder`
 
 ### HTML Helper
 
@@ -75,10 +75,10 @@ Dưới đây là danh sách các Helper được hỗ trợ trong bộ thư vi�
 ### IP Helper
 
 - [x] Helper Function: `getIPAddress` - Hàm lấy ra địa chỉ IP thực tế của người dùng
-- [x] Helper Function: `validateIP`
-- [x] Helper Function: `validateIPV4`
-- [x] Helper Function: `validateIPV6`
-- [x] Helper Function: `getIpInformation`
+- [x] Helper Function: `validateIP` - Hàm validate 1 string có phải IP ko. TRUE nếu đó là IP
+- [x] Helper Function: `validateIPV4` - Hàm validate 1 string có phải IP v4 ko. TRUE nếu đó là IP
+- [x] Helper Function: `validateIPV6` - Hàm validate 1 string có phải IP v6 ko. TRUE nếu đó là IP
+- [x] Helper Function: `getIpInformation` - Khởi tạo 1 request đến `IP-API` để lấy thông tin của địa chỉ IP
 
 ### Meta Helper
 
@@ -90,7 +90,7 @@ Helper này sử dụng gói `hidehalo/nanoid-php` để gen ra 1 mã random Id 
 
 Hiện tại việc sử dụng nanoid đang là xu hướng so với uuid truyền thống
 
-Để sử dụng được gói này, cần cài packages `hidehalo/nanoid-php` bằng lệnh `composer require hidehalo/nanoid-php`
+Để sử dụng được gói này, cần cài packages `nguyenanhung/nanoid-helper` bằng lệnh `composer require nguyenanhung/nanoid-helper`
 
 - [x] Helper Function: `randomNanoId`
 
@@ -133,7 +133,7 @@ Hiện tại việc sử dụng nanoid đang là xu hướng so với uuid truy�
 
 ### UUID Helper
 
-- [x] Helper Function: `generate_uuid_v4`
+- [x] Helper Function: `generate_uuid_v4` - Hàm tạo ra 1 chuỗi UUID v4 ngẫu nhiên
 
 ### XML Helper
 
