@@ -27,12 +27,14 @@ if (!function_exists('parse_sitemap_index')) {
             // Since we allow the data to be passes as a string, a simple array
             // or a multidimensional one, we need to do a little prepping.
             if (!is_array($loc)) {
-                $loc = [
-                    ['loc'     => $loc,
-                     'lastmod' => $lastmod,
-                     'type'    => $type,
-                     'newline' => $newline]
-                ];
+                $loc = array(
+                    array(
+                        'loc'     => $loc,
+                        'lastmod' => $lastmod,
+                        'type'    => $type,
+                        'newline' => $newline
+                    )
+                );
             } elseif (isset($loc['loc'])) {
                 // Turn single array into multidimensional
                 $loc = array($loc);
