@@ -109,11 +109,9 @@ if (!function_exists('getIpInformation')) {
      */
     function getIpInformation($ip = '')
     {
-        if (empty($ip)) {
-            $ip = getIPAddress();
-        }
+        $ips = empty($ip) ? getIPAddress() : $ip;
         try {
-            $endpoint = 'http://ip-api.com/json/' . $ip;
+            $endpoint = 'http://ip-api.com/json/' . $ips;
             $curl     = curl_init();
             curl_setopt_array($curl, array(
                 CURLOPT_URL            => $endpoint,
