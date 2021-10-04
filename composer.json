@@ -43,6 +43,7 @@
             "helpers/common_helper.php",
             "helpers/file_helper.php",
             "helpers/paging_helper.php",
+            "helpers/request_helper.php",
             "helpers/tinyurl_helper.php",
             "helpers/meta_helper.php"
         ]
