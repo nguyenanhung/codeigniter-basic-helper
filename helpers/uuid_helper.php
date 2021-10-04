@@ -18,8 +18,9 @@ if (!function_exists('generate_uuid_v4')) {
      */
     function generate_uuid_v4()
     {
-        return sprintf('%04x%04x-%04x-%04x-%04x-%04x%04x%04x', // 32 bits for "time_low"
-                       mt_rand(0, 0xffff), mt_rand(0, 0xffff), // 16 bits for "time_mid"
+        return sprintf('%04x%04x-%04x-%04x-%04x-%04x%04x%04x',
+                       mt_rand(0, 0xffff), // 32 bits for "time_low"
+                       mt_rand(0, 0xffff), // 16 bits for "time_mid"
                        mt_rand(0, 0xffff), // 16 bits for "time_hi_and_version",
 
             // four most significant bits holds version number 4
