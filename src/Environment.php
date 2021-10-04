@@ -19,8 +19,8 @@ namespace nguyenanhung\CodeIgniter\BasicHelper;
  */
 interface Environment
 {
-    const VERSION       = '1.0.7.5';
-    const LAST_MODIFIED = '2021-09-28';
+    const VERSION       = '1.0.8';
+    const LAST_MODIFIED = '2021-10-05';
     const AUTHOR_NAME   = 'Hung Nguyen';
     const AUTHOR_EMAIL  = 'dev@nguyenanhung.com';
     const PROJECT_NAME  = 'CodeIgniter - Basic Helper';
@@ -28,7 +28,7 @@ interface Environment
     /**
      * Function getVersion
      *
-     * @return mixed
+     * @return string
      * @author   : 713uk13m <dev@nguyenanhung.com>
      * @copyright: 713uk13m <dev@nguyenanhung.com>
      * @time     : 07/06/2021 44:19
