@@ -175,28 +175,28 @@ if (!function_exists('assets_themes')) {
     /**
      * Function assets_themes
      *
-     * @param string $themes
-     * @param string $uri
-     * @param string $folder
-     * @param null   $protocol
+     * @param string      $themes
+     * @param string      $uri
+     * @param string      $assetsFolder
+     * @param string|null $protocol
      *
      * @return string
      * @author   : 713uk13m <dev@nguyenanhung.com>
      * @copyright: 713uk13m <dev@nguyenanhung.com>
      * @time     : 12/09/2020 47:39
      */
-    function assets_themes($themes = '', $uri = '', $folder = 'yes', $protocol = null)
+    function assets_themes($themes = '', $uri = '', $assetsFolder = 'yes', $protocol = null)
     {
         // Hooks format
         $themes = str_replace('itravels', 'iTravels', $themes);
         // Pattern
         if ($themes !== '') {
-            if ($folder !== 'no') {
+            if ($assetsFolder !== 'no') {
                 $uri = 'themes/' . $themes . '/assets/' . $uri;
             } else {
                 $uri = 'themes/' . $themes . '/' . $uri;
             }
-        } elseif ($folder === 'no') {
+        } elseif ($assetsFolder === 'no') {
             $uri = 'themes/' . $uri;
         } else {
             $uri = 'themes/assets/' . $uri;
@@ -209,56 +209,73 @@ if (!function_exists('assets_themes_dashboard')) {
     /**
      * Function assets_themes_dashboard
      *
-     * @param string $themes
-     * @param string $uri
-     * @param string $folder
-     * @param null   $protocol
+     * @param string      $themes
+     * @param string      $uri
+     * @param string      $assetsFolder
+     * @param string|null $protocol
      *
      * @return string
      * @author   : 713uk13m <dev@nguyenanhung.com>
      * @copyright: 713uk13m <dev@nguyenanhung.com>
      * @time     : 12/09/2020 48:37
      */
-    function assets_themes_dashboard($themes = '', $uri = '', $folder = 'yes', $protocol = null)
+    function assets_themes_dashboard($themes = '', $uri = '', $assetsFolder = 'yes', $protocol = null)
     {
-        return assets_themes($themes, $uri, $folder, $protocol);
+        return assets_themes($themes, $uri, $assetsFolder, $protocol);
     }
 }
 if (!function_exists('assets_themes_comingsoon')) {
     /**
      * Function assets_themes_comingsoon
      *
-     * @param string $themes
-     * @param string $uri
-     * @param string $folder
-     * @param null   $protocol
+     * @param string      $themes
+     * @param string      $uri
+     * @param string      $assetsFolder
+     * @param string|null $protocol
      *
      * @return string
      * @author   : 713uk13m <dev@nguyenanhung.com>
      * @copyright: 713uk13m <dev@nguyenanhung.com>
      * @time     : 12/09/2020 48:22
      */
-    function assets_themes_comingsoon($themes = '', $uri = '', $folder = '', $protocol = null)
+    function assets_themes_comingsoon($themes = '', $uri = '', $assetsFolder = '', $protocol = null)
     {
-        return assets_themes($themes, $uri, $folder, $protocol);
+        return assets_themes($themes, $uri, $assetsFolder, $protocol);
     }
 }
 if (!function_exists('assets_themes_error')) {
     /**
      * Function assets_themes_error
      *
-     * @param string $themes
-     * @param string $uri
-     * @param string $folder
-     * @param null   $protocol
+     * @param string      $themes
+     * @param string      $uri
+     * @param string      $assetsFolder
+     * @param string|null $protocol
      *
      * @return string
      * @author   : 713uk13m <dev@nguyenanhung.com>
      * @copyright: 713uk13m <dev@nguyenanhung.com>
      * @time     : 12/09/2020 48:14
      */
-    function assets_themes_error($themes = '', $uri = '', $folder = 'yes', $protocol = null)
+    function assets_themes_error($themes = '', $uri = '', $assetsFolder = 'yes', $protocol = null)
     {
-        return assets_themes($themes, $uri, $folder, $protocol);
+        return assets_themes($themes, $uri, $assetsFolder, $protocol);
+    }
+}
+if (!function_exists('assets_themes_metronic')) {
+    /**
+     * Function assets_themes_metronic
+     *
+     * @param string      $uri
+     * @param string|null $protocol
+     *
+     * @return string
+     * @author   : 713uk13m <dev@nguyenanhung.com>
+     * @copyright: 713uk13m <dev@nguyenanhung.com>
+     * @time     : 10/05/2021 23:38
+     */
+    function assets_themes_metronic($uri = '', $protocol = null)
+    {
+        return assets_themes('metronic', $uri, 'yes', $protocol);
     }
 }
