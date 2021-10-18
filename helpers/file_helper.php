@@ -144,23 +144,16 @@ if (!function_exists('genarateFileIndex')) {
                 if (file_exists($file_location) === false) {
                     $file_content = "<!DOCTYPE html>\n<html lang='vi'>\n<head>\n<title>403 Forbidden</title>\n</head>\n<body>\n<p>Directory access is forbidden.</p>\n</body>\n</html>";
                     write_file($file_location, $file_content);
-                    // PUT Logs
                     log_message('debug', 'Genarate new file Index.html in Location ' . $file_location);
 
-                    // Return
                     return true;
                 }
-
-// PUT Logs
                 log_message('debug', 'File Index.html Exists in Location ' . $file_location);
 
-                // Return
                 return false;
             }
-
             log_message('debug', 'Genarate File Index.html failed');
 
-            // Return
             return false;
         }
 
@@ -188,32 +181,23 @@ if (!function_exists('genarateFileHtaccess')) {
                     if (!mkdir($file_path) && !is_dir($file_path)) {
                         throw new RuntimeException(sprintf('Directory "%s" was not created', $file_path));
                     }
-                    // PUT Logs
                     log_message('debug', 'Genarate new Folder: ' . $file_path);
                 }
-                // SET file location
                 $file_location = $file_path . '/' . $file_name;
                 // Tạo file .htaccess nếu chưa có
                 if (file_exists($file_location) === false) {
                     $file_content = "RewriteEngine On\nOptions -Indexes\nAddType text/plain php3 php4 php5 php cgi asp aspx html css js";
                     write_file($file_location, $file_content);
-                    // PUT Logs
                     log_message('debug', 'Genarate new file .htaccess in Location ' . $file_location);
 
-                    // Return
                     return true;
                 }
-
-// PUT Logs
                 log_message('debug', 'File .htaccess Exists in Location ' . $file_location);
 
-                // Return
                 return false;
             }
-
             log_message('debug', 'Genarate File .htaccess failed');
 
-            // Return
             return false;
         }
 
@@ -242,29 +226,21 @@ if (!function_exists('genarateFileReadme')) {
                     }
                     log_message('debug', 'Genarate new Folder: ' . $file_path);
                 }
-                // SET file location
                 $file_location = $file_path . '/' . $file_name;
                 // Tạo file .htaccess nếu chưa có
                 if (file_exists($file_location) === false) {
                     $file_content = "# README";
                     write_file($file_location, $file_content);
-                    // PUT Logs
                     log_message('debug', 'Genarate new file ' . $file_name . ' in Location ' . $file_location);
 
-                    // Return
                     return true;
                 }
-
-// PUT Logs
                 log_message('debug', 'File ' . $file_name . ' Exists in Location ' . $file_location);
 
-                // Return
                 return false;
             }
-
             log_message('debug', 'Genarate File ' . $file_name . ' failed');
 
-            // Return
             return false;
         }
 
