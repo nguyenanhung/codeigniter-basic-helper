@@ -279,3 +279,57 @@ if (!function_exists('assets_themes_metronic')) {
         return assets_themes('metronic', $uri, 'yes', $protocol);
     }
 }
+if (!function_exists('cdn_js_url')) {
+    /**
+     * Function cdn_js_url
+     *
+     * @param string $uri
+     *
+     * @return string
+     * @author   : 713uk13m <dev@nguyenanhung.com>
+     * @copyright: 713uk13m <dev@nguyenanhung.com>
+     * @time     : 09/11/2021 18:15
+     */
+    function cdn_js_url($uri = '')
+    {
+        $cdnJs = '//cdnjs.cloudflare.com/ajax/libs/';
+
+        return $cdnJs . trim($uri);
+    }
+}
+if (!function_exists('google_fonts_url')) {
+    /**
+     * Function google_fonts_url
+     *
+     * @param string $family
+     *
+     * @return string
+     * @author   : 713uk13m <dev@nguyenanhung.com>
+     * @copyright: 713uk13m <dev@nguyenanhung.com>
+     * @time     : 09/11/2021 19:14
+     */
+    function google_fonts_url($family = '')
+    {
+        $fonts = '//fonts.googleapis.com/css?family=';
+
+        return $fonts . trim($family);
+    }
+}
+if (!function_exists('bootstrapcdn_url')) {
+    /**
+     * Function bootstrapcdn_url
+     *
+     * @param string $uri
+     *
+     * @return string
+     * @author   : 713uk13m <dev@nguyenanhung.com>
+     * @copyright: 713uk13m <dev@nguyenanhung.com>
+     * @time     : 09/11/2021 22:45
+     */
+    function bootstrapcdn_url($uri = '')
+    {
+        $cdn = '//maxcdn.bootstrapcdn.com/bootstrap/';
+
+        return $cdn . trim($uri);
+    }
+}

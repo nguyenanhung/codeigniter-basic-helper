@@ -19,8 +19,8 @@ namespace nguyenanhung\CodeIgniter\BasicHelper;
  */
 interface Environment
 {
-    const VERSION       = '1.0.9';
-    const LAST_MODIFIED = '2021-10-19';
+    const VERSION       = '1.1.0';
+    const LAST_MODIFIED = '2021-11-09';
     const AUTHOR_NAME   = 'Hung Nguyen';
     const AUTHOR_EMAIL  = 'dev@nguyenanhung.com';
     const PROJECT_NAME  = 'CodeIgniter - Basic Helper';
