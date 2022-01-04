@@ -78,11 +78,11 @@ if (!function_exists('generateAlphaId')) {
             for ($n = 0; $n < $indexLen; $n++) {
                 $i[] = $index[$n];
             }
-            $passhash = hash('sha256', $passKey);
-            $passhash = (strlen($passhash) < strlen($index)) ? hash('sha512', $passKey) : $passhash;
+            $passHash = hash('sha256', $passKey);
+            $passHash = (strlen($passHash) < strlen($index)) ? hash('sha512', $passKey) : $passHash;
 
             for ($n = 0; $n < $indexLen; $n++) {
-                $p[] = $passhash[$n];
+                $p[] = $passHash[$n];
             }
             array_multisort($p, SORT_DESC, $i);
             $index = implode($i);
