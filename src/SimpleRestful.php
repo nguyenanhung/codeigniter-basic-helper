@@ -35,7 +35,11 @@ class SimpleRestful
     public static function execute($url, $type, $data = "", $header = null)
     {
         $curl = curl_init();
-        if (empty($header)) $header = array("Content-Type: application/json");
+
+        if (empty($header)) {
+            $header = array("Content-Type: application/json");
+        }
+
         curl_setopt_array($curl, array(
             CURLOPT_URL            => rtrim($url, "/"),
             CURLOPT_RETURNTRANSFER => true,

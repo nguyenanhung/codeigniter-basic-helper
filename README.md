@@ -139,6 +139,12 @@ Hiện tại việc sử dụng nanoid đang là xu hướng so với uuid truy�
 
 - [x] Helper Function: `parse_sitemap_index`
 
+### Simple RESTful Helper
+
+Class cung cấp phương thức nhanh gọn để gọi tới các API tuân chuẩn RESTful
+
+- [x] Execute request to RESTful API Service: `SimpleRestful::execute($url, $type, $data)`
+
 ## Maintainer & Supporter
 
 | STT  | Name        | Email                | Github        |
