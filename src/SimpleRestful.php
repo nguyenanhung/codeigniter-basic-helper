@@ -25,7 +25,7 @@ class SimpleRestful
      * @param string $url
      * @param string $type
      * @param string $data
-     * @param null   $header
+     * @param mixed  $header
      *
      * @return array|int
      * @author   : 713uk13m <dev@nguyenanhung.com>
