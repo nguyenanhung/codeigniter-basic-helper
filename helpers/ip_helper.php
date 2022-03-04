@@ -13,7 +13,7 @@ if (!function_exists('getIPAddress')) {
      *
      * @param bool $convertToInteger
      *
-     * @return false|int|string
+     * @return bool|int|string
      * @author   : 713uk13m <dev@nguyenanhung.com>
      * @copyright: 713uk13m <dev@nguyenanhung.com>
      * @time     : 10/09/2020 59:22

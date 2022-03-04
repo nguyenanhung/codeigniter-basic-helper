@@ -13,7 +13,7 @@ if (!function_exists('google_image_resize')) {
      *
      * @param string   $url
      * @param int      $width
-     * @param null|int $height
+     * @param int|null $height
      *
      * @return string
      * @author   : 713uk13m <dev@nguyenanhung.com>

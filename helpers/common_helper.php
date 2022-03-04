@@ -11,7 +11,7 @@ if (!function_exists('isEmpty')) {
     /**
      * Function isEmpty
      *
-     * @param string $input
+     * @param mixed $input
      *
      * @return bool
      * @author   : 713uk13m <dev@nguyenanhung.com>
