@@ -35,7 +35,7 @@ if (!function_exists('arrayToObject')) {
             return $object;
         }
 
-        return FALSE;
+        return false;
     }
 }
 if (!function_exists('arrayToXml')) {
@@ -44,7 +44,7 @@ if (!function_exists('arrayToXml')) {
      *
      * @param array|mixed $array
      * @param string      $namespace
-     * @param null        $file_output
+     * @param mixed       $file_output
      *
      * @return bool|string|null
      * @throws \Exception
@@ -52,17 +52,17 @@ if (!function_exists('arrayToXml')) {
      * @copyright: 713uk13m <dev@nguyenanhung.com>
      * @time     : 08/20/2021 13:21
      */
-    function arrayToXml($array = array(), $namespace = '', $file_output = NULL)
+    function arrayToXml($array = array(), $namespace = '', $file_output = null)
     {
         if (class_exists('SimpleXMLElement')) {
             $xml_object = new SimpleXMLElement("<?xml version=\"1.0\"?><" . $namespace . "></" . $namespace . ">"); // creating object of SimpleXMLElement
             convertArrayToXml($array, $xml_object); // function call to convert array to xml
-            $xml_file = $file_output !== NULL ? $xml_object->asXML($file_output) : $xml_object->asXML(); // saving generated xml file
+            $xml_file = $file_output !== null ? $xml_object->asXML($file_output) : $xml_object->asXML(); // saving generated xml file
 
-            return !empty($xml_file) ? $xml_file : NULL;
+            return !empty($xml_file) ? $xml_file : null;
         }
 
-        return NULL;
+        return null;
     }
 }
 if (!function_exists('convertArrayToXml')) {

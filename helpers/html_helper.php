@@ -112,7 +112,7 @@ if (!function_exists('strip_only_tags')) {
      *
      * @param       $str
      * @param       $tags
-     * @param false $stripContent
+     * @param bool $stripContent
      *
      * @return string|string[]|null
      * @author   : 713uk13m <dev@nguyenanhung.com>

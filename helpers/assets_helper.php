@@ -12,7 +12,7 @@ if (!function_exists('assets_url')) {
      * Function assets_url
      *
      * @param string      $uri
-     * @param null|string $protocol
+     * @param string|null $protocol
      *
      * @return string
      * @author   : 713uk13m <dev@nguyenanhung.com>
@@ -41,7 +41,7 @@ if (!function_exists('templates_url')) {
      * Function templates_url
      *
      * @param string      $uri
-     * @param null|string $protocol
+     * @param string|null $protocol
      *
      * @return string
      * @author   : 713uk13m <dev@nguyenanhung.com>
@@ -68,8 +68,8 @@ if (!function_exists('editor_url')) {
     /**
      * Function editor_url
      *
-     * @param string $uri
-     * @param null   $protocol
+     * @param string      $uri
+     * @param string|null $protocol
      *
      * @return string
      * @author   : 713uk13m <dev@nguyenanhung.com>
@@ -87,8 +87,8 @@ if (!function_exists('favicon_url')) {
     /**
      * Function favicon_url
      *
-     * @param string $uri
-     * @param null   $protocol
+     * @param string      $uri
+     * @param string|null $protocol
      *
      * @return string
      * @author   : 713uk13m <dev@nguyenanhung.com>
@@ -156,8 +156,8 @@ if (!function_exists('assets_mobile')) {
     /**
      * Function assets_mobile
      *
-     * @param string $uri
-     * @param null   $protocol
+     * @param string      $uri
+     * @param string|null $protocol
      *
      * @return string
      * @author   : 713uk13m <dev@nguyenanhung.com>
