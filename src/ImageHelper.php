@@ -10,6 +10,7 @@
 
 namespace nguyenanhung\CodeIgniter\BasicHelper;
 
+use Exception;
 use nguyenanhung\CodeIgniter\BasicHelper\Traits\Version;
 
 /**
@@ -103,5 +104,45 @@ class ImageHelper implements Environment
         $html .= "<link href='//i3.wp.com' rel='dns-prefetch' />" . PHP_EOL;
 
         return $html;
+    }
+
+    /**
+     * Function createThumbnail
+     *
+     * @param $url
+     * @param $width
+     * @param $height
+     *
+     * @return mixed|string|null
+     * @author   : 713uk13m <dev@nguyenanhung.com>
+     * @copyright: 713uk13m <dev@nguyenanhung.com>
+     * @time     : 15/06/2022 00:20
+     */
+    public static function createThumbnail($url = '', $width = 100, $height = 100)
+    {
+        try {
+            if (function_exists('base_url') && function_exists('config_item') && class_exists('nguyenanhung\MyImage\ImageCache')) {
+                $tmpPath     = config_item('image_tmp_path');
+                $storagePath = config_item('base_storage_path');
+                $cache       = new \nguyenanhung\MyImage\ImageCache();
+                $cache->setTmpPath($tmpPath);
+                $cache->setUrlPath(base_url($storagePath));
+                $cache->setDefaultImage();
+                $thumbnail = $cache->thumbnail($url, $width, $height);
+                if (!empty($thumbnail)) {
+                    return $thumbnail;
+                }
+
+                return $cache->thumbnail(config_item('image_path_tmp_default'), $width, $height);
+            }
+
+            return $url;
+        } catch (Exception $e) {
+            if (function_exists('log_message')) {
+                log_message('error', "Error Code: " . $e->getCode() . " - File: " . $e->getFile() . " - Line: " . $e->getLine() . " - Message: " . $e->getMessage());
+            }
+
+            return $url;
+        }
     }
 }

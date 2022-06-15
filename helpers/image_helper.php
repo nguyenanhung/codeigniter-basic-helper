@@ -70,3 +70,67 @@ if (!function_exists('wordpress_proxy_dns_prefetch')) {
         return nguyenanhung\CodeIgniter\BasicHelper\ImageHelper::wordpressProxyDnsPrefetch();
     }
 }
+if (!function_exists('bear_framework_image_url')) {
+    /**
+     * Function bear_framework_image_url
+     *
+     * @param $input
+     * @param $server
+     * @param $base
+     *
+     * @return string
+     * @author   : 713uk13m <dev@nguyenanhung.com>
+     * @copyright: 713uk13m <dev@nguyenanhung.com>
+     * @time     : 15/06/2022 54:18
+     */
+    function bear_framework_image_url($input = '', $server = '', $base = 'live')
+    {
+        $images_url = trim($input);
+        if (function_exists('config_item')) {
+            if (!empty($images_url)) {
+                $no_thumb = [
+                    'images/system/no_avatar.jpg',
+                    'images/system/no_avatar_100x100.jpg',
+                    'images/system/no_video_available.jpg',
+                    'images/system/no_video_available_thumb.jpg',
+                    'images/system/no-image-available.jpg',
+                    'images/system/no-image-available_60.jpg',
+                    'images/system/no-image-available_330.jpg'
+                ];
+                if (in_array($images_url, $no_thumb)) {
+                    return assets_url($images_url);
+                } else {
+                    $parse_input = parse_url($images_url);
+                    if (isset($parse_input['host'])) {
+                        return $images_url;
+                    }
+                    if (trim(mb_substr($images_url, 0, 12)) == 'crawler-news') {
+                        $images_url = trim('uploads/' . $images_url);
+                    }
+
+                    return config_item('static_url') . $images_url;
+                }
+            }
+        }
+
+        return $images_url;
+    }
+}
+if (!function_exists('create_image_thumbnail')) {
+    /**
+     * Function create_image_thumbnail
+     *
+     * @param $url
+     * @param $width
+     * @param $height
+     *
+     * @return mixed|string|null
+     * @author   : 713uk13m <dev@nguyenanhung.com>
+     * @copyright: 713uk13m <dev@nguyenanhung.com>
+     * @time     : 15/06/2022 03:06
+     */
+    function create_image_thumbnail($url = '', $width = 100, $height = 100)
+    {
+        return nguyenanhung\CodeIgniter\BasicHelper\ImageHelper::createThumbnail($url, $width, $height);
+    }
+}

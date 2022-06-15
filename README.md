@@ -139,6 +139,10 @@ Hiện tại việc sử dụng nanoid đang là xu hướng so với uuid truy�
 
 - [x] Helper Function: `parse_sitemap_index`
 
+### PlaceHolder Helper
+
+- [x] Helper Function: `placeholder_img`
+
 ### Simple RESTful Helper
 
 Class cung cấp phương thức nhanh gọn để gọi tới các API tuân chuẩn RESTful
@@ -147,6 +151,6 @@ Class cung cấp phương thức nhanh gọn để gọi tới các API tuân ch
 
 ## Maintainer & Supporter
 
-| STT  | Name        | Email                | Github        |
-| ---- | ----------- | -------------------- | ------------- |
-| 1    | Hung Nguyen | dev@nguyenanhung.com | @nguyenanhung |
+| STT | Name        | Email                | Github        |
+|-----|-------------|----------------------|---------------|
+| 1   | Hung Nguyen | dev@nguyenanhung.com | @nguyenanhung |

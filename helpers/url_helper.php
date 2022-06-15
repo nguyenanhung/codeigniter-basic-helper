@@ -28,7 +28,7 @@ if (!function_exists('share_url')) {
     {
         $baseUrl    = function_exists('base_url') ? base_url() : '';
         $share_link = $href === '' ? urlencode($baseUrl) : urlencode($href);
-        if ($redirect === '' || empty($redirect)) {
+        if (empty($redirect)) {
             $redirect_link = urlencode($baseUrl);
         } else {
             $redirect_link = urlencode($redirect);

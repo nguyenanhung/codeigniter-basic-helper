@@ -20,7 +20,8 @@
     "require": {
         "php": ">=5.4",
         "ext-curl": "*",
-        "ext-json": "*"
+        "ext-json": "*",
+        "ext-mbstring": "*"
     },
     "autoload": {
         "psr-4": {
@@ -46,13 +47,16 @@
             "helpers/paging_helper.php",
             "helpers/request_helper.php",
             "helpers/tinyurl_helper.php",
-            "helpers/meta_helper.php"
+            "helpers/meta_helper.php",
+            "helpers/json_helper.php",
+            "helpers/placeholder_helper.php"
         ]
     },
     "suggest": {
-        "ext-mbstring": "Need support Multibyte String",
         "ext-curl": "Need support CURL",
         "ext-json": "Need support JSON",
-        "nguyenanhung/nanoid-helper": "Need support for helper function randomNanoId()"
+        "nguyenanhung/image": "Need support for helper function randomNanoId()",
+        "nguyenanhung/nanoid-helper": "Need support for helper function randomNanoId()",
+        "nguyenanhung/json-helper": "Need support for JSON"
     }
 }
