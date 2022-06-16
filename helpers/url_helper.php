@@ -325,3 +325,63 @@ if (!function_exists('getPermalinksSEO')) {
         return $str;
     }
 }
+if (!function_exists('private_url')) {
+    /**
+     * Function private_url
+     *
+     * @param $uri
+     *
+     * @return mixed|string
+     * @author   : 713uk13m <dev@nguyenanhung.com>
+     * @copyright: 713uk13m <dev@nguyenanhung.com>
+     * @time     : 16/06/2022 44:55
+     */
+    function private_url($uri = '')
+    {
+        if (function_exists('config_item')) {
+            return config_item('private_url') . $uri;
+        }
+
+        return $uri;
+    }
+}
+if (!function_exists('private_api_url')) {
+    /**
+     * Function private_api_url
+     *
+     * @param $uri
+     *
+     * @return mixed|string
+     * @author   : 713uk13m <dev@nguyenanhung.com>
+     * @copyright: 713uk13m <dev@nguyenanhung.com>
+     * @time     : 16/06/2022 44:55
+     */
+    function private_api_url($uri = '')
+    {
+        if (function_exists('config_item')) {
+            return config_item('private_api_url') . $uri;
+        }
+
+        return $uri;
+    }
+}
+if (!function_exists('cdn_url')) {
+    /**
+     * Function cdn_url
+     *
+     * @param $uri
+     *
+     * @return mixed|string
+     * @author   : 713uk13m <dev@nguyenanhung.com>
+     * @copyright: 713uk13m <dev@nguyenanhung.com>
+     * @time     : 16/06/2022 44:55
+     */
+    function cdn_url($uri = '')
+    {
+        if (function_exists('config_item')) {
+            return config_item('cdn_url') . $uri;
+        }
+
+        return $uri;
+    }
+}

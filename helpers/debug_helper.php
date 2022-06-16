@@ -44,3 +44,19 @@ if (!function_exists('ddd')) {
         die;
     }
 }
+if (!function_exists('dump')) {
+    /**
+     * Function dump
+     *
+     * @author: 713uk13m <dev@nguyenanhung.com>
+     * @time  : 9/29/18 16:54
+     *
+     * @param mixed $str
+     */
+    function dump($str = '')
+    {
+        echo "<pre>";
+        print_r($str);
+        echo "</pre>";
+    }
+}

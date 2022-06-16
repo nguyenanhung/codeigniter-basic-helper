@@ -31,7 +31,7 @@ if (!function_exists('view_paginations')) {
          * Kiểm tra giá trị page_number truyền vào
          * Nếu ko có giá trị hoặc giá trị = 0 -> set giá trị = 1
          */
-        if (!$page_number || empty($page_number)) {
+        if (empty($page_number)) {
             $page_number = 1;
         }
         /**
@@ -159,7 +159,7 @@ if (!function_exists('select_page')) {
          * Nếu ko có giá trị hoặc giá trị = 0 -> set giá trị = 1
          * ----------------------------------------------
          */
-        if (!$page_number || empty($page_number)) {
+        if (empty($page_number)) {
             $page_number = 1;
         }
         /**
@@ -238,5 +238,65 @@ if (!function_exists('get_paginations_number')) {
         $str = str_replace('trang-', '', $str);
 
         return (int) $str;
+    }
+}
+if (!function_exists('bear_framework_news_view_pagination')) {
+    /**
+     * Function bear_framework_news_view_pagination - Hàm phân trang theo kiểu bear framework
+     *
+     * @param $data
+     *
+     * @return string|null
+     * @author   : 713uk13m <dev@nguyenanhung.com>
+     * @copyright: 713uk13m <dev@nguyenanhung.com>
+     * @time     : 16/06/2022 54:23
+     */
+    function bear_framework_news_view_pagination($data = array())
+    {
+        // $page_type           = isset($input_data['page_type']) ? $input_data['page_type'] : '';
+        $page_link           = isset($data['page_link']) ? $data['page_link'] : '';
+        $page_title           = isset($data['page_title']) ? $data['page_title'] : '';
+        $page_prefix         = isset($data['page_prefix']) ? $data['page_prefix'] : '';
+        $page_suffix         = isset($data['page_suffix']) ? $data['page_suffix'] : '';
+        $current_page_number = isset($data['current_page_number']) ? $data['current_page_number'] : 1;
+        $total_item          = isset($data['total_item']) ? $data['total_item'] : 0;
+        $item_per_page       = isset($data['item_per_page']) ? $data['item_per_page'] : 10;
+        $begin               = isset($data['pre_rows']) ? $data['pre_rows'] : 3;
+        $end                 = isset($data['suf_rows']) ? $data['suf_rows'] : 3;
+        $first_link          = isset($data['first_link']) ? $data['first_link'] : '&nbsp;';
+        $last_link           = isset($data['last_link']) ? $data['last_link'] : '&nbsp;';
+
+        /**
+         * Kiểm tra giá trị page_number truyền vào
+         * Nếu ko có giá trị hoặc giá trị = 0 -> set giá trị = 1
+         */
+        if (empty($current_page_number)) {
+            $current_page_number = 1;
+        }
+        // Tính tổng số page có
+        $total_page = ceil($total_item / $item_per_page);
+        if ($total_page <= 1) {
+            return null;
+        }
+        $output_html = '';
+        if ($current_page_number <> 1) {
+            $output_html .= '<li class="left"><a href="' . trim($page_link) . trim($page_suffix) . '" title="' . trim($page_title) . '">' . trim($first_link) . '</a></li>';
+        }
+        for ($page_number = 1; $page_number <= $total_page; $page_number++) {
+            if ($page_number < ($current_page_number - $begin) || $page_number > ($current_page_number + $end)) {
+                continue;
+            }
+            if ($page_number == $current_page_number) {
+                $output_html .= '<li class="selected"><a href="' . trim($page_link) . trim($page_prefix) . trim($page_number) . trim($page_suffix) . '" title="' . $page_title . ' trang ' . $page_number . '">' . $page_number . '</a></li>';
+            } else {
+                $output_html .= '<li><a href="' . trim($page_link) . trim($page_prefix) . trim($page_number) . trim($page_suffix) . '" title="' . $page_title . ' trang ' . $page_number . '">' . $page_number . '</a></li>';
+            }
+        }
+        unset($page_number);
+        if ($current_page_number <> $total_page) {
+            $output_html .= '<li class="right"><a href="' . trim($page_link) . trim($page_prefix) . trim($total_page) . trim($page_suffix) . '" title="' . trim($page_title) . ' - trang cuối">' . trim($last_link) . '</a></li>';
+        }
+
+        return $output_html;
     }
 }

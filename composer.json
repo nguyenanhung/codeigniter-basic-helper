@@ -49,7 +49,8 @@
             "helpers/tinyurl_helper.php",
             "helpers/meta_helper.php",
             "helpers/json_helper.php",
-            "helpers/placeholder_helper.php"
+            "helpers/placeholder_helper.php",
+            "helpers/vn_province_helper.php"
         ]
     },
     "suggest": {

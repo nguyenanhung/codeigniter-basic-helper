@@ -47,6 +47,12 @@ Dưới đây là danh sách các Helper được hỗ trợ trong bộ thư vi�
 - [x] Helper Function: `dd`
 - [x] Helper Function: `ddd`
 
+### Date Helper
+
+- [x] Helper Function: `dayFloor` - Hàm lấy ra khoảng cách giữa 2 ngày
+- [x] Helper Function: `getZuluTime` - Hàm lấy ra tham số date theo Zulu time
+- [x] Helper Function: `iso_8601_utc_time` - tương tự hàm getZuluTime
+
 ### File Helper
 
 - [x] Helper Function: `formatSizeUnits` - Hàm format 1 int đầu vào thành 1 format để dễ đọc dung lượng file
@@ -71,6 +77,8 @@ Dưới đây là danh sách các Helper được hỗ trợ trong bộ thư vi�
 - [x] Helper Function: `google_image_proxy_dns_prefetch`
 - [x] Helper Function: `wordpress_proxy`
 - [x] Helper Function: `wordpress_proxy_dns_prefetch`
+- [x] Helper Function: `bear_framework_image_url`
+- [x] Helper Function: `create_image_thumbnail`
 
 ### IP Helper
 
@@ -101,6 +109,11 @@ Hiện tại việc sử dụng nanoid đang là xu hướng so với uuid truy�
 - [x] Helper Function: `select_page`
 - [x] Helper Function: `get_paginations_title`
 - [x] Helper Function: `get_paginations_number`
+- [x] Helper Function: `bear_framework_news_view_pagination` - Hàm phân trang chế riêng cho BEAR Project
+
+### PlaceHolder Helper
+
+- [x] Helper Function: `placeholder_img`
 
 ### Text Helper
 
@@ -130,18 +143,21 @@ Hiện tại việc sử dụng nanoid đang là xu hướng so với uuid truy�
 - [x] Helper Function: `boDauTiengViet`
 - [x] Helper Function: `removeSpecialChar`
 - [x] Helper Function: `getPermalinksSEO`
+- [x] Helper Function: `private_url` - Hàm customize dành riêng cho framework CodeIgniter
+- [x] Helper Function: `private_api_url` - Hàm customize dành riêng cho framework CodeIgniter
+- [x] Helper Function: `cdn_url` - Hàm customize dành riêng cho framework CodeIgniter
 
 ### UUID Helper
 
 - [x] Helper Function: `generate_uuid_v4` - Hàm tạo ra 1 chuỗi UUID v4 ngẫu nhiên
 
+### VN Province Helper
+
+- [x] Helper Function: `check_vn_province_code`
+
 ### XML Helper
 
 - [x] Helper Function: `parse_sitemap_index`
-
-### PlaceHolder Helper
-
-- [x] Helper Function: `placeholder_img`
 
 ### Simple RESTful Helper
 
