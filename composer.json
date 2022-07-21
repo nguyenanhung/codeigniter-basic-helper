@@ -37,6 +37,7 @@
             "helpers/assets_helper.php",
             "helpers/array_helper.php",
             "helpers/debug_helper.php",
+            "helpers/facebook_helper.php",
             "helpers/alphaid_helper.php",
             "helpers/nanoid_helper.php",
             "helpers/uuid_helper.php",
