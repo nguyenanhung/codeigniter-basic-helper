@@ -25,6 +25,22 @@ if (!function_exists('widget_facebook_comments')) {
         return '<div class="fb-comments" data-href="' . trim($url) . '" data-width="' . trim($width) . '" data-numposts="' . trim($num_posts) . '"></div>';
     }
 }
+if (!function_exists('widget_facebook_share_button')) {
+    /**
+     * Function widget_facebook_share_button
+     *
+     * @param string $url
+     *
+     * @return string
+     * @author   : 713uk13m <dev@nguyenanhung.com>
+     * @copyright: 713uk13m <dev@nguyenanhung.com>
+     * @time     : 21/07/2022 45:46
+     */
+    function widget_facebook_share_button($url = '')
+    {
+        return '<div class="fb-share-button" data-href="' . trim($url) . '" data-layout="button_count"></div>';
+    }
+}
 if (!function_exists('widget_facebook_script_init')) {
     /**
      * Function widget_facebook_script_init
