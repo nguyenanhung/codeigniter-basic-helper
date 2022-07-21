@@ -41,9 +41,9 @@ if (!function_exists('share_url')) {
             }
         } elseif ($platform === 'fb_send') {
             if ($display !== '') {
-                $share_url = 'http://www.facebook.com/dialog/send?app_id=' . $app_id . '&amp;display=' . $display . '&amp;link=' . $share_link . '&amp;redirect_uri=' . $redirect_link;
+                $share_url = 'https://www.facebook.com/dialog/send?app_id=' . $app_id . '&amp;display=' . $display . '&amp;link=' . $share_link . '&amp;redirect_uri=' . $redirect_link;
             } else {
-                $share_url = 'http://www.facebook.com/dialog/send?app_id=' . $app_id . '&amp;link=' . $share_link . '&amp;redirect_uri=' . $redirect_link;
+                $share_url = 'https://www.facebook.com/dialog/send?app_id=' . $app_id . '&amp;link=' . $share_link . '&amp;redirect_uri=' . $redirect_link;
             }
         } elseif ($platform === 'twitter') {
             $share_url = 'https://twitter.com/home?status=' . $share_link;
