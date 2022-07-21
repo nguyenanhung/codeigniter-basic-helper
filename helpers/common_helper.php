@@ -27,13 +27,12 @@ if (!function_exists('isEmpty')) {
         if ($isset === true) {
             $empty = empty($input);
             if ($empty) {
-                $output = true;
-            } else {
-                $output = false;
+                return true;
             }
-        } else {
-            $output = true;
+
+            return false;
         }
-        return $output;
+
+        return true;
     }
 }

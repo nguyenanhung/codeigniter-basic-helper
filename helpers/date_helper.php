@@ -42,9 +42,7 @@ if (!function_exists('getZuluTime')) {
     function getZuluTime()
     {
         try {
-            $dateUTC = new DateTime("now", new DateTimeZone("UTC"));
-
-            return $dateUTC->format('Y-m-d\TH:i:s\Z');
+            return (new DateTime("now", new DateTimeZone("UTC")))->format('Y-m-d\TH:i:s\Z');
         } catch (Exception $e) {
             return null;
         }

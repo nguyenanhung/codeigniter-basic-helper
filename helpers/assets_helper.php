@@ -130,6 +130,35 @@ if (!function_exists('storage_url')) {
         return $uri;
     }
 }
+if (!function_exists('public_storage_tmp_url')) {
+    /**
+     * Function public_storage_tmp_url
+     *
+     * @param string      $uri
+     * @param string|null $protocol
+     *
+     * @return string
+     * @author   : 713uk13m <dev@nguyenanhung.com>
+     * @copyright: 713uk13m <dev@nguyenanhung.com>
+     * @time     : 21/07/2022 41:10
+     */
+    function public_storage_tmp_url($uri = '', $protocol = null)
+    {
+        if (function_exists('base_url') && function_exists('config_item')) {
+            $fileExt = substr(trim($uri), strrpos(trim($uri), '.') + 1);
+            $fileExt = strtoupper($fileExt);
+            $version = '';
+            if ($fileExt === 'CSS' || $fileExt === 'JS') {
+                $version = config_item('assets_version');
+            }
+
+            return trim(base_url('storage/tmp/' . $uri, $protocol) . $version);
+        }
+
+        return trim($uri);
+
+    }
+}
 if (!function_exists('go_url')) {
     /**
      * Function go_url
