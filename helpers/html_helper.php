@@ -112,7 +112,7 @@ if (!function_exists('strip_only_tags')) {
      *
      * @param       $str
      * @param       $tags
-     * @param bool $stripContent
+     * @param bool  $stripContent
      *
      * @return string|string[]|null
      * @author   : 713uk13m <dev@nguyenanhung.com>
@@ -164,5 +164,32 @@ if (!function_exists('tracking_google_analytics')) {
 	</script>";
 
         return trim($html);
+    }
+}
+if (!function_exists('tracking_google_gtag_analytics_default')) {
+    /**
+     * Function tracking_google_gtag_analytics_default
+     *
+     * @param string $ID
+     *
+     * @return string
+     * @author   : 713uk13m <dev@nguyenanhung.com>
+     * @copyright: 713uk13m <dev@nguyenanhung.com>
+     * @time     : 30/07/2022 15:59
+     */
+    function tracking_google_gtag_analytics_default($ID = '')
+    {
+        $html = "<!-- Global site tag (gtag.js) - Google Analytics -->" . PHP_EOL;
+        $html .= "<script async src='https://www.googletagmanager.com/gtag/js?id=" . trim($ID) . "'></script>" . PHP_EOL;
+        $html .= "<script>
+                     window.dataLayer = window.dataLayer || [];
+                        function gtag() {
+                            dataLayer.push(arguments);
+                        }
+                        gtag('js', new Date());
+                        gtag('config', '" . trim($ID) . "');
+                    </script>";
+
+        return $html;
     }
 }

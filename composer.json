@@ -35,6 +35,7 @@
             "helpers/image_helper.php",
             "helpers/ip_helper.php",
             "helpers/assets_helper.php",
+            "helpers/chart_render.php",
             "helpers/array_helper.php",
             "helpers/debug_helper.php",
             "helpers/facebook_helper.php",

@@ -107,6 +107,8 @@ if (!function_exists('bear_framework_image_url')) {
                     if (trim(mb_substr($images_url, 0, 12)) == 'crawler-news') {
                         $images_url = trim('uploads/' . $images_url);
                     }
+                    $images_url = str_replace('upload-vcms/news/news/', 'upload-vcms/news/', $images_url);
+                    $images_url = str_replace('upload-vcms/mheath/mheath/', 'upload-vcms/mheath/', $images_url);
 
                     return config_item('static_url') . $images_url;
                 }
@@ -114,6 +116,24 @@ if (!function_exists('bear_framework_image_url')) {
         }
 
         return $images_url;
+    }
+}
+if (!function_exists('bear_framework_create_image_thumbnail')) {
+    /**
+     * Function bear_framework_create_image_thumbnail
+     *
+     * @param $url
+     * @param $width
+     * @param $height
+     *
+     * @return mixed|string|null
+     * @author   : 713uk13m <dev@nguyenanhung.com>
+     * @copyright: 713uk13m <dev@nguyenanhung.com>
+     * @time     : 15/06/2022 03:06
+     */
+    function bear_framework_create_image_thumbnail($url = '', $width = 100, $height = 100)
+    {
+        return create_image_thumbnail($url, $width, $height);
     }
 }
 if (!function_exists('create_image_thumbnail')) {

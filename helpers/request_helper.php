@@ -50,3 +50,9 @@ if (!function_exists('sendSimpleGetRequest')) {
         return $response;
     }
 }
+if (!function_exists('sendSimpleRestfulExecuteRequest')) {
+    function sendSimpleRestfulExecuteRequest($url, $type, $data = "", $header = null)
+    {
+        return \nguyenanhung\CodeIgniter\BasicHelper\SimpleRestful::execute($url, $type, $data, $header);
+    }
+}
