@@ -192,6 +192,6 @@ Class cung cấp phương thức nhanh gọn để gọi tới các API tuân ch
 
 ## Maintainer & Supporter
 
-| STT | Name        | Email                | Github        |
-|-----|-------------|----------------------|---------------|
-| 1   | Hung Nguyen | dev@nguyenanhung.com | @nguyenanhung |
+| STT | Name        | Email                | Website        | Github        |
+|-----|-------------|----------------------|---------------|---------------|
+| 1   | Hung Nguyen | dev@nguyenanhung.com | https://nguyenanhung.com |@nguyenanhung |
