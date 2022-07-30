@@ -226,7 +226,7 @@ if (!function_exists('boDauTiengViet')) {
      * @return array|mixed|string|string[]
      * @author   : 713uk13m <dev@nguyenanhung.com>
      * @copyright: 713uk13m <dev@nguyenanhung.com>
-     * @time     : 09/11/2021 09:44
+     * @time     : 30/07/2022 29:01
      */
     function boDauTiengViet($input_string = '')
     {

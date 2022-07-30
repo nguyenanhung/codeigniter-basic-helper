@@ -91,3 +91,17 @@ if (!function_exists('widget_facebook_script_init')) {
         return '<div id="fb-root"></div><script async defer crossorigin="anonymous" src="' . trim($url) . '" nonce="EOLK7Cbn"></script>';
     }
 }
+if (!function_exists('widget_facebook_div_init')) {
+    /**
+     * Function widget_facebook_div_init
+     *
+     * @return string
+     * @author   : 713uk13m <dev@nguyenanhung.com>
+     * @copyright: 713uk13m <dev@nguyenanhung.com>
+     * @time     : 30/07/2022 18:56
+     */
+    function widget_facebook_div_init()
+    {
+        return '<div id="fb-root"></div>';
+    }
+}

@@ -11,7 +11,6 @@
 namespace nguyenanhung\CodeIgniter\BasicHelper;
 
 use Exception;
-use nguyenanhung\CodeIgniter\BasicHelper\Traits\Version;
 
 /**
  * Class ImageHelper
@@ -20,10 +19,8 @@ use nguyenanhung\CodeIgniter\BasicHelper\Traits\Version;
  * @author    713uk13m <dev@nguyenanhung.com>
  * @copyright 713uk13m <dev@nguyenanhung.com>
  */
-class ImageHelper implements Environment
+class ImageHelper extends BaseHelper
 {
-    use Version;
-
     /**
      * Function googleGadgetsProxy
      *

@@ -19,7 +19,7 @@ use Exception;
  * @author    713uk13m <dev@nguyenanhung.com>
  * @copyright 713uk13m <dev@nguyenanhung.com>
  */
-class SimpleElasticsearch
+class SimpleElasticsearch extends BaseHelper
 {
     protected $host = 'http://localhost';
     protected $port = 9200;

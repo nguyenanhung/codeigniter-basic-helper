@@ -10,8 +10,6 @@
 
 namespace nguyenanhung\CodeIgniter\BasicHelper;
 
-use nguyenanhung\CodeIgniter\BasicHelper\Traits\Version;
-
 /**
  * Class SimpleCurl
  *
@@ -19,10 +17,8 @@ use nguyenanhung\CodeIgniter\BasicHelper\Traits\Version;
  * @author    713uk13m <dev@nguyenanhung.com>
  * @copyright 713uk13m <dev@nguyenanhung.com>
  */
-class SimpleCurl implements Environment
+class SimpleCurl extends BaseHelper
 {
-    use Version;
-
     protected $userAgent      = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.63 Safari/537.36';
     protected $url;
     protected $data;

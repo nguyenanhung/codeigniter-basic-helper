@@ -6,7 +6,9 @@
 
 1 vài helper cơ bản khi sử dụng với CodeIgniter 3.
 
-Có thể đưa vào nhiều bộ code khác, tuy nhiên có 1 số function require framework CodeIgniter, tuy nhiên không ảnh hưởng tới hiệu suất sử dụng
+Có thể đưa vào nhiều bộ code khác, tuy nhiên có 1 số function require framework `CodeIgniter`, tuy nhiên không ảnh hưởng tới hiệu suất sử dụng
+
+Trong trường hợp tích hợp gói này vào các framework, source khác ngoài `CodeIgniter`, bạn cần cài kèm thêm gói `nguyenanhung/polyfill-codeigniter-built-in` để sử dụng tốt nhất
 
 ## 1 số helper được hỗ trợ sẵn
 
@@ -37,21 +39,38 @@ Dưới đây là danh sách các Helper được hỗ trợ trong bộ thư vi�
 - [x] Helper Function: `assets_themes_dashboard`
 - [x] Helper Function: `assets_themes_comingsoon`
 - [x] Helper Function: `assets_themes_error`
+- [x] Helper Function: `cdn_js_url` - Resource JS, CSS từ CDN của Cloudflare
+- [x] Helper Function: `google_fonts_url` - Resource Google Font
+- [x] Helper Function: `bootstrapcdn_url` - Resource CDN từ Bootstrap
+
+### Chart Render Helper
+
+- [x] Helper Function: `bear_framework_default_get_data_chart`
+- [x] Helper Function: `bear_framework_default_get_data_chart_report`
 
 ### Common Helper
 
-- [x] Helper Function: `isEmpty `- Kiểm tra 1 input đầu vào xem có phải là rỗng hay không
-
-### Debug Helper
-
-- [x] Helper Function: `dd`
-- [x] Helper Function: `ddd`
+- [x] Helper Function: `isEmpty ` - Kiểm tra 1 input đầu vào xem có phải là rỗng hay không
 
 ### Date Helper
 
 - [x] Helper Function: `dayFloor` - Hàm lấy ra khoảng cách giữa 2 ngày
 - [x] Helper Function: `getZuluTime` - Hàm lấy ra tham số date theo Zulu time
 - [x] Helper Function: `iso_8601_utc_time` - tương tự hàm getZuluTime
+
+### Debug Helper
+
+- [x] Helper Function: `dd`
+- [x] Helper Function: `ddd`
+
+### Facebook Helper
+
+- [x] Helper Function: `widget_facebook_div_init` - Hàm tạo ra `<div id="fb-root"></div>`
+- [x] Helper Function: `widget_facebook_script_init` - Hạm tạo ra đoạn script init trong trường hợp cần nhúng JS Facebook
+- [x] Helper Function: `widget_facebook_comments` - Hàm tạo ra khung comment facebook
+- [x] Helper Function: `widget_facebook_share_button` - Hàm tạo ra nút share facebook
+- [x] Helper Function: `widget_facebook_like_button` - Hàm tạo ra nút like facebook
+- [x] Helper Function: `widget_facebook_save_button` - Hàm tạo ra nút lưu nội dung vào facebook
 
 ### File Helper
 
@@ -70,15 +89,16 @@ Dưới đây là danh sách các Helper được hỗ trợ trong bộ thư vi�
 - [x] Helper Function: `stripHtmlTag`
 - [x] Helper Function: `strip_only_tags`
 - [x] Helper Function: `tracking_google_analytics`
+- [x] Helper Function: `tracking_google_gtag_analytics_default`
 
 ### Image Helper
 
-- [x] Helper Function: `google_image_resize`
-- [x] Helper Function: `google_image_proxy_dns_prefetch`
-- [x] Helper Function: `wordpress_proxy`
-- [x] Helper Function: `wordpress_proxy_dns_prefetch`
-- [x] Helper Function: `bear_framework_image_url`
-- [x] Helper Function: `create_image_thumbnail`
+- [x] Helper Function: `google_image_resize` - Resize Image sử dụng Google Gadget Proxy
+- [x] Helper Function: `google_image_proxy_dns_prefetch` - Hàm cung cấp DNS Prefetch trong trường hợp sử dụng `google_image_resize`
+- [x] Helper Function: `wordpress_proxy` - Resize & Cache Image sử dụng Wordpress Proxy
+- [x] Helper Function: `wordpress_proxy_dns_prefetch` - Hàm cung cấp DNS Prefetch trong trường hợp sử dụng `wordpress_proxy`
+- [x] Helper Function: `bear_framework_image_url` - Hàm format Image Url - dành riêng cho BEAR framework
+- [x] Helper Function: `create_image_thumbnail` - Hàm create thumbnail - dành riêng cho BEAR framework
 
 ### IP Helper
 
@@ -115,6 +135,11 @@ Hiện tại việc sử dụng nanoid đang là xu hướng so với uuid truy�
 
 - [x] Helper Function: `placeholder_img`
 
+### Request Helper
+
+- [x] Helper Function: `sendSimpleGetRequest` - Tiến hành thực thi 1 request đơn giản sử dụng CURL với phương thức GET
+- [x] Helper Function: `sendSimpleRestfulExecuteRequest` - Thực thi 1 simple request tới Restful API sử dụng CURL
+
 ### Text Helper
 
 - [x] Helper Function: `convert_string_utf8_to_vietnamese`
@@ -134,7 +159,7 @@ Hiện tại việc sử dụng nanoid đang là xu hướng so với uuid truy�
 
 ### URL Helper
 
-- [x] Helper Function: `share_url`
+- [x] Helper Function: `share_url` - Create ra URL share chuẩn cho các MXH, hỗ trợ rất tốt cho SEO
 - [x] Helper Function: `encodeId_Url_byHungDEV`
 - [x] Helper Function: `decodeId_Url_byHungDEV`
 - [x] Helper Function: `convertToLatin`
@@ -157,7 +182,7 @@ Hiện tại việc sử dụng nanoid đang là xu hướng so với uuid truy�
 
 ### XML Helper
 
-- [x] Helper Function: `parse_sitemap_index`
+- [x] Helper Function: `parse_sitemap_index` - Hàm hỗ trợ render ra nội dung cho Sitemap index
 
 ### Simple RESTful Helper
 

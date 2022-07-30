@@ -17,7 +17,7 @@ namespace nguyenanhung\CodeIgniter\BasicHelper;
  * @author    713uk13m <dev@nguyenanhung.com>
  * @copyright 713uk13m <dev@nguyenanhung.com>
  */
-class SimpleRestful
+class SimpleRestful extends BaseHelper
 {
     /**
      * Function execute

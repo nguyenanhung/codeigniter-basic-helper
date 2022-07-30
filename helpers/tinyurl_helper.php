@@ -20,23 +20,6 @@ if (!function_exists('short_url_with_tinyurl')) {
      */
     function short_url_with_tinyurl($longUrl = '')
     {
-        $needUrl = 'https://tinyurl.com/api-create.php?url=' . $longUrl;
-
-        $curl = curl_init();
-
-        curl_setopt_array($curl, array(
-            CURLOPT_URL            => $needUrl,
-            CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_ENCODING       => '',
-            CURLOPT_MAXREDIRS      => 10,
-            CURLOPT_TIMEOUT        => 0,
-            CURLOPT_FOLLOWLOCATION => true,
-            CURLOPT_HTTP_VERSION   => CURL_HTTP_VERSION_1_1,
-            CURLOPT_CUSTOMREQUEST  => 'GET',
-        ));
-        $response = curl_exec($curl);
-        curl_close($curl);
-
-        return $response;
+        return sendSimpleGetRequest('https://tinyurl.com/api-create.php', array('url' => $longUrl));
     }
 }

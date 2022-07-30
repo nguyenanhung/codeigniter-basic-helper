@@ -10,8 +10,6 @@
 
 namespace nguyenanhung\CodeIgniter\BasicHelper;
 
-use nguyenanhung\CodeIgniter\BasicHelper\Traits\Version;
-
 /**
  * Class ChartRender
  *
@@ -19,10 +17,8 @@ use nguyenanhung\CodeIgniter\BasicHelper\Traits\Version;
  * @author    713uk13m <dev@nguyenanhung.com>
  * @copyright 713uk13m <dev@nguyenanhung.com>
  */
-class ChartRender implements Environment
+class ChartRender extends BaseHelper
 {
-    use Version;
-
     /**
      * Function get_data_chart
      *
