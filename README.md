@@ -43,6 +43,10 @@ Dưới đây là danh sách các Helper được hỗ trợ trong bộ thư vi�
 - [x] Helper Function: `google_fonts_url` - Resource Google Font
 - [x] Helper Function: `bootstrapcdn_url` - Resource CDN từ Bootstrap
 
+### Bytes Helper
+
+- [x] Helper Function: `bytesHumanFormat` - Hiển thị format nội dung dễ đọc từ byte dữ liệu
+
 ### Chart Render Helper
 
 - [x] Helper Function: `bear_framework_default_get_data_chart`
@@ -62,6 +66,10 @@ Dưới đây là danh sách các Helper được hỗ trợ trong bộ thư vi�
 
 - [x] Helper Function: `dd`
 - [x] Helper Function: `ddd`
+
+### ENV Helper
+
+- [x] Helper Function: `bear_get_env` - Hàm lấy giá trị từ file .env
 
 ### Facebook Helper
 
@@ -139,6 +147,11 @@ Hiện tại việc sử dụng nanoid đang là xu hướng so với uuid truy�
 
 - [x] Helper Function: `sendSimpleGetRequest` - Tiến hành thực thi 1 request đơn giản sử dụng CURL với phương thức GET
 - [x] Helper Function: `sendSimpleRestfulExecuteRequest` - Thực thi 1 simple request tới Restful API sử dụng CURL
+- [x] Helper Function: `bear_post_async_request` - Make an asynchronous POST request - Thực hiện yêu cầu POST không đồng bộ trong nội bộ site mà không cần chờ phản hồi => Không ảnh hưởng, không trì hoãn tiến trình đang chạy
+
+### Security Helper
+
+- [x] Helper Function: `xssValidation` - Validation dữ liệu đầu vào có bị dính lỗi XSS hay không
 
 ### Text Helper
 

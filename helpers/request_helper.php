@@ -56,3 +56,68 @@ if (!function_exists('sendSimpleRestfulExecuteRequest')) {
         return \nguyenanhung\CodeIgniter\BasicHelper\SimpleRestful::execute($url, $type, $data, $header);
     }
 }
+if (!function_exists('bear_post_async_request')) {
+    /**
+     * Make an asynchronous POST request
+     * Thực hiện yêu cầu POST không đồng bộ trong nội bộ site mà không cần chờ phản hồi
+     * => Không ảnh hưởng, không trì hoãn tiến trình đang chạy
+     *
+     * @param mixed $url
+     * @param mixed $params
+     * @param array $headers
+     */
+    function bear_post_async_request($url, $params, $headers = [])
+    {
+        ksort($params);
+        $post_string = http_build_query($params);
+        $parts       = parse_url($url);
+
+        $is_https = ($parts['scheme'] === 'https');
+        $referer  = $parts['scheme'] . '://' . $parts['host'];
+        if (!$is_https) {
+            $port = isset($parts['port']) ? $parts['port'] : 80;
+            $host = $parts['host'] . ($port != 80 ? ':' . $port : '');
+            isset($parts['port']) && $referer .= ':' . $parts['port'];
+            $fp = fsockopen($parts['host'], $port, $errno, $errstr, 30);
+        } else {
+            $context = stream_context_create(
+                array(
+                    "ssl" => array(
+                        "verify_peer"      => false,
+                        "verify_peer_name" => false
+                    )
+                )
+            );
+            $port    = isset($parts['port']) ? $parts['port'] : 443;
+            $host    = $parts['host'] . ($port != 443 ? ':' . $port : '');
+            $referer .= ':' . (isset($parts['port']) ? $parts['port'] : 443);
+            $fp      = stream_socket_client('ssl://' . $parts['host'] . ':' . $port, $errno, $errstr, 30, STREAM_CLIENT_CONNECT, $context);
+        }
+
+        $path = isset($parts['path']) ? $parts['path'] : '/';
+        if (isset($parts['query'])) {
+            $path .= '?' . $parts['query'];
+        }
+
+        $out = "POST " . $path . " HTTP/1.1\r\n";
+        $out .= "Host: " . $host . "\r\n";
+        $out .= "User-Agent: BEAR Framework\r\n";
+        $out .= "Referer: " . $referer . "\r\n";
+        $out .= "Content-Type: application/x-www-form-urlencoded\r\n";
+        $out .= "Content-Length: " . strlen($post_string) . "\r\n";
+        if (!empty($headers)) {
+            foreach ($headers as $key => $value) {
+                $out .= "{$key}: {$value}\r\n";
+            }
+        }
+        $out .= "Connection: Close\r\n\r\n";
+        $out .= $post_string;
+
+        fwrite($fp, $out);
+        if ($is_https) {
+            stream_set_timeout($fp, 1);
+            stream_get_contents($fp, -1);
+        }
+        fclose($fp);
+    }
+}
