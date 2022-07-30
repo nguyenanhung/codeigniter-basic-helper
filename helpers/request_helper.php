@@ -66,7 +66,7 @@ if (!function_exists('bear_post_async_request')) {
      * @param mixed $params
      * @param array $headers
      */
-    function bear_post_async_request($url, $params, $headers = [])
+    function bear_post_async_request($url, $params, $headers = array())
     {
         ksort($params);
         $post_string = http_build_query($params);
