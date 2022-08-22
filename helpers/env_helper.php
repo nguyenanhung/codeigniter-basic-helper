@@ -34,7 +34,7 @@ if (!function_exists('bear_get_env')) {
             if (@getenv($b)) {
                 return @getenv($b);
             }
-            if (function_exists('apache_getenv') and apache_getenv($b, true)) {
+            if (function_exists('apache_getenv') && apache_getenv($b, true)) {
                 return apache_getenv($b, true);
             }
         }

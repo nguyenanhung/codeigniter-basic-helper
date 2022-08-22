@@ -86,33 +86,34 @@ if (!function_exists('bear_framework_image_url')) {
     function bear_framework_image_url($input = '', $server = '', $base = 'live')
     {
         $images_url = trim($input);
-        if (function_exists('config_item')) {
-            if (!empty($images_url)) {
-                $no_thumb = [
-                    'images/system/no_avatar.jpg',
-                    'images/system/no_avatar_100x100.jpg',
-                    'images/system/no_video_available.jpg',
-                    'images/system/no_video_available_thumb.jpg',
-                    'images/system/no-image-available.jpg',
-                    'images/system/no-image-available_60.jpg',
-                    'images/system/no-image-available_330.jpg'
-                ];
-                if (in_array($images_url, $no_thumb)) {
-                    return assets_url($images_url);
-                } else {
-                    $parse_input = parse_url($images_url);
-                    if (isset($parse_input['host'])) {
-                        return $images_url;
-                    }
-                    if (trim(mb_substr($images_url, 0, 12)) == 'crawler-news') {
-                        $images_url = trim('uploads/' . $images_url);
-                    }
-                    $images_url = str_replace('upload-vcms/news/news/', 'upload-vcms/news/', $images_url);
-                    $images_url = str_replace('upload-vcms/mheath/mheath/', 'upload-vcms/mheath/', $images_url);
-
-                    return config_item('static_url') . $images_url;
-                }
+        if (function_exists('config_item') && !empty($images_url)) {
+            $no_thumb = [
+                'images/system/no_avatar.jpg',
+                'images/system/no_avatar_100x100.jpg',
+                'images/system/no_video_available.jpg',
+                'images/system/no_video_available_thumb.jpg',
+                'images/system/no-image-available.jpg',
+                'images/system/no-image-available_60.jpg',
+                'images/system/no-image-available_330.jpg'
+            ];
+            if (in_array($images_url, $no_thumb)) {
+                return assets_url($images_url);
             }
+
+            $parse_input = parse_url($images_url);
+            if (isset($parse_input['host'])) {
+                return $images_url;
+            }
+            if (trim(mb_substr($images_url, 0, 12)) === 'crawler-news') {
+                $images_url = trim('uploads/' . $images_url);
+            }
+            $images_url  = str_replace(
+                array('upload-vcms/news/news/', 'upload-vcms/mheath/mheath/'),
+                array('upload-vcms/news/', 'upload-vcms/mheath/'),
+                $images_url
+            );
+
+            return config_item('static_url') . $images_url;
         }
 
         return $images_url;

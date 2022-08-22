@@ -11,12 +11,12 @@ if (!function_exists('check_vn_province_code')) {
     /**
      * Function check_vn_province_code
      *
-     * @param $code
+     * @param string $code
      *
-     * @return false|mixed|string
+     * @return bool|string
      * @author   : 713uk13m <dev@nguyenanhung.com>
      * @copyright: 713uk13m <dev@nguyenanhung.com>
-     * @time     : 16/06/2022 14:24
+     * @time     : 22/08/2022 10:07
      */
     function check_vn_province_code($code = "")
     {

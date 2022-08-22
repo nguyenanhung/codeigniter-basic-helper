@@ -23,7 +23,7 @@ if (!function_exists('bytesHumanFormat')) {
         if ($size <= 0) {
             return '0 bytes';
         }
-        if ($size == 1) {
+        if ($size === 1) {
             return '1 byte';
         }
         if ($size < 1024) {
