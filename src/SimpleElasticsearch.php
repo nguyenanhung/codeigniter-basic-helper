@@ -357,7 +357,7 @@ class SimpleElasticsearch extends BaseHelper
         }
     }
 
-    public static function createIndexElasticsearch($index, $listFields, $specialFields): bool
+    public static function createIndexElasticsearch($index, $listFields, $specialFields)
     {
         try {
             $elasticHost = env('ELASTICSEARCH_HOST', self::DEFAULT_ELASTICSEARCH_HOST);
@@ -466,15 +466,14 @@ class SimpleElasticsearch extends BaseHelper
             curl_close($curl);
 
             if (isset($error_msg)) {
-                Log::info('error sync :' . $index . '__:' . json_encode($error_msg));
+                // Log::info('error sync :' . $index . '__:' . json_encode($error_msg));
             }
 
             return true;
         } catch (Exception $e) {
             // echo 'error sync :' . $id . '__:' . $e->getMessage() . 'id :' . $index . 'action :' . $action . PHP_EOL;
-            Log::info('error sync :' . $index . '__:' . $e->getMessage());
             // echo $e->getTraceAsString();
-            throw new Exception($e->getMessage());
+            throw new \RuntimeException($e->getMessage());
         }
     }
 
@@ -484,14 +483,13 @@ class SimpleElasticsearch extends BaseHelper
             return $result;
         }
         $nextPage = $currentPage + 1;
-        $perPage  = $result['per_page'] ?? 0;
-        $total    = $result['total'] ?? 0;
+        $perPage  = isset($result['per_page']) ? $result['per_page'] : 0;
+        $total    = isset($result['total']) ? $result['total'] : 0;
         $from     = ($currentPage - 1) * $perPage;
         $to       = ($from - 1) + $perPage;
         $lastPage = round($total / $perPage);
 
-
-        return [
+        return array(
             'current_page'   => $currentPage,
             "first_page_url" => $pageUrl . '?' . http_build_query(array('page' => 1)),
             "from"           => $from,
@@ -501,7 +499,7 @@ class SimpleElasticsearch extends BaseHelper
             "per_page"       => $perPage,
             "to"             => $to,
             "total"          => $total,
-            "data"           => $result['data'] ?? []
-        ];
+            "data"           => isset($result['data']) ? $result['data'] : array()
+        );
     }
 }
