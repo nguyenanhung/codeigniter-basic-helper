@@ -76,9 +76,10 @@ if (!function_exists('bear_post_async_request')) {
         $referer  = $parts['scheme'] . '://' . $parts['host'];
         if (!$is_https) {
             $port = isset($parts['port']) ? $parts['port'] : 80;
-            $host = $parts['host'] . ($port != 80 ? ':' . $port : '');
+            $port = (int) $port;
+            $host = $parts['host'] . ($port !== 80 ? ':' . $port : '');
             isset($parts['port']) && $referer .= ':' . $parts['port'];
-            $fp = fsockopen($parts['host'], $port, $errno, $errstr, 30);
+            $fp = fsockopen($parts['host'], $port, $errno, $errorMessage, 30);
         } else {
             $context = stream_context_create(
                 array(
@@ -89,9 +90,10 @@ if (!function_exists('bear_post_async_request')) {
                 )
             );
             $port    = isset($parts['port']) ? $parts['port'] : 443;
-            $host    = $parts['host'] . ($port != 443 ? ':' . $port : '');
+            $port    = (int) $port;
+            $host    = $parts['host'] . ($port !== 443 ? ':' . $port : '');
             $referer .= ':' . (isset($parts['port']) ? $parts['port'] : 443);
-            $fp      = stream_socket_client('ssl://' . $parts['host'] . ':' . $port, $errno, $errstr, 30, STREAM_CLIENT_CONNECT, $context);
+            $fp      = stream_socket_client('ssl://' . $parts['host'] . ':' . $port, $errno, $errorMessage, 30, STREAM_CLIENT_CONNECT, $context);
         }
 
         $path = isset($parts['path']) ? $parts['path'] : '/';
@@ -107,7 +109,7 @@ if (!function_exists('bear_post_async_request')) {
         $out .= "Content-Length: " . strlen($post_string) . "\r\n";
         if (!empty($headers)) {
             foreach ($headers as $key => $value) {
-                $out .= "{$key}: {$value}\r\n";
+                $out .= $key . ": " . $value . "\r\n";
             }
         }
         $out .= "Connection: Close\r\n\r\n";
