@@ -31,7 +31,6 @@
             "nguyenanhung\\CodeIgniter\\BasicHelper\\": "src/"
         },
         "files": [
-            "helpers/helpers.php",
             "helpers/image_helper.php",
             "helpers/ip_helper.php",
             "helpers/assets_helper.php",
