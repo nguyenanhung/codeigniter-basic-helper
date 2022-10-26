@@ -61,6 +61,7 @@ Dưới đây là danh sách các Helper được hỗ trợ trong bộ thư vi�
 - [x] Helper Function: `dayFloor` - Hàm lấy ra khoảng cách giữa 2 ngày
 - [x] Helper Function: `getZuluTime` - Hàm lấy ra tham số date theo Zulu time
 - [x] Helper Function: `iso_8601_utc_time` - tương tự hàm getZuluTime
+- [x] Helper Function: `getYesterday` - Hàm ấy ra ngày trước đó liền kề
 
 ### Debug Helper
 

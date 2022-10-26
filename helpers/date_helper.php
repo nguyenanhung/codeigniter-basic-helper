@@ -62,3 +62,9 @@ if (!function_exists('iso_8601_utc_time')) {
         return getZuluTime();
     }
 }
+if (!function_exists('getYesterday')) {
+    function getYesterday($format = 'Y-m-d')
+    {
+        return date($format, strtotime("-1 days"));
+    }
+}
