@@ -19,7 +19,7 @@ namespace nguyenanhung\CodeIgniter\BasicHelper;
  */
 class BaseHelper
 {
-    const VERSION       = '1.1.6';
+    const VERSION       = '1.1.6.1';
     const LAST_MODIFIED = '2022-12-11';
     const AUTHOR_NAME   = 'Hung Nguyen';
     const AUTHOR_EMAIL  = 'dev@nguyenanhung.com';
