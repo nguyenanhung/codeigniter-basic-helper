@@ -44,6 +44,9 @@ if (!function_exists('getIPAddress')) {
                 }
             }
         }
+        if ($_SERVER['SERVER_NAME'] === 'localhost') {
+            return '127.0.0.1';
+        }
 
         return false;
     }
