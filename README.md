@@ -114,6 +114,7 @@ Dưới đây là danh sách các Helper được hỗ trợ trong bộ thư vi�
 ### IP Helper
 
 - [x] Helper Function: `getIPAddress` - Hàm lấy ra địa chỉ IP thực tế của người dùng
+- [x] Helper Function: `getIPAddressByHaProxy` - Hàm lấy ra địa chỉ IP thực tế của người dùng nhưng ở server có chạy Ha Proxy, thông qua biến `HTTP_X_FORWARDED_FOR`
 - [x] Helper Function: `validateIP` - Hàm validate 1 string có phải IP ko. TRUE nếu đó là IP
 - [x] Helper Function: `validateIPV4` - Hàm validate 1 string có phải IP v4 ko. TRUE nếu đó là IP
 - [x] Helper Function: `validateIPV6` - Hàm validate 1 string có phải IP v6 ko. TRUE nếu đó là IP

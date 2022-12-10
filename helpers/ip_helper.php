@@ -48,6 +48,39 @@ if (!function_exists('getIPAddress')) {
         return false;
     }
 }
+if (!function_exists('getIPAddressByHaProxy')) {
+    /**
+     * Function getIPAddressByHaProxy
+     *
+     * @param bool $convertToInteger
+     *
+     * @return bool|int|string
+     * @author   : 713uk13m <dev@nguyenanhung.com>
+     * @copyright: 713uk13m <dev@nguyenanhung.com>
+     * @time     : 10/09/2020 59:22
+     */
+    function getIPAddressByHaProxy($convertToInteger = false)
+    {
+        $key = 'HTTP_X_FORWARDED_FOR';
+        if (array_key_exists($key, $_SERVER) === true) {
+            foreach (explode(',', $_SERVER[$key]) as $ip) {
+                $ip = trim($ip);
+                if ($this->ipValidate($ip)) {
+                    if ($convertToInteger === true) {
+                        return ip2long($ip);
+                    }
+
+                    return $ip;
+                }
+            }
+        }
+        if ($_SERVER['SERVER_NAME'] === 'localhost') {
+            return '127.0.0.1';
+        }
+
+        return false;
+    }
+}
 if (!function_exists('validateIP')) {
     /**
      * Function validateIP
@@ -112,7 +145,7 @@ if (!function_exists('getIpInformation')) {
         $ips = empty($ip) ? getIPAddress() : $ip;
         try {
             $endpoint = 'http://ip-api.com/json/' . $ips;
-            $curl     = curl_init();
+            $curl = curl_init();
             curl_setopt_array($curl, array(
                 CURLOPT_URL            => $endpoint,
                 CURLOPT_RETURNTRANSFER => true,
@@ -125,7 +158,7 @@ if (!function_exists('getIpInformation')) {
                 CURLOPT_HTTPHEADER     => array(),
             ));
             $response = curl_exec($curl);
-            $err      = curl_error($curl);
+            $err = curl_error($curl);
             curl_close($curl);
             if ($err) {
                 $response = "cURL Error #:" . $err;
