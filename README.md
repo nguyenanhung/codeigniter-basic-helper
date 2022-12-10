@@ -26,6 +26,8 @@ Dưới đây là danh sách các Helper được hỗ trợ trong bộ thư vi�
 ### Assets Helper
 
 - [x] Helper Function: `assets_url` - Hàm lấy ra Assets Url, điều kiện tồn tại thư mục `assets` trong thư mục `public/`. Trong trường hợp trong file `config.php` tồn tại biến `assets_version` sẽ tự động thêm version vào đằng sau các file CSS, JS
+- [x] Helper Function: `static_url` - Hàm lấy ra Static Resource Url, điều kiện tồn tại cấu hình `config_item('static_url')` trong config của website. Trong trường hợp trong file `config.php` tồn tại biến `assets_version` sẽ tự động thêm version vào
+  đằng sau các file CSS, JS
 - [x] Helper Function: `templates_url` - Hàm lấy ra Assets Url, điều kiện tồn tại thư mục `templates` trong thư mục `public/`. Trong trường hợp trong file `config.php` tồn tại biến `assets_version` sẽ tự động thêm version vào đằng sau các file CSS,
   JS
 - [x] Helper Function: `editor_url` - Hàm lấy ra Assets Url, điều kiện tồn tại thư mục `assets/editors/` trong thư mục `public/`. Trong trường hợp trong file `config.php` tồn tại biến `assets_version` sẽ tự động thêm version vào đằng sau các file
@@ -206,6 +208,6 @@ Class cung cấp phương thức nhanh gọn để gọi tới các API tuân ch
 
 ## Maintainer & Supporter
 
-| STT | Name        | Email                | Website        | Github        |
-|-----|-------------|----------------------|---------------|---------------|
-| 1   | Hung Nguyen | dev@nguyenanhung.com | https://nguyenanhung.com |@nguyenanhung |
+| STT | Name        | Email                | Website                  | Github        |
+|-----|-------------|----------------------|--------------------------|---------------|
+| 1   | Hung Nguyen | dev@nguyenanhung.com | https://nguyenanhung.com | @nguyenanhung |

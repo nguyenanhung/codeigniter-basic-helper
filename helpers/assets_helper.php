@@ -36,6 +36,35 @@ if (!function_exists('assets_url')) {
 
     }
 }
+if (!function_exists('static_url')) {
+    /**
+     * Function static_url
+     *
+     * @param string $uri
+     *
+     * @return string
+     * @author   : 713uk13m <dev@nguyenanhung.com>
+     * @copyright: 713uk13m <dev@nguyenanhung.com>
+     * @time     : 08/07/2021 11:56
+     */
+    function static_url($uri = '')
+    {
+        if (function_exists('base_url') && function_exists('config_item')) {
+            $fileExt = substr(trim($uri), strrpos(trim($uri), '.') + 1);
+            $fileExt = strtoupper($fileExt);
+            $version = '';
+            if ($fileExt === 'CSS' || $fileExt === 'JS') {
+                $version = config_item('assets_version');
+            }
+            $host = config_item('static_url');
+
+            return trim($host) . trim($uri) . trim($version);
+        }
+
+        return trim($uri);
+
+    }
+}
 if (!function_exists('templates_url')) {
     /**
      * Function templates_url
