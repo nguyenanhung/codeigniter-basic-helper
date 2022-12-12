@@ -293,3 +293,110 @@ if (!function_exists('new_folder')) {
         return makeNewFolder($folder);
     }
 }
+if (!function_exists('scan_folder')) {
+    /**
+     * Function scan_folder - Quét và lấy ra danh sách các thông tin dữ liệu trong folder
+     *
+     * @param $path
+     * @param $ignoreFiles
+     *
+     * @return array|false
+     * @author   : 713uk13m <dev@nguyenanhung.com>
+     * @copyright: 713uk13m <dev@nguyenanhung.com>
+     * @time     : 12/12/2022 26:58
+     */
+    function scan_folder($path, $ignoreFiles = array())
+    {
+        try {
+            if (is_dir($path)) {
+                $data = array_diff(scandir($path), array_merge(['.', '..', '.DS_Store'], $ignoreFiles));
+                natsort($data);
+
+                return $data;
+            }
+
+            return array();
+        } catch (Exception $ex) {
+            return array();
+        }
+    }
+}
+
+if (!function_exists('getAllFileSizeInFolder')) {
+    /**
+     * Function getAllFileSizeInFolder - Get all File size in Folder
+     *
+     * @param $path
+     *
+     * @return float
+     * @author   : 713uk13m <dev@nguyenanhung.com>
+     * @copyright: 713uk13m <dev@nguyenanhung.com>
+     * @time     : 12/12/2022 24:09
+     */
+    function getAllFileSizeInFolder($path)
+    {
+        $size = 0;
+        // Kiểm tra thư mục có tồn tại hay không
+        if (file_exists($path) && is_dir($path)) {
+            // Quét tất cả các file trong thư mục
+            $result = scandir($path);
+
+            // Lọc ra các thư mục hiện tại (.) và các thư mục cha (..)
+            $files = array_diff($result, array('.', '..'));
+
+            if (count($files) > 0) {
+                // Lặp qua mảng đã trả lại
+                foreach ($files as $file) {
+                    if (is_file("$path/$file")) {
+                        // tính tổng size
+                        $size += filesize($path . '/' . $file);
+                    } elseif (is_dir("$path/$file")) {
+                        // Gọi đệ quy hàm nếu tìm thấy thư mục
+                        getAllFileInFolder("$path/$file");
+                    }
+                }
+            }
+        }
+
+        return round($size / 1024 / 1024, 2);
+    }
+}
+if (!function_exists('getAllFileInFolder')) {
+    /**
+     * Function getAllFileInFolder - Get all File in Folder
+     *
+     * @param $path
+     *
+     * @author   : 713uk13m <dev@nguyenanhung.com>
+     * @copyright: 713uk13m <dev@nguyenanhung.com>
+     * @time     : 12/12/2022 23:53
+     */
+    function getAllFileInFolder($path)
+    {
+        // Kiểm tra thư mục có tồn tại hay không
+        if (file_exists($path) && is_dir($path)) {
+            // Quét tất cả các file trong thư mục
+            $result = scandir($path);
+
+            // Lọc ra các thư mục hiện tại (.) và các thư mục cha (..)
+            $files = array_diff($result, array('.', '..'));
+
+            if (count($files) > 0) {
+                // Lặp qua mảng đã trả lại
+                foreach ($files as $file) {
+                    if (is_file("$path/$file")) {
+                        // Hiển thị tên File
+                        echo $file . "<br>";
+                    } elseif (is_dir("$path/$file")) {
+                        // Gọi đệ quy hàm nếu tìm thấy thư mục
+                        getAllFileInFolder("$path/$file");
+                    }
+                }
+            } else {
+                echo "ERROR: File not Found.";
+            }
+        } else {
+            echo "ERROR: Folder not Found.";
+        }
+    }
+}

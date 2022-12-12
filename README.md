@@ -21,7 +21,15 @@ Dưới đây là danh sách các Helper được hỗ trợ trong bộ thư vi�
 ### Array Helper
 
 - [x] Helper Function: `arrayToObject `- Hàm giúp chuyển 1 array thành 1 object
+- [x] Helper Function: `to_array` - Converts a string or an object to an array.
 - [x] Helper Function: `arrayToXml` - Hàm giúp chuyển array thành 1 chuỗi XML
+- [x] Helper Function: `removeArrayElementWithValue` - Loại bỏ 1 giá trị trong array theo key và value
+- [x] Helper Function: `arrayRecursiveDiff` - Diff 2 array bằng đệ quy
+- [x] Helper Function: `arrayIsAssoc` - Detects if the given value is an associative array.
+- [x] Helper Function: `arrayFirstElement` - Returns the first element of an array.
+- [x] Helper Function: `arrayLastElement` - Returns the last element of an array.
+- [x] Helper Function: `arrayGetElement` - Gets a value in an array by dot notation for the keys.
+- [x] Helper Function: `arraySetElement` - Sets a value in an array using the dot notation.
 
 ### Assets Helper
 
@@ -91,6 +99,9 @@ Dưới đây là danh sách các Helper được hỗ trợ trong bộ thư vi�
 - [x] Helper Function: `genarateFileReadme` - Tự động tạo nội dung file `README.md`
 - [x] Helper Function: `makeNewFolder` - Hàm tạo 1 thư mục mới và genre sẵn trong đó 3 file: `README.md`, `index.html`, `.htaccess`
 - [x] Helper Function: `new_folder` - Chức năng tương tự với hàm `makeNewFolder`
+- [x] Helper Function: `scan_folder` - Quét và lấy ra danh sách các thông tin dữ liệu trong folder
+- [x] Helper Function: `getAllFileSizeInFolder` - Get all File size in Folder
+- [x] Helper Function: `getAllFileInFolder` - Get all File in Folder
 
 ### HTML Helper
 
@@ -156,6 +167,24 @@ Hiện tại việc sử dụng nanoid đang là xu hướng so với uuid truy�
 ### Security Helper
 
 - [x] Helper Function: `xssValidation` - Validation dữ liệu đầu vào có bị dính lỗi XSS hay không
+
+### String Helper
+
+- [x] Helper Function: `countStringsInText` - Hàm đếm số từ trong đoạn văn bản
+- [x] Helper Function: `findMiddleInString` - Hàm lấy chuỗi ở giữa chuỗi bắt đầu và chuỗi kết thúc
+- [x] Helper Function: `str_insert` - Inserts one or more strings into another string on a defined position.
+- [x] Helper Function: `str_between` - Return the content in a string between a left and right element.
+- [x] Helper Function: `str_after` - Return the part of a string after a given value.
+- [x] Helper Function: `str_before` - Get the part of a string before a given value.
+- [x] Helper Function: `str_limit_words` - Limit the number of words in a string. Put value of $end to the string end.
+- [x] Helper Function: `str_limit_characters` - Limit the number of characters in a string. Put value of $end to the string end.
+- [x] Helper Function: `str_contains` - Tests if a string contains a given element
+- [x] Helper Function: `str_ignore_contains` - Tests if a string contains a given element. Ignore case sensitivity.
+- [x] Helper Function: `str_starts_with` - Determine if a given string starts with a given substring.
+- [x] Helper Function: `str_ignore_starts_with` - Determine if a given string starts with a given substring. Ignore case sensitivity.
+- [x] Helper Function: `str_ends_with` - Determine if a given string ends with a given substring.
+- [x] Helper Function: `str_ignore_ends_with` - Determine if a given string ends with a given substring. Ignore case sensitivity.
+- [x] Helper Function: `str_after_last` - Return the part of a string after the last occurrence of a given search value.
 
 ### Text Helper
 
