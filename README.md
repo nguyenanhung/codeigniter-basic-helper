@@ -65,6 +65,7 @@ Dưới đây là danh sách các Helper được hỗ trợ trong bộ thư vi�
 ### Common Helper
 
 - [x] Helper Function: `isEmpty ` - Kiểm tra 1 input đầu vào xem có phải là rỗng hay không
+- [x] Helper Function: `defaultCompressHtmlOutput ` - Compress HTML output, default configure
 
 ### Date Helper
 

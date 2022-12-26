@@ -135,7 +135,7 @@ class SimpleElasticsearch extends BaseHelper
 
             if (curl_errno($curl)) {
                 $error_msg = curl_error($curl);
-                $httpCode  = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+                $httpCode = curl_getinfo($curl, CURLINFO_HTTP_CODE);
             }
 
             curl_close($curl);
@@ -158,7 +158,7 @@ class SimpleElasticsearch extends BaseHelper
         try {
             $elasticHost = $this->host;
             $elasticPort = $this->port;
-            $error_msg   = $httpCode = null;
+            $error_msg = $httpCode = null;
             if (empty($index) || empty($query_string)) {
                 return false;
             }
@@ -188,7 +188,7 @@ class SimpleElasticsearch extends BaseHelper
 
             if (curl_errno($curl)) {
                 $error_msg = curl_error($curl);
-                $httpCode  = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+                $httpCode = curl_getinfo($curl, CURLINFO_HTTP_CODE);
             }
 
             curl_close($curl);
@@ -255,7 +255,7 @@ class SimpleElasticsearch extends BaseHelper
         }
 
         $response = json_decode($data, false);
-        $total    = isset($response->hits->total->value) ? $response->hits->total->value : 0;
+        $total = isset($response->hits->total->value) ? $response->hits->total->value : 0;
         if (isset($response->hits->hits) && !empty($response->hits->hits)) {
             $data = $response->hits->hits;
         } else {
@@ -289,7 +289,7 @@ class SimpleElasticsearch extends BaseHelper
             }
 
 
-            $url             = $elasticHost . ':' . $elasticPort . '/' . $index . '/_doc/' . $id;
+            $url = $elasticHost . ':' . $elasticPort . '/' . $index . '/_doc/' . $id;
             $data_config_url = [
                 CURLOPT_URL            => $url,
                 CURLOPT_RETURNTRANSFER => true,
@@ -309,7 +309,7 @@ class SimpleElasticsearch extends BaseHelper
                     if (!$id) {
                         return false;
                     }
-                    $data_config_url[CURLOPT_URL]           = $url;
+                    $data_config_url[CURLOPT_URL] = $url;
                     $data_config_url[CURLOPT_CUSTOMREQUEST] = 'DELETE';
 
                     break;
@@ -321,9 +321,9 @@ class SimpleElasticsearch extends BaseHelper
                     if ($data === null) {
                         return false;
                     }
-                    $data_config_url[CURLOPT_URL]           = $url;
+                    $data_config_url[CURLOPT_URL] = $url;
                     $data_config_url[CURLOPT_CUSTOMREQUEST] = 'POST';
-                    $data_config_url[CURLOPT_POSTFIELDS]    = json_encode($data);
+                    $data_config_url[CURLOPT_POSTFIELDS] = json_encode($data);
                     break;
                 default:
                     return false;
@@ -419,9 +419,9 @@ class SimpleElasticsearch extends BaseHelper
                 ]
             ];
 
-            $data                           = array();
-            $data['settings']               = $settings;
-            $data['mappings']               = [];
+            $data = array();
+            $data['settings'] = $settings;
+            $data['mappings'] = [];
             $data['mappings']['properties'] = [];
 
             foreach ($listFields as $field) {
@@ -437,7 +437,7 @@ class SimpleElasticsearch extends BaseHelper
                     ];
                 }
             }
-            $url             = $elasticHost . ':' . $elasticPort . '/' . $index . '?pretty';
+            $url = $elasticHost . ':' . $elasticPort . '/' . $index . '?pretty';
             $data_config_url = [
                 CURLOPT_URL            => $url,
                 CURLOPT_RETURNTRANSFER => true,
@@ -483,10 +483,10 @@ class SimpleElasticsearch extends BaseHelper
             return $result;
         }
         $nextPage = $currentPage + 1;
-        $perPage  = isset($result['per_page']) ? $result['per_page'] : 0;
-        $total    = isset($result['total']) ? $result['total'] : 0;
-        $from     = ($currentPage - 1) * $perPage;
-        $to       = ($from - 1) + $perPage;
+        $perPage = isset($result['per_page']) ? $result['per_page'] : 0;
+        $total = isset($result['total']) ? $result['total'] : 0;
+        $from = ($currentPage - 1) * $perPage;
+        $to = ($from - 1) + $perPage;
         $lastPage = round($total / $perPage);
 
         return array(

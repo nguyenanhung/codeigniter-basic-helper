@@ -58,7 +58,7 @@ class SimpleRestful extends BaseHelper
 
         unset($response->response_time);
 
-        $err      = curl_error($curl);
+        $err = curl_error($curl);
         $httpCode = curl_getinfo($curl, CURLINFO_HTTP_CODE);
 
         curl_close($curl);

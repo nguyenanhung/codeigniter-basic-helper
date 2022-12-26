@@ -57,19 +57,19 @@ class SimpleCurl extends BaseHelper
      */
     public function __construct($url = '', $options = array())
     {
-        $this->url            = $url;
+        $this->url = $url;
         $this->followLocation = true;
-        $this->timeout        = 180;
-        $this->maxRedirects   = 10;
-        $this->noBody         = false;
-        $this->includeHeader  = false;
-        $this->headerOut      = true;
+        $this->timeout = 180;
+        $this->maxRedirects = 10;
+        $this->noBody = false;
+        $this->includeHeader = false;
+        $this->headerOut = true;
         $this->binaryTransfer = false;
-        $this->headers[]      = "Connection: keep-alive";
-        $this->headers[]      = "Keep-Alive: 300";
-        $this->headers[]      = "Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7";
-        $this->headers[]      = "Accept-Language: en-us,en;q=0.5";
-        $this->userOptions    = $options;
+        $this->headers[] = "Connection: keep-alive";
+        $this->headers[] = "Keep-Alive: 300";
+        $this->headers[] = "Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7";
+        $this->headers[] = "Accept-Language: en-us,en;q=0.5";
+        $this->userOptions = $options;
     }
 
     public function setBinaryTransfer($binaryTransfer = true)
@@ -143,7 +143,7 @@ class SimpleCurl extends BaseHelper
         if (is_array($postFields)) {
             $postFields = http_build_query($postFields);
         }
-        $this->post       = true;
+        $this->post = true;
         $this->postFields = $postFields;
 
         return $this;
@@ -154,20 +154,20 @@ class SimpleCurl extends BaseHelper
         if (is_array($postFields)) {
             $postFields = json_encode($postFields);
         }
-        $this->json       = true;
+        $this->json = true;
         $this->postFields = $postFields;
-        $this->headers[]  = "Accept: application/json; charset=utf-8";
-        $this->headers[]  = "Content-Type: application/json; charset=utf-8";
+        $this->headers[] = "Accept: application/json; charset=utf-8";
+        $this->headers[] = "Content-Type: application/json; charset=utf-8";
 
         return $this;
     }
 
     public function setXml($xmlData)
     {
-        $this->xml        = true;
+        $this->xml = true;
         $this->postFields = $xmlData;
-        $this->headers[]  = "Accept: text/xml; charset=utf-8";
-        $this->headers[]  = "Content-Type: text/xml; charset=utf-8";
+        $this->headers[] = "Accept: text/xml; charset=utf-8";
+        $this->headers[] = "Content-Type: text/xml; charset=utf-8";
 
         return $this;
     }
@@ -226,8 +226,8 @@ class SimpleCurl extends BaseHelper
         curl_setopt($s, CURLOPT_REFERER, $this->referer);
         curl_setopt_array($s, $this->userOptions);
         $this->webpage = curl_exec($s);
-        $this->status  = curl_getinfo($s);
-        $this->error   = curl_error($s);
+        $this->status = curl_getinfo($s);
+        $this->error = curl_error($s);
         if ($this->error) {
             $this->isError = true;
         }

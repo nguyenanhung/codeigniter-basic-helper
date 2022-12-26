@@ -36,3 +36,32 @@ if (!function_exists('isEmpty')) {
         return true;
     }
 }
+if (!function_exists('defaultCompressHtmlOutput')) {
+    /**
+     * Function defaultCompressHtmlOutput
+     *
+     * @param mixed $html
+     *
+     * @return array|string|string[]|null
+     * @author   : 713uk13m <dev@nguyenanhung.com>
+     * @copyright: 713uk13m <dev@nguyenanhung.com>
+     * @time     : 26/12/2022 00:42
+     */
+    function defaultCompressHtmlOutput($html = '')
+    {
+        $search = array(
+            '/\n/',             // replace end of line by a space
+            '/\>[^\S ]+/s',     // strip whitespaces after tags, except space
+            '/[^\S ]+\</s',     // strip whitespaces before tags, except space
+            '/(\s)+/s'          // shorten multiple whitespace sequences
+        );
+        $replace = array(
+            ' ',
+            '>',
+            '<',
+            '\\1'
+        );
+
+        return preg_replace($search, $replace, $html);
+    }
+}
