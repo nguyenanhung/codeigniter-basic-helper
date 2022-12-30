@@ -131,6 +131,22 @@ if (!function_exists('favicon_url')) {
         return assets_url($uri, $protocol);
     }
 }
+if (!function_exists('favicon_html_tag')) {
+    /**
+     * Function favicon_html_tag
+     *
+     * @param $baseUrl
+     *
+     * @return string
+     * @author   : 713uk13m <dev@nguyenanhung.com>
+     * @copyright: 713uk13m <dev@nguyenanhung.com>
+     * @time     : 30/12/2022 03:21
+     */
+    function favicon_html_tag($baseUrl = '')
+    {
+        return (new \nguyenanhung\CodeIgniter\BasicHelper\Favicon())->faviconHtml($baseUrl);
+    }
+}
 if (!function_exists('storage_url')) {
     /**
      * Function storage_url

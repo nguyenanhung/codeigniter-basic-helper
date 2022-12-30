@@ -42,6 +42,7 @@ Dưới đây là danh sách các Helper được hỗ trợ trong bộ thư vi�
   CSS, JS
 - [x] Helper Function: `favicon_url`- Hàm lấy ra Assets Url, điều kiện tồn tại thư mục `assets/favicon/` trong thư mục `public/`. Trong trường hợp trong file `config.php` tồn tại biến `assets_version` sẽ tự động thêm version vào đằng sau các file
   CSS, JS
+- [x] Helper Function: `favicon_html_tag`- Hàm lấy ra đoạn HTML thể hiện Favicon dựa vào URL folder favicon đầu vào
 - [x] Helper Function: `storage_url` - Need config `storage_url` item in config.php file. VD: `$config['storage_url'] = 'https://storage.nguyenanhung.com/';`
 - [x] Helper Function: `go_url` - Need config `go_url` item in `config.php` file. VD: `$config['go_url'] = 'https://go.nguyenanhung.com/';`
 - [x] Helper Function: `assets_mobile`
