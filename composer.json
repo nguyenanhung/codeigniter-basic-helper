@@ -24,7 +24,8 @@
         "ext-mbstring": "*"
     },
     "require-dev": {
-        "nguyenanhung/image": "^3.0 || ^2.0 || ^1.0"
+        "nguyenanhung/image": "^3.0 || ^2.0 || ^1.0",
+        "sentry/sdk": "^3.0 || ^2.0"
     },
     "autoload": {
         "psr-4": {
@@ -65,6 +66,7 @@
         "ext-json": "Need support JSON",
         "nguyenanhung/image": "Need support for Image Service",
         "nguyenanhung/nanoid-helper": "Need support for helper function randomNanoId()",
-        "nguyenanhung/json-helper": "Need support for JSON"
+        "nguyenanhung/json-helper": "Need support for JSON",
+        "sentry/sdk": "Need support for Logging with Sentry"
     }
 }

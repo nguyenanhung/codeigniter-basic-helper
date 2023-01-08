@@ -170,6 +170,10 @@ Hiện tại việc sử dụng nanoid đang là xu hướng so với uuid truy�
 
 - [x] Helper Function: `xssValidation` - Validation dữ liệu đầu vào có bị dính lỗi XSS hay không
 
+### Sentry Helper
+
+- [x] Helper Function: `log_to_sentry` - Logging lên Sentry thông qua Monolog Handler
+
 ### String Helper
 
 - [x] Helper Function: `countStringsInText` - Hàm đếm số từ trong đoạn văn bản
