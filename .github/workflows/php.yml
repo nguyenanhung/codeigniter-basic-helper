@@ -29,4 +29,4 @@ jobs:
                     key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
                     restore-keys: ${{ runner.os }}-composer-
             -   name: Install dependencies
-                run: composer install --no-progress --prefer-dist --optimize-autoloader --no-dev
+                run: composer install --no-dev --no-progress --prefer-dist --optimize-autoloader
