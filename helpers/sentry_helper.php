@@ -13,13 +13,14 @@ if (!function_exists('log_to_sentry')) {
      *
      * @param string $message
      * @param array  $context
+     * @param string $name
      *
      * @return bool|string
      * @author   : 713uk13m <dev@nguyenanhung.com>
      * @copyright: 713uk13m <dev@nguyenanhung.com>
      * @time     : 07/27/2021 37:41
      */
-    function log_to_sentry($message, $context)
+    function log_to_sentry($message, $context, $name = 'hungng')
     {
         if (!function_exists('get_instance') || !function_exists('config_item')) {
             return false;
@@ -32,8 +33,8 @@ if (!function_exists('log_to_sentry')) {
             $config = config_item('config_sentry');
 
             // Init logger use Monolog
-            $logger = new Monolog\Logger('hungng');
-            $client = Sentry\ClientBuilder::create(['dsn' => $config['sentry_dsn']])->getClient();
+            $logger = new Monolog\Logger($name);
+            $client = Sentry\ClientBuilder::create(['dsn' => $config['dsn']])->getClient();
             $handler = new Sentry\Monolog\Handler(new Sentry\State\Hub($client));
             $logger->pushHandler($handler);
             $logger->error($message, $context);
