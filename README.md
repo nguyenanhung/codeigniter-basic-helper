@@ -2,9 +2,20 @@
 
 [![Latest Stable Version](http://poser.pugx.org/nguyenanhung/codeigniter-basic-helper/v)](https://packagist.org/packages/nguyenanhung/codeigniter-basic-helper) [![Total Downloads](http://poser.pugx.org/nguyenanhung/codeigniter-basic-helper/downloads)](https://packagist.org/packages/nguyenanhung/codeigniter-basic-helper) [![Latest Unstable Version](http://poser.pugx.org/nguyenanhung/codeigniter-basic-helper/v/unstable)](https://packagist.org/packages/nguyenanhung/codeigniter-basic-helper) [![License](http://poser.pugx.org/nguyenanhung/codeigniter-basic-helper/license)](https://packagist.org/packages/nguyenanhung/codeigniter-basic-helper) [![PHP Version Require](http://poser.pugx.org/nguyenanhung/codeigniter-basic-helper/require/php)](https://packagist.org/packages/nguyenanhung/codeigniter-basic-helper)
 
+## Summary
+
+1 vài helper cơ bản khi sử dụng với CodeIgniter 3.
+
+Có thể đưa vào nhiều bộ code khác, tuy nhiên có 1 số function require framework `CodeIgniter`, tuy nhiên không ảnh hưởng tới hiệu suất sử dụng
+
+Trong trường hợp tích hợp gói này vào các framework, source khác ngoài `CodeIgniter`, bạn cần cài kèm thêm gói `nguyenanhung/polyfill-codeigniter-built-in` để sử dụng tốt nhất
+
+## Table of Contents
+
 - [CodeIgniter Basic Helper](#codeigniter-basic-helper)
     * [Summary](#summary)
-    * [1 số helper được hỗ trợ sẵn](#1-s--helper----c-h--tr--s-n)
+    * [Table of Contents](#table-of-contents)
+    * [Danh sách các Helper được hỗ trợ](#1-s--helper----c-h--tr--s-n)
         + [AlphaID Helper](#alphaid-helper)
         + [Array Helper](#array-helper)
         + [Assets Helper](#assets-helper)
@@ -35,14 +46,6 @@
         + [XML Helper](#xml-helper)
         + [Simple RESTful Helper](#simple-restful-helper)
     * [Maintainer & Supporter](#maintainer---supporter)
-
-## Summary
-
-1 vài helper cơ bản khi sử dụng với CodeIgniter 3.
-
-Có thể đưa vào nhiều bộ code khác, tuy nhiên có 1 số function require framework `CodeIgniter`, tuy nhiên không ảnh hưởng tới hiệu suất sử dụng
-
-Trong trường hợp tích hợp gói này vào các framework, source khác ngoài `CodeIgniter`, bạn cần cài kèm thêm gói `nguyenanhung/polyfill-codeigniter-built-in` để sử dụng tốt nhất
 
 ## 1 số helper được hỗ trợ sẵn
 
