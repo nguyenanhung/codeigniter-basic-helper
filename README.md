@@ -12,6 +12,42 @@ Trong trường hợp tích hợp gói này vào các framework, source khác ng
 
 ## Table of Contents
 
+- [CodeIgniter Basic Helper](#codeigniter-basic-helper)
+    * [Summary](#summary)
+    * [Table of Contents](#table-of-contents)
+    * [1 số helper được hỗ trợ sẵn](#1-s--helper----c-h--tr--s-n)
+        + [AlphaID Helper](#alphaid-helper)
+        + [Array Helper](#array-helper)
+        + [Assets Helper](#assets-helper)
+        + [Blogspot Helper](#blogspot-helper)
+        + [Bytes Helper](#bytes-helper)
+        + [Chart Render Helper](#chart-render-helper)
+        + [Common Helper](#common-helper)
+        + [Date Helper](#date-helper)
+        + [Debug Helper](#debug-helper)
+        + [ENV Helper](#env-helper)
+        + [Facebook Helper](#facebook-helper)
+        + [File Helper](#file-helper)
+        + [HTML Helper](#html-helper)
+        + [Image Helper](#image-helper)
+        + [IP Helper](#ip-helper)
+        + [Meta Helper](#meta-helper)
+        + [NanoID Helper](#nanoid-helper)
+        + [Paging Helper](#paging-helper)
+        + [PlaceHolder Helper](#placeholder-helper)
+        + [Request Helper](#request-helper)
+        + [Security Helper](#security-helper)
+        + [Sentry Helper](#sentry-helper)
+        + [String Helper](#string-helper)
+        + [Text Helper](#text-helper)
+        + [TinyUrl Helper](#tinyurl-helper)
+        + [URL Helper](#url-helper)
+        + [UUID Helper](#uuid-helper)
+        + [VN Province Helper](#vn-province-helper)
+        + [XML Helper](#xml-helper)
+        + [Simple RESTful Helper](#simple-restful-helper)
+    * [Maintainer & Supporter](#maintainer---supporter)
+
 ## 1 số helper được hỗ trợ sẵn
 
 Dưới đây là danh sách các Helper được hỗ trợ trong bộ thư viện này
