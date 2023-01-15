@@ -55,12 +55,7 @@ if (!function_exists('defaultCompressHtmlOutput')) {
             '/[^\S ]+\</s',     // strip whitespaces before tags, except space
             '/(\s)+/s'          // shorten multiple whitespace sequences
         );
-        $replace = array(
-            ' ',
-            '>',
-            '<',
-            '\\1'
-        );
+        $replace = array(' ', '>', '<', '\\1');
 
         return preg_replace($search, $replace, $html);
     }

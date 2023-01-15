@@ -22,7 +22,7 @@ if (!function_exists('log_to_sentry')) {
      */
     function log_to_sentry($message, $context, $name = 'hungng')
     {
-        if (!function_exists('get_instance') || !function_exists('config_item')) {
+        if (!function_exists('get_instance') || !function_exists('config_item') || !class_exists('\Sentry\ClientBuilder')) {
             return false;
         }
         try {

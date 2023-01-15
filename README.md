@@ -6,9 +6,17 @@
 
 1 vài helper cơ bản khi sử dụng với CodeIgniter 3.
 
-Có thể đưa vào nhiều bộ code khác, tuy nhiên có 1 số function require framework `CodeIgniter`, tuy nhiên không ảnh hưởng tới hiệu suất sử dụng
+Có thể đưa vào nhiều bộ code hay framework khác, tuy nhiên có 1 số function require framework `CodeIgniter`, tuy nhiên không ảnh hưởng tới hiệu suất sử dụng
 
 Trong trường hợp tích hợp gói này vào các framework, source khác ngoài `CodeIgniter`, bạn cần cài kèm thêm gói `nguyenanhung/polyfill-codeigniter-built-in` để sử dụng tốt nhất
+
+1 vài framework tôi cũng thường dùng với gói này là
+
+- CodeIgniter
+- Slim framework
+- FuelPHP
+- PhalconPHP
+- Laravel
 
 ## Table of Contents
 
@@ -211,7 +219,7 @@ Hiện tại việc sử dụng nanoid đang là xu hướng so với uuid truy�
 
 ### Security Helper
 
-- [x] Helper Function: `xssValidation` - Validation dữ liệu đầu vào có bị dính lỗi XSS hay không
+- [x] Helper Function: `xssValidation` - Validation dữ liệu đầu vào có bị dính lỗi XSS hay không. Hàm này không có tác dụng escape, nếu muốn, hãy cài thêm packages `nguyenanhung/security`
 
 ### Sentry Helper
 

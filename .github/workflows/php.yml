@@ -5,7 +5,7 @@ jobs:
     build:
         strategy:
             matrix:
-                operating-system: [ ubuntu-latest, ubuntu-20.04, ubuntu-22.04, macos-latest, macos-11 ]
+                operating-system: [ 'ubuntu-latest', 'ubuntu-20.04', 'ubuntu-22.04', 'macos-latest', 'macos-11', 'macos-12' ]
                 php-versions: [ '5.4', '5.5', '5.6', '7.0', '7.1', '7.2', '7.3', '7.4', '8.0', '8.1', '8.2' ]
         runs-on: ${{ matrix.operating-system }}
         steps:
