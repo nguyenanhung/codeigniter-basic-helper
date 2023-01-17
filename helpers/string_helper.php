@@ -613,3 +613,21 @@ if (!function_exists('str_after_last')) {
         return $search === '' ? $string : ltrim(array_reverse(explode($search, $string))[0]);
     }
 }
+if (!function_exists('hide_characters')) {
+    function hide_characters($text)
+    {
+        $string_array = str_split($text);
+
+        $return_text = "";
+
+        for ($i = 0; $i < strlen($text); $i++) {
+            if ($i % 3 == 2) {
+                $return_text .= 'x';
+            } else {
+                $return_text .= $string_array[$i];
+            }
+        }
+
+        return $return_text;
+    }
+}

@@ -198,6 +198,10 @@ Hiện tại việc sử dụng nanoid đang là xu hướng so với uuid truy�
 
 - [x] Helper Function: `randomNanoId`
 
+### Number Helper
+
+- [x] Helper Function: `convertNumberToWords` - Tác dụng convert 1 số thành chữ, ví dụ `123` thành `One Hundred Twenty Three`
+
 ### Paging Helper
 
 - [x] Helper Function: `view_paginations`
@@ -242,6 +246,7 @@ Hiện tại việc sử dụng nanoid đang là xu hướng so với uuid truy�
 - [x] Helper Function: `str_ends_with` - Determine if a given string ends with a given substring.
 - [x] Helper Function: `str_ignore_ends_with` - Determine if a given string ends with a given substring. Ignore case sensitivity.
 - [x] Helper Function: `str_after_last` - Return the part of a string after the last occurrence of a given search value.
+- [x] Helper Function: `hide_characters` - Convert `nguyenanhung` to `ngxyexanxunx`, acts as a very simple and predictable character encoding function but is necessary to hide something simple
 
 ### Text Helper
 
