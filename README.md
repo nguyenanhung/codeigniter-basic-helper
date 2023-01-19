@@ -36,11 +36,13 @@ Trong trường hợp tích hợp gói này vào các framework, source khác ng
         + [ENV Helper](#env-helper)
         + [Facebook Helper](#facebook-helper)
         + [File Helper](#file-helper)
+        + [Gravatar Helper](#gravatar-helper)
         + [HTML Helper](#html-helper)
         + [Image Helper](#image-helper)
         + [IP Helper](#ip-helper)
         + [Meta Helper](#meta-helper)
         + [NanoID Helper](#nanoid-helper)
+        + [Number Helper](#number-helper)
         + [Paging Helper](#paging-helper)
         + [PlaceHolder Helper](#placeholder-helper)
         + [Request Helper](#request-helper)
@@ -55,6 +57,7 @@ Trong trường hợp tích hợp gói này vào các framework, source khác ng
         + [XML Helper](#xml-helper)
         + [Simple RESTful Helper](#simple-restful-helper)
     * [Maintainer & Supporter](#maintainer--supporter)
+
 
 ## 1 số helper được hỗ trợ sẵn
 
