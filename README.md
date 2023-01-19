@@ -23,7 +23,7 @@ Trong trường hợp tích hợp gói này vào các framework, source khác ng
 - [CodeIgniter Basic Helper](#codeigniter-basic-helper)
     * [Summary](#summary)
     * [Table of Contents](#table-of-contents)
-    * [1 số helper được hỗ trợ sẵn](#1-s--helper----c-h--tr--s-n)
+    * [1 số helper được hỗ trợ sẵn](#1-số-helper-được-hỗ-trợ-sẵn)
         + [AlphaID Helper](#alphaid-helper)
         + [Array Helper](#array-helper)
         + [Assets Helper](#assets-helper)
@@ -54,7 +54,7 @@ Trong trường hợp tích hợp gói này vào các framework, source khác ng
         + [VN Province Helper](#vn-province-helper)
         + [XML Helper](#xml-helper)
         + [Simple RESTful Helper](#simple-restful-helper)
-    * [Maintainer & Supporter](#maintainer---supporter)
+    * [Maintainer & Supporter](#maintainer--supporter)
 
 ## 1 số helper được hỗ trợ sẵn
 
@@ -156,6 +156,10 @@ Dưới đây là danh sách các Helper được hỗ trợ trong bộ thư vi�
 - [x] Helper Function: `getAllFileSizeInFolder` - Get all File size in Folder
 - [x] Helper Function: `getAllFileInFolder` - Get all File in Folder
 
+### Gravatar Helper
+
+- [x] Helper Function: `bear_framework_show_gravatar` - Show Gravatar URL with Custom Size and Username
+
 ### HTML Helper
 
 - [x] Helper Function: `meta_dns_prefetch`
@@ -170,7 +174,7 @@ Dưới đây là danh sách các Helper được hỗ trợ trong bộ thư vi�
 
 - [x] Helper Function: `google_image_resize` - Resize Image sử dụng Google Gadget Proxy
 - [x] Helper Function: `google_image_proxy_dns_prefetch` - Hàm cung cấp DNS Prefetch trong trường hợp sử dụng `google_image_resize`
-- [x] Helper Function: `wordpress_proxy` - Resize & Cache Image sử dụng Wordpress Proxy
+- [x] Helper Function: `wordpress_proxy` - Resize & Cache Image sử dụng WordPress Proxy
 - [x] Helper Function: `wordpress_proxy_dns_prefetch` - Hàm cung cấp DNS Prefetch trong trường hợp sử dụng `wordpress_proxy`
 - [x] Helper Function: `bear_framework_image_url` - Hàm format Image Url - dành riêng cho BEAR framework
 - [x] Helper Function: `create_image_thumbnail` - Hàm create thumbnail - dành riêng cho BEAR framework
