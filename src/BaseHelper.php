@@ -19,8 +19,8 @@ namespace nguyenanhung\CodeIgniter\BasicHelper;
  */
 class BaseHelper
 {
-    const VERSION = '1.1.7.6';
-    const LAST_MODIFIED = '2023-01-20';
+    const VERSION = '1.1.7.7';
+    const LAST_MODIFIED = '2023-01-30';
     const AUTHOR_NAME = 'Hung Nguyen';
     const AUTHOR_EMAIL = 'dev@nguyenanhung.com';
     const PROJECT_NAME = 'CodeIgniter - Basic Helper';
@@ -34,6 +34,11 @@ class BaseHelper
      * @time     : 30/07/2022 26:13
      */
     public function getVersion()
+    {
+        return self::VERSION;
+    }
+
+    public static function version()
     {
         return self::VERSION;
     }

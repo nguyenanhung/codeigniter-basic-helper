@@ -17,7 +17,7 @@ namespace nguyenanhung\CodeIgniter\BasicHelper;
  * @author    713uk13m <dev@nguyenanhung.com>
  * @copyright 713uk13m <dev@nguyenanhung.com>
  */
-class Favicon extends BaseHelper
+final class Favicon extends BaseHelper
 {
     /**
      * Function faviconHtml
@@ -55,5 +55,10 @@ class Favicon extends BaseHelper
         $html .= '<meta name="theme-color" content="#ffffff">' . PHP_EOL;
 
         return $html;
+    }
+
+    public static function html($baseUrl = '')
+    {
+        return (new self)->faviconHtml($baseUrl);
     }
 }

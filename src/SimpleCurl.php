@@ -26,6 +26,12 @@ class SimpleCurl extends BaseHelper
     protected $timeout;
     protected $maxRedirects;
     protected $cookieFileLocation;
+    protected $disableSslVerifyHost;
+    protected $disableSslVerifyPeer;
+    protected $sslVerifyHost;
+    protected $sslVerifyPeer;
+    protected $sslCaInfoFile;
+    protected $sslVersion;
     protected $xml;
     protected $json;
     protected $post;
@@ -151,7 +157,7 @@ class SimpleCurl extends BaseHelper
 
     public function setJson($postFields)
     {
-        if (is_array($postFields)) {
+        if (is_array($postFields) || is_object($postFields)) {
             $postFields = json_encode($postFields);
         }
         $this->json = true;
@@ -186,11 +192,51 @@ class SimpleCurl extends BaseHelper
         return $this;
     }
 
+    /**
+     * @see https://curl.se/libcurl/c/CURLOPT_SSL_VERIFYHOST.html
+     */
+    public function disabledSslVerifyHost()
+    {
+        $this->disableSslVerifyHost = true;
+
+        return $this;
+    }
+
+    /**
+     * @see https://curl.se/libcurl/c/CURLOPT_SSL_VERIFYPEER.html
+     * @see https://www.saotn.org/dont-turn-off-curlopt_ssl_verifypeer-fix-php-configuration/#gsc.tab=0
+     */
+    public function disabledSslVerifyPeer()
+    {
+        $this->disableSslVerifyPeer = true;
+
+        return $this;
+    }
+
+    public function enabledSslVerifyPeer($certificateFile)
+    {
+        $this->sslVerifyPeer = true;
+        $this->sslCaInfoFile = $certificateFile;
+
+        return $this;
+    }
+
+    /**
+     * @see https://www.php.net/manual/en/function.curl-setopt.php
+     */
+    public function setSslVersion($sslVersion)
+    {
+        $this->sslVersion = $sslVersion;
+
+        return $this;
+    }
+
     public function createCurl($url = null)
     {
         if ($url !== null) {
             $this->url = $url;
         }
+
         $s = curl_init();
         curl_setopt($s, CURLOPT_URL, $this->url);
         curl_setopt($s, CURLOPT_HTTPHEADER, $this->headers);
@@ -198,39 +244,69 @@ class SimpleCurl extends BaseHelper
         curl_setopt($s, CURLOPT_MAXREDIRS, $this->maxRedirects);
         curl_setopt($s, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($s, CURLOPT_FOLLOWLOCATION, $this->followLocation);
+
         if (!empty($this->cookieFileLocation) && file_exists($this->cookieFileLocation)) {
             curl_setopt($s, CURLOPT_COOKIEJAR, $this->cookieFileLocation);
             curl_setopt($s, CURLOPT_COOKIEFILE, $this->cookieFileLocation);
         }
-        //curl_setopt($s, CURLOPT_SSL_VERIFYHOST, 0);
-        //curl_setopt($s, CURLOPT_SSL_VERIFYPEER, 0);
+
+        if (!empty($this->sslVersion)) {
+            curl_setopt($s, CURLOPT_SSLVERSION, $this->sslVersion);
+        }
+
+        if ($this->disableSslVerifyHost === true) {
+            curl_setopt($s, CURLOPT_SSL_VERIFYHOST, 0);
+        }
+
+        if ($this->disableSslVerifyPeer === true) {
+            curl_setopt($s, CURLOPT_SSL_VERIFYPEER, 0);
+        }
+
+        if ($this->sslVerifyHost === true) {
+            curl_setopt($s, CURLOPT_SSL_VERIFYHOST, 2);
+        }
+
+        if ($this->sslVerifyPeer === true && file_exists($this->sslCaInfoFile)) {
+            curl_setopt($s, CURLOPT_SSL_VERIFYPEER, true);
+            curl_setopt($s, CURLOPT_CAINFO, $this->sslCaInfoFile);
+        }
+
         curl_setopt($s, CURLINFO_HEADER_OUT, $this->headerOut);
         curl_setopt($s, CURLOPT_FILETIME, 1);
+
         if ($this->authentication === 1) {
             curl_setopt($s, CURLOPT_USERPWD, $this->authUsername . ':' . $this->authPassword);
         }
+
         if ($this->post || $this->json || $this->xml) {
             curl_setopt($s, CURLOPT_POST, true);
             curl_setopt($s, CURLOPT_POSTFIELDS, $this->postFields);
         }
+
         if ($this->includeHeader) {
             curl_setopt($s, CURLOPT_HEADER, true);
         }
+
         if ($this->noBody) {
             curl_setopt($s, CURLOPT_NOBODY, true);
         }
+
         if ($this->binaryTransfer) {
             curl_setopt($s, CURLOPT_BINARYTRANSFER, true);
         }
+
         curl_setopt($s, CURLOPT_USERAGENT, $this->userAgent);
         curl_setopt($s, CURLOPT_REFERER, $this->referer);
         curl_setopt_array($s, $this->userOptions);
+
         $this->webpage = curl_exec($s);
         $this->status = curl_getinfo($s);
         $this->error = curl_error($s);
+
         if ($this->error) {
             $this->isError = true;
         }
+
         $this->session = $s;
 
         return $this;
