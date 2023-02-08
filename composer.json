@@ -49,6 +49,7 @@
             "helpers/text_helper.php",
             "helpers/url_helper.php",
             "helpers/common_helper.php",
+            "helpers/database_helper.php",
             "helpers/date_helper.php",
             "helpers/file_helper.php",
             "helpers/paging_helper.php",

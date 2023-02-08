@@ -31,6 +31,7 @@ Trong trường hợp tích hợp gói này vào các framework, source khác ng
         + [Bytes Helper](#bytes-helper)
         + [Chart Render Helper](#chart-render-helper)
         + [Common Helper](#common-helper)
+        + [Database Helper](#database-helper)
         + [Date Helper](#date-helper)
         + [Debug Helper](#debug-helper)
         + [ENV Helper](#env-helper)
@@ -57,7 +58,6 @@ Trong trường hợp tích hợp gói này vào các framework, source khác ng
         + [XML Helper](#xml-helper)
         + [Simple RESTful Helper](#simple-restful-helper)
     * [Maintainer & Supporter](#maintainer--supporter)
-
 
 ## 1 số helper được hỗ trợ sẵn
 
@@ -121,6 +121,10 @@ Dưới đây là danh sách các Helper được hỗ trợ trong bộ thư vi�
 
 - [x] Helper Function: `isEmpty ` - Kiểm tra 1 input đầu vào xem có phải là rỗng hay không
 - [x] Helper Function: `defaultCompressHtmlOutput ` - Compress HTML output, default configure
+
+### Database Helper
+
+- [x] Helper Function: `generate_list_id_with_parent_id ` - Tạo 1 list các ID, trong đó chứa các tập con phụ thuộc của ID đó. VD: Dùng trong trường hợp muốn hiển thị nội dung của category cha và các category con trong cùng 1 page content
 
 ### Date Helper
 
