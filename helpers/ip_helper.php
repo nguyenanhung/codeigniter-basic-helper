@@ -84,6 +84,86 @@ if (!function_exists('getIPAddressByHaProxy')) {
         return false;
     }
 }
+if (!function_exists('get_ip_by_ha_proxy')) {
+    /**
+     * Function get_ip_by_ha_proxy
+     *
+     * @param bool $convertToInteger
+     *
+     * @return bool|int|string
+     * @author   : 713uk13m <dev@nguyenanhung.com>
+     * @copyright: 713uk13m <dev@nguyenanhung.com>
+     * @time     : 10/09/2020 59:22
+     */
+    function get_ip_by_ha_proxy($convertToInteger = false)
+    {
+        return getIPAddressByHaProxy($convertToInteger);
+    }
+}
+if (!function_exists('get_ip_address_2017')) {
+    /**
+     * Function get_ip_address_2017
+     *
+     * @param bool $convertToInteger
+     *
+     * @return bool|int|string
+     * @author   : 713uk13m <dev@nguyenanhung.com>
+     * @copyright: 713uk13m <dev@nguyenanhung.com>
+     * @time     : 10/09/2020 59:22
+     */
+    function get_ip_address_2017($convertToInteger = false)
+    {
+        return getIPAddress($convertToInteger);
+    }
+}
+if (!function_exists('get_ip_address')) {
+    /**
+     * Function get_ip_address
+     *
+     * @param bool $convertToInteger
+     *
+     * @return bool|int|string
+     * @author   : 713uk13m <dev@nguyenanhung.com>
+     * @copyright: 713uk13m <dev@nguyenanhung.com>
+     * @time     : 10/09/2020 59:22
+     */
+    function get_ip_address($convertToInteger = false)
+    {
+        return getIPAddress($convertToInteger);
+    }
+}
+if (!function_exists('getUserIP')) {
+    /**
+     * Function getUserIP
+     *
+     * @param bool $convertToInteger
+     *
+     * @return bool|int|string
+     * @author   : 713uk13m <dev@nguyenanhung.com>
+     * @copyright: 713uk13m <dev@nguyenanhung.com>
+     * @time     : 10/09/2020 59:22
+     */
+    function getUserIP($convertToInteger = false)
+    {
+        return getIPAddress($convertToInteger);
+    }
+}
+if (!function_exists('validate_ip')) {
+    /**
+     * Function validate_ip
+     *
+     * @param $ip
+     *
+     * @return bool
+     * @author   : 713uk13m <dev@nguyenanhung.com>
+     * @copyright: 713uk13m <dev@nguyenanhung.com>
+     * @time     : 10/02/2023 47:49
+     */
+    function validate_ip($ip)
+    {
+        return validateIP($ip);
+    }
+}
 if (!function_exists('validateIP')) {
     /**
      * Function validateIP

@@ -35,6 +35,7 @@ Trong trường hợp tích hợp gói này vào các framework, source khác ng
         + [Date Helper](#date-helper)
         + [Debug Helper](#debug-helper)
         + [ENV Helper](#env-helper)
+        + [Escape Helper](#escape-helper)
         + [Facebook Helper](#facebook-helper)
         + [File Helper](#file-helper)
         + [Gravatar Helper](#gravatar-helper)
@@ -141,6 +142,10 @@ Dưới đây là danh sách các Helper được hỗ trợ trong bộ thư vi�
 ### ENV Helper
 
 - [x] Helper Function: `bear_get_env` - Hàm lấy giá trị từ file .env
+
+### Escape Helper
+
+- [x] Helper Function: `bear_framework_basic_clean_str` - Simple Clean Input String
 
 ### Facebook Helper
 
@@ -302,7 +307,9 @@ Hiện tại việc sử dụng nanoid đang là xu hướng so với uuid truy�
 
 ### XML Helper
 
-- [x] Helper Function: `parse_sitemap_index` - Hàm hỗ trợ render ra nội dung cho Sitemap index
+- [x] Helper Function: `parse_sitemap` - Hàm hỗ trợ render ra nội dung cho Sitemap
+- [x] Helper Function: `parse_sitemap_index` - Hàm hỗ trợ render ra nội dung cho Sitemap Index
+- [x] Helper Function: `xml_convert` - Convert Reserved XML characters to Entities
 
 ### Simple RESTful Helper
 

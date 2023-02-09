@@ -131,6 +131,25 @@ if (!function_exists('favicon_url')) {
         return assets_url($uri, $protocol);
     }
 }
+if (!function_exists('fav_url')) {
+    /**
+     * Function fav_url - alias of favicon_url
+     *
+     * @param string      $uri
+     * @param string|null $protocol
+     *
+     * @return string
+     * @author   : 713uk13m <dev@nguyenanhung.com>
+     * @copyright: 713uk13m <dev@nguyenanhung.com>
+     * @time     : 12/09/2020 47:51
+     */
+    function fav_url($uri = '', $protocol = null)
+    {
+        $uri = 'fav/' . $uri;
+
+        return assets_url($uri, $protocol);
+    }
+}
 if (!function_exists('favicon_html_tag')) {
     /**
      * Function favicon_html_tag

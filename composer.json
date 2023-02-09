@@ -40,6 +40,7 @@
             "helpers/array_helper.php",
             "helpers/debug_helper.php",
             "helpers/env_helper.php",
+            "helpers/escape_helper.php",
             "helpers/facebook_helper.php",
             "helpers/alphaid_helper.php",
             "helpers/nanoid_helper.php",
@@ -68,9 +69,11 @@
     "suggest": {
         "ext-curl": "Need support CURL",
         "ext-json": "Need support JSON",
+        "nguyenanhung/helpers": "Awesome Helpers - Powerful Library, Helpers and Tools",
         "nguyenanhung/image": "Need support for Image Service",
         "nguyenanhung/nanoid-helper": "Need support for helper function randomNanoId()",
         "nguyenanhung/json-helper": "Need support for JSON",
+        "nguyenanhung/mobile-helper": "Need support for Mobile Support",
         "sentry/sdk": "Need support for Logging with Sentry"
     }
 }
