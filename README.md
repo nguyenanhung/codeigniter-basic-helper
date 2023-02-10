@@ -284,7 +284,6 @@ Hiện tại việc sử dụng nanoid đang là xu hướng so với uuid truy�
 
 ### URL Helper
 
-- [x] Helper Function: `share_url` - Create ra URL share chuẩn cho các MXH, hỗ trợ rất tốt cho SEO
 - [x] Helper Function: `encodeId_Url_byHungDEV`
 - [x] Helper Function: `decodeId_Url_byHungDEV`
 - [x] Helper Function: `convertToLatin`
@@ -293,9 +292,12 @@ Hiện tại việc sử dụng nanoid đang là xu hướng so với uuid truy�
 - [x] Helper Function: `boDauTiengViet`
 - [x] Helper Function: `removeSpecialChar`
 - [x] Helper Function: `getPermalinksSEO`
+- [x] Helper Function: `share_url` - Create ra URL share chuẩn cho các MXH, hỗ trợ rất tốt cho SEO
 - [x] Helper Function: `private_url` - Hàm customize dành riêng cho framework CodeIgniter
 - [x] Helper Function: `private_api_url` - Hàm customize dành riêng cho framework CodeIgniter
 - [x] Helper Function: `cdn_url` - Hàm customize dành riêng cho framework CodeIgniter
+- [x] Helper Function: `images_url` - Hàm customize dành riêng cho framework CodeIgniter
+- [x] Helper Function: `audio_url` - Hàm customize dành riêng cho framework CodeIgniter
 
 ### UUID Helper
 
