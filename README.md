@@ -310,11 +310,17 @@ Hiện tại việc sử dụng nanoid đang là xu hướng so với uuid truy�
 
 - [x] Helper Function: `check_vn_province_code` - Check Provin Code của 1 số tỉnh thành Việt Nam
 
+### Video Embed Helper
+
+- [x] Helper Function: `convert_video_embed_vimeo` - Convert Video URL to Embed Vimeo.com
+- [x] Helper Function: `convert_video_embed_dailymotion` - Convert Video URL to Embed Dailymotion.com
+
 ### XML Helper
 
 - [x] Helper Function: `parse_sitemap` - Hàm hỗ trợ render ra nội dung cho Sitemap
 - [x] Helper Function: `parse_sitemap_index` - Hàm hỗ trợ render ra nội dung cho Sitemap Index
 - [x] Helper Function: `xml_convert` - Convert Reserved XML characters to Entities
+- [x] Helper Function: `xml_get_value` - Get Value from XML string
 
 ### Simple RESTful Helper
 

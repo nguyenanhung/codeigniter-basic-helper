@@ -144,3 +144,24 @@ if (!function_exists('xml_convert')) {
         return $str;
     }
 }
+if (!function_exists('xml_get_value')) {
+    /**
+     * Function xml_get_value
+     *
+     * @param $xml
+     * @param $openTag
+     * @param $closeTag
+     *
+     * @return false|string
+     * @author   : 713uk13m <dev@nguyenanhung.com>
+     * @copyright: 713uk13m <dev@nguyenanhung.com>
+     * @time     : 12/02/2023 12:23
+     */
+    function xml_get_value($xml, $openTag, $closeTag)
+    {
+        $f = strpos($xml, $openTag) + strlen($openTag);
+        $l = strpos($xml, $closeTag);
+
+        return ($f <= $l) ? substr($xml, $f, $l - $f) : "";
+    }
+}
