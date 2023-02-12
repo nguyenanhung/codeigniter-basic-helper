@@ -95,11 +95,11 @@ Dưới đây là danh sách các Helper được hỗ trợ trong bộ thư vi�
 - [x] Helper Function: `favicon_html_tag`- Hàm lấy ra đoạn HTML thể hiện Favicon dựa vào URL folder favicon đầu vào
 - [x] Helper Function: `storage_url` - Need config `storage_url` item in config.php file. VD: `$config['storage_url'] = 'https://storage.nguyenanhung.com/';`
 - [x] Helper Function: `go_url` - Need config `go_url` item in `config.php` file. VD: `$config['go_url'] = 'https://go.nguyenanhung.com/';`
-- [x] Helper Function: `assets_mobile`
-- [x] Helper Function: `assets_themes`
-- [x] Helper Function: `assets_themes_dashboard`
-- [x] Helper Function: `assets_themes_comingsoon`
-- [x] Helper Function: `assets_themes_error`
+- [x] Helper Function: `assets_mobile` - Lấy ra đường dẫn assets của giao diện mobile (thực tế ít dùng, duy trì cho các dự án cũ)
+- [x] Helper Function: `assets_themes` - Lấy ra đường dẫn assets của giao diện pc (thực tế ít dùng, duy trì cho các dự án cũ)
+- [x] Helper Function: `assets_themes_dashboard` - Lấy ra đường dẫn assets của giao diện dashboard (thực tế ít dùng, duy trì cho các dự án cũ)
+- [x] Helper Function: `assets_themes_comingsoon` - Lấy ra đường dẫn assets của giao diện coming soon (thực tế ít dùng, duy trì cho các dự án cũ)
+- [x] Helper Function: `assets_themes_error` - Lấy ra đường dẫn assets của giao diện error (thực tế ít dùng, duy trì cho các dự án cũ)
 - [x] Helper Function: `cdn_js_url` - Resource JS, CSS từ CDN của Cloudflare
 - [x] Helper Function: `google_fonts_url` - Resource Google Font
 - [x] Helper Function: `bootstrapcdn_url` - Resource CDN từ Bootstrap
@@ -136,8 +136,11 @@ Dưới đây là danh sách các Helper được hỗ trợ trong bộ thư vi�
 
 ### Debug Helper
 
+Các hàm này dùng debug
+
 - [x] Helper Function: `dd`
 - [x] Helper Function: `ddd`
+- [x] Helper Function: `dump`
 
 ### ENV Helper
 
@@ -305,7 +308,7 @@ Hiện tại việc sử dụng nanoid đang là xu hướng so với uuid truy�
 
 ### VN Province Helper
 
-- [x] Helper Function: `check_vn_province_code`
+- [x] Helper Function: `check_vn_province_code` - Check Provin Code của 1 số tỉnh thành Việt Nam
 
 ### XML Helper
 
