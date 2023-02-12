@@ -312,8 +312,10 @@ Hiện tại việc sử dụng nanoid đang là xu hướng so với uuid truy�
 
 ### Video Embed Helper
 
-- [x] Helper Function: `convert_video_embed_vimeo` - Convert Video URL to Embed Vimeo.com
-- [x] Helper Function: `convert_video_embed_dailymotion` - Convert Video URL to Embed Dailymotion.com
+- [x] Helper Function: `convert_video_embed_vimeo` - Convert Video URL to Embed Vimeo (ít dùng, lưu tại đây vì còn nhiều project cũ đang sử dụng)
+- [x] Helper Function: `convert_video_embed_dailymotion` - Convert Video URL to Embed DailyMotion (ít dùng, lưu tại đây vì còn nhiều project cũ đang sử dụng)
+- [x] Helper Function: `convert_video_embed_youtube` - Convert Video URL to Embed YouTube (ít dùng, lưu tại đây vì còn nhiều project cũ đang sử dụng)
+- [x] Helper Function: `convert_video_v_embed_youtube` - Convert Video URL to Embed YouTube (ít dùng, lưu tại đây vì còn nhiều project cũ đang sử dụng)
 
 ### XML Helper
 

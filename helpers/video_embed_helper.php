@@ -25,3 +25,25 @@ if (!function_exists('convert_video_embed_dailymotion')) {
         return trim($dailymotion);
     }
 }
+if (!function_exists('convert_video_v_embed_youtube')) {
+    function convert_video_v_embed_youtube($youtube)
+    {
+        $youtube = str_replace('https://www.youtube.com/watch?v=', '//www.youtube.com/v/', $youtube);
+        $youtube = str_replace('http://www.youtube.com/watch?v=', '//www.youtube.com/v/', $youtube);
+        $youtube = str_replace('https://www.youtube.com/embed/', '//www.youtube.com/v/', $youtube);
+        $youtube = str_replace('http://www.youtube.com/embed/', '//www.youtube.com/v/', $youtube);
+
+        return trim($youtube);
+    }
+}
+if (!function_exists('convert_video_embed_youtube')) {
+    function convert_video_embed_youtube($youtube)
+    {
+        $youtube = str_replace('https://www.youtube.com/watch?v=', '//www.youtube.com/embed/', $youtube);
+        $youtube = str_replace('http://www.youtube.com/watch?v=', '//www.youtube.com/embed/', $youtube);
+        $youtube = str_replace('https://www.youtube.com/v/', '//www.youtube.com/embed/', $youtube);
+        $youtube = str_replace('http://www.youtube.com/v/', '//www.youtube.com/embed/', $youtube);
+
+        return trim($youtube);
+    }
+}
