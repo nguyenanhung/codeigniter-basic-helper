@@ -56,6 +56,7 @@ Trong trường hợp tích hợp gói này vào các framework, source khác ng
         + [URL Helper](#url-helper)
         + [UUID Helper](#uuid-helper)
         + [VN Province Helper](#vn-province-helper)
+        + [Video Embed Helper](#video-embed-helper)
         + [XML Helper](#xml-helper)
         + [Simple RESTful Helper](#simple-restful-helper)
     * [Maintainer & Supporter](#maintainer--supporter)
