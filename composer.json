@@ -63,7 +63,8 @@
             "helpers/vn_province_helper.php",
             "helpers/string_helper.php",
             "helpers/number_helper.php",
-            "helpers/gravatar_helper.php"
+            "helpers/gravatar_helper.php",
+            "helpers/video_embed_helper.php"
         ]
     },
     "suggest": {

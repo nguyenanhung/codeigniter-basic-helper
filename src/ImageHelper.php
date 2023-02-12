@@ -104,7 +104,7 @@ class ImageHelper extends BaseHelper
     }
 
     /**
-     * Function createThumbnail
+     * Function createThumbnail - Only use for CodeIgniter
      *
      * @param $url
      * @param $width
