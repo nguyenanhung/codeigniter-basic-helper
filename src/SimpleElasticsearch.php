@@ -109,7 +109,7 @@ class SimpleElasticsearch extends BaseHelper
 
             $endpoint = $elasticHost . ':' . $elasticPort . '/' . $index . "/_search";
 
-            if ($extraParams !== null && is_array($extraParams)) {
+            if (is_array($extraParams)) {
                 $endpoint .= '?' . http_build_query($extraParams);
             }
 
@@ -290,7 +290,7 @@ class SimpleElasticsearch extends BaseHelper
 
 
             $url = $elasticHost . ':' . $elasticPort . '/' . $index . '/_doc/' . $id;
-            $data_config_url = [
+            $data_config_url = array(
                 CURLOPT_URL            => $url,
                 CURLOPT_RETURNTRANSFER => true,
                 CURLOPT_ENCODING       => '',
@@ -301,8 +301,8 @@ class SimpleElasticsearch extends BaseHelper
                 CURLOPT_CUSTOMREQUEST  => 'DELETE',
                 CURLOPT_HTTPHEADER     => array(
                     'Content-Type: application/json'
-                ),
-            ];
+                )
+            );
 
             switch ($action) {
                 case 'delete':
@@ -363,20 +363,20 @@ class SimpleElasticsearch extends BaseHelper
             $elasticHost = env('ELASTICSEARCH_HOST', self::DEFAULT_ELASTICSEARCH_HOST);
             $elasticPort = env('ELASTICSEARCH_PORT', self::DEFAULT_ELASTICSEARCH_PORT);
 
-            $settings = [
+            $settings = array(
                 'number_of_shards'   => 2,
                 'number_of_replicas' => 1,
-                'analysis'           => [
-                    'char_filter' => [
-                        'replace' => [
+                'analysis'           => array(
+                    'char_filter' => array(
+                        'replace' => array(
                             'type'     => 'mapping',
-                            'mappings' => [
+                            'mappings' => array(
                                 '&=> and '
-                            ],
-                        ],
-                    ],
-                    'filter'      => [
-                        'word_delimiter' => [
+                            )
+                        )
+                    ),
+                    'filter'      => array(
+                        'word_delimiter' => array(
                             'type'                  => 'word_delimiter',
                             'split_on_numerics'     => false,
                             'split_on_case_change'  => true,
@@ -385,44 +385,44 @@ class SimpleElasticsearch extends BaseHelper
                             'catenate_all'          => true,
                             'preserve_original'     => true,
                             'catenate_numbers'      => true,
-                        ]
-                    ],
-                    'analyzer'    => [
-                        'default'           => [
+                        )
+                    ),
+                    'analyzer'    => array(
+                        'default'           => array(
                             'type'        => 'custom',
-                            'char_filter' => [
+                            'char_filter' => array(
                                 'html_strip',
                                 'replace',
-                            ],
+                            ),
                             'tokenizer'   => 'whitespace',
-                            'filter'      => [
+                            'filter'      => array(
                                 'lowercase',
                                 'word_delimiter',
-                            ],
-                        ],
-                        'my_analyzer'       => [
+                            ),
+                        ),
+                        'my_analyzer'       => array(
                             'type'      => 'custom',
                             'tokenizer' => 'standard',
-                            'filter'    => [
+                            'filter'    => array(
                                 'lowercase'
-                            ]
-                        ],
-                        "my_email_analyzer" => [
+                            )
+                        ),
+                        "my_email_analyzer" => array(
                             "type"      => "custom",
                             "tokenizer" => "uax_url_email",
-                            'filter'    => [
+                            'filter'    => array(
                                 'lowercase',
                                 'stop',
-                            ],
-                        ]
-                    ],
-                ]
-            ];
+                            ),
+                        )
+                    )
+                )
+            );
 
             $data = array();
             $data['settings'] = $settings;
-            $data['mappings'] = [];
-            $data['mappings']['properties'] = [];
+            $data['mappings'] = array();
+            $data['mappings']['properties'] = array();
 
             foreach ($listFields as $field) {
                 if ($field === '_id') {
@@ -431,14 +431,14 @@ class SimpleElasticsearch extends BaseHelper
                 if (array_key_exists($field, $specialFields)) {
                     $data['mappings']['properties'][$field] = $specialFields[$field];
                 } else {
-                    $data['mappings']['properties'][$field] = [
+                    $data['mappings']['properties'][$field] = array(
                         'type'     => 'text',
                         'analyzer' => 'my_analyzer'
-                    ];
+                    );
                 }
             }
             $url = $elasticHost . ':' . $elasticPort . '/' . $index . '?pretty';
-            $data_config_url = [
+            $data_config_url = array(
                 CURLOPT_URL            => $url,
                 CURLOPT_RETURNTRANSFER => true,
                 CURLOPT_ENCODING       => '',
@@ -451,7 +451,7 @@ class SimpleElasticsearch extends BaseHelper
                 CURLOPT_HTTPHEADER     => array(
                     'Content-Type: application/json'
                 ),
-            ];
+            );
 
             $curl = curl_init();
 
