@@ -395,11 +395,11 @@ if (!function_exists('arraySetElement')) {
                 $k = array_shift($keys);
 
                 if (!is_array($arrTmp)) {
-                    $arrTmp = [];
+                    $arrTmp = array();
                 }
 
                 if (!isset($arrTmp[$k])) {
-                    $arrTmp[$k] = [];
+                    $arrTmp[$k] = array();
                 }
 
                 if (sizeof($keys) === 0) {

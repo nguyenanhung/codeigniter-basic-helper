@@ -40,14 +40,14 @@ if (!function_exists('meta_property')) {
         // Since we allow the data to be passes as a string, a simple array
         // or a multidimensional one, we need to do a little prepping.
         if (!is_array($property)) {
-            $property = [
-                [
+            $property = array(
+                array(
                     'property' => $property,
                     'content'  => $content,
                     'type'     => $type,
                     'newline'  => $newline
-                ]
-            ];
+                )
+            );
         } elseif (isset($property['property'])) {
             // Turn single array into multidimensional
             $property = array($property);

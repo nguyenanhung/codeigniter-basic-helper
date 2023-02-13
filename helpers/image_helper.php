@@ -87,7 +87,7 @@ if (!function_exists('bear_framework_image_url')) {
     {
         $images_url = trim($input);
         if (function_exists('config_item') && !empty($images_url)) {
-            $no_thumb = [
+            $no_thumb = array(
                 'images/system/no_avatar.jpg',
                 'images/system/no_avatar_100x100.jpg',
                 'images/system/no_video_available.jpg',
@@ -95,7 +95,7 @@ if (!function_exists('bear_framework_image_url')) {
                 'images/system/no-image-available.jpg',
                 'images/system/no-image-available_60.jpg',
                 'images/system/no-image-available_330.jpg'
-            ];
+            );
             if (in_array($images_url, $no_thumb)) {
                 return assets_url($images_url);
             }
