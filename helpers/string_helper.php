@@ -620,8 +620,8 @@ if (!function_exists('hide_characters')) {
 
         $return_text = "";
 
-        for ($i = 0; $i < strlen($text); $i++) {
-            if ($i % 3 == 2) {
+        for ($i = 0, $iMax = strlen($text); $i < $iMax; $i++) {
+            if ($i % 3 === 2) {
                 $return_text .= 'x';
             } else {
                 $return_text .= $string_array[$i];
