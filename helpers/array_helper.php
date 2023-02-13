@@ -395,11 +395,11 @@ if (!function_exists('arraySetElement')) {
                 $k = array_shift($keys);
 
                 if (!is_array($arrTmp)) {
-                    $arrTmp = [];
+                    $arrTmp = array();
                 }
 
                 if (!isset($arrTmp[$k])) {
-                    $arrTmp[$k] = [];
+                    $arrTmp[$k] = array();
                 }
 
                 if (sizeof($keys) === 0) {
@@ -470,5 +470,35 @@ if (!function_exists('to_array')) {
         }
 
         return null;
+    }
+}
+if (!function_exists('arrayToAttributes')) {
+    /**
+     * Takes an array of attributes and turns it into a string for an html tag
+     *
+     * @param array $attr
+     *
+     * @return    string
+     */
+    function arrayToAttributes($attr)
+    {
+        $attr_str = '';
+
+        foreach ((array) $attr as $property => $value) {
+            // Ignore null/false
+            if ($value === null or $value === false) {
+                continue;
+            }
+
+            // If the key is numeric then it must be something like selected="selected"
+            if (is_numeric($property)) {
+                $property = $value;
+            }
+
+            $attr_str .= $property . '="' . str_replace('"', '&quot;', $value) . '" ';
+        }
+
+        // We strip off the last space for return
+        return trim($attr_str);
     }
 }
