@@ -43,6 +43,7 @@ Trong trường hợp tích hợp gói này vào các framework, source khác ng
         + [Image Helper](#image-helper)
         + [IP Helper](#ip-helper)
         + [Meta Helper](#meta-helper)
+        + [Money Helper](#money-helper)
         + [NanoID Helper](#nanoid-helper)
         + [Number Helper](#number-helper)
         + [Paging Helper](#paging-helper)
@@ -207,6 +208,10 @@ Các hàm này dùng debug
 ### Meta Helper
 
 - [x] Helper Function: `setupMetaDnsPrefetch` - Hàm hỗ trợ gen ra 1 đoạn HTML Dns Prefetch tương tự `<link href='//data.nguyenanhung.com/' rel='dns-prefetch' />`
+
+### Money Helper
+
+- [x] Helper Function: `money_number_format` - format money currency will detect the current locale
 
 ### NanoID Helper
 

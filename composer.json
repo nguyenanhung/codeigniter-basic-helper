@@ -22,7 +22,8 @@
         "ext-curl": "*",
         "ext-json": "*",
         "ext-mbstring": "*",
-        "nguyenanhung/html-helper": "^2.0 || ^1.0"
+        "nguyenanhung/html-helper": "^2.0 || ^1.0",
+        "nguyenanhung/basic-miscellaneous-helper": "^2.0 || ^1.0"
     },
     "require-dev": {
         "nguyenanhung/image": "^3.0 || ^2.0 || ^1.0"
@@ -51,6 +52,7 @@
             "helpers/image_helper.php",
             "helpers/ip_helper.php",
             "helpers/meta_helper.php",
+            "helpers/money_helper.php",
             "helpers/nanoid_helper.php",
             "helpers/number_helper.php",
             "helpers/paging_helper.php",
