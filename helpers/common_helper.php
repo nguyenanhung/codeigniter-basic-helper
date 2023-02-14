@@ -20,7 +20,7 @@ if (!function_exists('isEmpty')) {
      */
     function isEmpty($input = '')
     {
-        if ($input === null || $input === false) {
+        if ($input === null || $input === false || $input === '') {
             return true;
         }
         $isset = isset($input);

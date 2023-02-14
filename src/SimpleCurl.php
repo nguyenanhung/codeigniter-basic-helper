@@ -17,9 +17,9 @@ namespace nguyenanhung\CodeIgniter\BasicHelper;
  * @author    713uk13m <dev@nguyenanhung.com>
  * @copyright 713uk13m <dev@nguyenanhung.com>
  */
-class SimpleCurl extends BaseHelper
+final class SimpleCurl extends BaseHelper
 {
-    protected $userAgent      = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.63 Safari/537.36';
+    protected $userAgent = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.63 Safari/537.36';
     protected $url;
     protected $data;
     protected $followLocation;
@@ -36,7 +36,7 @@ class SimpleCurl extends BaseHelper
     protected $json;
     protected $post;
     protected $postFields;
-    protected $referer        = "";
+    protected $referer = "";
     protected $session;
     protected $webpage;
     protected $headers;
@@ -44,13 +44,13 @@ class SimpleCurl extends BaseHelper
     protected $includeHeader;
     protected $noBody;
     protected $status;
-    protected $isError        = false;
+    protected $isError = false;
     protected $error;
     protected $binaryTransfer;
     protected $userOptions;
     protected $authentication = 0;
-    protected $authUsername   = '';
-    protected $authPassword   = '';
+    protected $authUsername = '';
+    protected $authPassword = '';
 
     /**
      * SimpleCurl constructor.
