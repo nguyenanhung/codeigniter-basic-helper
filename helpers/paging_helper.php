@@ -11,199 +11,146 @@ if (!function_exists('view_paginations')) {
     /**
      * Function view_paginations
      *
-     * @param        $type
-     * @param        $total_rows
-     * @param        $per_page
-     * @param        $page_number
-     * @param string $page_links
-     * @param        $begin
-     * @param        $end
-     * @param string $title
+     * @param $page_type
+     * @param $total_item
+     * @param $item_per_page
+     * @param $current_page_number
+     * @param $page_link
+     * @param $begin
+     * @param $end
+     * @param $page_title
+     * @param $page_prefix
+     * @param $page_suffix
      *
-     * @return string
+     * @return string|null
      * @author   : 713uk13m <dev@nguyenanhung.com>
      * @copyright: 713uk13m <dev@nguyenanhung.com>
-     * @time     : 12/10/2020 19:53
+     * @time     : 14/02/2023 29:41
      */
-    function view_paginations($type, $total_rows, $per_page, $page_number, $page_links, $begin, $end, $title = '')
+    function view_paginations($page_type, $total_item, $item_per_page, $current_page_number, $page_link, $begin, $end, $page_title = '', $page_prefix = '/trang-', $page_suffix = '.html')
     {
-        /**
-         * Kiểm tra giá trị page_number truyền vào
-         * Nếu ko có giá trị hoặc giá trị = 0 -> set giá trị = 1
-         */
-        if (empty($page_number)) {
-            $page_number = 1;
-        }
-        /**
-         * Tính tổng số page có
-         */
-        $total = ceil($total_rows / $per_page);
-        $main  = '';
-        if ($total <= 1) {
-            return '';
-        }
-        if ($page_number !== 1) {
-            if ($type === 'site_page') {
-                $main .= "\n<li class=\"waves-effect\"><a href=\"" . $page_links . ".html\"><i class=\"fa fa-angle-double-left\"></i></a></li>";
-            } elseif ($type === 'search_page') {
-                $main .= "\n<li class=\"waves-effect\"><a href=\"" . $page_links . "\"><i class=\"fa fa-angle-double-left\"></i></a></li>";
-            } else {
-                $main .= "<li class=\"left\"><a href=\"" . $page_links . "/\" title=\"" . $title . "\">&nbsp;</a></li>";
-            }
-        }
-        for ($num = 1; $num <= $total; $num++) {
-            if ($num < $page_number - $begin || $num > $page_number + $end) {
-                continue;
-            }
-            if ($num === $page_number) {
-                if ($type === 'site_page') {
-                    $main .= "\n<li class=\"active\"><a href=\"" . $page_links . "/trang-" . $num . ".html\" title='" . $title . "'>" . $num . "</a></li>";
-                } elseif ($type === 'search_page') {
-                    $main .= "\n<li class=\"active\"><a href=\"" . $page_links . "&page=" . $num . "\" title='" . $title . "'>" . $num . "</a></li>";
-                } else {
-                    $main .= "<li class=\"selected\"><a href=\"" . $page_links . "/page/" . $num . "/\" title=\"" . $title . "\">" . $num . "</a></li>";
-                }
-            } else {
-                if ($type === 'site_page') {
-                    $main .= "\n<li class=\"waves-effect\"><a href=\"" . $page_links . "/trang-" . $num . ".html\">" . $num . "</a></li>";
-                } elseif ($type === 'search_page') {
-                    $main .= "\n<li class=\"waves-effect\"><a href=\"" . $page_links . "&page=" . $num . "\">" . $num . "</a></li>";
-                } else {
-                    $main .= "<li><a href=\"" . $page_links . "/page/" . $num . "/\" title=\"" . $title . " trang " . $num . "\">" . $num . "</a></li>";
-                }
-            }
-        }
-        unset($num);
-        if ($page_number !== $total) {
-            if ($type === 'site_page') {
-                $main .= "\n<li class=\"waves-effect\"><a href=\"" . $page_links . "/trang-" . $total . ".html\"><i class=\"fa fa-angle-double-right\"></i></a></li>";
-            } elseif ($type === 'search_page') {
-                $main .= "\n<li class=\"waves-effect\"><a href=\"" . $page_links . "&page=" . $total . "\"><i class=\"fa fa-angle-double-right\"></i></a></li>";
-            } else {
-                $main .= "<li class=\"right\"><a href=\"" . $page_links . "/page/" . $total . "/\" title=\"" . $title . " trang cuối\">&nbsp;</a></li>";
-            }
+        if ($page_type === 'search_page' || $page_type === 'search') {
+            $page_prefix = '&page=';
+            $page_suffix = '';
         }
 
-        return $main;
+        $data = array(
+            'page_type'                    => $page_type,
+            'page_link'                    => $page_link,
+            'page_title'                   => $page_title,
+            'page_prefix'                  => $page_prefix,
+            'page_suffix'                  => $page_suffix,
+            'current_page_number'          => $current_page_number,
+            'total_item'                   => $total_item,
+            'item_per_page'                => $item_per_page,
+            'page_begin'                   => $begin,
+            'page_end'                     => $end,
+            'pre_rows'                     => 3,
+            'suf_rows'                     => 3,
+            'first_link'                   => '&nbsp;',
+            'last_link'                    => '&nbsp;',
+            'default_page_title'           => 'trang',
+            'default_last_page_name_title' => 'trang cuối',
+            'left_class'                   => 'left',
+            'right_class'                  => 'right',
+            'selected_class'               => 'selected'
+        );
+        $pagination = new \nguyenanhung\Libraries\Pagination\Pagination\SimplePagination();
+        $pagination->setData($data);
+
+        return $pagination->build();
     }
 }
 if (!function_exists('view_more')) {
     /**
      * Function view_more
      *
-     * @param        $page_number
-     * @param        $page_total
-     * @param        $page_size
-     * @param string $url
-     * @param string $title
-     * @param string $more_type
+     * @param $page_number
+     * @param $page_total
+     * @param $page_size
+     * @param $url
+     * @param $title
+     * @param $more_type
+     * @param $page_prefix
+     * @param $page_suffix
      *
      * @return string
      * @author   : 713uk13m <dev@nguyenanhung.com>
      * @copyright: 713uk13m <dev@nguyenanhung.com>
-     * @time     : 12/10/2020 19:00
+     * @time     : 14/02/2023 28:06
      */
-    function view_more($page_number, $page_total, $page_size, $url = '', $title = '', $more_type = '')
+    function view_more($page_number, $page_total, $page_size, $url = '', $title = '', $more_type = '', $page_prefix = '/trang-', $page_suffix = '.html')
     {
-        $is_total = ceil($page_total / $page_size);
-        if ($is_total <= 1) {
-            return '';
+        if ($more_type === 'search_page' || $more_type === 'search') {
+            $page_prefix = '&page=';
+            $page_suffix = '';
         }
+        $data = array(
+            'page_number'             => $page_number,
+            'total_item'              => $page_total,
+            'item_per_page'           => $page_size,
+            'page_link'               => $url,
+            'page_title'              => $title,
+            'page_type'               => $more_type,
+            'page_prefix'             => $page_prefix,
+            'page_suffix'             => $page_suffix,
+            'default_page_title'      => 'trang',
+            'default_page_title_more' => 'Xem thêm',
+            'default_page_title_prev' => 'Trang trước'
+        );
+        $pagination = new \nguyenanhung\Libraries\Pagination\Pagination\SimplePagination();
+        $pagination->setData($data);
 
-        if ($is_total === $page_number) {
-            $back_page = $page_number - 1;
-            if ($more_type === 'search') {
-                $main = '<a title="' . $title . ' trang ' . $back_page . '" href="' . $url . '&page=' . $back_page . '">Trang trước</a>';
-            } else {
-                $main = '<a title="' . $title . ' trang ' . $back_page . '" href="' . $url . '/trang-' . $back_page . '.html">Trang trước</a>';
-            }
-        } else {
-            if (!empty($page_number) && $page_number !== 0) {
-                $next_page = $page_number + 1;
-            } else {
-                $next_page = $page_number + 2;
-            }
-            if ($more_type === 'search') {
-                $main = '<a title="' . $title . ' trang ' . $next_page . '" href="' . $url . '&page=' . $next_page . '">Xem thêm</a>';
-            } else {
-                $main = '<a title="' . $title . ' trang ' . $next_page . '" href="' . $url . '/trang-' . $next_page . '.html">Xem thêm</a>';
-            }
-        }
-
-        return $main;
+        return $pagination->buildViewMore();
     }
 }
 if (!function_exists('select_page')) {
     /**
      * Function select_page
      *
-     * @param        $total_rows
-     * @param        $per_page
-     * @param        $page_number
-     * @param string $type
-     * @param string $page_links
-     * @param string $begin
-     * @param string $end
-     * @param string $title
+     * @param $total_rows
+     * @param $per_page
+     * @param $page_number
+     * @param $type
+     * @param $page_links
+     * @param $begin
+     * @param $end
+     * @param $title
+     * @param $page_prefix
+     * @param $page_suffix
      *
      * @return string
      * @author   : 713uk13m <dev@nguyenanhung.com>
      * @copyright: 713uk13m <dev@nguyenanhung.com>
-     * @time     : 12/10/2020 19:09
+     * @time     : 14/02/2023 28:40
      */
-    function select_page($total_rows, $per_page, $page_number, $type = '', $page_links = '', $begin = '', $end = '', $title = '')
+    function select_page($total_rows, $per_page, $page_number, $type = '', $page_links = '', $begin = '', $end = '', $title = '', $page_prefix = '/trang-', $page_suffix = '.html')
     {
-        /**
-         * ----------------------------------------------
-         * Kiểm tra giá trị page_number truyền vào
-         * Nếu ko có giá trị hoặc giá trị = 0 -> set giá trị = 1
-         * ----------------------------------------------
-         */
-        if (empty($page_number)) {
-            $page_number = 1;
+        if ($type === 'search_page' || $type === 'search') {
+            $page_prefix = '&page=';
+            $page_suffix = '';
         }
-        /**
-         * ----------------------------------------------
-         * Tính tổng số page có
-         * ----------------------------------------------
-         */
-        $total = ceil($total_rows / $per_page);
-        $main  = '';
-        if ($total <= 1) {
-            return '';
-        }
-        if ($page_number !== 1) {
-            if ($type === 'select_page') {
-                $main .= "<li class=\"left\"><a href=\"" . $page_links . ".html\" title=\"" . $title . "\">&nbsp;</a></li>";
-            } else {
-                $main .= "";
-            }
-        }
-        for ($num = 1; $num <= $total; $num++) {
-            if ($num === $page_number) {
-                if ($type === 'select_page') {
-                    $main .= "<li class=\"selected\"><a href=\"" . $page_links . "/trang-" . $num . ".html\" title=\"" . $title . " trang " . $num . "\">" . $num . "</a></li>";
-                } else {
-                    $main .= "<option selected value=\"" . $num . "\">Trang " . $num . "</option>";
-                }
-            } else {
-                if ($type === 'select_page') {
-                    $main .= "<li><a href=\"" . $page_links . "/trang-" . $num . ".html\" title=\"" . $title . " trang " . $num . "\">" . $num . "</a></li>";
-                } else {
-                    $main .= "<option value=\"" . $num . "\">Trang " . $num . "</option>";
-                }
-            }
-        }
-        unset($num);
-        if ($page_number !== $total) {
-            if ($type === 'select_page') {
-                $main .= "<li class=\"right\"><a href=\"" . $page_links . "/trang-" . $total . ".html\" title=\"" . $title . " trang cuối\">&nbsp;</a></li>";
-            } else {
-                $main .= "<option value=\"" . $total . "\">Trang cuối</option>";
-            }
-        }
+        $data = array(
+            'page_number'                  => $page_number,
+            'total_item'                   => $total_rows,
+            'item_per_page'                => $per_page,
+            'page_link'                    => $page_links,
+            'page_title'                   => $title,
+            'page_type'                    => $type,
+            'page_begin'                   => $begin,
+            'page_end'                     => $end,
+            'page_prefix'                  => $page_prefix,
+            'page_suffix'                  => $page_suffix,
+            'left_class'                   => 'left',
+            'right_class'                  => 'right',
+            'selected_class'               => 'selected',
+            'default_page_title'           => 'trang',
+            'default_last_page_name_title' => 'Trang cuối',
+        );
+        $pagination = new \nguyenanhung\Libraries\Pagination\Pagination\SimplePagination();
+        $pagination->setData($data);
 
-        return $main;
+        return $pagination->buildSelectPage();
     }
 }
 if (!function_exists('get_paginations_title')) {
@@ -212,14 +159,16 @@ if (!function_exists('get_paginations_title')) {
      *
      * @param $str
      *
-     * @return string|string[]
+     * @return array|string|string[]
      * @author   : 713uk13m <dev@nguyenanhung.com>
      * @copyright: 713uk13m <dev@nguyenanhung.com>
-     * @time     : 12/10/2020 19:16
+     * @time     : 14/02/2023 17:37
      */
     function get_paginations_title($str)
     {
-        return str_replace('trang-', 'Trang ', $str);
+        $pagination = new \nguyenanhung\Libraries\Pagination\Pagination\SimplePagination();
+
+        return $pagination->getPaginationsTitle($str);
     }
 }
 if (!function_exists('get_paginations_number')) {
@@ -231,13 +180,13 @@ if (!function_exists('get_paginations_number')) {
      * @return int
      * @author   : 713uk13m <dev@nguyenanhung.com>
      * @copyright: 713uk13m <dev@nguyenanhung.com>
-     * @time     : 12/10/2020 19:24
+     * @time     : 14/02/2023 16:17
      */
     function get_paginations_number($str)
     {
-        $str = str_replace('trang-', '', $str);
+        $pagination = new \nguyenanhung\Libraries\Pagination\Pagination\SimplePagination();
 
-        return (int) $str;
+        return $pagination->getPageNumber($str);
     }
 }
 if (!function_exists('bear_framework_news_view_pagination')) {
@@ -249,54 +198,13 @@ if (!function_exists('bear_framework_news_view_pagination')) {
      * @return string|null
      * @author   : 713uk13m <dev@nguyenanhung.com>
      * @copyright: 713uk13m <dev@nguyenanhung.com>
-     * @time     : 16/06/2022 54:23
+     * @time     : 14/02/2023 16:29
      */
     function bear_framework_news_view_pagination($data = array())
     {
-        // $page_type           = isset($input_data['page_type']) ? $input_data['page_type'] : '';
-        $page_link           = isset($data['page_link']) ? $data['page_link'] : '';
-        $page_title           = isset($data['page_title']) ? $data['page_title'] : '';
-        $page_prefix         = isset($data['page_prefix']) ? $data['page_prefix'] : '';
-        $page_suffix         = isset($data['page_suffix']) ? $data['page_suffix'] : '';
-        $current_page_number = isset($data['current_page_number']) ? $data['current_page_number'] : 1;
-        $total_item          = isset($data['total_item']) ? $data['total_item'] : 0;
-        $item_per_page       = isset($data['item_per_page']) ? $data['item_per_page'] : 10;
-        $begin               = isset($data['pre_rows']) ? $data['pre_rows'] : 3;
-        $end                 = isset($data['suf_rows']) ? $data['suf_rows'] : 3;
-        $first_link          = isset($data['first_link']) ? $data['first_link'] : '&nbsp;';
-        $last_link           = isset($data['last_link']) ? $data['last_link'] : '&nbsp;';
+        $pagination = new \nguyenanhung\Libraries\Pagination\Pagination\SimplePagination();
+        $pagination->setData($data);
 
-        /**
-         * Kiểm tra giá trị page_number truyền vào
-         * Nếu ko có giá trị hoặc giá trị = 0 -> set giá trị = 1
-         */
-        if (empty($current_page_number)) {
-            $current_page_number = 1;
-        }
-        // Tính tổng số page có
-        $total_page = ceil($total_item / $item_per_page);
-        if ($total_page <= 1) {
-            return null;
-        }
-        $output_html = '';
-        if ($current_page_number <> 1) {
-            $output_html .= '<li class="left"><a href="' . trim($page_link) . trim($page_suffix) . '" title="' . trim($page_title) . '">' . trim($first_link) . '</a></li>';
-        }
-        for ($page_number = 1; $page_number <= $total_page; $page_number++) {
-            if ($page_number < ($current_page_number - $begin) || $page_number > ($current_page_number + $end)) {
-                continue;
-            }
-            if ($page_number == $current_page_number) {
-                $output_html .= '<li class="selected"><a href="' . trim($page_link) . trim($page_prefix) . trim($page_number) . trim($page_suffix) . '" title="' . $page_title . ' trang ' . $page_number . '">' . $page_number . '</a></li>';
-            } else {
-                $output_html .= '<li><a href="' . trim($page_link) . trim($page_prefix) . trim($page_number) . trim($page_suffix) . '" title="' . $page_title . ' trang ' . $page_number . '">' . $page_number . '</a></li>';
-            }
-        }
-        unset($page_number);
-        if ($current_page_number <> $total_page) {
-            $output_html .= '<li class="right"><a href="' . trim($page_link) . trim($page_prefix) . trim($total_page) . trim($page_suffix) . '" title="' . trim($page_title) . ' - trang cuối">' . trim($last_link) . '</a></li>';
-        }
-
-        return $output_html;
+        return $pagination->build();
     }
 }

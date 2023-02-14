@@ -18,10 +18,11 @@
         }
     ],
     "require": {
-        "php": ">=5.4",
+        "php": ">=5.6",
         "ext-curl": "*",
         "ext-json": "*",
-        "ext-mbstring": "*"
+        "ext-mbstring": "*",
+        "nguyenanhung/html-helper": "^2.0 || ^1.0"
     },
     "require-dev": {
         "nguyenanhung/image": "^3.0 || ^2.0 || ^1.0"
