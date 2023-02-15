@@ -35,18 +35,18 @@ class ImageHelper extends BaseHelper
      */
     public static function googleGadgetsProxy($url = '', $width = 100, $height = null)
     {
-        $proxyUrl       = 'https://images1-focus-opensocial.googleusercontent.com/gadgets/proxy';
+        $proxyUrl = 'https://images1-focus-opensocial.googleusercontent.com/gadgets/proxy';
         $proxyContainer = 'focus';
-        $proxyRefresh   = 2592000;
+        $proxyRefresh = 2592000;
         // Start
-        $params             = array();
-        $params['url']      = $url;
+        $params = array();
+        $params['url'] = $url;
         $params['resize_w'] = $width;
         if ($height !== null) {
             $params['resize_h'] = $height;
         }
         $params['container'] = $proxyContainer;
-        $params['refresh']   = $proxyRefresh;
+        $params['refresh'] = $proxyRefresh;
         // Result URL
         $url = $proxyUrl . '?' . urldecode(http_build_query($params));
 
@@ -80,7 +80,7 @@ class ImageHelper extends BaseHelper
     public static function wordpressProxy($imageUrl = '', $server = 'i3')
     {
         $imageUrl = str_replace(array('https://', 'http://', '//'), '', $imageUrl);
-        $url      = 'https://' . trim($server) . '.wp.com/' . $imageUrl;
+        $url = 'https://' . trim($server) . '.wp.com/' . $imageUrl;
 
         return trim($url);
     }
@@ -119,9 +119,9 @@ class ImageHelper extends BaseHelper
     {
         try {
             if (function_exists('base_url') && function_exists('config_item') && class_exists('nguyenanhung\MyImage\ImageCache')) {
-                $tmpPath     = config_item('image_tmp_path');
+                $tmpPath = config_item('image_tmp_path');
                 $storagePath = config_item('base_storage_path');
-                $cache       = new \nguyenanhung\MyImage\ImageCache();
+                $cache = new \nguyenanhung\MyImage\ImageCache();
                 $cache->setTmpPath($tmpPath);
                 $cache->setUrlPath(base_url($storagePath));
                 $cache->setDefaultImage();
@@ -133,6 +133,61 @@ class ImageHelper extends BaseHelper
                 return $cache->thumbnail(config_item('image_path_tmp_default'), $width, $height);
             }
 
+            return $url;
+        } catch (Exception $e) {
+            if (function_exists('log_message')) {
+                log_message('error', "Error Code: " . $e->getCode() . " - File: " . $e->getFile() . " - Line: " . $e->getLine() . " - Message: " . $e->getMessage());
+            }
+
+            return $url;
+        }
+    }
+
+    /**
+     * Function createThumbnailWithCodeIgniterCache
+     *
+     * @param $url
+     * @param $width
+     * @param $height
+     *
+     * @return mixed|string
+     * @author   : 713uk13m <dev@nguyenanhung.com>
+     * @copyright: 713uk13m <dev@nguyenanhung.com>
+     * @time     : 16/02/2023 03:43
+     */
+    public static function createThumbnailWithCodeIgniterCache($url = '', $width = 100, $height = 100)
+    {
+        try {
+            if (function_exists('base_url') && function_exists('config_item')) {
+                $cacheKey = md5('createThumbnailWithCodeIgniterCache' . $url . $width . $height);
+                $cacheTtl = 15552000; // Cache 6 tháng
+                // Setup CodeIgniter
+                $CI =& get_instance();
+                $CI->load->driver('cache', array('adapter' => 'file', 'backup' => 'dummy'));
+                if (!$urlThumbnail = $CI->cache->get($cacheKey)) {
+                    $tmpPath = config_item('image_tmp_path');
+                    $storagePath = config_item('base_storage_path');
+                    $imageCache = new \nguyenanhung\MyImage\ImageCache();
+                    $imageCache->setTmpPath($tmpPath);
+                    $imageCache->setUrlPath(base_url($storagePath));
+                    $imageCache->setDefaultImage();
+                    $thumbnail = $imageCache->thumbnail($url, $width, $height);
+                    if (!empty($thumbnail)) {
+                        $urlThumbnail = $thumbnail;
+                    } else {
+                        $thumbnailTmp = $imageCache->thumbnail(config_item('image_path_tmp_default'), $width, $height);
+                        $urlThumbnail = $thumbnailTmp;
+                    }
+                    if ($urlThumbnail !== null) {
+                        $CI->cache->save($cacheKey, $urlThumbnail, $cacheTtl);
+                    }
+                }
+                if (!empty($urlThumbnail)) {
+                    return $urlThumbnail;
+                }
+
+                return $url;
+            }
             return $url;
         } catch (Exception $e) {
             if (function_exists('log_message')) {
