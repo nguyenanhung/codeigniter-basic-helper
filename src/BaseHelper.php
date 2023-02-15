@@ -19,11 +19,14 @@ namespace nguyenanhung\CodeIgniter\BasicHelper;
  */
 class BaseHelper
 {
-    const VERSION = '1.2.0';
-    const LAST_MODIFIED = '2023-02-15';
-    const AUTHOR_NAME = 'Hung Nguyen';
-    const AUTHOR_EMAIL = 'dev@nguyenanhung.com';
+    const VERSION = '1.2.1';
+    const LAST_MODIFIED = '2023-02-16';
     const PROJECT_NAME = 'CodeIgniter - Basic Helper';
+    const AUTHOR_NAME = 'Hung Nguyen';
+    const AUTHOR_FULL_NAME = 'Hung Nguyen';
+    const AUTHOR_EMAIL = 'dev@nguyenanhung.com';
+    const AUTHOR_WEB = 'https://nguyenanhung.com';
+    const AUTHOR_BLOG = 'https://blog.nguyenanhung.com';
 
     public function getVersion()
     {
@@ -33,5 +36,19 @@ class BaseHelper
     public static function version()
     {
         return self::VERSION;
+    }
+
+    public function getAuthor()
+    {
+        return array(
+            'name'            => self::AUTHOR_NAME,
+            'full_name'       => self::AUTHOR_FULL_NAME,
+            'email'           => self::AUTHOR_EMAIL,
+            'web'             => self::AUTHOR_WEB,
+            'blog'            => self::AUTHOR_BLOG,
+            'project_name'    => self::PROJECT_NAME,
+            'project_version' => self::VERSION,
+            'version_updated' => self::LAST_MODIFIED
+        );
     }
 }
