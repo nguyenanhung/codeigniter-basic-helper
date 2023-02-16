@@ -60,6 +60,7 @@ Trong trường hợp tích hợp gói này vào các framework, source khác ng
         + [Video Embed Helper](#video-embed-helper)
         + [XML Helper](#xml-helper)
         + [Simple RESTful Helper](#simple-restful-helper)
+        + [Simple Image Library](#simple-image-library)
     * [Maintainer & Supporter](#maintainer--supporter)
 
 ## 1 số helper được hỗ trợ sẵn
@@ -286,7 +287,7 @@ Hiện tại việc sử dụng nanoid đang là xu hướng so với uuid truy�
 - [x] Helper Function: `tags_snippets`
 - [x] Helper Function: `tags_clean`
 - [x] Helper Function: `highlight_keyword_phrase` - Highlights a keyword within a text string
-  - [x] Helper Function: `format_keyword_highlight_phrase` - Format Keyword for Function `highlight_keyword_phrase`
+- [x] Helper Function: `format_keyword_highlight_phrase` - Format Keyword for Function `highlight_keyword_phrase`
 
 ### TinyUrl Helper
 
@@ -336,6 +337,17 @@ Hiện tại việc sử dụng nanoid đang là xu hướng so với uuid truy�
 Class cung cấp phương thức nhanh gọn để gọi tới các API tuân chuẩn RESTful
 
 - [x] Execute request to RESTful API Service: `SimpleRestful::execute($url, $type, $data)`
+
+### Simple Image Library
+
+Class cung cấp 1 số phương thức giúp xử lý hình ảnh
+
+- [x] Method `googleGadgetsProxy` - Tạo URL Resize sử dụng Google Gadgets Proxy
+- [x] Method `googleGadgetsProxyDnsPrefetch` - Setup DNS Prefetch cho Google Gadgets Proxy, nhằm tăng tốc độ truy vấn
+- [x] Method `wordpressProxy` - Tạo URL Resize sử dụng WordPress Proxy
+- [x] Method `wordpressProxyDnsPrefetch` - Setup DNS Prefetch cho WordPress Proxy, nhằm tăng tốc độ truy vấn
+- [x] Method `createThumbnail` - Hàm tạo Thumbnail, để sử dụng cần cài thêm gói `nguyenanhung/image`
+- [x] Method `createThumbnailWithCodeIgniterCache` - Hàm tạo Thumbnail kết hợp thư viện Cache của CodeIgniter, để sử dụng cần cài thêm gói `nguyenanhung/image`
 
 ## Maintainer & Supporter
 
