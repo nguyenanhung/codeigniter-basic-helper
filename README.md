@@ -285,7 +285,8 @@ Hiện tại việc sử dụng nanoid đang là xu hướng so với uuid truy�
 - [x] Helper Function: `searchs_snippets`
 - [x] Helper Function: `tags_snippets`
 - [x] Helper Function: `tags_clean`
-- [x] Helper Function: `highlight_keyword_phrase` Highlights a keyword within a text string
+- [x] Helper Function: `highlight_keyword_phrase` - Highlights a keyword within a text string
+  - [x] Helper Function: `format_keyword_highlight_phrase` - Format Keyword for Function `highlight_keyword_phrase`
 
 ### TinyUrl Helper
 
