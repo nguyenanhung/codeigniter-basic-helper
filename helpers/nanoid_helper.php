@@ -26,6 +26,6 @@ if (!function_exists('randomNanoId')) {
             return $client->generateId($size);
         }
 
-        return uniqid('HungNG_', true);
+        return uniqid('Bear_', true);
     }
 }

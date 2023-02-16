@@ -11,52 +11,39 @@ if (!function_exists('convert_string_utf8_to_vietnamese')) {
     /**
      * Function convert_string_utf8_to_vietnamese
      *
-     * @param string $input_string
+     * @param $str
      *
-     * @return string|string[]
+     * @return array|string|string[]
      * @author   : 713uk13m <dev@nguyenanhung.com>
      * @copyright: 713uk13m <dev@nguyenanhung.com>
-     * @time     : 12/10/2020 36:04
+     * @time     : 16/02/2023 58:33
      */
-    function convert_string_utf8_to_vietnamese($input_string = '')
+    function convert_string_utf8_to_vietnamese($str = '')
     {
-        $str = $input_string;
+        $str = trim($str);
         if ($str !== '') {
-            $str = str_replace(
-                array('&Aacute;', '&aacute;', '&Acirc;', '&acirc;', '&acute;', '&AElig;', '&aelig;', '&Agrave;', '&agrave;', '&alefsym;', '&Alpha;', '&alpha;', '&amp;', '&and;', '&ang;', '&Aring;', '&aring;', '&asymp;', '&Atilde;',
-                      '&atilde;', '&Auml;', '&auml;', '&bdquo;', '&Beta;', '&beta;', '&brvbar;', '&bull;', '&cap;', '&Ccedil;', '&ccedil;', '&cedil;', '&cent;', '&Chi;', '&chi;', '&circ;', '&clubs;', '&cong;', '&copy;', '&crarr;',
-                      '&cup;', '&curren;', '&dagger;', '&Dagger;', '&darr;', '&dArr;', '&deg;', '&Delta;', '&delta;', '&diams;', '&divide;', '&Eacute;', '&eacute;', '&Ecirc;', '&ecirc;', '&Egrave;', '&egrave;', '&empty;', '&emsp;',
-                      '&ensp;', '&Epsilon;', '&epsilon;', '&equiv;', '&Eta;', '&eta;', '&ETH;', '&eth;', '&Euml;', '&euml;', '&euro;', '&exist;', '&fnof;', '&forall;', '&frac12;', '&frac14;', '&frac34;', '&frasl;', '&Gamma;',
-                      '&gamma;', '&ge;', '&harr;', '&hArr;', '&hearts;', '&hellip;', '&Iacute;', '&iacute;', '&Icirc;', '&icirc;', '&iexcl;', '&Igrave;', '&igrave;', '&image;', '&infin;', '&int;', '&Iota;', '&iota;', '&iquest;',
-                      '&isin;', '&Iuml;', '&iuml;', '&Kappa;', '&kappa;', '&Lambda;', '&lambda;', '&lang;', '&laquo;', '&larr;', '&lArr;', '&lceil;', '&ldquo;', '&le;', '&lfloor;', '&lowast;', '&loz;', '&lrm;', '&lsaquo;', '&lsquo;',
-                      '&macr;', '&mdash;', '&micro;', '&middot;', '&minus;', '&Mu;', '&mu;', '&nabla;', '&nbsp;', '&ndash;', '&ne;', '&ni;', '&not;', '&notin;', '&nsub;', '&Ntilde;', '&ntilde;', '&Nu;', '&nu;', '&Oacute;', '&oacute;',
-                      '&Ocirc;', '&ocirc;', '&OElig;', '&oelig;', '&Ograve;', '&ograve;', '&oline;',
-                      '&Omega;', '&omega;', '&Omicron;', '&omicron;', '&oplus;', '&or;', '&ordf;', '&ordm;', '&Oslash;', '&oslash;', '&Otilde;', '&otilde;', '&otimes;', '&Ouml;', '&ouml;', '&para;', '&part;', '&permil;', '&perp;',
-                      '&Phi;', '&phi;', '&Pi;', '&pi;', '&piv;', '&plusmn;', '&pound;', '&prime;', '&Prime;', '&prod;', '&prop;', '&Psi;', '&psi;', '&radic;', '&rang;', '&raquo;', '&rarr;', '&rArr;', '&rceil;', '&rdquo;', '&real;',
-                      '&reg;', '&rfloor;', '&Rho;', '&rho;', '&rlm;', '&rsaquo;', '&rsquo;', '&sbquo;', '&Scaron;', '&scaron;', '&sdot;', '&sect;', '&shy;', '&Sigma;', '&sigma;', '&sigmaf;', '&sim;', '&spades;', '&sub;', '&sube;',
-                      '&sum;', '&sup1;', '&sup2;', '&sup3;',
-                      '&sup;', '&supe;', '&szlig;', '&Tau;', '&tau;', '&there4;', '&Theta;', '&theta;', '&thetasym;', '&thinsp;', '&THORN;', '&thorn;', '&tilde;', '&times;', '&trade;', '&Uacute;', '&uacute;', '&uarr;', '&uArr;',
-                      '&Ucirc;', '&ucirc;', '&Ugrave;', '&ugrave;', '&uml;', '&upsih;', '&Upsilon;', '&upsilon;', '&Uuml;', '&uuml;', '&weierp;', '&Xi;',
-                      '&xi;', '&Yacute;', '&yacute;', '&yen;', '&yuml;', '&Yuml;', '&Zeta;', '&zeta;', '&zwj;', '&zwnj;', '&gt;', '&lt;', '&quot;'),
-                array('Á', 'á', 'Â', 'â', '´', 'Æ', 'æ', 'À', 'à', 'ℵ', 'Α', 'α', '&', '∧', '∠', 'Å',
-                      'å', '≈', 'Ã', 'ã', 'Ä', 'ä', '„', 'Β', 'β', '¦', '•', '∩', 'Ç', 'ç', '¸', '¢',
-                      'Χ', 'χ', 'ˆ', '♣', '≅', '©', '↵', '∪', '¤', '†', '‡', '↓', '⇓', '°', 'Δ', 'δ',
-                      '♦', '÷', 'É', 'é', 'Ê', 'ê', 'È', 'è', '∅', ' ', ' ', 'Ε', 'ε', '≡', 'Η', 'η',
-                      'Ð', 'ð', 'Ë', 'ë', '€', '∃', 'ƒ', '∀', '½', '¼', '¾', '⁄', 'Γ', 'γ', '≥', '↔',
-                      '⇔', '♥', '…', 'Í', 'í', 'Î', 'î', '¡', 'Ì', 'ì', 'ℑ', '∞', '∫', 'Ι', 'ι', '¿',
-                      '∈', 'Ï', 'ï', 'Κ', 'κ', 'Λ', 'λ', '〈', '«', '←', '⇐', '⌈', '“', '≤', '⌊', '∗',
-                      '◊', '‎', '‹', '‘', '¯', '—', 'µ', '·', '−', 'Μ', 'μ', '∇', ' ', '–', '≠', '∋',
-                      '¬', '∉', '⊄', 'Ñ', 'ñ', 'Ν', 'ν', 'Ó', 'ó', 'Ô', 'ô', 'Œ',
-                      'œ', 'Ò', 'ò', '‾', 'Ω', 'ω', 'Ο', 'ο', '⊕', '∨', 'ª', 'º', 'Ø', 'ø', 'Õ', 'õ',
-                      '⊗', 'Ö', 'ö', '¶', '∂', '‰', '⊥', 'Φ', 'φ', 'Π', 'π', 'ϖ', '±', '£', '′', '″',
-                      '∏', '∝', 'Ψ', 'ψ', '√', '〉', '»', '→', '⇒', '⌉', '”', 'ℜ', '®', '⌋', 'Ρ', 'ρ',
-                      '‏', '›', '’', '‚', 'Š', 'š', '⋅', '§', '­', 'Σ', 'σ', 'ς', '∼', '♠', '⊂', '⊆',
-                      '∑', '¹', '²', '³', '⊃', '⊇', 'ß', 'Τ', 'τ', '∴', 'Θ', 'θ', 'ϑ', ' ', 'Þ', 'þ',
-                      '˜', '×', '™', 'Ú', 'ú', '↑', '⇑', 'Û', 'û', 'Ù', 'ù', '¨', 'ϒ', 'Υ', 'υ', 'Ü',
-                      'ü', '℘', 'Ξ', 'ξ', 'Ý', 'ý', '¥', 'ÿ', 'Ÿ', 'Ζ',
-                      'ζ', '‍', '‌', '>', '<', '"'),
-                $str
-            );
+            $str = str_replace(array(
+                                   '&Aacute;', '&aacute;', '&Acirc;', '&acirc;', '&acute;', '&AElig;', '&aelig;', '&Agrave;', '&agrave;', '&alefsym;', '&Alpha;', '&alpha;', '&amp;', '&and;', '&ang;', '&Aring;', '&aring;', '&asymp;', '&Atilde;',
+                                   '&atilde;', '&Auml;', '&auml;', '&bdquo;', '&Beta;', '&beta;', '&brvbar;', '&bull;', '&cap;', '&Ccedil;', '&ccedil;', '&cedil;', '&cent;', '&Chi;', '&chi;', '&circ;', '&clubs;', '&cong;', '&copy;', '&crarr;',
+                                   '&cup;', '&curren;', '&dagger;', '&Dagger;', '&darr;', '&dArr;', '&deg;', '&Delta;', '&delta;', '&diams;', '&divide;', '&Eacute;', '&eacute;', '&Ecirc;', '&ecirc;', '&Egrave;', '&egrave;', '&empty;', '&emsp;',
+                                   '&ensp;', '&Epsilon;', '&epsilon;', '&equiv;', '&Eta;', '&eta;', '&ETH;', '&eth;', '&Euml;', '&euml;', '&euro;', '&exist;', '&fnof;', '&forall;', '&frac12;', '&frac14;', '&frac34;', '&frasl;', '&Gamma;', '&gamma;',
+                                   '&ge;', '&harr;', '&hArr;', '&hearts;', '&hellip;', '&Iacute;', '&iacute;', '&Icirc;', '&icirc;', '&iexcl;', '&Igrave;', '&igrave;', '&image;', '&infin;', '&int;', '&Iota;', '&iota;', '&iquest;', '&isin;', '&Iuml;',
+                                   '&iuml;', '&Kappa;', '&kappa;', '&Lambda;', '&lambda;', '&lang;', '&laquo;', '&larr;', '&lArr;', '&lceil;', '&ldquo;', '&le;', '&lfloor;', '&lowast;', '&loz;', '&lrm;', '&lsaquo;', '&lsquo;', '&macr;', '&mdash;',
+                                   '&micro;', '&middot;', '&minus;', '&Mu;', '&mu;', '&nabla;', '&nbsp;', '&ndash;', '&ne;', '&ni;', '&not;', '&notin;', '&nsub;', '&Ntilde;', '&ntilde;', '&Nu;', '&nu;', '&Oacute;', '&oacute;', '&Ocirc;', '&ocirc;',
+                                   '&OElig;', '&oelig;', '&Ograve;', '&ograve;', '&oline;', '&Omega;', '&omega;', '&Omicron;', '&omicron;', '&oplus;', '&or;', '&ordf;', '&ordm;', '&Oslash;', '&oslash;', '&Otilde;', '&otilde;', '&otimes;', '&Ouml;',
+                                   '&ouml;', '&para;', '&part;', '&permil;', '&perp;', '&Phi;', '&phi;', '&Pi;', '&pi;', '&piv;', '&plusmn;', '&pound;', '&prime;', '&Prime;', '&prod;', '&prop;', '&Psi;', '&psi;', '&radic;', '&rang;', '&raquo;',
+                                   '&rarr;', '&rArr;', '&rceil;', '&rdquo;', '&real;', '&reg;', '&rfloor;', '&Rho;', '&rho;', '&rlm;', '&rsaquo;', '&rsquo;', '&sbquo;', '&Scaron;', '&scaron;', '&sdot;', '&sect;', '&shy;', '&Sigma;', '&sigma;',
+                                   '&sigmaf;', '&sim;', '&spades;', '&sub;', '&sube;', '&sum;', '&sup1;', '&sup2;', '&sup3;', '&sup;', '&supe;', '&szlig;', '&Tau;', '&tau;', '&there4;', '&Theta;', '&theta;', '&thetasym;', '&thinsp;', '&THORN;',
+                                   '&thorn;', '&tilde;', '&times;', '&trade;', '&Uacute;', '&uacute;', '&uarr;', '&uArr;', '&Ucirc;', '&ucirc;', '&Ugrave;', '&ugrave;', '&uml;', '&upsih;', '&Upsilon;', '&upsilon;', '&Uuml;', '&uuml;', '&weierp;',
+                                   '&Xi;', '&xi;', '&Yacute;', '&yacute;', '&yen;', '&yuml;', '&Yuml;', '&Zeta;', '&zeta;', '&zwj;', '&zwnj;', '&gt;', '&lt;', '&quot;'
+                               ), array(
+                                   'Á', 'á', 'Â', 'â', '´', 'Æ', 'æ', 'À', 'à', 'ℵ', 'Α', 'α', '&', '∧', '∠', 'Å', 'å', '≈', 'Ã', 'ã', 'Ä', 'ä', '„', 'Β', 'β', '¦', '•', '∩', 'Ç', 'ç', '¸', '¢', 'Χ', 'χ', 'ˆ', '♣', '≅', '©', '↵', '∪', '¤', '†', '‡',
+                                   '↓', '⇓', '°', 'Δ', 'δ', '♦', '÷', 'É', 'é', 'Ê', 'ê', 'È', 'è', '∅', ' ', ' ', 'Ε', 'ε', '≡', 'Η', 'η', 'Ð', 'ð', 'Ë', 'ë', '€', '∃', 'ƒ', '∀', '½', '¼', '¾', '⁄', 'Γ', 'γ', '≥', '↔', '⇔', '♥', '…', 'Í', 'í', 'Î',
+                                   'î', '¡', 'Ì', 'ì', 'ℑ', '∞', '∫', 'Ι', 'ι', '¿', '∈', 'Ï', 'ï', 'Κ', 'κ', 'Λ', 'λ', '〈', '«', '←', '⇐', '⌈', '“', '≤', '⌊', '∗', '◊', '‎', '‹', '‘', '¯', '—', 'µ', '·', '−', 'Μ', 'μ', '∇', ' ', '–', '≠', '∋', '¬',
+                                   '∉', '⊄', 'Ñ', 'ñ', 'Ν', 'ν', 'Ó', 'ó', 'Ô', 'ô', 'Œ', 'œ', 'Ò', 'ò', '‾', 'Ω', 'ω', 'Ο', 'ο', '⊕', '∨', 'ª', 'º', 'Ø', 'ø', 'Õ', 'õ', '⊗', 'Ö', 'ö', '¶', '∂', '‰', '⊥', 'Φ', 'φ', 'Π', 'π', 'ϖ', '±', '£', '′', '″',
+                                   '∏', '∝', 'Ψ', 'ψ', '√', '〉', '»', '→', '⇒', '⌉', '”', 'ℜ', '®', '⌋', 'Ρ', 'ρ', '‏', '›', '’', '‚', 'Š', 'š', '⋅', '§', '­', 'Σ', 'σ', 'ς', '∼', '♠', '⊂', '⊆', '∑', '¹', '²', '³', '⊃', '⊇', 'ß', 'Τ', 'τ', '∴', 'Θ',
+                                   'θ', 'ϑ', ' ', 'Þ', 'þ', '˜', '×', '™', 'Ú', 'ú', '↑', '⇑', 'Û', 'û', 'Ù', 'ù', '¨', 'ϒ', 'Υ', 'υ', 'Ü', 'ü', '℘', 'Ξ', 'ξ', 'Ý', 'ý', '¥', 'ÿ', 'Ÿ', 'Ζ', 'ζ', '‍', '‌', '>', '<', '"'
+                               ), $str);
         }
 
         return $str;
@@ -66,21 +53,16 @@ if (!function_exists('clean_allowfullscreen')) {
     /**
      * Function clean_allowfullscreen
      *
-     * @param string $att
+     * @param $att
      *
-     * @return array|string|string[]
+     * @return array|mixed|string|string[]
      * @author   : 713uk13m <dev@nguyenanhung.com>
      * @copyright: 713uk13m <dev@nguyenanhung.com>
-     * @time     : 09/11/2021 02:16
+     * @time     : 16/02/2023 55:46
      */
     function clean_allowfullscreen($att = '')
     {
-        $output = $att;
-        if ($output !== '') {
-            $output = str_replace(array('allowfullscreen="undefined"', 'allowfullscreen="yes"', 'allowfullscreen="true"'), 'allowfullscreen', $output);
-        }
-
-        return $output;
+        return clean_youtube_allow_fullscreen($att);
     }
 }
 if (!function_exists('clean_text')) {
@@ -96,7 +78,7 @@ if (!function_exists('clean_text')) {
      */
     function clean_text($text = '')
     {
-        $output = $text;
+        $output = trim($text);
         if ($output !== '') {
             $output = convert_string_utf8_to_vietnamese($output);
             $output = clean_allowfullscreen($output);
@@ -119,7 +101,7 @@ if (!function_exists('clean_title')) {
      */
     function clean_title($text = '')
     {
-        $output = $text;
+        $output = trim($text);
         if ($output !== '') {
             $output = clean_text($output);
             $output = strip_tags($output);
@@ -148,14 +130,12 @@ if (!function_exists('clean_text_mobile')) {
         $output = $att;
         if ($output !== '') {
             $output = clean_text($output);
-            $output = str_replace(
-                array('width: 100px', 'width: 200px', 'width: 300px', 'width: 400px', 'width: 420px', 'width: 450px', 'width: 480px', 'width: 500px', 'width: 520px', 'width: 530px', 'width: 550px', 'width: 560px', 'width: 580px', 'width: 600px',
-                      'width: 620px', 'width: 630px', 'width: 640px', 'width: 650px', 'width: 660px', 'width: 670px', 'width: 680px', 'width: 690px', 'width: 700px', 'width: 720px', 'width: 730px', 'width: 740px', 'width: 750px', 'width: 760px',
-                      'width: 770px', 'width: 780px', 'width: 790px', 'width: 800px', 'width: 820px', 'width: 830px', 'width: 840px', 'width: 850px', 'width: 860px', 'width: 870px', 'width: 880px', 'width: 890px', 'width: 890px', 'width: 900px',
-                      'width: 920px', 'width: 930px', 'width: 940px', 'width: 950px', 'width: 960px', 'width: 970px', 'width: 980px', 'width: 990px'),
-                'width: 100%',
-                $output
-            );
+            $output = str_replace(array(
+                                      'width: 100px', 'width: 200px', 'width: 300px', 'width: 400px', 'width: 420px', 'width: 450px', 'width: 480px', 'width: 500px', 'width: 520px', 'width: 530px', 'width: 550px', 'width: 560px', 'width: 580px',
+                                      'width: 600px', 'width: 620px', 'width: 630px', 'width: 640px', 'width: 650px', 'width: 660px', 'width: 670px', 'width: 680px', 'width: 690px', 'width: 700px', 'width: 720px', 'width: 730px', 'width: 740px',
+                                      'width: 750px', 'width: 760px', 'width: 770px', 'width: 780px', 'width: 790px', 'width: 800px', 'width: 820px', 'width: 830px', 'width: 840px', 'width: 850px', 'width: 860px', 'width: 870px', 'width: 880px',
+                                      'width: 890px', 'width: 890px', 'width: 900px', 'width: 920px', 'width: 930px', 'width: 940px', 'width: 950px', 'width: 960px', 'width: 970px', 'width: 980px', 'width: 990px'
+                                  ), 'width: 100%', $output);
         }
 
         return $output;
@@ -292,13 +272,9 @@ if (!function_exists('highlight_keyword_phrase')) {
     function highlight_keyword_phrase($string, $keyword, $tag_open = '<mark>', $tag_close = '</mark>')
     {
         $unwanted_array = array(
-            "Á" => "á", "À" => "à", "Ả" => "ả", "Ã" => "ã", "Ạ" => "ạ", "Ă" => "ă", "Ắ" => "ắ", "Ằ" => "ằ",
-            "Ặ" => "ặ", "Â" => "â", "ẩ" => "ẩ", "Ầ" => "ầ", "Ậ" => "Ậ", "Ẫ" => "ẫ", "Ấ" => "ấ", "Ê" => "ê", "Ế" => "ế",
-            "Ễ" => "ễ", "Ề" => "ề", "Ể" => "ể", "Ệ" => "Ệ", "Í" => "í", "Ị" => "ị", "Ỉ" => "ỉ", "Ì" => "ì", "Ĩ" => "ĩ",
-            "Ô" => "ô", "Ồ" => "ồ", "Ổ" => "ổ", "Ộ" => "ộ", "Ố" => "Ố", "Ỗ" => "ỗ", "Ò" => "ò", "Ó" => "ó", "Ỏ" => "ỏ",
-            "Ọ" => "ọ", "Õ" => "õ", "Ơ" => "ơ", "Ở" => "ở", "Ờ" => "ờ", "Ớ" => "ớ", "Ợ" => "ợ", "Ỡ" => "ỡ", "Ũ" => "u",
-            "Ù" => "ù", "Ú" => "ú", "Ủ" => "ủ", "Ụ" => "ụ", "Ư" => "ư", "Ử" => "ử", "Ữ" => "ữ", "Ừ" => "ừ",
-            "Ứ" => "Ứ", "Ỷ" => "ỷ", "Ý" => "ý", "Ỳ" => "ỳ", "Ỵ" => "y", "Ỹ" => "ỹ"
+            "Á" => "á", "À" => "à", "Ả" => "ả", "Ã" => "ã", "Ạ" => "ạ", "Ă" => "ă", "Ắ" => "ắ", "Ằ" => "ằ", "Ặ" => "ặ", "Â" => "â", "ẩ" => "ẩ", "Ầ" => "ầ", "Ậ" => "Ậ", "Ẫ" => "ẫ", "Ấ" => "ấ", "Ê" => "ê", "Ế" => "ế", "Ễ" => "ễ", "Ề" => "ề",
+            "Ể" => "ể", "Ệ" => "Ệ", "Í" => "í", "Ị" => "ị", "Ỉ" => "ỉ", "Ì" => "ì", "Ĩ" => "ĩ", "Ô" => "ô", "Ồ" => "ồ", "Ổ" => "ổ", "Ộ" => "ộ", "Ố" => "Ố", "Ỗ" => "ỗ", "Ò" => "ò", "Ó" => "ó", "Ỏ" => "ỏ", "Ọ" => "ọ", "Õ" => "õ", "Ơ" => "ơ",
+            "Ở" => "ở", "Ờ" => "ờ", "Ớ" => "ớ", "Ợ" => "ợ", "Ỡ" => "ỡ", "Ũ" => "u", "Ù" => "ù", "Ú" => "ú", "Ủ" => "ủ", "Ụ" => "ụ", "Ư" => "ư", "Ử" => "ử", "Ữ" => "ữ", "Ừ" => "ừ", "Ứ" => "Ứ", "Ỷ" => "ỷ", "Ý" => "ý", "Ỳ" => "ỳ", "Ỵ" => "y", "Ỹ" => "ỹ"
             //    "ế"=>"e","ắ"=>"a","V"=>"v"
         );
 
@@ -327,5 +303,39 @@ if (!function_exists('highlight_keyword_phrase')) {
         }
 
         return $string;
+    }
+}
+if (!function_exists('format_keyword_highlight_phrase')) {
+    /**
+     * Function format_keyword_highlight_phrase
+     *
+     * @param $keyword
+     * @param $page
+     *
+     * @return mixed|string
+     * @author   : 713uk13m <dev@nguyenanhung.com>
+     * @copyright: 713uk13m <dev@nguyenanhung.com>
+     * @time     : 16/02/2023 55:02
+     */
+    function format_keyword_highlight_phrase($keyword, $page)
+    {
+        $keyword = trim($keyword);
+        if (empty($keyword)) {
+            return '';
+        }
+        $keyword = explode(" ", $keyword);
+        // nếu page khác null hoặc 1
+        if (count($keyword) > 1) {
+            if (strlen($keyword[count($keyword) - 1]) === 1) {
+                $keyword[count($keyword) - 1] = "";
+            }
+            $keyword = implode('%', $keyword);
+        } elseif ($page !== null || $page >= 1) {
+            $keyword = $keyword[0];
+        } else {
+            $keyword = "%" . $keyword[0];
+        }
+
+        return $keyword;
     }
 }

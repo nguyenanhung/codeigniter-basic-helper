@@ -47,3 +47,14 @@ if (!function_exists('convert_video_embed_youtube')) {
         return trim($youtube);
     }
 }
+if (!function_exists('clean_youtube_allow_fullscreen')) {
+    function clean_youtube_allow_fullscreen($youtube)
+    {
+        $output = $youtube;
+        if ($output !== '') {
+            $output = str_replace(array('allowfullscreen="undefined"', 'allowfullscreen="yes"', 'allowfullscreen="true"'), 'allowfullscreen', $output);
+        }
+
+        return $output;
+    }
+}
