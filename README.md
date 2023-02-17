@@ -60,6 +60,7 @@ Trong trường hợp tích hợp gói này vào các framework, source khác ng
         + [Video Embed Helper](#video-embed-helper)
         + [XML Helper](#xml-helper)
         + [Simple RESTful Helper](#simple-restful-helper)
+        + [Simple cURL Helper](#simple-curl-helper)
         + [Simple Image Library](#simple-image-library)
     * [Maintainer & Supporter](#maintainer--supporter)
 
@@ -337,6 +338,22 @@ Hiện tại việc sử dụng nanoid đang là xu hướng so với uuid truy�
 Class cung cấp phương thức nhanh gọn để gọi tới các API tuân chuẩn RESTful
 
 - [x] Execute request to RESTful API Service: `SimpleRestful::execute($url, $type, $data)`
+
+### Simple cURL Helper
+
+Class cung cấp phương thức nhanh gọn để gọi để thực hiện các request ra bên ngoài, sử dụng Curl đơn giản, ví dụ
+```php
+<?php
+use nguyenanhung\CodeIgniter\BasicHelper\SimpleCurl;
+
+$curl = new SimpleCurl();
+$curl->setUrl('https://example.com')
+    ->setPost(array('field1'=>'value1'))
+    ->createCurl();
+
+$response = $curl->getResponse();
+
+```
 
 ### Simple Image Library
 
