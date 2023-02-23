@@ -251,7 +251,7 @@ if (!function_exists('str_limit_words')) {
     {
         $arrayWords = explode(' ', $string);
 
-        if (sizeof($arrayWords) <= $limit) {
+        if (count($arrayWords) <= $limit) {
             return $string;
         }
 

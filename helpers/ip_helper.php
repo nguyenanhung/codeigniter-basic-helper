@@ -44,7 +44,7 @@ if (!function_exists('getIPAddress')) {
                 }
             }
         }
-        if ($_SERVER['SERVER_NAME'] === 'localhost') {
+        if (isset($_SERVER['SERVER_NAME']) && $_SERVER['SERVER_NAME'] === 'localhost') {
             return '127.0.0.1';
         }
 
@@ -77,7 +77,7 @@ if (!function_exists('getIPAddressByHaProxy')) {
                 }
             }
         }
-        if ($_SERVER['SERVER_NAME'] === 'localhost') {
+        if (isset($_SERVER['SERVER_NAME']) && $_SERVER['SERVER_NAME'] === 'localhost') {
             return '127.0.0.1';
         }
 
