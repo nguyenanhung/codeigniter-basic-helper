@@ -5,7 +5,12 @@
     "keywords": [
         "php",
         "codeigniter",
-        "helper"
+        "codeigniter3",
+        "codeigniter-helper",
+        "codeigniter-library",
+        "codeigniter-startapp",
+        "helper",
+        "library"
     ],
     "homepage": "https://github.com/nguyenanhung/codeigniter-basic-helper",
     "license": "GPL-3.0",
