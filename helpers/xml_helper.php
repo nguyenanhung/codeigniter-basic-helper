@@ -163,3 +163,28 @@ if (!function_exists('xml_get_value')) {
         return ($f <= $l) ? substr($xml, $f, $l - $f) : "";
     }
 }
+if (!function_exists('xml_to_json')) {
+    /**
+     * Function xml_to_json
+     *
+     * Convert XML string to JSON
+     *
+     * @param $fileContents
+     *
+     * @return false|string|null
+     * @author   : 713uk13m <dev@nguyenanhung.com>
+     * @copyright: 713uk13m <dev@nguyenanhung.com>
+     * @time     : 24/02/2023 26:27
+     */
+    function xml_to_json($fileContents)
+    {
+        if (empty($fileContents)) {
+            return null;
+        }
+        $fileContents = str_replace(array("\n", "\r", "\t"), '', $fileContents);
+        $fileContents = trim(str_replace('"', "'", $fileContents));
+        $simpleXml = simplexml_load_string($fileContents);
+
+        return json_encode($simpleXml);
+    }
+}

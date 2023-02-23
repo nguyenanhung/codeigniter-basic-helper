@@ -38,6 +38,7 @@ Trong trường hợp tích hợp gói này vào các framework, source khác ng
         + [Escape Helper](#escape-helper)
         + [Facebook Helper](#facebook-helper)
         + [File Helper](#file-helper)
+        + [Form Helper](#form-helper)
         + [Gravatar Helper](#gravatar-helper)
         + [HTML Helper](#html-helper)
         + [Image Helper](#image-helper)
@@ -137,6 +138,9 @@ Dưới đây là danh sách các Helper được hỗ trợ trong bộ thư vi�
 - [x] Helper Function: `getZuluTime` - Hàm lấy ra tham số date theo Zulu time
 - [x] Helper Function: `iso_8601_utc_time` - tương tự hàm getZuluTime
 - [x] Helper Function: `getYesterday` - Hàm ấy ra ngày trước đó liền kề
+- [x] Helper Function: `smart_bear_date_range` - Lấy ra 1 mảng dữ liệu chứa các ngày theo khoảng cách
+- [x] Helper Function: `format_datetime_vn` - Format lại thông tin ngày theo kiểu Việt Nam
+- [x] Helper Function: `get_start_and_end_date_for_week` - Lấy ra ngày đầu và ngày cuối của 1 tuần
 
 ### Debug Helper
 
@@ -174,6 +178,10 @@ Các hàm này dùng debug
 - [x] Helper Function: `scan_folder` - Quét và lấy ra danh sách các thông tin dữ liệu trong folder
 - [x] Helper Function: `getAllFileSizeInFolder` - Get all File size in Folder
 - [x] Helper Function: `getAllFileInFolder` - Get all File in Folder
+
+### Form Helper
+
+- [x] Helper Function: `join_value_multiple` - Join Value Multiple
 
 ### Gravatar Helper
 
@@ -247,6 +255,7 @@ Hiện tại việc sử dụng nanoid đang là xu hướng so với uuid truy�
 - [x] Helper Function: `sendSimpleGetRequest` - Tiến hành thực thi 1 request đơn giản sử dụng CURL với phương thức GET
 - [x] Helper Function: `sendSimpleRestfulExecuteRequest` - Thực thi 1 simple request tới Restful API sử dụng CURL
 - [x] Helper Function: `bear_post_async_request` - Make an asynchronous POST request - Thực hiện yêu cầu POST không đồng bộ trong nội bộ site mà không cần chờ phản hồi => Không ảnh hưởng, không trì hoãn tiến trình đang chạy
+- [x] Helper Function: `get_http_response_code` - Get HTTP Response Code with `get_headers`
 
 ### Security Helper
 
@@ -332,6 +341,7 @@ Hiện tại việc sử dụng nanoid đang là xu hướng so với uuid truy�
 - [x] Helper Function: `parse_sitemap_index` - Hàm hỗ trợ render ra nội dung cho Sitemap Index
 - [x] Helper Function: `xml_convert` - Convert Reserved XML characters to Entities
 - [x] Helper Function: `xml_get_value` - Get Value from XML string
+- [x] Helper Function: `xml_to_json` - Convert XML string to JSON
 
 ### Simple RESTful Helper
 
@@ -342,6 +352,7 @@ Class cung cấp phương thức nhanh gọn để gọi tới các API tuân ch
 ### Simple cURL Helper
 
 Class cung cấp phương thức nhanh gọn để gọi để thực hiện các request ra bên ngoài, sử dụng Curl đơn giản, ví dụ
+
 ```php
 <?php
 use nguyenanhung\CodeIgniter\BasicHelper\SimpleCurl;

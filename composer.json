@@ -52,6 +52,7 @@
             "helpers/escape_helper.php",
             "helpers/facebook_helper.php",
             "helpers/file_helper.php",
+            "helpers/form_helper.php",
             "helpers/gravatar_helper.php",
             "helpers/html_helper.php",
             "helpers/image_helper.php",
