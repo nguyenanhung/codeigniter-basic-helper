@@ -221,12 +221,12 @@ if (!function_exists('boDauTiengViet')) {
     /**
      * Function boDauTiengViet - Tính năng chả khác mịa gì codau2khongdau()
      *
-     * @param string $input_string
+     * @param $input_string
      *
      * @return array|mixed|string|string[]
      * @author   : 713uk13m <dev@nguyenanhung.com>
      * @copyright: 713uk13m <dev@nguyenanhung.com>
-     * @time     : 30/07/2022 29:01
+     * @time     : 23/02/2023 56:11
      */
     function boDauTiengViet($input_string = '')
     {

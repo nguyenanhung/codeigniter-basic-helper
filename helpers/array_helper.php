@@ -108,7 +108,7 @@ if (!function_exists('removeArrayElementWithValue')) {
     function removeArrayElementWithValue($array, $key, $value)
     {
         foreach ($array as $subKey => $subArray) {
-            if (isset($subArray[$key]) && $subArray[$key] == $value) {
+            if (isset($subArray[$key]) && $subArray[$key] === $value) {
                 unset($array[$subKey]);
             }
         }
@@ -139,10 +139,8 @@ if (!function_exists('arrayRecursiveDiff')) {
                     if (count($aRecursiveDiff)) {
                         $aReturn[$mKey] = $aRecursiveDiff;
                     }
-                } else {
-                    if ($mValue != $aArray2[$mKey]) {
-                        $aReturn[$mKey] = $mValue;
-                    }
+                } elseif ($mValue !== $aArray2[$mKey]) {
+                    $aReturn[$mKey] = $mValue;
                 }
             } else {
                 $aReturn[$mKey] = $mValue;
@@ -261,7 +259,7 @@ if (!function_exists('arrayLastElement')) {
      */
     function arrayLastElement($array)
     {
-        return $array[array_keys($array)[sizeof($array) - 1]];
+        return $array[array_keys($array)[count($array) - 1]];
     }
 }
 if (!function_exists('arrayGetElement')) {
@@ -304,14 +302,14 @@ if (!function_exists('arrayGetElement')) {
         if (is_string($key) && is_array($array)) {
             $keys = explode('.', $key);
 
-            while (sizeof($keys) >= 1) {
+            while (count($keys) >= 1) {
                 $k = array_shift($keys);
 
                 if (!isset($array[$k])) {
                     return null;
                 }
 
-                if (sizeof($keys) === 0) {
+                if (count($keys) === 0) {
                     return $array[$k];
                 }
 
@@ -391,7 +389,7 @@ if (!function_exists('arraySetElement')) {
             $keys = explode('.', $key);
             $arrTmp = &$array;
 
-            while (sizeof($keys) >= 1) {
+            while (count($keys) >= 1) {
                 $k = array_shift($keys);
 
                 if (!is_array($arrTmp)) {
@@ -402,7 +400,7 @@ if (!function_exists('arraySetElement')) {
                     $arrTmp[$k] = array();
                 }
 
-                if (sizeof($keys) === 0) {
+                if (count($keys) === 0) {
                     $arrTmp[$k] = $value;
 
                     return true;
@@ -486,7 +484,7 @@ if (!function_exists('arrayToAttributes')) {
 
         foreach ((array) $attr as $property => $value) {
             // Ignore null/false
-            if ($value === null or $value === false) {
+            if ($value === null || $value === false) {
                 continue;
             }
 

@@ -34,7 +34,7 @@ if (!function_exists('bytesHumanFormat')) {
         $iec = array('bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB');
 
         while (($size / 1024) > 1) {
-            $size = $size / 1024;
+            $size /= 1024;
             ++$i;
         }
 

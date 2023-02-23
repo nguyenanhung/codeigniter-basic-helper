@@ -321,7 +321,6 @@ if (!function_exists('scan_folder')) {
         }
     }
 }
-
 if (!function_exists('getAllFileSizeInFolder')) {
     /**
      * Function getAllFileSizeInFolder - Get all File size in Folder
