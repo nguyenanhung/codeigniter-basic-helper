@@ -24,7 +24,7 @@ if (!function_exists('sendSimpleGetRequest')) {
     {
         $target = (!empty($data) && (is_array($data) || is_object($data))) ? $url . '?' . http_build_query($data) : $url;
         $method = strtoupper($method);
-        $curl   = curl_init();
+        $curl = curl_init();
         curl_setopt_array($curl, array(
             CURLOPT_URL            => $target,
             CURLOPT_RETURNTRANSFER => true,
@@ -36,7 +36,7 @@ if (!function_exists('sendSimpleGetRequest')) {
             CURLOPT_HTTPHEADER     => array(),
         ));
         $response = curl_exec($curl);
-        $err      = curl_error($curl);
+        $err = curl_error($curl);
         curl_close($curl);
         if ($err) {
             $message = "cURL Error #: " . $err;
@@ -70,10 +70,10 @@ if (!function_exists('bear_post_async_request')) {
     {
         ksort($params);
         $post_string = http_build_query($params);
-        $parts       = parse_url($url);
+        $parts = parse_url($url);
 
         $is_https = ($parts['scheme'] === 'https');
-        $referer  = $parts['scheme'] . '://' . $parts['host'];
+        $referer = $parts['scheme'] . '://' . $parts['host'];
         if (!$is_https) {
             $port = isset($parts['port']) ? $parts['port'] : 80;
             $port = (int) $port;
@@ -81,19 +81,17 @@ if (!function_exists('bear_post_async_request')) {
             isset($parts['port']) && $referer .= ':' . $parts['port'];
             $fp = fsockopen($parts['host'], $port, $errno, $errorMessage, 30);
         } else {
-            $context = stream_context_create(
-                array(
-                    "ssl" => array(
-                        "verify_peer"      => false,
-                        "verify_peer_name" => false
-                    )
-                )
-            );
-            $port    = isset($parts['port']) ? $parts['port'] : 443;
-            $port    = (int) $port;
-            $host    = $parts['host'] . ($port !== 443 ? ':' . $port : '');
+            $context = stream_context_create(array(
+                                                 "ssl" => array(
+                                                     "verify_peer"      => false,
+                                                     "verify_peer_name" => false
+                                                 )
+                                             ));
+            $port = isset($parts['port']) ? $parts['port'] : 443;
+            $port = (int) $port;
+            $host = $parts['host'] . ($port !== 443 ? ':' . $port : '');
             $referer .= ':' . (isset($parts['port']) ? $parts['port'] : 443);
-            $fp      = stream_socket_client('ssl://' . $parts['host'] . ':' . $port, $errno, $errorMessage, 30, STREAM_CLIENT_CONNECT, $context);
+            $fp = stream_socket_client('ssl://' . $parts['host'] . ':' . $port, $errno, $errorMessage, 30, STREAM_CLIENT_CONNECT, $context);
         }
 
         $path = isset($parts['path']) ? $parts['path'] : '/';
@@ -121,5 +119,28 @@ if (!function_exists('bear_post_async_request')) {
             stream_get_contents($fp, -1);
         }
         fclose($fp);
+    }
+}
+if (!function_exists('get_http_response_code')) {
+    /**
+     * Function get_http_response_code
+     *
+     * @param $url
+     *
+     * @return false|int|string
+     * @author   : 713uk13m <dev@nguyenanhung.com>
+     * @copyright: 713uk13m <dev@nguyenanhung.com>
+     * @time     : 24/02/2023 06:51
+     */
+    function get_http_response_code($url = '')
+    {
+        $uri = $url;
+        if ($uri != '') {
+            $headers = get_headers($uri);
+
+            return substr($headers[0], 9, 3);
+        } else {
+            return 200;
+        }
     }
 }

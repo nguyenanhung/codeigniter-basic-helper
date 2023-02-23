@@ -68,3 +68,61 @@ if (!function_exists('getYesterday')) {
         return date($format, strtotime("-1 days"));
     }
 }
+if (!function_exists('smart_bear_date_range')) {
+    function smart_bear_date_range($first, $last, $step = '+1 day', $format = 'Y-m-d')
+    {
+        $dates = array();
+        $current = strtotime($first);
+        $last = strtotime($last);
+        while ($current <= $last) {
+            $dates[] = date($format, $current);
+            $current = strtotime($step, $current);
+        }
+
+        return $dates;
+    }
+}
+if (!function_exists('format_datetime_vn')) {
+    function format_datetime_vn($datetime = '', $type = 'datetime')
+    {
+        if (empty($datetime)) {
+            if (array_key_exists('REQUEST_TIME', $_REQUEST)) {
+                $timestamp = $_REQUEST('REQUEST_TIME');
+            } else {
+                $timestamp = time();
+            }
+        } else {
+            if ($type != 'datetime') {
+                $timestamp = $datetime;
+            } else {
+                $timestamp = strtotime($datetime);
+            }
+        }
+
+        return date('d-m-Y H:i:s', $timestamp);
+    }
+}
+if (!function_exists('get_start_and_end_date_for_week'))
+{
+    /**
+     * Function get_start_and_end_date_for_week
+     *
+     * @param $week
+     * @param $year
+     *
+     * @return array
+     * @author   : 713uk13m <dev@nguyenanhung.com>
+     * @copyright: 713uk13m <dev@nguyenanhung.com>
+     * @time     : 24/02/2023 22:06
+     */
+    function get_start_and_end_date_for_week($week, $year)
+    {
+        $time = strtotime("1 January $year", time());
+        $day  = date('w', $time);
+        $time += ((7 * $week) + 1 - $day) * 24 * 3600;
+        $return[0] = date('d-m-Y', $time);
+        $time += 6 * 24 * 3600;
+        $return[1] = date('d-m-Y', $time);
+        return $return;
+    }
+}
