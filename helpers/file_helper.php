@@ -309,7 +309,7 @@ if (!function_exists('scan_folder')) {
     {
         try {
             if (is_dir($path)) {
-                $data = array_diff(scandir($path), array_merge(['.', '..', '.DS_Store'], $ignoreFiles));
+                $data = array_diff(scandir($path), array_merge(array('.', '..', '.DS_Store'), $ignoreFiles));
                 natsort($data);
 
                 return $data;
