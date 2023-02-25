@@ -102,8 +102,7 @@ if (!function_exists('format_datetime_vn')) {
         return date('d-m-Y H:i:s', $timestamp);
     }
 }
-if (!function_exists('get_start_and_end_date_for_week'))
-{
+if (!function_exists('get_start_and_end_date_for_week')) {
     /**
      * Function get_start_and_end_date_for_week
      *
@@ -118,11 +117,12 @@ if (!function_exists('get_start_and_end_date_for_week'))
     function get_start_and_end_date_for_week($week, $year)
     {
         $time = strtotime("1 January $year", time());
-        $day  = date('w', $time);
+        $day = date('w', $time);
         $time += ((7 * $week) + 1 - $day) * 24 * 3600;
         $return[0] = date('d-m-Y', $time);
         $time += 6 * 24 * 3600;
         $return[1] = date('d-m-Y', $time);
+
         return $return;
     }
 }

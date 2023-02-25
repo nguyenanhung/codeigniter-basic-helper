@@ -164,7 +164,7 @@ class SimpleElasticsearch extends BaseHelper
             }
             $page && $query_string['from'] = ($page - 1) * $limit;
             $endpoint = $elasticHost . ':' . $elasticPort . '/' . $index . "/_search";
-            if ($extraParams !== null && is_array($extraParams)) {
+            if (is_array($extraParams)) {
                 $endpoint .= '?' . http_build_query($extraParams);
             }
             $curl = curl_init();

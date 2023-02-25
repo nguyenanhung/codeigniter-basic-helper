@@ -34,7 +34,7 @@ if (!function_exists('log_to_sentry')) {
 
             // Init logger use Monolog
             $logger = new Monolog\Logger($name);
-            $client = Sentry\ClientBuilder::create(['dsn' => $config['dsn']])->getClient();
+            $client = Sentry\ClientBuilder::create(array('dsn' => $config['dsn']))->getClient();
             $handler = new Sentry\Monolog\Handler(new Sentry\State\Hub($client));
             $logger->pushHandler($handler);
             $logger->error($message, $context);
