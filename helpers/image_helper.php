@@ -107,11 +107,7 @@ if (!function_exists('bear_framework_image_url')) {
             if (trim(mb_substr($images_url, 0, 12)) === 'crawler-news') {
                 $images_url = trim('uploads/' . $images_url);
             }
-            $images_url  = str_replace(
-                array('upload-vcms/news/news/', 'upload-vcms/mheath/mheath/'),
-                array('upload-vcms/news/', 'upload-vcms/mheath/'),
-                $images_url
-            );
+            $images_url = str_replace(array('upload-vcms/news/news/', 'upload-vcms/mheath/mheath/'), array('upload-vcms/news/', 'upload-vcms/mheath/'), $images_url);
 
             return config_item('static_url') . $images_url;
         }
@@ -130,7 +126,7 @@ if (!function_exists('bear_framework_create_image_thumbnail')) {
      * @return mixed|string|null
      * @author   : 713uk13m <dev@nguyenanhung.com>
      * @copyright: 713uk13m <dev@nguyenanhung.com>
-     * @time     : 15/06/2022 03:06
+     * @time     : 25/02/2023 27:17
      */
     function bear_framework_create_image_thumbnail($url = '', $width = 100, $height = 100)
     {
@@ -153,5 +149,23 @@ if (!function_exists('create_image_thumbnail')) {
     function create_image_thumbnail($url = '', $width = 100, $height = 100)
     {
         return nguyenanhung\CodeIgniter\BasicHelper\ImageHelper::createThumbnail($url, $width, $height);
+    }
+}
+if (!function_exists('create_image_thumbnail')) {
+    /**
+     * Function bear_framework_create_image_thumbnail_with_cache
+     *
+     * @param $url
+     * @param $width
+     * @param $height
+     *
+     * @return mixed|string
+     * @author   : 713uk13m <dev@nguyenanhung.com>
+     * @copyright: 713uk13m <dev@nguyenanhung.com>
+     * @time     : 25/02/2023 27:49
+     */
+    function bear_framework_create_image_thumbnail_with_cache($url = '', $width = 100, $height = 100)
+    {
+        return nguyenanhung\CodeIgniter\BasicHelper\ImageHelper::createThumbnailWithCodeIgniterCache($url, $width, $height);
     }
 }

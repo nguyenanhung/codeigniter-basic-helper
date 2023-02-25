@@ -7,6 +7,20 @@
  * Date: 09/11/2021
  * Time: 09:17
  */
+if (!function_exists('smart_bear_basic_helper_version')) {
+    function smart_bear_basic_helper_version()
+    {
+        return \nguyenanhung\CodeIgniter\BasicHelper\BaseHelper::version();
+    }
+}
+if (!function_exists('smart_bear_basic_helper_author')) {
+    function smart_bear_basic_helper_author()
+    {
+        $helper = new \nguyenanhung\CodeIgniter\BasicHelper\BaseHelper();
+
+        return $helper->getAuthor();
+    }
+}
 if (!function_exists('isEmpty')) {
     /**
      * Function isEmpty

@@ -153,7 +153,7 @@ class ImageHelper extends BaseHelper
      * @return mixed|string
      * @author   : 713uk13m <dev@nguyenanhung.com>
      * @copyright: 713uk13m <dev@nguyenanhung.com>
-     * @time     : 16/02/2023 03:43
+     * @time     : 25/02/2023 27:41
      */
     public static function createThumbnailWithCodeIgniterCache($url = '', $width = 100, $height = 100)
     {
@@ -188,6 +188,7 @@ class ImageHelper extends BaseHelper
 
                 return $url;
             }
+
             return $url;
         } catch (Exception $e) {
             if (function_exists('log_message')) {
