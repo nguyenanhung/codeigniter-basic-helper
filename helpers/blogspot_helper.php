@@ -7,7 +7,6 @@
  * Date: 09/01/2023
  * Time: 00:26
  */
-// ~~~~~ Blogspot
 if (!function_exists('blogspotDescSortWithPublishedTime')) {
     function blogspotDescSortWithPublishedTime($item1, $item2)
     {
@@ -24,5 +23,35 @@ if (!function_exists('blogspotUSort')) {
         usort($data, 'blogspotDescSortWithPublishedTime');
 
         return $data;
+    }
+}
+if (!function_exists('blogspotFormatInformationItem')) {
+    function blogspotFormatInformationItem($blog)
+    {
+        if (isset($blog['media$thumbnail']['url'])) {
+            $blogThumb = trim($blog['media$thumbnail']['url']);
+        } else {
+            $blogThumb = 'https://c2.staticflickr.com/8/7858/32668285888_8da8a3c105_z.jpg';
+        }
+        $blogThumb = str_replace(array('/s72-c-d/', '/s72-c/', '/s72-d/', 'http://'), array('/s320/', '/s320/', '/s320/', 'https://'), $blogThumb);
+        $blogTitle = trim($blog['title']['$t']);
+        $cleanBlogTitle = strip_quotes($blogTitle);
+        $cleanBlogTitle = stripslashes($cleanBlogTitle);
+        $blogLink = '';
+        foreach ($blog['link'] as $link) {
+            if ($link['rel'] === 'alternate') {
+                $blogLink .= $link['href'];
+            } else {
+                $blogLink .= '';
+            }
+        }
+        $blogPublished = trim($blog['published']['$t']);
+
+        return array(
+            'thumb'     => $blogThumb,
+            'title'     => $cleanBlogTitle,
+            'url'       => $blogLink,
+            'published' => $blogPublished
+        );
     }
 }

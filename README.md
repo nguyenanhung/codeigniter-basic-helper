@@ -113,6 +113,7 @@ Dưới đây là danh sách các Helper được hỗ trợ trong bộ thư vi�
 
 - [x] Helper Function: `blogspotDescSortWithPublishedTime` - Sắp xếp dữ liệu feed từ blogspot theo Published Time
 - [x] Helper Function: `blogspotUSort` - Sắp xếp dữ liệu feed từ blogspot theo USort và Published Time theo DESC
+- [x] Helper Function: `blogspotFormatInformationItem` - Format dữ liệu đầu vào blogspot item
 
 ### Bytes Helper
 
