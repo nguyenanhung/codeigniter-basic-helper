@@ -19,14 +19,16 @@ namespace nguyenanhung\CodeIgniter\BasicHelper;
  */
 class BaseHelper
 {
-    const VERSION = '1.2.7';
-    const LAST_MODIFIED = '2023-02-25';
+    const VERSION = '1.2.8';
+    const LAST_MODIFIED = '2023-03-01';
     const PROJECT_NAME = 'CodeIgniter - Basic Helper';
     const AUTHOR_NAME = 'Hung Nguyen';
     const AUTHOR_FULL_NAME = 'Hung Nguyen';
     const AUTHOR_EMAIL = 'dev@nguyenanhung.com';
     const AUTHOR_WEB = 'https://nguyenanhung.com';
     const AUTHOR_BLOG = 'https://blog.nguyenanhung.com';
+    const GITHUB_URL = 'https://github.com/nguyenanhung/codeigniter-basic-helper';
+    const PACKAGES_URL = 'https://packagist.org/packages/nguyenanhung/codeigniter-basic-helper';
 
     public function getVersion()
     {
@@ -41,14 +43,16 @@ class BaseHelper
     public function getAuthor()
     {
         return array(
-            'name'            => self::AUTHOR_NAME,
-            'full_name'       => self::AUTHOR_FULL_NAME,
-            'email'           => self::AUTHOR_EMAIL,
-            'web'             => self::AUTHOR_WEB,
-            'blog'            => self::AUTHOR_BLOG,
-            'project_name'    => self::PROJECT_NAME,
-            'project_version' => self::VERSION,
-            'version_updated' => self::LAST_MODIFIED
+            'name'             => self::AUTHOR_NAME,
+            'full_name'        => self::AUTHOR_FULL_NAME,
+            'email'            => self::AUTHOR_EMAIL,
+            'web'              => self::AUTHOR_WEB,
+            'blog'             => self::AUTHOR_BLOG,
+            'project_name'     => self::PROJECT_NAME,
+            'project_version'  => self::VERSION,
+            'version_updated'  => self::LAST_MODIFIED,
+            'project_github'   => self::GITHUB_URL,
+            'project_packages' => self::PACKAGES_URL
         );
     }
 }
