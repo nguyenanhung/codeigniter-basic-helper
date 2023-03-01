@@ -33,7 +33,11 @@ if (!function_exists('blogspotFormatInformationItem')) {
         } else {
             $blogThumb = 'https://c2.staticflickr.com/8/7858/32668285888_8da8a3c105_z.jpg';
         }
-        $blogThumb = str_replace(array('/s72-c-d/', '/s72-c/', '/s72-d/', 'http://'), array('/s320/', '/s320/', '/s320/', 'https://'), $blogThumb);
+        $blogThumb = str_replace(
+            array('/s72-c-d/', '/s72-c/', '/s72-d/', 'http://'),
+            array('/s320/', '/s320/', '/s320/', 'https://'),
+            $blogThumb
+        );
         $blogTitle = trim($blog['title']['$t']);
         $cleanBlogTitle = strip_quotes($blogTitle);
         $cleanBlogTitle = stripslashes($cleanBlogTitle);
@@ -49,6 +53,7 @@ if (!function_exists('blogspotFormatInformationItem')) {
 
         return array(
             'thumb'     => $blogThumb,
+            'name'      => $blogTitle,
             'title'     => $cleanBlogTitle,
             'url'       => $blogLink,
             'published' => $blogPublished
