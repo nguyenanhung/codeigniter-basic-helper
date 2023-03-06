@@ -91,12 +91,10 @@ if (!function_exists('format_datetime_vn')) {
             } else {
                 $timestamp = time();
             }
+        } elseif ($type !== 'datetime') {
+            $timestamp = $datetime;
         } else {
-            if ($type != 'datetime') {
-                $timestamp = $datetime;
-            } else {
-                $timestamp = strtotime($datetime);
-            }
+            $timestamp = strtotime($datetime);
         }
 
         return date('d-m-Y H:i:s', $timestamp);
