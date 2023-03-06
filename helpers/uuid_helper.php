@@ -37,7 +37,8 @@ if (!function_exists('generate_uuid_v3')) {
         // Binary Value
         $nstr = '';
         // Convert Namespace UUID to bits
-        for ($i = 0; $i < strlen($nhex); $i += 2) {
+        $iMax = strlen($nhex);
+        for ($i = 0; $i < $iMax; $i += 2) {
             $nstr .= chr(hexdec($nhex[$i] . $nhex[$i + 1]));
         }
         // Calculate hash value
@@ -102,7 +103,8 @@ if (!function_exists('generate_uuid_v5')) {
         // Binary Value
         $nstr = '';
         // Convert Namespace UUID to bits
-        for ($i = 0; $i < strlen($nhex); $i += 2) {
+        $iMax = strlen($nhex);
+        for ($i = 0; $i < $iMax; $i += 2) {
             $nstr .= chr(hexdec($nhex[$i] . $nhex[$i + 1]));
         }
         // Calculate hash value

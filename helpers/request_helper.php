@@ -81,12 +81,13 @@ if (!function_exists('bear_post_async_request')) {
             isset($parts['port']) && $referer .= ':' . $parts['port'];
             $fp = fsockopen($parts['host'], $port, $errno, $errorMessage, 30);
         } else {
-            $context = stream_context_create(array(
-                                                 "ssl" => array(
-                                                     "verify_peer"      => false,
-                                                     "verify_peer_name" => false
-                                                 )
-                                             ));
+            $options = array(
+                "ssl" => array(
+                    "verify_peer"      => false,
+                    "verify_peer_name" => false
+                )
+            );
+            $context = stream_context_create($options);
             $port = isset($parts['port']) ? $parts['port'] : 443;
             $port = (int) $port;
             $host = $parts['host'] . ($port !== 443 ? ':' . $port : '');
@@ -135,12 +136,12 @@ if (!function_exists('get_http_response_code')) {
     function get_http_response_code($url = '')
     {
         $uri = $url;
-        if ($uri != '') {
+        if ($uri !== '') {
             $headers = get_headers($uri);
 
             return substr($headers[0], 9, 3);
-        } else {
-            return 200;
         }
+
+        return 200;
     }
 }

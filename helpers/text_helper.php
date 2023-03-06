@@ -136,10 +136,14 @@ if (!function_exists('clean_text_mobile')) {
             $output = clean_text($output);
             $output = str_replace(
                 array(
-                    'width: 100px', 'width: 200px', 'width: 300px', 'width: 400px', 'width: 420px', 'width: 450px', 'width: 480px', 'width: 500px', 'width: 520px', 'width: 530px', 'width: 550px', 'width: 560px', 'width: 580px',
-                    'width: 600px', 'width: 620px', 'width: 630px', 'width: 640px', 'width: 650px', 'width: 660px', 'width: 670px', 'width: 680px', 'width: 690px', 'width: 700px', 'width: 720px', 'width: 730px', 'width: 740px',
-                    'width: 750px', 'width: 760px', 'width: 770px', 'width: 780px', 'width: 790px', 'width: 800px', 'width: 820px', 'width: 830px', 'width: 840px', 'width: 850px', 'width: 860px', 'width: 870px', 'width: 880px',
-                    'width: 890px', 'width: 890px', 'width: 900px', 'width: 920px', 'width: 930px', 'width: 940px', 'width: 950px', 'width: 960px', 'width: 970px', 'width: 980px', 'width: 990px'
+                    'width: 100px', 'width: 200px', 'width: 300px', 'width: 400px', 'width: 420px', 'width: 450px', 'width: 480px',
+                    'width: 500px', 'width: 520px', 'width: 530px', 'width: 550px', 'width: 560px', 'width: 580px',
+                    'width: 600px', 'width: 620px', 'width: 630px', 'width: 640px', 'width: 650px', 'width: 660px', 'width: 670px',
+                    'width: 680px', 'width: 690px', 'width: 700px', 'width: 720px', 'width: 730px', 'width: 740px',
+                    'width: 750px', 'width: 760px', 'width: 770px', 'width: 780px', 'width: 790px', 'width: 800px', 'width: 820px',
+                    'width: 830px', 'width: 840px', 'width: 850px', 'width: 860px', 'width: 870px', 'width: 880px',
+                    'width: 890px', 'width: 890px', 'width: 900px', 'width: 920px', 'width: 930px', 'width: 940px', 'width: 950px',
+                    'width: 960px', 'width: 970px', 'width: 980px', 'width: 990px'
                 ),
                 'width: 100%',
                 $output

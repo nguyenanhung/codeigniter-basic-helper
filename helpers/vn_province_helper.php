@@ -58,7 +58,6 @@ if (!function_exists('check_vn_province_code')) {
             'QT'       => 'Quảng Trị',
             'ST'       => 'Sóc Trăng',
             'TN'       => 'Tây Ninh',
-            'H'        => 'Thừa Thiên Huế',
             'TG'       => 'Tiền Giang',
             'TV'       => 'Trà Vinh',
             'PY'       => 'Phú Yên',
@@ -68,6 +67,7 @@ if (!function_exists('check_vn_province_code')) {
             'TP'       => 'Hồ Chí Minh',
             'DNO'      => 'Đắc Nông',
             'LA'       => 'Long An',
+            'H'        => 'Thừa Thiên Huế',
             'TTH'      => 'Thừa Thiên Huế',
             'HUE'      => 'Thừa Thiên Huế'
         );

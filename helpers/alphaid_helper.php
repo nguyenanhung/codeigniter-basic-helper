@@ -15,7 +15,7 @@ if (!function_exists('generateAlphaId')) {
      * to a shorter version in letters e.g.:
      * 9007199254740989 --> PpQXn7COf
      *
-     * specifiying the second argument true, it will
+     * specifying the second argument true, it will
      * translate back e.g.:
      * PpQXn7COf --> 9007199254740989
      *

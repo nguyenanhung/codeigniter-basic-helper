@@ -25,10 +25,10 @@ if (!function_exists('join_value_multiple')) {
         }
         unset($i);
 
-        if ($string == '') {
+        if ($string === '') {
             return '0';
-        } else {
-            return $string;
         }
+
+        return $string;
     }
 }
