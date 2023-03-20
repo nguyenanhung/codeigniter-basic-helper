@@ -128,6 +128,8 @@ Dưới đây là danh sách các Helper được hỗ trợ trong bộ thư vi�
 
 - [x] Helper Function: `isEmpty ` - Kiểm tra 1 input đầu vào xem có phải là rỗng hay không
 - [x] Helper Function: `defaultCompressHtmlOutput ` - Compress HTML output, default configure
+- [x] Helper Function: `generateRandomUniqueId ` - Tạo 1 chuỗi Unique ID ngẫu nhiên, sử dụng UUID
+- [x] Helper Function: `generateRandomNanoUniqueId ` - Tạo 1 chuỗi Unique ID ngẫu nhiên, sử dụng NanoID
 
 ### Database Helper
 

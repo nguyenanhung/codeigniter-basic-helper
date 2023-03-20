@@ -58,7 +58,6 @@ if (!function_exists('generate_uuid_v3')) {
                        substr($hash, 20, 12));
     }
 }
-
 if (!function_exists('generate_uuid_v4')) {
     /**
      * Function generate_uuid_v4
