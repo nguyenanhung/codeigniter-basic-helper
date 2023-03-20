@@ -17,7 +17,6 @@ if (!function_exists('smart_bear_basic_helper_author')) {
     function smart_bear_basic_helper_author()
     {
         $helper = new \nguyenanhung\CodeIgniter\BasicHelper\BaseHelper();
-
         return $helper->getAuthor();
     }
 }
@@ -72,5 +71,23 @@ if (!function_exists('defaultCompressHtmlOutput')) {
         $replace = array(' ', '>', '<', '\\1');
 
         return preg_replace($search, $replace, $html);
+    }
+}
+if (!function_exists('generateRandomUniqueId')) {
+    function generateRandomUniqueId()
+    {
+        $uniqid = uniqid('-bear-', true);
+        $uniqid = trim(str_replace('.', '', $uniqid));
+
+        return date('Ymd') . '-' . generate_uuid_v4() . $uniqid;
+    }
+}
+if (!function_exists('generateRandomNanoUniqueId')) {
+    function generateRandomNanoUniqueId()
+    {
+        $uniqid = uniqid('-bear-', true);
+        $uniqid = trim(str_replace('.', '', $uniqid));
+
+        return date('Ymd') . '-' . randomNanoId(16) . $uniqid;
     }
 }

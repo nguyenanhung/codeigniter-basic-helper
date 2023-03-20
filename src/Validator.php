@@ -1043,8 +1043,7 @@ class Validator
             }
         }
         // if we have conditionally required fields
-        if ($conditionallyReq && (is_null($value) ||
-                                  is_string($value) && trim($value) === '')) {
+        if ($conditionallyReq && (is_null($value) || (is_string($value) && trim($value) === ''))) {
             return false;
         }
 
@@ -1089,8 +1088,7 @@ class Validator
             }
         }
         // if we have conditionally required fields
-        if ($conditionallyReq && (is_null($value) ||
-                                  is_string($value) && trim($value) === '')) {
+        if ($conditionallyReq && (is_null($value) || (is_string($value) && trim($value) === ''))) {
             return false;
         }
 
