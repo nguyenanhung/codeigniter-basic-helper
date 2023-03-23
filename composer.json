@@ -28,6 +28,7 @@
         "ext-json": "*",
         "ext-mbstring": "*",
         "nguyenanhung/html-helper": "^2.0 || ^1.0",
+        "nguyenanhung/mobile-helper": "^2.0 || ^1.0",
         "nguyenanhung/basic-miscellaneous-helper": "^2.0 || ^1.0"
     },
     "require-dev": {
