@@ -38,7 +38,6 @@ class ImageHelper extends BaseHelper
         $proxyUrl = 'https://images1-focus-opensocial.googleusercontent.com/gadgets/proxy';
         $proxyContainer = 'focus';
         $proxyRefresh = 2592000;
-        // Start
         $params = array();
         $params['url'] = $url;
         $params['resize_w'] = $width;
@@ -47,9 +46,7 @@ class ImageHelper extends BaseHelper
         }
         $params['container'] = $proxyContainer;
         $params['refresh'] = $proxyRefresh;
-        // Result URL
         $url = $proxyUrl . '?' . urldecode(http_build_query($params));
-
         return trim($url);
     }
 
@@ -81,7 +78,6 @@ class ImageHelper extends BaseHelper
     {
         $imageUrl = str_replace(array('https://', 'http://', '//'), '', $imageUrl);
         $url = 'https://' . trim($server) . '.wp.com/' . $imageUrl;
-
         return trim($url);
     }
 
@@ -99,7 +95,6 @@ class ImageHelper extends BaseHelper
         $html .= "<link href='//i1.wp.com' rel='dns-prefetch' />" . PHP_EOL;
         $html .= "<link href='//i2.wp.com' rel='dns-prefetch' />" . PHP_EOL;
         $html .= "<link href='//i3.wp.com' rel='dns-prefetch' />" . PHP_EOL;
-
         return $html;
     }
 
@@ -129,16 +124,13 @@ class ImageHelper extends BaseHelper
                 if (!empty($thumbnail)) {
                     return $thumbnail;
                 }
-
                 return $cache->thumbnail(config_item('image_path_tmp_default'), $width, $height);
             }
-
             return $url;
         } catch (Exception $e) {
             if (function_exists('log_message')) {
-                log_message('error', "Error Code: " . $e->getCode() . " - File: " . $e->getFile() . " - Line: " . $e->getLine() . " - Message: " . $e->getMessage());
+                log_message('error', __get_error_message__($e));
             }
-
             return $url;
         }
     }
@@ -185,16 +177,13 @@ class ImageHelper extends BaseHelper
                 if (!empty($urlThumbnail)) {
                     return $urlThumbnail;
                 }
-
                 return $url;
             }
-
             return $url;
         } catch (Exception $e) {
             if (function_exists('log_message')) {
-                log_message('error', "Error Code: " . $e->getCode() . " - File: " . $e->getFile() . " - Line: " . $e->getLine() . " - Message: " . $e->getMessage());
+                log_message('error', __get_error_message__($e));
             }
-
             return $url;
         }
     }
