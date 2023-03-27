@@ -32,7 +32,6 @@
         "nguyenanhung/basic-miscellaneous-helper": "^2.0 || ^1.0"
     },
     "require-dev": {
-        "nguyenanhung/codeigniter-framework": "*",
         "nguyenanhung/my-debug": "^3.0 || ^2.0",
         "nguyenanhung/nanoid-helper": "^2.0 || ^1.0",
         "nguyenanhung/json-helper": "^2.0 || ^1.0",
