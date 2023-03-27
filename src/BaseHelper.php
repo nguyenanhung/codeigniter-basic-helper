@@ -19,8 +19,8 @@ namespace nguyenanhung\CodeIgniter\BasicHelper;
  */
 class BaseHelper
 {
-    const VERSION = '1.3.4';
-    const LAST_MODIFIED = '2023-03-23';
+    const VERSION = '1.3.5';
+    const LAST_MODIFIED = '2023-03-27';
     const PROJECT_NAME = 'CodeIgniter - Basic Helper';
     const AUTHOR_NAME = 'Hung Nguyen';
     const AUTHOR_FULL_NAME = 'Hung Nguyen';
@@ -28,6 +28,7 @@ class BaseHelper
     const AUTHOR_WEB = 'https://nguyenanhung.com';
     const AUTHOR_BLOG = 'https://blog.nguyenanhung.com';
     const GITHUB_URL = 'https://github.com/nguyenanhung/codeigniter-basic-helper';
+    const GITHUB_ISSUES_URL = 'https://github.com/nguyenanhung/codeigniter-basic-helper/issues';
     const PACKAGES_URL = 'https://packagist.org/packages/nguyenanhung/codeigniter-basic-helper';
 
     public function getVersion()

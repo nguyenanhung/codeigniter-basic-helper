@@ -14,7 +14,7 @@ class BasicImageHelperWithGD
 {
     protected $image;
     protected $imageFormat;
-    
+
     public function load($imageFile)
     {
         $imageInfo = getImageSize($imageFile);
@@ -56,24 +56,24 @@ class BasicImageHelperWithGD
     {
         $ratio = $height / $this->getHeight();
         $width = $this->getWidth() * $ratio;
-        $this->__resize($width, $height);
+        $this->resized($width, $height);
     }
 
     public function resizeToWidth($width)
     {
         $ratio = $width / $this->getWidth();
         $height = $this->getheight() * $ratio;
-        $this->__resize($width, $height);
+        $this->resized($width, $height);
     }
 
     public function scale($scale)
     {
         $width = $this->getWidth() * $scale / 100;
         $height = $this->getheight() * $scale / 100;
-        $this->__resize($width, $height);
+        $this->resized($width, $height);
     }
 
-    private function __resize($width, $height)
+    protected function resized($width, $height)
     {
         $newImage = imagecreatetruecolor($width, $height);
         imagecopyresampled($newImage, $this->image, 0, 0, 0, 0, $width, $height, $this->getWidth(), $this->getHeight());

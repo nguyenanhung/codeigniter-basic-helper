@@ -91,3 +91,9 @@ if (!function_exists('generateRandomNanoUniqueId')) {
         return date('Ymd') . '-' . randomNanoId(16) . $uniqid;
     }
 }
+if (!function_exists('__get_error_message__')){
+    function __get_error_message__($e)
+    {
+        return "Error Code: " . $e->getCode() . " - File: " . $e->getFile() . " - Line: " . $e->getLine() . " - Message: " . $e->getMessage();
+    }
+}
