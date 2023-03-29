@@ -270,6 +270,9 @@ class SimpleElasticsearch extends BaseHelper
         );
     }
 
+    /**
+     * @throws \nguyenanhung\CodeIgniter\BasicHelper\HelperException
+     */
     public function syncDataElasticsearch($data, $action, $id, $index)
     {
         try {
@@ -353,10 +356,13 @@ class SimpleElasticsearch extends BaseHelper
             // echo 'error sync :' . $id . '__:' . $e->getMessage() . 'id :' . $index . 'action :' . $action . PHP_EOL;
             Log::info('error sync :' . $id . '__:' . $e->getMessage() . 'id :' . $index . 'action :' . $action);
             // echo $e->getTraceAsString();
-            throw new Exception($e->getMessage());
+            throw new HelperException($e->getMessage());
         }
     }
 
+    /**
+     * @throws \nguyenanhung\CodeIgniter\BasicHelper\HelperException
+     */
     public static function createIndexElasticsearch($index, $listFields, $specialFields)
     {
         try {
@@ -473,7 +479,7 @@ class SimpleElasticsearch extends BaseHelper
         } catch (Exception $e) {
             // echo 'error sync :' . $id . '__:' . $e->getMessage() . 'id :' . $index . 'action :' . $action . PHP_EOL;
             // echo $e->getTraceAsString();
-            throw new \RuntimeException($e->getMessage());
+            throw new HelperException($e->getMessage());
         }
     }
 
