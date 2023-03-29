@@ -157,7 +157,7 @@ class SimpleRequests
             return $response;
         } catch (Exception $e) {
             log_message('error', __get_error_message__($e));
-            log_message('error', $e->getTraceAsString());
+            log_message('error', __get_error_trace__($e));
 
             return null;
         }
@@ -213,7 +213,7 @@ class SimpleRequests
             return $page;
         } catch (Exception $e) {
             log_message('error', __get_error_message__($e));
-            log_message('error', $e->getTraceAsString());
+            log_message('error', __get_error_trace__($e));
 
             return null;
         }
