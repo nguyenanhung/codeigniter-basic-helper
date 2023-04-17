@@ -13,7 +13,6 @@ if (!function_exists('bear_framework_default_get_data_chart')) {
         return (new \nguyenanhung\CodeIgniter\BasicHelper\ChartRender())->get_data_chart($item_list, $valueGet, $total);
     }
 }
-
 if (!function_exists('bear_framework_default_get_data_chart_report')) {
     function bear_framework_default_get_data_chart_report($item_list, $valueGet)
     {

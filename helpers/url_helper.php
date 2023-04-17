@@ -461,3 +461,59 @@ if (!function_exists('audio_url')) {
         return $audio_url;
     }
 }
+if (!function_exists('append_params_into_url')) {
+    /**
+     * Function Append parameters to URL
+     *
+     * @param $url
+     * @param $params
+     *
+     * @return string
+     * @author   : 713uk13m <dev@nguyenanhung.com>
+     * @copyright: 713uk13m <dev@nguyenanhung.com>
+     * @time     : 17/04/2023 29:59
+     */
+    function append_params_into_url($url, $params)
+    {
+        $urlParts = parse_url($url);
+        if (isset($urlParts['query'])) {
+            $queryParams = [];
+            parse_str($urlParts['query'], $queryParams);
+            $queryParams = array_merge($queryParams, $params);
+            $urlParts['query'] = http_build_query($queryParams);
+        } else {
+            $urlParts['query'] = http_build_query($params);
+        }
+
+        $newUrl = $urlParts['scheme'] . '://' . $urlParts['host'] . $urlParts['path'] . '?' . $urlParts['query'];
+
+        if (isset($urlParts['port'])) {
+            $newUrl = $urlParts['scheme'] . '://' . $urlParts['host'] . ':' . $urlParts['port'] . $urlParts['path'] . '?' . $urlParts['query'];
+        }
+
+        return $newUrl;
+    }
+}
+if (!function_exists('append_query_string_to_current_url')) {
+    /**
+     * Function Get current URL including query string
+     *
+     * @return string
+     * @author   : 713uk13m <dev@nguyenanhung.com>
+     * @copyright: 713uk13m <dev@nguyenanhung.com>
+     * @time     : 17/04/2023 31:27
+     */
+    function append_query_string_to_current_url()
+    {
+        if (function_exists('current_url')) {
+            $url = current_url();
+            if (!empty($_SERVER['QUERY_STRING'])) {
+                $url .= '?' . $_SERVER['QUERY_STRING'];
+            }
+
+            return $url;
+        }
+
+        return '';
+    }
+}

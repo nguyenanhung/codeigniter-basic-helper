@@ -322,6 +322,8 @@ Hiện tại việc sử dụng nanoid đang là xu hướng so với uuid truy�
 - [x] Helper Function: `cdn_url` - Hàm customize dành riêng cho framework CodeIgniter
 - [x] Helper Function: `images_url` - Hàm customize dành riêng cho framework CodeIgniter
 - [x] Helper Function: `audio_url` - Hàm customize dành riêng cho framework CodeIgniter
+- [x] Helper Function: `append_params_into_url` - Append parameters to URL
+- [x] Helper Function: `append_query_string_to_current_url` - Get current URL including query string - Hàm customize dành riêng cho framework CodeIgniter
 
 ### UUID Helper
 
