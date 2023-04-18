@@ -62,6 +62,7 @@
             "helpers/image_helper.php",
             "helpers/ip_helper.php",
             "helpers/meta_helper.php",
+            "helpers/japan_helper.php",
             "helpers/money_helper.php",
             "helpers/nanoid_helper.php",
             "helpers/number_helper.php",
