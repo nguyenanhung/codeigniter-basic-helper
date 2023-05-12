@@ -44,7 +44,6 @@ if (!function_exists('convertNumberToWords')) {
             8 => "Eighty",
             9 => "Ninety"
         );
-
         $hundreds = array(
             "Hundred",
             "Thousand",
@@ -53,39 +52,38 @@ if (!function_exists('convertNumberToWords')) {
             "Trillion",
             "Quadrillion"
         );
-
         $num = number_format($num, 2, ".", ",");
         $num_arr = explode(".", $num);
         $wholenum = $num_arr[0];
         $decnum = $num_arr[1];
         $whole_arr = array_reverse(explode(",", $wholenum));
         krsort($whole_arr);
-        $rettxt = "";
+        $returnTxt = "";
         foreach ($whole_arr as $key => $i) {
             if ($i < 20) {
-                $rettxt .= $ones[$i];
+                $returnTxt .= $ones[$i];
             } elseif ($i < 100) {
-                $rettxt .= $tens[substr($i, 0, 1)];
-                $rettxt .= " " . $ones[substr($i, 1, 1)];
+                $returnTxt .= $tens[substr($i, 0, 1)];
+                $returnTxt .= " " . $ones[substr($i, 1, 1)];
             } else {
-                $rettxt .= $ones[substr($i, 0, 1)] . " " . $hundreds[0];
-                $rettxt .= " " . $tens[substr($i, 1, 1)];
-                $rettxt .= " " . $ones[substr($i, 2, 1)];
+                $returnTxt .= $ones[substr($i, 0, 1)] . " " . $hundreds[0];
+                $returnTxt .= " " . $tens[substr($i, 1, 1)];
+                $returnTxt .= " " . $ones[substr($i, 2, 1)];
             }
             if ($key > 0) {
-                $rettxt .= " " . $hundreds[$key] . " ";
+                $returnTxt .= " " . $hundreds[$key] . " ";
             }
         }
         if ($decnum > 0) {
-            $rettxt .= " and ";
+            $returnTxt .= " and ";
             if ($decnum < 20) {
-                $rettxt .= $ones[$decnum];
+                $returnTxt .= $ones[$decnum];
             } elseif ($decnum < 100) {
-                $rettxt .= $tens[substr($decnum, 0, 1)];
-                $rettxt .= " " . $ones[substr($decnum, 1, 1)];
+                $returnTxt .= $tens[substr($decnum, 0, 1)];
+                $returnTxt .= " " . $ones[substr($decnum, 1, 1)];
             }
         }
 
-        return $rettxt;
+        return $returnTxt;
     }
 }

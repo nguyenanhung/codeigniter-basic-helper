@@ -47,6 +47,7 @@ class ImageHelper extends BaseHelper
         $params['container'] = $proxyContainer;
         $params['refresh'] = $proxyRefresh;
         $url = $proxyUrl . '?' . urldecode(http_build_query($params));
+
         return trim($url);
     }
 
@@ -78,6 +79,7 @@ class ImageHelper extends BaseHelper
     {
         $imageUrl = str_replace(array('https://', 'http://', '//'), '', $imageUrl);
         $url = 'https://' . trim($server) . '.wp.com/' . $imageUrl;
+
         return trim($url);
     }
 
@@ -95,6 +97,7 @@ class ImageHelper extends BaseHelper
         $html .= "<link href='//i1.wp.com' rel='dns-prefetch' />" . PHP_EOL;
         $html .= "<link href='//i2.wp.com' rel='dns-prefetch' />" . PHP_EOL;
         $html .= "<link href='//i3.wp.com' rel='dns-prefetch' />" . PHP_EOL;
+
         return $html;
     }
 
@@ -117,20 +120,21 @@ class ImageHelper extends BaseHelper
                 $tmpPath = config_item('image_tmp_path');
                 $storagePath = config_item('base_storage_path');
                 $cache = new \nguyenanhung\MyImage\ImageCache();
-                $cache->setTmpPath($tmpPath);
-                $cache->setUrlPath(base_url($storagePath));
-                $cache->setDefaultImage();
+                $cache->setTmpPath($tmpPath)->setUrlPath(base_url($storagePath))->setDefaultImage();
                 $thumbnail = $cache->thumbnail($url, $width, $height);
                 if (!empty($thumbnail)) {
                     return $thumbnail;
                 }
+
                 return $cache->thumbnail(config_item('image_path_tmp_default'), $width, $height);
             }
+
             return $url;
         } catch (Exception $e) {
             if (function_exists('log_message')) {
                 log_message('error', __get_error_message__($e));
             }
+
             return $url;
         }
     }
@@ -160,9 +164,7 @@ class ImageHelper extends BaseHelper
                     $tmpPath = config_item('image_tmp_path');
                     $storagePath = config_item('base_storage_path');
                     $imageCache = new \nguyenanhung\MyImage\ImageCache();
-                    $imageCache->setTmpPath($tmpPath);
-                    $imageCache->setUrlPath(base_url($storagePath));
-                    $imageCache->setDefaultImage();
+                    $imageCache->setTmpPath($tmpPath)->setUrlPath(base_url($storagePath))->setDefaultImage();
                     $thumbnail = $imageCache->thumbnail($url, $width, $height);
                     if (!empty($thumbnail)) {
                         $urlThumbnail = $thumbnail;
@@ -177,13 +179,16 @@ class ImageHelper extends BaseHelper
                 if (!empty($urlThumbnail)) {
                     return $urlThumbnail;
                 }
+
                 return $url;
             }
+
             return $url;
         } catch (Exception $e) {
             if (function_exists('log_message')) {
                 log_message('error', __get_error_message__($e));
             }
+
             return $url;
         }
     }

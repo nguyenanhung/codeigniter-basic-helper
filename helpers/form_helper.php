@@ -20,9 +20,11 @@ if (!function_exists('join_value_multiple')) {
         $num = count($str);
         $max = $num - 1;
         $string = "";
+
         for ($i = 0; $i < $num; $i++) {
             $string = $i < $max ? $string . $str[$i] . ',' : $string . $str[$i];
         }
+
         unset($i);
 
         if ($string === '') {

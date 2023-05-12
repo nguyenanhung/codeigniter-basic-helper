@@ -37,9 +37,13 @@ if (!function_exists('isEmpty')) {
         if ($input === null || $input === false || $input === '') {
             return true;
         }
+
         $isset = isset($input);
+
         if ($isset === true) {
+
             $empty = empty($input);
+
             if ($empty) {
                 return true;
             }

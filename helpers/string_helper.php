@@ -474,7 +474,7 @@ if (!function_exists('str_ignore_starts_with')) {
 
         foreach ((array) $needle as $ndl) {
             $n = strtolower($ndl);
-            if ($n !== '' && substr($hs, 0, strlen($n)) === (string) $n) {
+            if ($n !== '' && substr($hs, 0, strlen($n)) === $n) {
                 return true;
             }
         }
@@ -570,7 +570,7 @@ if (!function_exists('str_ignore_ends_with')) {
         foreach ((array) $needle as $ndl) {
             $n = strtolower($ndl);
             $length = strlen($ndl);
-            if ($length === 0 || (substr($hs, -$length) === (string) $n)) {
+            if ($length === 0 || (substr($hs, -$length) === $n)) {
                 return true;
             }
         }
