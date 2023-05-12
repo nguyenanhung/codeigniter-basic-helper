@@ -13,12 +13,14 @@ namespace nguyenanhung\CodeIgniter\BasicHelper;
 class BasicImageHelperWithGD
 {
     protected $image;
+
     protected $imageFormat;
 
     public function load($imageFile)
     {
         $imageInfo = getImageSize($imageFile);
         $this->imageFormat = $imageInfo[2];
+
         if ($this->imageFormat === IMAGETYPE_JPEG) {
             $this->image = imagecreatefromjpeg($imageFile);
         } elseif ($this->imageFormat === IMAGETYPE_GIF) {
@@ -28,13 +30,13 @@ class BasicImageHelperWithGD
         }
     }
 
-    public function save($imageFile, $__imageFormat = IMAGETYPE_JPEG, $compression = 75, $permissions = null)
+    public function save($imageFile, $imageFormat = IMAGETYPE_JPEG, $compression = 75, $permissions = null)
     {
-        if ($__imageFormat == IMAGETYPE_JPEG) {
+        if ($imageFormat == IMAGETYPE_JPEG) {
             imagejpeg($this->image, $imageFile, $compression);
-        } elseif ($__imageFormat == IMAGETYPE_GIF) {
+        } elseif ($imageFormat == IMAGETYPE_GIF) {
             imagegif($this->image, $imageFile);
-        } elseif ($__imageFormat == IMAGETYPE_PNG) {
+        } elseif ($imageFormat == IMAGETYPE_PNG) {
             imagepng($this->image, $imageFile);
         }
         if ($permissions != null) {
@@ -63,20 +65,37 @@ class BasicImageHelperWithGD
     {
         $ratio = $width / $this->getWidth();
         $height = $this->getheight() * $ratio;
-        $this->resized($width, $height);
+        $this->resized(
+            $width,
+            $height
+        );
     }
 
     public function scale($scale)
     {
         $width = $this->getWidth() * $scale / 100;
         $height = $this->getheight() * $scale / 100;
-        $this->resized($width, $height);
+        $this->resized(
+            $width,
+            $height
+        );
     }
 
     protected function resized($width, $height)
     {
         $newImage = imagecreatetruecolor($width, $height);
-        imagecopyresampled($newImage, $this->image, 0, 0, 0, 0, $width, $height, $this->getWidth(), $this->getHeight());
+        imagecopyresampled(
+            $newImage,
+            $this->image,
+            0,
+            0,
+            0,
+            0,
+            $width,
+            $height,
+            $this->getWidth(),
+            $this->getHeight()
+        );
         $this->image = $newImage;
     }
 }

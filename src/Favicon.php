@@ -36,6 +36,7 @@ final class Favicon extends BaseHelper
     public function faviconHtml($baseUrl = '')
     {
         $baseUrl = trim($baseUrl) . '/';
+
         $html = '<link rel="apple-touch-icon" sizes="57x57" href="' . $baseUrl . 'apple-icon-57x57.png">' . PHP_EOL;
         $html .= '<link rel="apple-touch-icon" sizes="60x60" href="' . $baseUrl . 'apple-icon-60x60.png">' . PHP_EOL;
         $html .= '<link rel="apple-touch-icon" sizes="72x72" href="' . $baseUrl . 'apple-icon-72x72.png">' . PHP_EOL;

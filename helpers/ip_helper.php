@@ -20,7 +20,7 @@ if (!function_exists('getIPAddress')) {
      */
     function getIPAddress($convertToInteger = false)
     {
-        $ip_keys = array(
+        $ipKeys = array(
             0 => 'HTTP_CF_CONNECTING_IP',
             1 => 'HTTP_X_FORWARDED_FOR',
             2 => 'HTTP_X_FORWARDED',
@@ -32,7 +32,8 @@ if (!function_exists('getIPAddress')) {
             8 => 'HTTP_IP',
             9 => 'REMOTE_ADDR'
         );
-        foreach ($ip_keys as $key) {
+
+        foreach ($ipKeys as $key) {
             if (array_key_exists($key, $_SERVER) === true) {
                 foreach (explode(',', $_SERVER[$key]) as $ip) {
                     $ip = trim($ip);
@@ -44,6 +45,7 @@ if (!function_exists('getIPAddress')) {
                 }
             }
         }
+
         if (isset($_SERVER['SERVER_NAME']) && $_SERVER['SERVER_NAME'] === 'localhost') {
             return '127.0.0.1';
         }
@@ -225,9 +227,10 @@ if (!function_exists('getIpInformation')) {
      */
     function getIpInformation($ip = '')
     {
-        $ips = empty($ip) ? getIPAddress() : $ip;
+        $isIP = empty($ip) ? getIPAddress() : $ip;
+
         try {
-            $endpoint = 'http://ip-api.com/json/' . $ips;
+            $endpoint = 'http://ip-api.com/json/' . trim($isIP);
             $curl = curl_init();
             curl_setopt_array($curl, array(
                 CURLOPT_URL            => $endpoint,
@@ -248,7 +251,8 @@ if (!function_exists('getIpInformation')) {
             }
 
             return $response;
-        } catch (Exception $e) {
+        }
+        catch (Exception $e) {
             if (function_exists('log_message')) {
                 log_message('error', $e->getMessage());
                 log_message('error', $e->getTraceAsString());

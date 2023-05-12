@@ -181,6 +181,7 @@ if (!function_exists('xml_to_json')) {
         if (empty($fileContents)) {
             return null;
         }
+
         $fileContents = str_replace(array("\n", "\r", "\t"), '', $fileContents);
         $fileContents = trim(str_replace('"', "'", $fileContents));
         $simpleXml = simplexml_load_string($fileContents);
