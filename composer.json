@@ -53,6 +53,7 @@
             "helpers/database_helper.php",
             "helpers/date_helper.php",
             "helpers/debug_helper.php",
+            "helpers/download_helper.php",
             "helpers/env_helper.php",
             "helpers/escape_helper.php",
             "helpers/facebook_helper.php",
