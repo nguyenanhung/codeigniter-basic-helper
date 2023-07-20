@@ -19,8 +19,8 @@ namespace nguyenanhung\CodeIgniter\BasicHelper;
  */
 class BaseHelper
 {
-    const VERSION = '1.4.1';
-    const LAST_MODIFIED = '2023-05-16';
+    const VERSION = '1.4.2';
+    const LAST_MODIFIED = '2023-07-20';
     const PROJECT_NAME = 'CodeIgniter - Basic Helper';
     const AUTHOR_NAME = 'Hung Nguyen';
     const AUTHOR_FULL_NAME = 'Hung Nguyen';
@@ -44,16 +44,23 @@ class BaseHelper
     public function getAuthor()
     {
         return array(
-            'name'             => self::AUTHOR_NAME,
-            'full_name'        => self::AUTHOR_FULL_NAME,
-            'email'            => self::AUTHOR_EMAIL,
-            'web'              => self::AUTHOR_WEB,
-            'blog'             => self::AUTHOR_BLOG,
-            'project_name'     => self::PROJECT_NAME,
-            'project_version'  => self::VERSION,
-            'version_updated'  => self::LAST_MODIFIED,
-            'project_github'   => self::GITHUB_URL,
-            'project_packages' => self::PACKAGES_URL
+            'name' => self::AUTHOR_NAME,
+            'full_name' => self::AUTHOR_FULL_NAME,
+            'email' => self::AUTHOR_EMAIL,
+            'web' => self::AUTHOR_WEB,
+            'blog' => self::AUTHOR_BLOG
+        );
+    }
+
+    public function getPackageInfo()
+    {
+        return array(
+            'project_name' => self::PROJECT_NAME,
+            'project_version' => self::VERSION,
+            'version_updated' => self::LAST_MODIFIED,
+            'project_github' => self::GITHUB_URL,
+            'project_packages' => self::PACKAGES_URL,
+            'project_maintainer' => $this->getAuthor()
         );
     }
 }
