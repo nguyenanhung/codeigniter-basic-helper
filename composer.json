@@ -35,7 +35,8 @@
         "nguyenanhung/my-debug": "^3.0 || ^2.0",
         "nguyenanhung/nanoid-helper": "^2.0 || ^1.0",
         "nguyenanhung/json-helper": "^2.0 || ^1.0",
-        "nguyenanhung/image": "^3.0 || ^2.0 || ^1.0"
+        "nguyenanhung/image": "^3.0 || ^2.0 || ^1.0",
+        "nguyenanhung/codeigniter-framework": ">= 3.1"
     },
     "autoload": {
         "psr-4": {
@@ -52,6 +53,7 @@
             "helpers/database_helper.php",
             "helpers/date_helper.php",
             "helpers/debug_helper.php",
+            "helpers/download_helper.php",
             "helpers/env_helper.php",
             "helpers/escape_helper.php",
             "helpers/facebook_helper.php",
