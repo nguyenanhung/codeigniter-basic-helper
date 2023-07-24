@@ -22,7 +22,7 @@ if (!function_exists('placeholder_img')) {
      * @copyright: 713uk13m <dev@nguyenanhung.com>
      * @time     : 15/06/2022 42:35
      */
-    function placeholder_img($size = '300x250', $bg_color = '', $text_color = '', $text = '', $domain = 'https://via.placeholder.com/')
+    function placeholder_img($size = '300x250', $bg_color = '', $text_color = '', $text = '', $domain = 'https://placehold.co/')
     {
         if (!empty($bg_color)) {
             $bg_color = '/' . $bg_color;
