@@ -40,19 +40,31 @@ class SimpleRestful extends BaseHelper
             $header = array("Content-Type: application/json");
         }
 
-        curl_setopt_array($curl, array(
-            CURLOPT_URL            => rtrim($url, "/"),
+        $url = rtrim($url, "/");
+        $parseUrl = parse_url($url);
+
+        $options = array(
+            CURLOPT_URL            => $url,
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING       => "",
             CURLOPT_MAXREDIRS      => 10,
             CURLOPT_TIMEOUT        => 30,
-            CURLOPT_HTTP_VERSION   => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST  => $type,
             CURLOPT_POSTFIELDS     => $data,
             CURLOPT_HTTPHEADER     => $header,
             CURLOPT_SSL_VERIFYHOST => 0,
             CURLOPT_SSL_VERIFYPEER => 0,
-        ));
+        );
+
+        if (isset($parseUrl['scheme']) && $parseUrl['scheme'] === 'https') {
+            $options[CURLOPT_SSLVERSION] = CURL_SSLVERSION_TLSv1_2;
+        }
+
+        if (isset($parseUrl['scheme']) && $parseUrl['scheme'] === 'http') {
+            $options[CURLOPT_HTTP_VERSION] = CURL_HTTP_VERSION_1_1;
+        }
+
+        curl_setopt_array($curl, $options);
 
         $response = json_decode(curl_exec($curl));
 
