@@ -22,7 +22,12 @@ if (!function_exists('sendSimpleGetRequest')) {
      */
     function sendSimpleGetRequest($url = '', $data = array(), $method = 'GET')
     {
-        $target = (!empty($data) && (is_array($data) || is_object($data))) ? $url . '?' . http_build_query($data) : $url;
+        if ((!empty($data) && (is_array($data) || is_object($data)))) {
+            $target = $url . '?' . http_build_query($data);
+        } else {
+            $target = $url;
+        }
+        $defaultUA = 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1.2 Safari/605.1.15';
         $method = strtoupper($method);
         $curl = curl_init();
         curl_setopt_array($curl, array(
@@ -31,9 +36,10 @@ if (!function_exists('sendSimpleGetRequest')) {
             CURLOPT_ENCODING       => "",
             CURLOPT_MAXREDIRS      => 10,
             CURLOPT_TIMEOUT        => 30,
-            CURLOPT_CUSTOMREQUEST  => $method,
-            CURLOPT_POSTFIELDS     => "",
-            CURLOPT_HTTPHEADER     => array(),
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_SSLVERSION     => CURL_SSLVERSION_TLSv1_2,
+            CURLOPT_CUSTOMREQUEST  => "GET",
+            CURLOPT_HTTPHEADER     => array($defaultUA),
         ));
         $response = curl_exec($curl);
         $err = curl_error($curl);
