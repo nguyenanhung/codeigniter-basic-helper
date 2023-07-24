@@ -28,7 +28,7 @@ if (!function_exists('bear_framework_gravatar_init')) {
         $file = md5($url);
 
         $cms = &get_instance();
-        $cms->load->driver('cache', ['adapter' => 'file', 'backup' => 'dummy']);
+        $cms->load->driver('cache', array('adapter' => 'file', 'backup' => 'dummy'));
         if (!$res = $cms->cache->get($file)) {
             $respond = sendSimpleGetRequest($url);
             $res = json_decode($respond, false);
@@ -52,6 +52,6 @@ if (!function_exists('bear_framework_show_gravatar')) {
      */
     function bear_framework_show_gravatar($username = 'nguyenanhung', $size = 300)
     {
-        return bear_framework_gravatar_init($username)->entry[0]->thumbnailUrl . '?' . http_build_query(['size' => $size]);
+        return bear_framework_gravatar_init($username)->entry[0]->thumbnailUrl . '?' . http_build_query(array('size' => $size));
     }
 }
