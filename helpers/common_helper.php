@@ -7,6 +7,30 @@
  * Date: 09/11/2021
  * Time: 09:17
  */
+if (!function_exists('smart_bear_copyright_date')) {
+    function smart_bear_copyright_date($startYear = 2016)
+    {
+        return $startYear . '-' . date('Y');
+    }
+}
+if (!function_exists('smart_bear_copyright_line')) {
+    function smart_bear_copyright_line()
+    {
+        $helper = new \nguyenanhung\CodeIgniter\BasicHelper\BaseHelper();
+        $author = $helper->getAuthor();
+
+        return '&copy; <a href="' . $author['web'] . '" title="' . $author['full_name'] . '">' . $author['name'] . '</a>';
+    }
+}
+if (!function_exists('smart_bear_copyright_powered_line')) {
+    function smart_bear_copyright_powered_line()
+    {
+        $helper = new \nguyenanhung\CodeIgniter\BasicHelper\BaseHelper();
+        $author = $helper->getAuthor();
+
+        return 'Powered by <a href="' . $author['web'] . '" title="' . $author['full_name'] . '">' . $author['name'] . '</a>';
+    }
+}
 if (!function_exists('smart_bear_basic_helper_version')) {
     function smart_bear_basic_helper_version()
     {
