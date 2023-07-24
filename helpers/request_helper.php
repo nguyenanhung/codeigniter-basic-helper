@@ -22,25 +22,35 @@ if (!function_exists('sendSimpleGetRequest')) {
      */
     function sendSimpleGetRequest($url = '', $data = array(), $method = 'GET')
     {
+        $method = strtoupper($method);
         if ((!empty($data) && (is_array($data) || is_object($data)))) {
             $target = $url . '?' . http_build_query($data);
         } else {
             $target = $url;
         }
-        $defaultUA = 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1.2 Safari/605.1.15';
-        $method = strtoupper($method);
+
+        $parseUrl = parse_url($target);
+        $UA = 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1.2 Safari/605.1.15';
         $curl = curl_init();
-        curl_setopt_array($curl, array(
+
+        $options = array(
             CURLOPT_URL            => $target,
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING       => "",
             CURLOPT_MAXREDIRS      => 10,
             CURLOPT_TIMEOUT        => 30,
             CURLOPT_FOLLOWLOCATION => true,
-            CURLOPT_SSLVERSION     => CURL_SSLVERSION_TLSv1_2,
             CURLOPT_CUSTOMREQUEST  => "GET",
-            CURLOPT_HTTPHEADER     => array($defaultUA),
-        ));
+            CURLOPT_HTTPHEADER     => array($UA),
+        );
+        if (isset($parseUrl['scheme']) && $parseUrl['scheme'] === 'https') {
+            $options[CURLOPT_SSLVERSION] = CURL_SSLVERSION_TLSv1_2;
+        }
+        if (isset($parseUrl['scheme']) && $parseUrl['scheme'] === 'http') {
+            $options[CURLOPT_HTTP_VERSION] = CURL_HTTP_VERSION_1_1;
+        }
+
+        curl_setopt_array($curl, $options);
         $response = curl_exec($curl);
         $err = curl_error($curl);
         curl_close($curl);
