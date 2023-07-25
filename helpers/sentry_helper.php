@@ -41,7 +41,7 @@ if (!function_exists('log_to_sentry')) {
 
             return true;
         } catch (Exception $e) {
-            return $e->getMessage();
+            return __get_error_message__($e);
         }
     }
 }

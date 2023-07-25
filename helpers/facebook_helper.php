@@ -78,15 +78,19 @@ if (!function_exists('widget_facebook_script_init')) {
      * Function widget_facebook_script_init
      *
      * @param string $appId
+     * @param string $version
      *
      * @return string
      * @author   : 713uk13m <dev@nguyenanhung.com>
      * @copyright: 713uk13m <dev@nguyenanhung.com>
      * @time     : 21/07/2022 50:42
      */
-    function widget_facebook_script_init($appId = '')
+    function widget_facebook_script_init($appId = '', $version = 'v14.0')
     {
-        $url = 'https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v14.0&appId=' . trim($appId) . '&autoLogAppEvents=1';
+        if (empty($version)) {
+            $version = 'v14.0';
+        }
+        $url = 'https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=' . trim($version) . '&appId=' . trim($appId) . '&autoLogAppEvents=1';
 
         return '<div id="fb-root"></div><script async defer crossorigin="anonymous" src="' . trim($url) . '" nonce="EOLK7Cbn"></script>';
     }

@@ -44,6 +44,10 @@ if (!function_exists('getZuluTime')) {
         try {
             return (new DateTime("now", new DateTimeZone("UTC")))->format('Y-m-d\TH:i:s\Z');
         } catch (Exception $e) {
+            if (function_exists('log_message')) {
+                log_message('error', __get_error_message__($e));
+            }
+
             return null;
         }
     }

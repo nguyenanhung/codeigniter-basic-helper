@@ -25,7 +25,7 @@ if (!function_exists('setupMetaDnsPrefetch')) {
             foreach ($dns as $domain) {
                 $domain = str_replace(array('https://', 'http://'), '', $domain);
                 $domain = trim($domain, '/');
-                $html   .= "<link href='//" . $domain . "/' rel='dns-prefetch' />" . PHP_EOL;
+                $html .= "<link href='//" . $domain . "/' rel='dns-prefetch' />" . PHP_EOL;
             }
 
             return $html;

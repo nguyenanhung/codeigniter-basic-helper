@@ -477,7 +477,7 @@ if (!function_exists('append_params_into_url')) {
     {
         $urlParts = parse_url($url);
         if (isset($urlParts['query'])) {
-            $queryParams = [];
+            $queryParams = array();
             parse_str($urlParts['query'], $queryParams);
             $queryParams = array_merge($queryParams, $params);
             $urlParts['query'] = http_build_query($queryParams);
