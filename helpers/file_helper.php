@@ -317,6 +317,10 @@ if (!function_exists('scan_folder')) {
 
             return array();
         } catch (Exception $ex) {
+            if (function_exists('log_message')) {
+                log_message('error', __get_error_message__($ex));
+                log_message('error', __get_error_trace__($ex));
+            }
             return array();
         }
     }

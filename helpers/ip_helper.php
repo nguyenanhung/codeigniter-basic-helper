@@ -254,8 +254,8 @@ if (!function_exists('getIpInformation')) {
         }
         catch (Exception $e) {
             if (function_exists('log_message')) {
-                log_message('error', $e->getMessage());
-                log_message('error', $e->getTraceAsString());
+                log_message('error', __get_error_message__($e));
+                log_message('error', __get_error_trace__($e));
             }
 
             return $e->getMessage();
