@@ -96,15 +96,18 @@ if (!function_exists('clean_title')) {
     /**
      * Function clean_title
      *
-     * @param string $text
+     * @param mixed $text
      *
-     * @return string
+     * @return string|null
      * @author   : 713uk13m <dev@nguyenanhung.com>
      * @copyright: 713uk13m <dev@nguyenanhung.com>
      * @time     : 12/10/2020 36:32
      */
-    function clean_title($text = '')
+    function clean_title($text)
     {
+        if ($text === null) {
+            return null;
+        }
         $output = trim($text);
         if ($output !== '') {
             $output = clean_text($output);
