@@ -20,6 +20,9 @@ if (!function_exists('countStringsInText')) {
      */
     function countStringsInText($str)
     {
+        if (empty($str)) {
+            return 0;
+        }
         $str = strip_tags($str);
         $str = str_replace(PHP_EOL, '', $str);
         $arr = explode(' ', $str);
@@ -27,7 +30,7 @@ if (!function_exists('countStringsInText')) {
         return count($arr);
     }
 }
-if (!function_exists('countStringsInText')) {
+if (!function_exists('findMiddleInString')) {
     /**
      * Function findMiddleInString - Hàm lấy chuỗi ở giữa chuỗi bắt đầu và chuỗi kết thúc
      *
@@ -426,7 +429,7 @@ if (!function_exists('str_starts_with')) {
     function str_starts_with($needle, $haystack)
     {
         foreach ((array) $needle as $ndl) {
-            if ($ndl !== '' && substr($haystack, 0, strlen($ndl)) === (string) $ndl) {
+            if ($ndl !== '' && strpos($haystack, (string) $ndl) === 0) {
                 return true;
             }
         }
@@ -474,7 +477,7 @@ if (!function_exists('str_ignore_starts_with')) {
 
         foreach ((array) $needle as $ndl) {
             $n = strtolower($ndl);
-            if ($n !== '' && substr($hs, 0, strlen($n)) === $n) {
+            if ($n !== '' && strpos($hs, $n) === 0) {
                 return true;
             }
         }

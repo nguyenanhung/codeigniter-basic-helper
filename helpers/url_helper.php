@@ -209,6 +209,9 @@ if (!function_exists('alphabetOnly')) {
      */
     function alphabetOnly($string = '')
     {
+        if (empty($string)) {
+            return $string;
+        }
         $output = $string;
         // replace no alphabet character
         $output = preg_replace("/[^a-zA-Z0-9]/", "-", $output);
@@ -287,6 +290,9 @@ if (!function_exists('removeSpecialChar')) {
      */
     function removeSpecialChar($input_string = '')
     {
+        if (empty($input_string)) {
+            return $input_string;
+        }
         $str = trim($input_string);
         if ($str) {
             $str = str_replace(
@@ -321,6 +327,9 @@ if (!function_exists('getPermalinksSEO')) {
      */
     function getPermalinksSEO($input_string = '')
     {
+        if (empty($input_string)) {
+            return $input_string;
+        }
         $str = $input_string;
         if ($str !== '') {
             $str = str_replace(array(' ', '---'), '-', boDauTiengViet(trim($str)));

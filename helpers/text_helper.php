@@ -20,6 +20,9 @@ if (!function_exists('convert_string_utf8_to_vietnamese')) {
      */
     function convert_string_utf8_to_vietnamese($str = '')
     {
+        if (empty($str)) {
+            return $str;
+        }
         $str = trim($str);
         if ($str !== '') {
             $str = str_replace(
@@ -82,6 +85,9 @@ if (!function_exists('clean_text')) {
      */
     function clean_text($text = '')
     {
+        if (empty($text)) {
+            return $text;
+        }
         $output = trim($text);
         if ($output !== '') {
             $output = convert_string_utf8_to_vietnamese($output);
@@ -105,8 +111,8 @@ if (!function_exists('clean_title')) {
      */
     function clean_title($text)
     {
-        if ($text === null) {
-            return null;
+        if (empty($text)) {
+            return $text;
         }
         $output = trim($text);
         if ($output !== '') {
@@ -125,16 +131,19 @@ if (!function_exists('clean_text_mobile')) {
     /**
      * Function clean_text_mobile
      *
-     * @param string $att
+     * @param string $text
      *
      * @return string|string[]
      * @author   : 713uk13m <dev@nguyenanhung.com>
      * @copyright: 713uk13m <dev@nguyenanhung.com>
      * @time     : 12/10/2020 36:37
      */
-    function clean_text_mobile($att = '')
+    function clean_text_mobile($text = '')
     {
-        $output = $att;
+        if (empty($text)) {
+            return $text;
+        }
+        $output = $text;
         if ($output !== '') {
             $output = clean_text($output);
             $output = str_replace(
@@ -169,6 +178,9 @@ if (!function_exists('bodautru')) {
      */
     function bodautru($string = '')
     {
+        if (empty($string)) {
+            return $string;
+        }
         $output = $string;
         if ($output !== '') {
             $output = str_replace('-', '', $output);
@@ -190,6 +202,9 @@ if (!function_exists('bodaunhay')) {
      */
     function bodaunhay($string = '')
     {
+        if (empty($string)) {
+            return $string;
+        }
         $output = $string;
         if ($output !== '') {
             $output = str_replace(array('"', "'"), '', $output);
@@ -211,6 +226,9 @@ if (!function_exists('searchs_snippets')) {
      */
     function searchs_snippets($keywords = '')
     {
+        if (empty($keywords)) {
+            return $keywords;
+        }
         $output = $keywords;
         if ($output !== '') {
             $output = urldecode($output);
@@ -235,6 +253,9 @@ if (!function_exists('tags_snippets')) {
      */
     function tags_snippets($tags = '')
     {
+        if (empty($tags)) {
+            return $tags;
+        }
         $output = $tags;
         if ($output !== '') {
             $output = urldecode($output);
@@ -260,6 +281,9 @@ if (!function_exists('tags_clean')) {
      */
     function tags_clean($tags = '')
     {
+        if (empty($tags)) {
+            return $tags;
+        }
         $output = $tags;
         if ($output !== '') {
             $output = urldecode($output);
