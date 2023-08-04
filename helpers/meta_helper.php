@@ -20,6 +20,9 @@ if (!function_exists('setupMetaDnsPrefetch')) {
      */
     function setupMetaDnsPrefetch($dns = '')
     {
+        if (empty($dns)) {
+            return $dns;
+        }
         if (is_array($dns)) {
             $html = '';
             foreach ($dns as $domain) {

@@ -91,6 +91,9 @@ if (!function_exists('defaultCompressHtmlOutput')) {
      */
     function defaultCompressHtmlOutput($html = '')
     {
+        if (empty($html)) {
+            return $html;
+        }
         $search = array(
             '/\n/',             // replace end of line by a space
             '/\>[^\S ]+/s',     // strip whitespaces after tags, except space
