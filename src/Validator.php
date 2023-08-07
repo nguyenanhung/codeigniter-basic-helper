@@ -368,11 +368,10 @@ class Validator
     {
         if (!is_string($value)) {
             return false;
-        } elseif (function_exists('mb_strlen')) {
-            return mb_strlen($value);
         }
 
-        return strlen($value);
+        return mb_strlen($value);
+
     }
 
     /**
@@ -388,11 +387,13 @@ class Validator
     {
         if (!is_numeric($value)) {
             return false;
-        } elseif (function_exists('bccomp')) {
-            return !(bccomp($params[0], $value, 14) === 1);
-        } else {
-            return $params[0] <= $value;
         }
+
+        if (function_exists('bccomp')) {
+            return !(bccomp($params[0], $value, 14) === 1);
+        }
+
+        return $params[0] <= $value;
     }
 
     /**
@@ -537,12 +538,10 @@ class Validator
             } else {
                 $isContains = strpos($value, $params[0]) !== false;
             }
+        } elseif (function_exists('mb_stripos')) {
+            $isContains = mb_stripos($value, $params[0]) !== false;
         } else {
-            if (function_exists('mb_stripos')) {
-                $isContains = mb_stripos($value, $params[0]) !== false;
-            } else {
-                $isContains = stripos($value, $params[0]) !== false;
-            }
+            $isContains = stripos($value, $params[0]) !== false;
         }
 
         return $isContains;
@@ -703,7 +702,7 @@ class Validator
         }
 
         foreach ($this->validUrlPrefixes as $prefix) {
-            if (strpos($value, $prefix) !== false) {
+            if (mb_strpos($value, $prefix) !== false) {
                 return filter_var($value, \FILTER_VALIDATE_URL) !== false;
             }
         }
@@ -726,8 +725,8 @@ class Validator
         }
 
         foreach ($this->validUrlPrefixes as $prefix) {
-            if (strpos($value, $prefix) !== false) {
-                $host = parse_url(strtolower($value), PHP_URL_HOST);
+            if (mb_strpos($value, $prefix) !== false) {
+                $host = parse_url(mb_strtolower($value), PHP_URL_HOST);
 
                 return checkdnsrr($host, 'A') || checkdnsrr($host, 'AAAA') || checkdnsrr($host, 'CNAME');
             }
@@ -917,12 +916,12 @@ class Validator
             $number = preg_replace('/[^0-9]+/', '', $value);
             $sum = 0;
 
-            $strlen = strlen($number);
+            $strlen = mb_strlen($number);
             if ($strlen < 13) {
                 return false;
             }
             for ($i = 0; $i < $strlen; $i++) {
-                $digit = (int) substr($number, $strlen - $i - 1, 1);
+                $digit = (int) mb_substr($number, $strlen - $i - 1, 1);
                 if ($i % 2 == 1) {
                     $sub_total = $digit * 2;
                     if ($sub_total > 9) {

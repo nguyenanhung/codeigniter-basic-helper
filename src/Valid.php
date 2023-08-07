@@ -214,13 +214,13 @@ class Valid extends BaseHelper
 
         // Check maximum length of the whole hostname
         // http://en.wikipedia.org/wiki/Domain_name#cite_note-0
-        if (strlen($matches[1]) > 253) {
+        if (mb_strlen($matches[1]) > 253) {
             return false;
         }
 
         // An extra check for the top level domain
         // It must start with a letter
-        $tld = ltrim(substr($matches[1], (int) strrpos($matches[1], '.')), '.');
+        $tld = ltrim(mb_substr($matches[1], (int) strrpos($matches[1], '.')), '.');
 
         return ctype_alpha($tld[0]);
     }
@@ -336,14 +336,14 @@ class Valid extends BaseHelper
         );
 
         // Check card type
-        $type = strtolower($type);
+        $type = mb_strtolower($type);
 
         if (!isset($cards[$type])) {
             return false;
         }
 
         // Check card number length
-        $length = strlen($number);
+        $length = mb_strlen($number);
 
         // Validate the card length by the card type
         if (!in_array($length, preg_split('/\D+/', $cards[$type]['length']))) {
@@ -383,19 +383,19 @@ class Valid extends BaseHelper
         }
 
         // Check number length
-        $length = strlen($number);
+        $length = mb_strlen($number);
 
         // Checksum of the card number
         $checksum = 0;
 
         for ($i = $length - 1; $i >= 0; $i -= 2) {
             // Add up every 2nd digit, starting from the right
-            $checksum += substr($number, $i, 1);
+            $checksum += mb_substr($number, $i, 1);
         }
 
         for ($i = $length - 2; $i >= 0; $i -= 2) {
             // Add up every 2nd digit doubled, starting from the right
-            $double = substr($number, $i, 1) * 2;
+            $double = mb_substr($number, $i, 1) * 2;
 
             // Subtract 9 from the double where value is greater than 10
             $checksum += ($double >= 10) ? ($double - 9) : $double;
@@ -423,7 +423,7 @@ class Valid extends BaseHelper
         $number = preg_replace('/\D+/', '', $number);
 
         // Check if the number is within range
-        return in_array(strlen($number), $lengths);
+        return in_array(mb_strlen($number), $lengths);
     }
 
     /**

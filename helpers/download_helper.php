@@ -17,7 +17,7 @@ if (!function_exists('download_file_chunked')) {
         //$mime_type = finfo_file($finfo, $path); //For remote file, it may not work
         $mime_type = mime_type($file_name);
 
-        $attachment = (strstr($_SERVER['HTTP_USER_AGENT'], "MSIE")) ? "" : " attachment"; // IE 5.5 fix.
+        $attachment = (mb_strstr($_SERVER['HTTP_USER_AGENT'], "MSIE")) ? "" : " attachment"; // IE 5.5 fix.
 
         // send the headers
         header("Content-Type: $mime_type");
@@ -74,7 +74,7 @@ if (!function_exists('download_large_file')) {
         //$mime_type = finfo_file($finfo, $path); //For remote file, it may not work
         $mime_type = mime_type($file_name);
 
-        $attachment = (strstr($_SERVER['HTTP_USER_AGENT'], "MSIE")) ? "" : " attachment"; // IE 5.5 fix.
+        $attachment = (mb_strstr($_SERVER['HTTP_USER_AGENT'], "MSIE")) ? "" : " attachment"; // IE 5.5 fix.
 
         // send the headers
         header("Content-Type: $mime_type");

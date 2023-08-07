@@ -74,12 +74,12 @@ if (!function_exists('generateAlphaId')) {
             // with this patch by Simon Franz (http://blog.snaky.org/)
             // you can optionally supply a password to make it harder
             // to calculate the corresponding numeric ID
-            $indexLen = strlen($index);
+            $indexLen = mb_strlen($index);
             for ($n = 0; $n < $indexLen; $n++) {
                 $i[] = $index[$n];
             }
             $passHash = hash('sha256', $passKey);
-            $passHash = (strlen($passHash) < strlen($index)) ? hash('sha512', $passKey) : $passHash;
+            $passHash = (mb_strlen($passHash) < mb_strlen($index)) ? hash('sha512', $passKey) : $passHash;
 
             for ($n = 0; $n < $indexLen; $n++) {
                 $p[] = $passHash[$n];
@@ -87,15 +87,15 @@ if (!function_exists('generateAlphaId')) {
             array_multisort($p, SORT_DESC, $i);
             $index = implode($i);
         }
-        $base = strlen($index);
+        $base = mb_strlen($index);
         if ($to_num) {
             // Digital number  <<--  alphabet letter code
             $in  = strrev($in);
             $out = 0;
-            $len = strlen($in) - 1;
+            $len = mb_strlen($in) - 1;
             for ($t = 0; $t <= $len; $t++) {
                 $pow = $base ** ($len - $t);
-                $out = $out + strpos($index, $in[$t]) * $pow;
+                $out = $out + mb_strpos($index, $in[$t]) * $pow;
             }
             if (is_numeric($pad_up)) {
                 $pad_up--;
@@ -104,7 +104,7 @@ if (!function_exists('generateAlphaId')) {
                 }
             }
             $out = sprintf('%F', $out);
-            $out = substr($out, 0, strpos($out, '.'));
+            $out = mb_substr($out, 0, mb_strpos($out, '.'));
         } else {
             // Digital number  -->>  alphabet letter code
             if (is_numeric($pad_up)) {

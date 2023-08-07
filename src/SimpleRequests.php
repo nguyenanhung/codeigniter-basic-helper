@@ -97,7 +97,7 @@ class SimpleRequests
     public function sendRequest($url = '', $data = array(), $method = 'GET')
     {
         try {
-            $getMethod = strtoupper($method);
+            $getMethod = mb_strtoupper($method);
             // create a log channel
             $formatter = new LineFormatter($this->mono['outputFormat'], $this->mono['dateFormat']);
             $stream = new StreamHandler($this->logger_path . 'sendRequest/' . $this->logger_file, Logger::INFO, $this->mono['monoBubble'], $this->mono['monoFilePermission']);
@@ -226,16 +226,16 @@ class SimpleRequests
      * @param $openTag
      * @param $closeTag
      *
-     * @return false|string
+     * @return string
      * @author   : 713uk13m <dev@nguyenanhung.com>
      * @copyright: 713uk13m <dev@nguyenanhung.com>
-     * @time     : 07/27/2021 32:32
+     * @time     : 07/08/2023 49:39
      */
     public function xmlGetValue($xml, $openTag, $closeTag)
     {
-        $f = strpos($xml, $openTag) + strlen($openTag);
-        $l = strpos($xml, $closeTag);
+        $f = mb_strpos($xml, $openTag) + mb_strlen($openTag);
+        $l = mb_strpos($xml, $closeTag);
 
-        return ($f <= $l) ? substr($xml, $f, $l - $f) : "";
+        return ($f <= $l) ? mb_substr($xml, $f, $l - $f) : "";
     }
 }

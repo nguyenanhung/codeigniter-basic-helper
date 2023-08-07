@@ -22,8 +22,8 @@ if (!function_exists('assets_url')) {
     function assets_url($uri = '', $protocol = null)
     {
         if (function_exists('base_url') && function_exists('config_item')) {
-            $fileExt = substr(trim($uri), strrpos(trim($uri), '.') + 1);
-            $fileExt = strtoupper($fileExt);
+            $fileExt = mb_substr(trim($uri), mb_strrpos(trim($uri), '.') + 1);
+            $fileExt = mb_strtoupper($fileExt);
             $version = '';
             if ($fileExt === 'CSS' || $fileExt === 'JS') {
                 $version = config_item('assets_version');
@@ -50,8 +50,8 @@ if (!function_exists('static_url')) {
     function static_url($uri = '')
     {
         if (function_exists('base_url') && function_exists('config_item')) {
-            $fileExt = substr(trim($uri), strrpos(trim($uri), '.') + 1);
-            $fileExt = strtoupper($fileExt);
+            $fileExt = mb_substr(trim($uri), mb_strrpos(trim($uri), '.') + 1);
+            $fileExt = mb_strtoupper($fileExt);
             $version = '';
             if ($fileExt === 'CSS' || $fileExt === 'JS') {
                 $version = config_item('assets_version');
@@ -80,8 +80,8 @@ if (!function_exists('templates_url')) {
     function templates_url($uri = '', $protocol = null)
     {
         if (function_exists('base_url') && function_exists('config_item')) {
-            $fileExt = substr(trim($uri), strrpos(trim($uri), '.') + 1);
-            $fileExt = strtoupper($fileExt);
+            $fileExt = mb_substr(trim($uri), mb_strrpos(trim($uri), '.') + 1);
+            $fileExt = mb_strtoupper($fileExt);
             $version = '';
             if ($fileExt === 'CSS' || $fileExt === 'JS') {
                 $version = config_item('assets_version');
@@ -180,8 +180,8 @@ if (!function_exists('storage_url')) {
     function storage_url($uri = '')
     {
         if (function_exists('config_item')) {
-            $fileExt = substr(trim($uri), strrpos(trim($uri), '.') + 1);
-            $fileExt = strtoupper($fileExt);
+            $fileExt = mb_substr(trim($uri), mb_strrpos(trim($uri), '.') + 1);
+            $fileExt = mb_strtoupper($fileExt);
             $version = '';
             if ($fileExt === 'CSS' || $fileExt === 'JS') {
                 $version = config_item('assets_version');
@@ -209,8 +209,8 @@ if (!function_exists('public_storage_tmp_url')) {
     function public_storage_tmp_url($uri = '', $protocol = null)
     {
         if (function_exists('base_url') && function_exists('config_item')) {
-            $fileExt = substr(trim($uri), strrpos(trim($uri), '.') + 1);
-            $fileExt = strtoupper($fileExt);
+            $fileExt = mb_substr(trim($uri), mb_strrpos(trim($uri), '.') + 1);
+            $fileExt = mb_strtoupper($fileExt);
             $version = '';
             if ($fileExt === 'CSS' || $fileExt === 'JS') {
                 $version = config_item('assets_version');

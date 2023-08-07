@@ -63,12 +63,12 @@ if (!function_exists('convertNumberToWords')) {
             if ($i < 20) {
                 $returnTxt .= $ones[$i];
             } elseif ($i < 100) {
-                $returnTxt .= $tens[substr($i, 0, 1)];
-                $returnTxt .= " " . $ones[substr($i, 1, 1)];
+                $returnTxt .= $tens[mb_substr($i, 0, 1)];
+                $returnTxt .= " " . $ones[mb_substr($i, 1, 1)];
             } else {
-                $returnTxt .= $ones[substr($i, 0, 1)] . " " . $hundreds[0];
-                $returnTxt .= " " . $tens[substr($i, 1, 1)];
-                $returnTxt .= " " . $ones[substr($i, 2, 1)];
+                $returnTxt .= $ones[mb_substr($i, 0, 1)] . " " . $hundreds[0];
+                $returnTxt .= " " . $tens[mb_substr($i, 1, 1)];
+                $returnTxt .= " " . $ones[mb_substr($i, 2, 1)];
             }
             if ($key > 0) {
                 $returnTxt .= " " . $hundreds[$key] . " ";
@@ -79,8 +79,8 @@ if (!function_exists('convertNumberToWords')) {
             if ($decnum < 20) {
                 $returnTxt .= $ones[$decnum];
             } elseif ($decnum < 100) {
-                $returnTxt .= $tens[substr($decnum, 0, 1)];
-                $returnTxt .= " " . $ones[substr($decnum, 1, 1)];
+                $returnTxt .= $tens[mb_substr($decnum, 0, 1)];
+                $returnTxt .= " " . $ones[mb_substr($decnum, 1, 1)];
             }
         }
 

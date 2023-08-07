@@ -34,7 +34,6 @@ if (!function_exists('placeholder_img')) {
             $text = '/' . $text;
         }
         $link = trim($domain) . trim($size) . trim($bg_color) . trim($text_color) . trim($text);
-
         return '<img alt="Place-Holder" title="Place Holder" src="' . $link . '">';
     }
 }

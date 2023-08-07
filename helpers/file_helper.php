@@ -28,8 +28,8 @@ if (!function_exists('write_file')) {
 
         flock($fp, LOCK_EX);
 
-        for ($result = $written = 0, $length = strlen($data); $written < $length; $written += $result) {
-            if (($result = fwrite($fp, substr($data, $written))) === false) {
+        for ($result = $written = 0, $length = mb_strlen($data); $written < $length; $written += $result) {
+            if (($result = fwrite($fp, mb_substr($data, $written))) === false) {
                 break;
             }
         }
