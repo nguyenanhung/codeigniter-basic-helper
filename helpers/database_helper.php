@@ -25,16 +25,12 @@ if (!function_exists('generate_list_id_with_parent_id')) {
     function generate_list_id_with_parent_id($allSubId, $parentId, $field = 'id')
     {
         if (is_array($allSubId) || is_object($allSubId)) {
-
             // Xác định lấy toàn bộ tin tức ở các category con
             $countSub = count($allSubId); // Đếm bảng ghi Category con
-
             if ($countSub) {
-
                 // Nếu tồn tại các category con
                 $listSub = array();
                 $listSub[] = $parentId; // Push category cha
-
                 foreach ($allSubId as $item) {
                     $itemId = is_array($item) ? $item[$field] : $item->$field;
                     $listSub[] = $itemId; // Push các category con vào mảng dữ liệu

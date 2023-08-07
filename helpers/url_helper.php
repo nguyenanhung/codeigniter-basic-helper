@@ -101,7 +101,7 @@ if (!function_exists('decodeId_Url_byHungDEV')) {
      */
     function decodeId_Url_byHungDEV($id)
     {
-        $id = strtoupper($id);
+        $id = mb_strtoupper($id);
         $id = str_replace(
             array('E', 'R', 'M', 'N', 'J', 'I', 'Z', 'K', 'L', 'O'),
             array('0', '1', '2', '3', '4', '5', '6', '7', '8', '9'),
@@ -154,7 +154,7 @@ if (!function_exists('convertToLatin')) {
                 $output = alphabetOnly($output);
             }
             if ($toLower) {
-                $output = strtolower($output);
+                $output = mb_strtolower($output);
             }
         }
 
@@ -266,10 +266,10 @@ if (!function_exists('boDauTiengViet')) {
                 $str
             );
             // Loại bỏ ký tự trùng lặp special (-)
-            while (strpos($str, '--') > 0) {
+            while (mb_strpos($str, '--') > 0) {
                 $str = str_replace('--', '-', $str);
             }
-            while (strpos($str, '--') === 0) {
+            while (mb_strpos($str, '--') === 0) {
                 $str = str_replace('--', '-', $str);
             }
         }

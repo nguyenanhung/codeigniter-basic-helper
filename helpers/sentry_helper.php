@@ -28,10 +28,8 @@ if (!function_exists('log_to_sentry')) {
         try {
             $CI =& get_instance();
             $CI->load->config('config_sentry');
-
             // Init config sentry
             $config = config_item('config_sentry');
-
             // Init logger use Monolog
             $logger = new Monolog\Logger($name);
             $client = Sentry\ClientBuilder::create(array('dsn' => $config['dsn']))->getClient();
@@ -41,7 +39,11 @@ if (!function_exists('log_to_sentry')) {
 
             return true;
         } catch (Exception $e) {
-            return __get_error_message__($e);
+            $errorMsg = __get_error_message__($e);
+            if (function_exists('log_message')) {
+                log_message('error', $errorMsg);
+            }
+            return $errorMsg;
         }
     }
 }

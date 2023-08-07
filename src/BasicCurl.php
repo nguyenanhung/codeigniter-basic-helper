@@ -200,13 +200,13 @@ final class BasicCurl extends BaseHelper
 
         if ($trimmed_header === "") {
             $this->response_header_continue = false;
-        } elseif (strtolower($trimmed_header) === 'http/1.1 100 continue') {
+        } elseif (mb_strtolower($trimmed_header) === 'http/1.1 100 continue') {
             $this->response_header_continue = true;
         } elseif (!$this->response_header_continue) {
             $this->response_headers[] = $trimmed_header;
         }
 
-        return strlen($header_line);
+        return mb_strlen($header_line);
     }
 
     // protected methods
@@ -224,12 +224,20 @@ final class BasicCurl extends BaseHelper
         $this->curl_error_code = curl_errno($this->curl);
         $this->curl_error_message = curl_error($this->curl);
         $this->curl_error = !($this->getErrorCode() === 0);
-        $this->http_status_code = intval(curl_getinfo($this->curl, CURLINFO_HTTP_CODE));
+        $this->http_status_code = (int) curl_getinfo($this->curl, CURLINFO_HTTP_CODE);
         $this->http_error = $this->isError();
         $this->error = $this->curl_error || $this->http_error;
-        $this->error_code = $this->error ? ($this->curl_error ? $this->getErrorCode() : $this->getHttpStatus()) : 0;
+        if ($this->curl_error) {
+            $this->error_code = $this->error ? ($this->getErrorCode()) : 0;
+        } else {
+            $this->error_code = $this->error ? ($this->getHttpStatus()) : 0;
+        }
         $this->request_headers = preg_split('/\r\n/', curl_getinfo($this->curl, CURLINFO_HEADER_OUT), -1, PREG_SPLIT_NO_EMPTY);
-        $this->http_error_message = $this->error ? (isset($this->response_headers['0']) ? $this->response_headers['0'] : '') : '';
+        if (isset($this->response_headers['0'])) {
+            $this->http_error_message = $this->error ? ($this->response_headers['0']) : '';
+        } else {
+            $this->http_error_message = $this->error ? ('') : '';
+        }
         $this->error_message = $this->curl_error ? $this->getErrorMessage() : $this->http_error_message;
         $this->setOpt(CURLOPT_HEADERFUNCTION, null);
         return $this->error_code;
@@ -766,7 +774,7 @@ final class BasicCurl extends BaseHelper
     {
         $headers = array();
         if (!is_null($headerKey)) {
-            $headerKey = strtolower($headerKey);
+            $headerKey = mb_strtolower($headerKey);
         }
 
         foreach ($this->response_headers as $header) {
@@ -775,7 +783,7 @@ final class BasicCurl extends BaseHelper
             $key = isset($parts[0]) ? $parts[0] : '';
             $value = isset($parts[1]) ? $parts[1] : '';
 
-            $headers[trim(strtolower($key))] = trim($value);
+            $headers[mb_strtolower(trim($key))] = trim($value);
         }
 
         if ($headerKey) {

@@ -96,15 +96,15 @@ class SimpleParseOpenGraph extends BaseHelper implements \Iterator
 
         foreach ($tags as $tag) {
             if ($tag->hasAttribute('property') &&
-                strpos($tag->getAttribute('property'), 'og:') === 0) {
-                $key = strtr(substr($tag->getAttribute('property'), 3), '-', '_');
+                mb_strpos($tag->getAttribute('property'), 'og:') === 0) {
+                $key = strtr(mb_substr($tag->getAttribute('property'), 3), '-', '_');
                 $page->_values[$key] = $tag->getAttribute('content');
             }
 
             //Added this if loop to retrieve description values from sites like the New York Times who have malformed it.
             if ($tag->hasAttribute('value') && $tag->hasAttribute('property') &&
-                strpos($tag->getAttribute('property'), 'og:') === 0) {
-                $key = strtr(substr($tag->getAttribute('property'), 3), '-', '_');
+                mb_strpos($tag->getAttribute('property'), 'og:') === 0) {
+                $key = strtr(mb_substr($tag->getAttribute('property'), 3), '-', '_');
                 $page->_values[$key] = $tag->getAttribute('value');
             }
             //Based on modifications at https://github.com/bashofmann/opengraph/blob/master/src/OpenGraph/OpenGraph.php

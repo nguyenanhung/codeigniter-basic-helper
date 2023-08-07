@@ -77,6 +77,9 @@ if (!function_exists('tachPage')) {
      */
     function tachPage($input)
     {
+        if (empty($input)) {
+            return $input;
+        }
         preg_match('/(.*)-c(.*).html/U', $input, $output);
 
         return $output[1];
@@ -95,6 +98,9 @@ if (!function_exists('stripHtmlTag')) {
      */
     function stripHtmlTag($str)
     {
+        if (empty($str)) {
+            return $str;
+        }
         $regEx = '/([^<]*<\s*[a-z](?:[0-9]|[a-z]{0,9}))(?:(?:\s*[a-z\-]{2,14}\s*=\s*(?:"[^"]*"|\'[^\']*\'))*)(\s*\/?>[^<]*)/i';
         $chunks = preg_split($regEx, $str, -1, PREG_SPLIT_DELIM_CAPTURE);
         $chunkCount = count($chunks);
@@ -121,10 +127,14 @@ if (!function_exists('strip_only_tags')) {
      */
     function strip_only_tags($str, $tags, $stripContent = false)
     {
+        if (empty($str)) {
+            return $str;
+        }
+
         $content = '';
 
         if (!is_array($tags)) {
-            $tags = (strpos($str, '>') !== false ? explode('>', str_replace('<', '', $tags)) : array($tags));
+            $tags = (mb_strpos($str, '>') !== false ? explode('>', str_replace('<', '', $tags)) : array($tags));
             if (end($tags) === '') {
                 array_pop($tags);
             }
@@ -155,6 +165,9 @@ if (!function_exists('tracking_google_analytics')) {
      */
     function tracking_google_analytics($analytics_id = '', $analytics_mode = 'auto')
     {
+        if (empty($analytics_id)) {
+            return $analytics_id;
+        }
         $html = "<script>
 	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -182,6 +195,9 @@ if (!function_exists('tracking_google_gtag_analytics_default')) {
      */
     function tracking_google_gtag_analytics_default($ID = '')
     {
+        if (empty($ID)) {
+            return $ID;
+        }
         $html = "<!-- Global site tag (gtag.js) - Google Analytics -->" . PHP_EOL;
         $html .= "<script async src='https://www.googletagmanager.com/gtag/js?id=" . trim($ID) . "'></script>" . PHP_EOL;
         $html .= "<script>
@@ -223,7 +239,7 @@ if (!function_exists('html_tag')) {
         $html .= (!empty($attr)) ? ' ' . (is_array($attr) ? arrayToAttributes($attr) : $attr) : '';
 
         // a void element?
-        if (in_array(strtolower($tag), $void_elements)) {
+        if (in_array(mb_strtolower($tag), $void_elements)) {
             // these can not have content
             $html .= ' />';
         } else {

@@ -22,7 +22,7 @@ if (!function_exists('sendSimpleGetRequest')) {
      */
     function sendSimpleGetRequest($url = '', $data = array(), $method = 'GET')
     {
-        $method = strtoupper($method);
+        $method = mb_strtoupper($method);
         if ((!empty($data) && (is_array($data) || is_object($data)))) {
             $target = $url . '?' . http_build_query($data);
         } else {
@@ -121,7 +121,7 @@ if (!function_exists('bear_post_async_request')) {
         $out .= "User-Agent: BEAR Framework\r\n";
         $out .= "Referer: " . $referer . "\r\n";
         $out .= "Content-Type: application/x-www-form-urlencoded\r\n";
-        $out .= "Content-Length: " . strlen($post_string) . "\r\n";
+        $out .= "Content-Length: " . mb_strlen($post_string) . "\r\n";
         if (!empty($headers)) {
             foreach ($headers as $key => $value) {
                 $out .= $key . ": " . $value . "\r\n";
@@ -144,10 +144,10 @@ if (!function_exists('get_http_response_code')) {
      *
      * @param $url
      *
-     * @return false|int|string
+     * @return int|string
      * @author   : 713uk13m <dev@nguyenanhung.com>
      * @copyright: 713uk13m <dev@nguyenanhung.com>
-     * @time     : 24/02/2023 06:51
+     * @time     : 07/08/2023 42:35
      */
     function get_http_response_code($url = '')
     {
@@ -155,7 +155,7 @@ if (!function_exists('get_http_response_code')) {
         if ($uri !== '') {
             $headers = get_headers($uri);
 
-            return substr($headers[0], 9, 3);
+            return mb_substr($headers[0], 9, 3);
         }
 
         return 200;

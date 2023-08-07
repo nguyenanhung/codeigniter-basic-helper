@@ -44,18 +44,18 @@ if (!function_exists('findMiddleInString')) {
     function findMiddleInString($str, $str_begin, $str_end)
     {
         if (empty($str_begin)) {
-            $to = strpos($str, $str_end);
+            $to = mb_strpos($str, $str_end);
 
-            return trim(substr($str, 0, $to));
+            return trim(mb_substr($str, 0, $to));
         }
-        $from = strrpos($str, $str_begin) + strlen($str_begin) - 1;
+        $from = mb_strrpos($str, $str_begin) + mb_strlen($str_begin) - 1;
         if (empty($str_end)) {
 
-            return trim(substr($str, $from + 1));
+            return trim(mb_substr($str, $from + 1));
         }
-        $str = substr($str, $from + 1);
-        $to = strpos($str, $str_end);
-        $str = substr($str, 0, $to);
+        $str = mb_substr($str, $from + 1);
+        $to = mb_strpos($str, $str_end);
+        $str = mb_substr($str, 0, $to);
 
         return trim($str);
     }
@@ -339,7 +339,7 @@ if (!function_exists('str_contains')) {
     function str_contains($needle, $haystack)
     {
         foreach ((array) $needle as $ndl) {
-            if (strpos($haystack, $ndl) !== false) {
+            if (mb_strpos($haystack, $ndl) !== false) {
                 return true;
             }
         }
@@ -384,7 +384,7 @@ if (!function_exists('str_ignore_contains')) {
     function str_ignore_contains($needle, $haystack)
     {
         foreach ((array) $needle as $ndl) {
-            if (stripos($haystack, $ndl) !== false) {
+            if (mb_stripos($haystack, $ndl) !== false) {
                 return true;
             }
         }
@@ -429,7 +429,7 @@ if (!function_exists('str_starts_with')) {
     function str_starts_with($needle, $haystack)
     {
         foreach ((array) $needle as $ndl) {
-            if ($ndl !== '' && strpos($haystack, (string) $ndl) === 0) {
+            if ($ndl !== '' && mb_strpos($haystack, (string) $ndl) === 0) {
                 return true;
             }
         }
@@ -473,11 +473,11 @@ if (!function_exists('str_ignore_starts_with')) {
      */
     function str_ignore_starts_with($needle, $haystack)
     {
-        $hs = strtolower($haystack);
+        $hs = mb_strtolower($haystack);
 
         foreach ((array) $needle as $ndl) {
-            $n = strtolower($ndl);
-            if ($n !== '' && strpos($hs, $n) === 0) {
+            $n = mb_strtolower($ndl);
+            if ($n !== '' && mb_strpos($hs, $n) === 0) {
                 return true;
             }
         }
@@ -523,8 +523,8 @@ if (!function_exists('str_ends_with')) {
     function str_ends_with($needle, $haystack)
     {
         foreach ((array) $needle as $ndl) {
-            $length = strlen($ndl);
-            if ($length === 0 || (substr($haystack, -$length) === (string) $ndl)) {
+            $length = mb_strlen($ndl);
+            if ($length === 0 || (mb_substr($haystack, -$length) === (string) $ndl)) {
                 return true;
             }
         }
@@ -568,12 +568,12 @@ if (!function_exists('str_ignore_ends_with')) {
      */
     function str_ignore_ends_with($needle, $haystack)
     {
-        $hs = strtolower($haystack);
+        $hs = mb_strtolower($haystack);
 
         foreach ((array) $needle as $ndl) {
-            $n = strtolower($ndl);
-            $length = strlen($ndl);
-            if ($length === 0 || (substr($hs, -$length) === $n)) {
+            $n = mb_strtolower($ndl);
+            $length = mb_strlen($ndl);
+            if ($length === 0 || (mb_substr($hs, -$length) === $n)) {
                 return true;
             }
         }
@@ -623,7 +623,7 @@ if (!function_exists('hide_characters')) {
 
         $return_text = "";
 
-        for ($i = 0, $iMax = strlen($text); $i < $iMax; $i++) {
+        for ($i = 0, $iMax = mb_strlen($text); $i < $iMax; $i++) {
             if ($i % 3 === 2) {
                 $return_text .= 'x';
             } else {

@@ -30,12 +30,10 @@ if (!function_exists('setupMetaDnsPrefetch')) {
                 $domain = trim($domain, '/');
                 $html .= "<link href='//" . $domain . "/' rel='dns-prefetch' />" . PHP_EOL;
             }
-
             return $html;
         }
         $dns = str_replace(array('https://', 'http://'), '', $dns);
         $dns = trim($dns, '/');
-
         return "<link href='//" . $dns . "/' rel='dns-prefetch' />" . PHP_EOL;
     }
 }

@@ -150,17 +150,17 @@ if (!function_exists('xml_get_value')) {
      * @param $openTag
      * @param $closeTag
      *
-     * @return false|string
+     * @return string
      * @author   : 713uk13m <dev@nguyenanhung.com>
      * @copyright: 713uk13m <dev@nguyenanhung.com>
-     * @time     : 12/02/2023 12:23
+     * @time     : 07/08/2023 41:49
      */
     function xml_get_value($xml, $openTag, $closeTag)
     {
-        $f = strpos($xml, $openTag) + strlen($openTag);
-        $l = strpos($xml, $closeTag);
+        $f = mb_strpos($xml, $openTag) + mb_strlen($openTag);
+        $l = mb_strpos($xml, $closeTag);
 
-        return ($f <= $l) ? substr($xml, $f, $l - $f) : "";
+        return ($f <= $l) ? mb_substr($xml, $f, $l - $f) : "";
     }
 }
 if (!function_exists('xml_to_json')) {
