@@ -19,8 +19,8 @@ namespace nguyenanhung\CodeIgniter\BasicHelper;
  */
 class BaseHelper
 {
-    const VERSION = '1.4.8';
-    const LAST_MODIFIED = '2023-08-04';
+    const VERSION = '1.4.9';
+    const LAST_MODIFIED = '2023-08-07';
     const PROJECT_NAME = 'CodeIgniter - Basic Helper';
     const AUTHOR_NAME = 'Hung Nguyen';
     const AUTHOR_FULL_NAME = 'Hung Nguyen';
@@ -62,5 +62,13 @@ class BaseHelper
             'project_packages'   => self::PACKAGES_URL,
             'project_maintainer' => $this->getAuthor()
         );
+    }
+
+    public static function writeLn($message, $newLine = "\n")
+    {
+        if (function_exists('json_encode') && (is_array($message) || is_object($message))) {
+            $message = json_encode($message);
+        }
+        echo $message . $newLine;
     }
 }
