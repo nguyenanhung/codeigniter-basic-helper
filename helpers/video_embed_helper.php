@@ -27,9 +27,10 @@ if (!function_exists('convert_video_embed_vimeo')) {
 }
 if (!function_exists('convert_video_embed_dailymotion')) {
     function convert_video_embed_dailymotion($dailymotion)
-    {if (empty($dailymotion)) {
-        return $dailymotion;
-    }
+    {
+        if (empty($dailymotion)) {
+            return $dailymotion;
+        }
         $dailymotion = str_replace(
             array(
                 'https://www.dailymotion.com/video/',
@@ -44,9 +45,10 @@ if (!function_exists('convert_video_embed_dailymotion')) {
 }
 if (!function_exists('convert_video_v_embed_youtube')) {
     function convert_video_v_embed_youtube($youtube)
-    {if (empty($youtube)) {
-        return $youtube;
-    }
+    {
+        if (empty($youtube)) {
+            return $youtube;
+        }
         $youtube = str_replace(
             array(
                 'https://www.youtube.com/watch?v=',
@@ -63,9 +65,10 @@ if (!function_exists('convert_video_v_embed_youtube')) {
 }
 if (!function_exists('convert_video_embed_youtube')) {
     function convert_video_embed_youtube($youtube)
-    {if (empty($youtube)) {
-        return $youtube;
-    }
+    {
+        if (empty($youtube)) {
+            return $youtube;
+        }
         $youtube = str_replace(
             array(
                 'https://www.youtube.com/watch?v=',
@@ -99,5 +102,15 @@ if (!function_exists('clean_youtube_allow_fullscreen')) {
         }
 
         return $youtube;
+    }
+}
+if (!function_exists('youtube_image_thumbnail')) {
+    function youtube_image_thumbnail($id, $filename = 'hqdefault.jpg')
+    {
+        if (empty($id)) {
+            return $id;
+        }
+
+        return 'https://i.ytimg.com/vi/' . trim($id) . '/' . trim($filename);
     }
 }
