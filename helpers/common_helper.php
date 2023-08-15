@@ -61,20 +61,14 @@ if (!function_exists('isEmpty')) {
         if ($input === null || $input === false || $input === '') {
             return true;
         }
-
         $isset = isset($input);
-
         if ($isset === true) {
-
             $empty = empty($input);
-
             if ($empty) {
                 return true;
             }
-
             return false;
         }
-
         return true;
     }
 }
@@ -101,7 +95,6 @@ if (!function_exists('defaultCompressHtmlOutput')) {
             '/(\s)+/s'          // shorten multiple whitespace sequences
         );
         $replace = array(' ', '>', '<', '\\1');
-
         return preg_replace($search, $replace, $html);
     }
 }
@@ -110,7 +103,6 @@ if (!function_exists('generateRandomUniqueId')) {
     {
         $uniqid = uniqid('-bear-', true);
         $uniqid = trim(str_replace('.', '', $uniqid));
-
         return date('Ymd') . '-' . generate_uuid_v4() . $uniqid;
     }
 }
@@ -119,7 +111,6 @@ if (!function_exists('generateRandomNanoUniqueId')) {
     {
         $uniqid = uniqid('-bear-', true);
         $uniqid = trim(str_replace('.', '', $uniqid));
-
         return date('Ymd') . '-' . randomNanoId(16) . $uniqid;
     }
 }

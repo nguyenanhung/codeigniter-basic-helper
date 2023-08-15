@@ -16,7 +16,6 @@ if (!function_exists('bear_framework_basic_clean_str')) {
         $str = trim($str);
         $str = strip_tags($str);
         $str = htmlspecialchars($str, ENT_QUOTES | ENT_HTML5 | ENT_XHTML, 'UTF-8');
-
         return trim($str);
     }
 }

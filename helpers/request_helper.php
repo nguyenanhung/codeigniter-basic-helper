@@ -28,11 +28,9 @@ if (!function_exists('sendSimpleGetRequest')) {
         } else {
             $target = $url;
         }
-
         $parseUrl = parse_url($target);
         $UA = 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1.2 Safari/605.1.15';
         $curl = curl_init();
-
         $options = array(
             CURLOPT_URL            => $target,
             CURLOPT_RETURNTRANSFER => true,
@@ -49,7 +47,6 @@ if (!function_exists('sendSimpleGetRequest')) {
         if (isset($parseUrl['scheme']) && $parseUrl['scheme'] === 'http') {
             $options[CURLOPT_HTTP_VERSION] = CURL_HTTP_VERSION_1_1;
         }
-
         curl_setopt_array($curl, $options);
         $response = curl_exec($curl);
         $err = curl_error($curl);
@@ -87,7 +84,6 @@ if (!function_exists('bear_post_async_request')) {
         ksort($params);
         $post_string = http_build_query($params);
         $parts = parse_url($url);
-
         $is_https = ($parts['scheme'] === 'https');
         $referer = $parts['scheme'] . '://' . $parts['host'];
         if (!$is_https) {
@@ -110,12 +106,10 @@ if (!function_exists('bear_post_async_request')) {
             $referer .= ':' . (isset($parts['port']) ? $parts['port'] : 443);
             $fp = stream_socket_client('ssl://' . $parts['host'] . ':' . $port, $errno, $errorMessage, 30, STREAM_CLIENT_CONNECT, $context);
         }
-
         $path = isset($parts['path']) ? $parts['path'] : '/';
         if (isset($parts['query'])) {
             $path .= '?' . $parts['query'];
         }
-
         $out = "POST " . $path . " HTTP/1.1\r\n";
         $out .= "Host: " . $host . "\r\n";
         $out .= "User-Agent: BEAR Framework\r\n";
@@ -154,7 +148,6 @@ if (!function_exists('get_http_response_code')) {
         $uri = $url;
         if ($uri !== '') {
             $headers = get_headers($uri);
-
             return mb_substr($headers[0], 9, 3);
         }
 

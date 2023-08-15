@@ -23,10 +23,8 @@ if (!function_exists('randomNanoId')) {
     {
         if (class_exists('Hidehalo\Nanoid\Client')) {
             $client = new Hidehalo\Nanoid\Client();
-
             return $client->generateId($size);
         }
-
         return uniqid($prefix, true);
     }
 }

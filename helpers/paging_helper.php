@@ -33,7 +33,6 @@ if (!function_exists('view_paginations')) {
             $page_prefix = '&page=';
             $page_suffix = '';
         }
-
         $data = array(
             'page_type'                    => $page_type,
             'page_link'                    => $page_link,
@@ -57,7 +56,6 @@ if (!function_exists('view_paginations')) {
         );
         $pagination = new \nguyenanhung\Libraries\Pagination\Pagination\SimplePagination();
         $pagination->setData($data);
-
         return $pagination->build();
     }
 }
@@ -100,7 +98,6 @@ if (!function_exists('view_more')) {
         );
         $pagination = new \nguyenanhung\Libraries\Pagination\Pagination\SimplePagination();
         $pagination->setData($data);
-
         return $pagination->buildViewMore();
     }
 }
@@ -149,7 +146,6 @@ if (!function_exists('select_page')) {
         );
         $pagination = new \nguyenanhung\Libraries\Pagination\Pagination\SimplePagination();
         $pagination->setData($data);
-
         return $pagination->buildSelectPage();
     }
 }
@@ -167,7 +163,6 @@ if (!function_exists('get_paginations_title')) {
     function get_paginations_title($str)
     {
         $pagination = new \nguyenanhung\Libraries\Pagination\Pagination\SimplePagination();
-
         return $pagination->getPaginationsTitle($str);
     }
 }
@@ -185,7 +180,6 @@ if (!function_exists('get_paginations_number')) {
     function get_paginations_number($str)
     {
         $pagination = new \nguyenanhung\Libraries\Pagination\Pagination\SimplePagination();
-
         return $pagination->getPageNumber($str);
     }
 }
@@ -204,7 +198,6 @@ if (!function_exists('bear_framework_news_view_pagination')) {
     {
         $pagination = new \nguyenanhung\Libraries\Pagination\Pagination\SimplePagination();
         $pagination->setData($data);
-
         return $pagination->build();
     }
 }

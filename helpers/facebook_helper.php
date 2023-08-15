@@ -91,7 +91,6 @@ if (!function_exists('widget_facebook_script_init')) {
             $version = 'v14.0';
         }
         $url = 'https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=' . trim($version) . '&appId=' . trim($appId) . '&autoLogAppEvents=1';
-
         return '<div id="fb-root"></div><script async defer crossorigin="anonymous" src="' . trim($url) . '" nonce="EOLK7Cbn"></script>';
     }
 }

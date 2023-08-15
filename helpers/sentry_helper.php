@@ -36,7 +36,6 @@ if (!function_exists('log_to_sentry')) {
             $handler = new Sentry\Monolog\Handler(new Sentry\State\Hub($client));
             $logger->pushHandler($handler);
             $logger->error($message, $context);
-
             return true;
         } catch (Exception $e) {
             $errorMsg = __get_error_message__($e);

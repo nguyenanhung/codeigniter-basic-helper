@@ -35,11 +35,9 @@ if (!function_exists('generate_list_id_with_parent_id')) {
                     $itemId = is_array($item) ? $item[$field] : $item->$field;
                     $listSub[] = $itemId; // Push các category con vào mảng dữ liệu
                 }
-
                 return $listSub;
             }
         }
-
         return $parentId;
     }
 

@@ -28,12 +28,9 @@ if (!function_exists('assets_url')) {
             if ($fileExt === 'CSS' || $fileExt === 'JS') {
                 $version = config_item('assets_version');
             }
-
             return trim(base_url('assets/' . $uri, $protocol) . $version);
         }
-
         return trim($uri);
-
     }
 }
 if (!function_exists('static_url')) {
@@ -57,12 +54,9 @@ if (!function_exists('static_url')) {
                 $version = config_item('assets_version');
             }
             $host = config_item('static_url');
-
             return trim($host) . trim($uri) . trim($version);
         }
-
         return trim($uri);
-
     }
 }
 if (!function_exists('templates_url')) {
@@ -86,10 +80,8 @@ if (!function_exists('templates_url')) {
             if ($fileExt === 'CSS' || $fileExt === 'JS') {
                 $version = config_item('assets_version');
             }
-
             return trim(base_url('templates/' . $uri, $protocol) . $version);
         }
-
         return trim($uri);
     }
 }
@@ -108,7 +100,6 @@ if (!function_exists('editor_url')) {
     function editor_url($uri = '', $protocol = null)
     {
         $uri = 'editors/' . $uri;
-
         return assets_url($uri, $protocol);
     }
 }
@@ -127,7 +118,6 @@ if (!function_exists('favicon_url')) {
     function favicon_url($uri = '', $protocol = null)
     {
         $uri = 'favicon/' . $uri;
-
         return assets_url($uri, $protocol);
     }
 }
@@ -146,7 +136,6 @@ if (!function_exists('fav_url')) {
     function fav_url($uri = '', $protocol = null)
     {
         $uri = 'fav/' . $uri;
-
         return assets_url($uri, $protocol);
     }
 }
@@ -187,10 +176,8 @@ if (!function_exists('storage_url')) {
                 $version = config_item('assets_version');
             }
             $storageUrl = trim(config_item('storage_url')) . trim($uri) . $version;
-
             return trim($storageUrl);
         }
-
         return $uri;
     }
 }
@@ -215,12 +202,9 @@ if (!function_exists('public_storage_tmp_url')) {
             if ($fileExt === 'CSS' || $fileExt === 'JS') {
                 $version = config_item('assets_version');
             }
-
             return trim(base_url('storage/tmp/' . $uri, $protocol) . $version);
         }
-
         return trim($uri);
-
     }
 }
 if (!function_exists('go_url')) {
@@ -238,10 +222,8 @@ if (!function_exists('go_url')) {
     {
         if (function_exists('config_item')) {
             $goUrl = trim(config_item('go_url')) . trim($uri);
-
             return trim($goUrl);
         }
-
         return $uri;
     }
 }
@@ -260,7 +242,6 @@ if (!function_exists('assets_mobile')) {
     function assets_mobile($uri = '', $protocol = null)
     {
         $uri = 'mobile/assets/' . $uri;
-
         return assets_url($uri, $protocol);
     }
 }
@@ -294,7 +275,6 @@ if (!function_exists('assets_themes')) {
         } else {
             $uri = 'themes/assets/' . $uri;
         }
-
         return assets_url($uri, $protocol);
     }
 }
@@ -386,7 +366,6 @@ if (!function_exists('cdn_js_url')) {
     function cdn_js_url($uri = '')
     {
         $cdnJs = '//cdnjs.cloudflare.com/ajax/libs/';
-
         return $cdnJs . trim($uri);
     }
 }
@@ -404,7 +383,6 @@ if (!function_exists('google_fonts_url')) {
     function google_fonts_url($family = '')
     {
         $fonts = '//fonts.googleapis.com/css?family=';
-
         return $fonts . trim($family);
     }
 }
@@ -422,7 +400,6 @@ if (!function_exists('bootstrapcdn_url')) {
     function bootstrapcdn_url($uri = '')
     {
         $cdn = '//maxcdn.bootstrapcdn.com/bootstrap/';
-
         return $cdn . trim($uri);
     }
 }

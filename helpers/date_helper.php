@@ -24,9 +24,7 @@ if (!function_exists('dayFloor')) {
         if (empty($beginTime) && empty($endTime)) {
             return 0;
         }
-
         $floor = abs(strtotime($beginTime) - strtotime($endTime));
-
         return (int) floor($floor / (60 * 60 * 24));
     }
 }
@@ -47,7 +45,6 @@ if (!function_exists('getZuluTime')) {
             if (function_exists('log_message')) {
                 log_message('error', __get_error_message__($e));
             }
-
             return null;
         }
     }
@@ -82,7 +79,6 @@ if (!function_exists('smart_bear_date_range')) {
             $dates[] = date($format, $current);
             $current = strtotime($step, $current);
         }
-
         return $dates;
     }
 }
@@ -100,7 +96,6 @@ if (!function_exists('format_datetime_vn')) {
         } else {
             $timestamp = strtotime($datetime);
         }
-
         return date('d-m-Y H:i:s', $timestamp);
     }
 }
@@ -124,7 +119,6 @@ if (!function_exists('get_start_and_end_date_for_week')) {
         $return[0] = date('d-m-Y', $time);
         $time += 6 * 24 * 3600;
         $return[1] = date('d-m-Y', $time);
-
         return $return;
     }
 }

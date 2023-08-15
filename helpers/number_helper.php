@@ -87,3 +87,9 @@ if (!function_exists('convertNumberToWords')) {
         return $returnTxt;
     }
 }
+if (!function_exists('convert_number_to_words')) {
+    function convert_number_to_words($num)
+    {
+        return convertNumberToWords($num);
+    }
+}

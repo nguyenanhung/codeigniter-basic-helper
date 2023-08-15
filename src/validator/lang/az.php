@@ -1,5 +1,4 @@
 <?php
-
 return array(
     'required'      => "mütləqdir",
     'equals'        => "'%s' olmalıdır",
@@ -31,5 +30,5 @@ return array(
     'creditCard'    => "kredir kart nömrəsi olmalıdır",
     "lengthMin"     => "%d -dən çox sinvol olmalıdır",
     "lengthMax"     => "%d -dən az sinvol olmalıdır",
-	"instanceOf"    => "'%s' əvəzinə olmalıdır"
+    "instanceOf"    => "'%s' əvəzinə olmalıdır"
 );
