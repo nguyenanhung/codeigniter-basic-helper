@@ -99,16 +99,14 @@ if (!function_exists('bear_framework_image_url')) {
             if (in_array($images_url, $no_thumb)) {
                 return assets_url($images_url);
             }
-
-            $parse_input = parse_url($images_url);
-            if (isset($parse_input['host'])) {
+            $parse = parse_url($images_url);
+            if (isset($parse['host'])) {
                 return $images_url;
             }
             if (trim(mb_substr($images_url, 0, 12)) === 'crawler-news') {
                 $images_url = trim('uploads/' . $images_url);
             }
             $images_url = str_replace(array('upload-vcms/news/news/', 'upload-vcms/mheath/mheath/'), array('upload-vcms/news/', 'upload-vcms/mheath/'), $images_url);
-
             return config_item('static_url') . $images_url;
         }
 
@@ -151,7 +149,7 @@ if (!function_exists('create_image_thumbnail')) {
         return nguyenanhung\CodeIgniter\BasicHelper\ImageHelper::createThumbnail($url, $width, $height);
     }
 }
-if (!function_exists('create_image_thumbnail')) {
+if (!function_exists('bear_framework_create_image_thumbnail_with_cache')) {
     /**
      * Function bear_framework_create_image_thumbnail_with_cache
      *

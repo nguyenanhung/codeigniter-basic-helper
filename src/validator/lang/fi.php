@@ -1,5 +1,4 @@
 <?php
-
 return array(
     'required'      => "vaaditaan",
     'equals'        => "ei ole sama kuin '%s'",
