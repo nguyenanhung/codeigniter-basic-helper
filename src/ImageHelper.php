@@ -35,10 +35,12 @@ class ImageHelper extends BaseHelper
      */
     public static function googleGadgetsProxy($url = '', $width = 100, $height = null)
     {
+        if (strpos($url, 'media.anhp.vn')) {
+            return trim($url);
+        }
         $proxyUrl = 'https://images1-focus-opensocial.googleusercontent.com/gadgets/proxy';
         $proxyContainer = 'focus';
         $proxyRefresh = 2592000;
-        $url = str_replace('media.anhp.vn:8081', 'media.anhp.vn', $url);
         $params = array();
         $params['url'] = $url;
         $params['resize_w'] = $width;
@@ -78,8 +80,10 @@ class ImageHelper extends BaseHelper
      */
     public static function wordpressProxy($imageUrl = '', $server = 'i3')
     {
+        if (strpos($imageUrl, 'media.anhp.vn')) {
+            return trim($imageUrl);
+        }
         $imageUrl = str_replace(array('https://', 'http://', '//'), '', $imageUrl);
-        $imageUrl = str_replace('media.anhp.vn:8081', 'media.anhp.vn', $imageUrl);
         $url = 'https://' . trim($server) . '.wp.com/' . $imageUrl;
 
         return trim($url);
