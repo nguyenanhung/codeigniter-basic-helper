@@ -87,6 +87,7 @@ if (!function_exists('bear_framework_image_url')) {
     function bear_framework_image_url($input = '', $server = '', $base = 'live')
     {
         $images_url = trim($input);
+        $images_url = str_replace('http://cdnphoto.dantri.com.vn/', 'https://cdnphoto.dantri.com.vn/', $images_url);
         if (function_exists('config_item') && !empty($images_url)) {
             $no_thumb = array(
                 'images/system/no_avatar.jpg',
