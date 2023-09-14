@@ -11,18 +11,19 @@ if (!function_exists('google_image_resize')) {
     /**
      * Function google_image_resize
      *
-     * @param string   $url
-     * @param int      $width
+     * @param string $url
+     * @param int|null $width
      * @param int|null $height
+     * @param string|null $server
      *
      * @return string
      * @author   : 713uk13m <dev@nguyenanhung.com>
      * @copyright: 713uk13m <dev@nguyenanhung.com>
      * @time     : 07/27/2021 37:48
      */
-    function google_image_resize($url = '', $width = 100, $height = null)
+    function google_image_resize($url = '', $width = 100, $height = null, $server = 'images1')
     {
-        return nguyenanhung\CodeIgniter\BasicHelper\ImageHelper::googleGadgetsProxy($url, $width, $height);
+        return nguyenanhung\CodeIgniter\BasicHelper\ImageHelper::googleGadgetsProxy($url, $width, $height, $server);
     }
 }
 if (!function_exists('google_image_proxy_dns_prefetch')) {
