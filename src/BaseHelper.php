@@ -19,7 +19,7 @@ namespace nguyenanhung\CodeIgniter\BasicHelper;
  */
 class BaseHelper
 {
-    const VERSION = '1.5.5';
+    const VERSION = '1.5.6';
     const LAST_MODIFIED = '2023-09-14';
     const PROJECT_NAME = 'CodeIgniter - Basic Helper';
     const AUTHOR_NAME = 'Hung Nguyen';
