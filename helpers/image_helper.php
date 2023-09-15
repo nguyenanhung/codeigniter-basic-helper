@@ -141,10 +141,10 @@ if (!function_exists('create_image_thumbnail')) {
      * @param $width
      * @param $height
      *
-     * @return mixed|string|null
+     * @return string|null
      * @author   : 713uk13m <dev@nguyenanhung.com>
      * @copyright: 713uk13m <dev@nguyenanhung.com>
-     * @time     : 15/06/2022 03:06
+     * @time     : 15/09/2023 50:33
      */
     function create_image_thumbnail($url = '', $width = 100, $height = 100)
     {
