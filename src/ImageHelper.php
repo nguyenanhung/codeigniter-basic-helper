@@ -41,9 +41,9 @@ class ImageHelper extends BaseHelper
         return ImageHelperLib::googleGadgetsProxyDnsPrefetch($server);
     }
 
-    public static function wordpressProxy($imageUrl = '', $server = 'i3')
+    public static function wordpressProxy($imageUrl = '', $server = 'i3', $width = null, $height = null)
     {
-        return ImageHelperLib::wordpressProxy($imageUrl, $server);
+        return ImageHelperLib::wordpressProxy($imageUrl, $server, $width, $height);
     }
 
     public static function wordpressProxyDnsPrefetch()

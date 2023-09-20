@@ -11,9 +11,9 @@ if (!function_exists('google_image_resize')) {
     /**
      * Function google_image_resize
      *
-     * @param string      $url
-     * @param int|null    $width
-     * @param int|null    $height
+     * @param string $url
+     * @param int|null $width
+     * @param int|null $height
      * @param string|null $server
      *
      * @return string
@@ -46,15 +46,17 @@ if (!function_exists('wordpress_proxy')) {
      *
      * @param string $imageUrl
      * @param string $server
+     * @param int|string|null $width
+     * @param int|string|null $height
      *
      * @return string
      * @author   : 713uk13m <dev@nguyenanhung.com>
      * @copyright: 713uk13m <dev@nguyenanhung.com>
      * @time     : 07/27/2021 38:04
      */
-    function wordpress_proxy($imageUrl = '', $server = 'i3')
+    function wordpress_proxy($imageUrl = '', $server = 'i3', $width = null, $height = null)
     {
-        return nguyenanhung\CodeIgniter\BasicHelper\ImageHelper::wordpressProxy($imageUrl, $server);
+        return nguyenanhung\CodeIgniter\BasicHelper\ImageHelper::wordpressProxy($imageUrl, $server, $width, $height);
     }
 }
 if (!function_exists('wordpress_proxy_dns_prefetch')) {
