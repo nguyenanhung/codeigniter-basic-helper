@@ -199,6 +199,7 @@ Các hàm này dùng debug
 - [x] Helper Function: `strip_only_tags`
 - [x] Helper Function: `tracking_google_analytics`
 - [x] Helper Function: `tracking_google_gtag_analytics_default`
+- [x] Helper Function: `bear_framework_show_jsonld_script`
 
 ### Image Helper
 
