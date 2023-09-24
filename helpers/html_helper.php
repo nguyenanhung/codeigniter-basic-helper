@@ -26,9 +26,9 @@ if (!function_exists('meta_property')) {
      * Function meta_property
      *
      * @param string|array $property
-     * @param string       $content
-     * @param string       $type
-     * @param string       $newline
+     * @param string $content
+     * @param string $type
+     * @param string $newline
      *
      * @return string
      * @author   : 713uk13m <dev@nguyenanhung.com>
@@ -43,9 +43,9 @@ if (!function_exists('meta_property')) {
             $property = array(
                 array(
                     'property' => $property,
-                    'content'  => $content,
-                    'type'     => $type,
-                    'newline'  => $newline
+                    'content' => $content,
+                    'type' => $type,
+                    'newline' => $newline
                 )
             );
         } elseif (isset($property['property'])) {
@@ -118,7 +118,7 @@ if (!function_exists('strip_only_tags')) {
      *
      * @param       $str
      * @param       $tags
-     * @param bool  $stripContent
+     * @param bool $stripContent
      *
      * @return string|string[]|null
      * @author   : 713uk13m <dev@nguyenanhung.com>
@@ -216,9 +216,9 @@ if (!function_exists('html_tag')) {
     /**
      * Create a XHTML tag
      *
-     * @param string       $tag     The tag name
-     * @param array|string $attr    The tag attributes
-     * @param string|bool  $content The content to place in the tag, or false for no closing tag
+     * @param string $tag The tag name
+     * @param array|string $attr The tag attributes
+     * @param string|bool $content The content to place in the tag, or false for no closing tag
      *
      * @return    string
      */
@@ -250,3 +250,16 @@ if (!function_exists('html_tag')) {
         return $html;
     }
 }
+if (!function_exists('bear_framework_show_jsonld_script')) {
+    function bear_framework_show_jsonld_script($content)
+    {
+        $content = trim($content);
+        if (empty($content)) {
+            return $content;
+        }
+        $start = '<script type="application/ld+json">';
+        $end = '</script>';
+        return $start . PHP_EOL . $content . PHP_EOL . $end;
+    }
+}
+
