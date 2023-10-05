@@ -415,34 +415,9 @@ if (!function_exists('images_url')) {
      */
     function images_url($url = '')
     {
-        $url = str_replace('http://cdnphoto.dantri.com.vn/', 'https://cdnphoto.dantri.com.vn/', $url);
         $url = trim($url);
-        if (!empty($url)) {
-            $thumb = array(
-                'images/system/no_avatar.jpg',
-                'images/system/no_avatar_100x100.jpg',
-                'images/system/no_video_available.jpg',
-                'images/system/no_video_available_thumb.jpg',
-                'images/system/no-image-available.jpg',
-                'images/system/no-image-available_60.jpg',
-                'images/system/no-image-available_330.jpg'
-            );
-            if (in_array($url, $thumb)) {
-                return assets_url($url);
-            }
-
-            $parseInput = parse_url($url);
-            if (isset($parseInput['host'])) {
-                return $url;
-            }
-            if (trim(mb_substr($url, 0, 12)) === 'crawler-news') {
-                $url = trim('uploads/' . $url);
-            }
-
-            return static_url($url);
-        }
-
-        return $url;
+        $url = bear_framework_image_url($url);
+        return trim($url);
     }
 }
 if (!function_exists('audio_url')) {
