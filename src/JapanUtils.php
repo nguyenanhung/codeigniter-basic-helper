@@ -18,7 +18,6 @@ class JapanUtils extends BaseHelper
         if (is_file($path) && file_exists($path)) {
             return require $path;
         }
-
         return array();
     }
 

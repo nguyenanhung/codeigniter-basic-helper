@@ -64,9 +64,9 @@ class SimpleParseOpenGraph extends BaseHelper implements \Iterator
 
         if (!empty($response)) {
             return self::_parse($response);
-        } else {
-            return false;
         }
+
+        return false;
     }
 
     /**
