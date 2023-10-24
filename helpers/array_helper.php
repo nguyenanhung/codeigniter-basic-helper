@@ -31,10 +31,8 @@ if (!function_exists('arrayToObject')) {
                     $object->$name = arrayToObject($value);
                 }
             }
-
             return $object;
         }
-
         return false;
     }
 }
@@ -58,10 +56,8 @@ if (!function_exists('arrayToXml')) {
             $xml_object = new SimpleXMLElement("<?xml version=\"1.0\"?><" . $namespace . "></" . $namespace . ">"); // creating object of SimpleXMLElement
             convertArrayToXml($array, $xml_object); // function call to convert array to xml
             $xml_file = $file_output !== null ? $xml_object->asXML($file_output) : $xml_object->asXML(); // saving generated xml file
-
             return !empty($xml_file) ? $xml_file : null;
         }
-
         return null;
     }
 }
@@ -112,7 +108,6 @@ if (!function_exists('removeArrayElementWithValue')) {
                 unset($array[$subKey]);
             }
         }
-
         return $array;
     }
 }
@@ -131,7 +126,6 @@ if (!function_exists('arrayRecursiveDiff')) {
     function arrayRecursiveDiff($aArray1, $aArray2)
     {
         $aReturn = array();
-
         foreach ($aArray1 as $mKey => $mValue) {
             if (array_key_exists($mKey, $aArray2)) {
                 if (is_array($mValue)) {
@@ -146,7 +140,6 @@ if (!function_exists('arrayRecursiveDiff')) {
                 $aReturn[$mKey] = $mValue;
             }
         }
-
         return $aReturn;
     }
 }
@@ -185,7 +178,6 @@ if (!function_exists('arrayIsAssoc')) {
         if (!is_array($array) || $array === array()) {
             return false;
         }
-
         return array_keys($array) !== range(0, count($array) - 1);
     }
 }
@@ -301,22 +293,17 @@ if (!function_exists('arrayGetElement')) {
     {
         if (is_string($key) && is_array($array)) {
             $keys = explode('.', $key);
-
             while (count($keys) >= 1) {
                 $k = array_shift($keys);
-
                 if (!isset($array[$k])) {
                     return null;
                 }
-
                 if (count($keys) === 0) {
                     return $array[$k];
                 }
-
                 $array = &$array[$k];
             }
         }
-
         return null;
     }
 }
@@ -385,31 +372,23 @@ if (!function_exists('arraySetElement')) {
     function arraySetElement($key, $value, &$array)
     {
         if (is_string($key) && !empty($key)) {
-
             $keys = explode('.', $key);
             $arrTmp = &$array;
-
             while (count($keys) >= 1) {
                 $k = array_shift($keys);
-
                 if (!is_array($arrTmp)) {
                     $arrTmp = array();
                 }
-
                 if (!isset($arrTmp[$k])) {
                     $arrTmp[$k] = array();
                 }
-
                 if (count($keys) === 0) {
                     $arrTmp[$k] = $value;
-
                     return true;
                 }
-
                 $arrTmp = &$arrTmp[$k];
             }
         }
-
         return false;
     }
 }
@@ -462,11 +441,9 @@ if (!function_exists('to_array')) {
         if (is_string($var)) {
             return str_split($var);
         }
-
         if (is_object($var)) {
             return json_decode(json_encode($var), true);
         }
-
         return null;
     }
 }
@@ -481,21 +458,17 @@ if (!function_exists('arrayToAttributes')) {
     function arrayToAttributes($attr)
     {
         $attr_str = '';
-
         foreach ((array) $attr as $property => $value) {
             // Ignore null/false
             if ($value === null || $value === false) {
                 continue;
             }
-
             // If the key is numeric then it must be something like selected="selected"
             if (is_numeric($property)) {
                 $property = $value;
             }
-
             $attr_str .= $property . '="' . str_replace('"', '&quot;', $value) . '" ';
         }
-
         // We strip off the last space for return
         return trim($attr_str);
     }

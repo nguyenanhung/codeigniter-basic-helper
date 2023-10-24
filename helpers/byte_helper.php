@@ -23,23 +23,18 @@ if (!function_exists('bytesHumanFormat')) {
         if ($size <= 0) {
             return '0 bytes';
         }
-
         if ($size === 1) {
             return '1 byte';
         }
-
         if ($size < 1024) {
             return $size . ' bytes';
         }
-
         $i   = 0;
         $iec = array('bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB');
-
         while (($size / 1024) > 1) {
             $size /= 1024;
             ++$i;
         }
-
         return number_format($size, 2) . ' ' . $iec[$i];
     }
 }

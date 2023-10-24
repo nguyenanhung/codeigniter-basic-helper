@@ -18,7 +18,6 @@ if (!function_exists('smart_bear_copyright_line')) {
     {
         $helper = new \nguyenanhung\CodeIgniter\BasicHelper\BaseHelper();
         $author = $helper->getAuthor();
-
         return '&copy; <a href="' . $author['web'] . '" title="' . $author['full_name'] . '">' . $author['name'] . '</a>';
     }
 }
@@ -27,7 +26,6 @@ if (!function_exists('smart_bear_copyright_powered_line')) {
     {
         $helper = new \nguyenanhung\CodeIgniter\BasicHelper\BaseHelper();
         $author = $helper->getAuthor();
-
         return 'Powered by <a href="' . $author['web'] . '" title="' . $author['full_name'] . '">' . $author['name'] . '</a>';
     }
 }
@@ -41,7 +39,6 @@ if (!function_exists('smart_bear_basic_helper_author')) {
     function smart_bear_basic_helper_author()
     {
         $helper = new \nguyenanhung\CodeIgniter\BasicHelper\BaseHelper();
-
         return $helper->getAuthor();
     }
 }
