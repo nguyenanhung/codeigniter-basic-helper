@@ -16,7 +16,10 @@ use Monolog\Handler\StreamHandler;
 use Monolog\Formatter\LineFormatter;
 
 /**
- * Class SimpleRequests
+ * SimpleRequests Class
+ *
+ * This class provides basic functionalities for sending HTTP requests.
+ * Refactored for better structure, readability, and PHP > 5.6 compatibility.
  *
  * @package   nguyenanhung\CodeIgniter\BasicHelper
  * @author    713uk13m <dev@nguyenanhung.com>
@@ -24,28 +27,43 @@ use Monolog\Formatter\LineFormatter;
  */
 class SimpleRequests
 {
-    protected $mono;
-    protected $DEBUG       = false;
+    protected $DEBUG = false;
+    protected $logger = null;
     protected $logger_path = null;
-    protected $logger_file;
-    protected $timeout     = 60;
-    protected $header      = array();
+    protected $timeout = 60;
+    protected $header = array();
 
     /**
-     * Requests constructor.
+     * SimpleRequests constructor.
      *
-     * @author   : 713uk13m <dev@nguyenanhung.com>
+     * @param $options
      * @copyright: 713uk13m <dev@nguyenanhung.com>
+     * @author   : 713uk13m <dev@nguyenanhung.com>
      */
-    public function __construct()
+    public function __construct($options = [])
     {
-        $this->logger_file = 'Log-' . date('Y-m-d') . '.log';
-        $this->mono = array(
-            'dateFormat'         => "Y-m-d H:i:s u",
-            'outputFormat'       => "[%datetime%] %channel%.%level_name%: %message% %context% %extra%\n",
-            'monoBubble'         => true,
+        $monolog = array(
+            'dateFormat' => "Y-m-d H:i:s u",
+            'outputFormat' => "[%datetime%] %channel%.%level_name%: %message% %context% %extra%\n",
+            'monoBubble' => true,
             'monoFilePermission' => 0777
         );
+
+        if (isset($options['logger_path'])) {
+            $this->logger_path = $options['logger_path'];
+        }
+
+        if (isset($options['debug_status'])) {
+            $this->DEBUG = $options['debug_status'];
+        }
+
+        // create a log channel
+        $formatter = new LineFormatter($monolog['outputFormat'], $monolog['dateFormat']);
+        $stream = new StreamHandler($this->logger_path . 'Simple-Requests/Log-' . date('Y-m-d') . '.log', Logger::INFO, $monolog['monoBubble'], $monolog['monoFilePermission']);
+        $stream->setFormatter($formatter);
+        $this->logger = new Logger('SimpleRequests');
+        $this->logger->pushHandler($stream);
+
     }
 
     /**
@@ -61,7 +79,6 @@ class SimpleRequests
     public function setTimeout($timeout)
     {
         $this->timeout = $timeout;
-
         return $this;
     }
 
@@ -78,7 +95,6 @@ class SimpleRequests
     public function setHeader($header = array())
     {
         $this->header = $header;
-
         return $this;
     }
 
@@ -86,7 +102,7 @@ class SimpleRequests
      * Function sendRequest
      *
      * @param string $url
-     * @param array  $data
+     * @param array $data
      * @param string $method
      *
      * @return string|null
@@ -98,79 +114,73 @@ class SimpleRequests
     {
         try {
             $getMethod = mb_strtoupper($method);
-            // create a log channel
-            $formatter = new LineFormatter($this->mono['outputFormat'], $this->mono['dateFormat']);
-            $stream = new StreamHandler($this->logger_path . 'sendRequest/' . $this->logger_file, Logger::INFO, $this->mono['monoBubble'], $this->mono['monoFilePermission']);
-            $stream->setFormatter($formatter);
-            $logger = new Logger('Curl');
-            $logger->pushHandler($stream);
             if ($this->DEBUG === true) {
-                $logger->info('||=========== Logger Requests ===========||');
-                $logger->info('Method: ' . $getMethod);
-                $logger->info('Request: ' . $url, $data);
+                $this->logger->info('||=========== Logger Send Requests ===========||');
+                $this->logger->info('Send ' . $getMethod . ' Request to URL: ' . $url, $data);
             }
-            // Curl
+
             $curl = new BasicCurl();
             $curl->setOpt(CURLOPT_RETURNTRANSFER, true);
             $curl->setOpt(CURLOPT_SSL_VERIFYPEER, false);
             $curl->setOpt(CURLOPT_ENCODING, "utf-8");
             $curl->setOpt(CURLOPT_MAXREDIRS, 10);
             $curl->setOpt(CURLOPT_TIMEOUT, 300);
-            // Request
+
             if ('POST' === $getMethod) {
                 $curl->post($url, $data);
             } else {
                 $curl->get($url, $data);
             }
-            // Response
+
+
             if ($curl->error) {
                 $response = "cURL Error: " . $curl->error_message;
             } else {
                 $response = $curl->response;
             }
-            // Close Request
+
+
             $curl->close();
-            // Log Response
+
+
             if ($this->DEBUG === true) {
                 if (is_array($response) || is_object($response)) {
-                    $logger->info('Response: ' . json_encode($response));
+                    $this->logger->info('Response: ' . json_encode($response));
                 } else {
-                    $logger->info('Response: ' . $response);
+                    $this->logger->info('Response: ' . $response);
                 }
+
                 if (isset($curl->request_headers)) {
                     if (is_array($curl->request_headers)) {
-                        $logger->info('Request Header: ', $curl->request_headers);
+                        $this->logger->info('Request Header: ', $curl->request_headers);
                     } else {
-                        $logger->info('Request Header: ' . json_encode($curl->request_headers));
+                        $this->logger->info('Request Header: ' . json_encode($curl->request_headers));
                     }
                 }
+
                 if (isset($curl->response_headers)) {
                     if (is_array($curl->response_headers)) {
-                        $logger->info('Response Header: ', $curl->response_headers);
+                        $this->logger->info('Response Header: ', $curl->response_headers);
                     } else {
-                        $logger->info('Response Header: ' . json_encode($curl->response_headers));
+                        $this->logger->info('Response Header: ' . json_encode($curl->response_headers));
                     }
                 }
             }
 
-            // Return Response
             return $response;
         } catch (Exception $e) {
             log_message('error', __get_error_message__($e));
             log_message('error', __get_error_trace__($e));
-
             return null;
         }
     }
-
-    // ========================================================================== //
 
     /**
      * Function xmlRequest
      *
      * @param string $url
      * @param string $data
-     * @param int    $timeout
+     * @param int $timeout
      *
      * @return bool|string|null
      * @author   : 713uk13m <dev@nguyenanhung.com>
@@ -182,18 +192,13 @@ class SimpleRequests
         if (empty($url) || empty($data)) {
             return null;
         }
+
         try {
-            // create a log channel
-            $formatter = new LineFormatter($this->mono['outputFormat'], $this->mono['dateFormat']);
-            $stream = new StreamHandler($this->logger_path . 'xmlRequest/' . $this->logger_file, Logger::INFO, $this->mono['monoBubble'], $this->mono['monoFilePermission']);
-            $stream->setFormatter($formatter);
-            $logger = new Logger('request');
-            $logger->pushHandler($stream);
             if ($this->DEBUG === true) {
-                $logger->info('||=========== Logger xmlRequest ===========||');
-                $logger->info('Request URL: ' . $url);
-                $logger->info('Request Data: ' . $data);
+                $this->logger->info('||=========== Logger xmlRequest ===========||');
+                $this->logger->info('Send POST XML Request to URL: ' . $url . ' with DATA: ' . $data);
             }
+
             $ch = curl_init();
             curl_setopt($ch, CURLOPT_URL, $url);
             $head[] = "Content-type: text/xml;charset=utf-8";
@@ -204,17 +209,17 @@ class SimpleRequests
             curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
             curl_setopt($ch, CURLOPT_POST, 1);
             curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
-            $page = curl_exec($ch);
+            $response = curl_exec($ch);
             curl_close($ch);
+
             if ($this->DEBUG === true) {
-                $logger->info('Response from Request: ' . $page);
+                $this->logger->info('Response from Request: ' . $response);
             }
 
-            return $page;
+            return $response;
         } catch (Exception $e) {
             log_message('error', __get_error_message__($e));
             log_message('error', __get_error_trace__($e));
-
             return null;
         }
     }
@@ -235,7 +240,6 @@ class SimpleRequests
     {
         $f = mb_strpos($xml, $openTag) + mb_strlen($openTag);
         $l = mb_strpos($xml, $closeTag);
-
         return ($f <= $l) ? mb_substr($xml, $f, $l - $f) : "";
     }
 }
