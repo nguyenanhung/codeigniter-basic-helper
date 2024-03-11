@@ -32,6 +32,9 @@ class ServerReport extends BaseHelper
 				'free_space' => formatSizeUnits(disk_free_space($directory)),
 				'total_space' => formatSizeUnits(disk_total_space($directory))
 			),
+			'message' => array(
+				'text' => 'Free: ' . formatSizeUnits(disk_free_space($directory)) . ' / Total: ' . formatSizeUnits(disk_total_space($directory))
+			)
 		);
 	}
 
