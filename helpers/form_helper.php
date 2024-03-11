@@ -8,29 +8,29 @@
  * Time: 00:00
  */
 if (!function_exists('join_value_multiple')) {
-    /**
-     * Join value multiple
-     *
-     * @param $str
-     *
-     * @return string
-     */
-    function join_value_multiple($str)
-    {
-        $num = count($str);
-        $max = $num - 1;
-        $string = "";
+	/**
+	 * Join value multiple
+	 *
+	 * @param $str
+	 *
+	 * @return string
+	 */
+	function join_value_multiple($str)
+	{
+		$num = count($str);
+		$max = $num - 1;
+		$string = "";
 
-        for ($i = 0; $i < $num; $i++) {
-            $string = $i < $max ? $string . $str[$i] . ',' : $string . $str[$i];
-        }
+		for ($i = 0; $i < $num; $i++) {
+			$string = $i < $max ? $string . $str[$i] . ',' : $string . $str[$i];
+		}
 
-        unset($i);
+		unset($i);
 
-        if ($string === '') {
-            return '0';
-        }
+		if ($string === '') {
+			return '0';
+		}
 
-        return $string;
-    }
+		return $string;
+	}
 }

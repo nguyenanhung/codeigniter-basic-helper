@@ -8,8 +8,8 @@
  * Time: 10:44
  */
 if (!function_exists('_japan_pref_code_')) {
-    function _japan_pref_code_()
-    {
-        return \nguyenanhung\CodeIgniter\BasicHelper\JapanUtils::getJapanPrefCode();
-    }
+	function _japan_pref_code_()
+	{
+		return \nguyenanhung\CodeIgniter\BasicHelper\JapanUtils::getJapanPrefCode();
+	}
 }

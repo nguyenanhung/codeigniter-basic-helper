@@ -1,97 +1,97 @@
 {
-    "name": "nguyenanhung/codeigniter-basic-helper",
-    "type": "library",
-    "description": "CodeIgniter - Basic Helper",
-    "keywords": [
-        "php",
-        "codeigniter",
-        "codeigniter3",
-        "codeigniter-helper",
-        "codeigniter-library",
-        "codeigniter-startapp",
-        "helper",
-        "library"
-    ],
-    "homepage": "https://github.com/nguyenanhung/codeigniter-basic-helper",
-    "license": "GPL-3.0",
-    "authors": [
-        {
-            "name": "Nguyen An Hung",
-            "email": "dev@nguyenanhung.com",
-            "homepage": "https://nguyenanhung.com",
-            "role": "Developer"
-        }
-    ],
-    "require": {
-        "php": ">=5.6",
-        "ext-curl": "*",
-        "ext-json": "*",
-        "ext-mbstring": "*",
-        "nguyenanhung/html-helper": "^2.0 || ^1.0",
-        "nguyenanhung/mobile-helper": "^2.0 || ^1.0",
-        "nguyenanhung/image-helper": "^2.0 || ^1.0",
-        "nguyenanhung/basic-miscellaneous-helper": "^2.0 || ^1.0"
-    },
-    "require-dev": {
-        "nguyenanhung/my-debug": "^3.0 || ^2.0",
-        "nguyenanhung/nanoid-helper": "^2.0 || ^1.0",
-        "nguyenanhung/json-helper": "^2.0 || ^1.0",
-        "nguyenanhung/image": "^3.0 || ^2.0 || ^1.0",
-        "nguyenanhung/codeigniter-framework": ">= 3.1"
-    },
-    "autoload": {
-        "psr-4": {
-            "nguyenanhung\\CodeIgniter\\BasicHelper\\": "src/"
-        },
-        "files": [
-            "helpers/alphaid_helper.php",
-            "helpers/array_helper.php",
-            "helpers/assets_helper.php",
-            "helpers/blogspot_helper.php",
-            "helpers/byte_helper.php",
-            "helpers/chart_render.php",
-            "helpers/common_helper.php",
-            "helpers/database_helper.php",
-            "helpers/date_helper.php",
-            "helpers/debug_helper.php",
-            "helpers/download_helper.php",
-            "helpers/env_helper.php",
-            "helpers/escape_helper.php",
-            "helpers/facebook_helper.php",
-            "helpers/file_helper.php",
-            "helpers/form_helper.php",
-            "helpers/gravatar_helper.php",
-            "helpers/html_helper.php",
-            "helpers/image_helper.php",
-            "helpers/ip_helper.php",
-            "helpers/meta_helper.php",
-            "helpers/japan_helper.php",
-            "helpers/money_helper.php",
-            "helpers/nanoid_helper.php",
-            "helpers/number_helper.php",
-            "helpers/paging_helper.php",
-            "helpers/placeholder_helper.php",
-            "helpers/request_helper.php",
-            "helpers/security_helper.php",
-            "helpers/sentry_helper.php",
-            "helpers/string_helper.php",
-            "helpers/text_helper.php",
-            "helpers/tinyurl_helper.php",
-            "helpers/url_helper.php",
-            "helpers/uuid_helper.php",
-            "helpers/video_embed_helper.php",
-            "helpers/vn_province_helper.php",
-            "helpers/xml_helper.php"
-        ]
-    },
-    "suggest": {
-        "ext-curl": "Need support CURL",
-        "ext-json": "Need support JSON",
-        "nguyenanhung/helpers": "Awesome Helpers - Powerful Library, Helpers and Tools",
-        "nguyenanhung/image": "Need support for Image Service",
-        "nguyenanhung/nanoid-helper": "Need support for helper function randomNanoId()",
-        "nguyenanhung/json-helper": "Need support for JSON",
-        "nguyenanhung/mobile-helper": "Need support for Mobile Support",
-        "sentry/sdk": "Need support for Logging with Sentry"
-    }
+	"name": "nguyenanhung/codeigniter-basic-helper",
+	"type": "library",
+	"description": "CodeIgniter - Basic Helper",
+	"keywords": [
+		"php",
+		"codeigniter",
+		"codeigniter3",
+		"codeigniter-helper",
+		"codeigniter-library",
+		"codeigniter-startapp",
+		"helper",
+		"library"
+	],
+	"homepage": "https://github.com/nguyenanhung/codeigniter-basic-helper",
+	"license": "GPL-3.0",
+	"authors": [
+		{
+			"name": "Nguyen An Hung",
+			"email": "dev@nguyenanhung.com",
+			"homepage": "https://nguyenanhung.com",
+			"role": "Developer"
+		}
+	],
+	"require": {
+		"php": ">=5.6",
+		"ext-curl": "*",
+		"ext-json": "*",
+		"ext-mbstring": "*",
+		"nguyenanhung/html-helper": "^2.0 || ^1.0",
+		"nguyenanhung/mobile-helper": "^2.0 || ^1.0",
+		"nguyenanhung/image-helper": "^2.0 || ^1.0",
+		"nguyenanhung/basic-miscellaneous-helper": "^2.0 || ^1.0"
+	},
+	"require-dev": {
+		"nguyenanhung/my-debug": "^3.0 || ^2.0",
+		"nguyenanhung/nanoid-helper": "^2.0 || ^1.0",
+		"nguyenanhung/json-helper": "^2.0 || ^1.0",
+		"nguyenanhung/image": "^3.0 || ^2.0 || ^1.0",
+		"nguyenanhung/codeigniter-framework": ">= 3.1"
+	},
+	"autoload": {
+		"psr-4": {
+			"nguyenanhung\\CodeIgniter\\BasicHelper\\": "src/"
+		},
+		"files": [
+			"helpers/alphaid_helper.php",
+			"helpers/array_helper.php",
+			"helpers/assets_helper.php",
+			"helpers/blogspot_helper.php",
+			"helpers/byte_helper.php",
+			"helpers/chart_render.php",
+			"helpers/common_helper.php",
+			"helpers/database_helper.php",
+			"helpers/date_helper.php",
+			"helpers/debug_helper.php",
+			"helpers/download_helper.php",
+			"helpers/env_helper.php",
+			"helpers/escape_helper.php",
+			"helpers/facebook_helper.php",
+			"helpers/file_helper.php",
+			"helpers/form_helper.php",
+			"helpers/gravatar_helper.php",
+			"helpers/html_helper.php",
+			"helpers/image_helper.php",
+			"helpers/ip_helper.php",
+			"helpers/meta_helper.php",
+			"helpers/japan_helper.php",
+			"helpers/money_helper.php",
+			"helpers/nanoid_helper.php",
+			"helpers/number_helper.php",
+			"helpers/paging_helper.php",
+			"helpers/placeholder_helper.php",
+			"helpers/request_helper.php",
+			"helpers/security_helper.php",
+			"helpers/sentry_helper.php",
+			"helpers/string_helper.php",
+			"helpers/text_helper.php",
+			"helpers/tinyurl_helper.php",
+			"helpers/url_helper.php",
+			"helpers/uuid_helper.php",
+			"helpers/video_embed_helper.php",
+			"helpers/vn_province_helper.php",
+			"helpers/xml_helper.php"
+		]
+	},
+	"suggest": {
+		"ext-curl": "Need support CURL",
+		"ext-json": "Need support JSON",
+		"nguyenanhung/helpers": "Awesome Helpers - Powerful Library, Helpers and Tools",
+		"nguyenanhung/image": "Need support for Image Service",
+		"nguyenanhung/nanoid-helper": "Need support for helper function randomNanoId()",
+		"nguyenanhung/json-helper": "Need support for JSON",
+		"nguyenanhung/mobile-helper": "Need support for Mobile Support",
+		"sentry/sdk": "Need support for Logging with Sentry"
+	}
 }

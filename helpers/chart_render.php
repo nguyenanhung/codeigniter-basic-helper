@@ -8,14 +8,14 @@
  * Time: 01:05
  */
 if (!function_exists('bear_framework_default_get_data_chart')) {
-    function bear_framework_default_get_data_chart($item_list, $valueGet, $total)
-    {
-        return (new \nguyenanhung\CodeIgniter\BasicHelper\ChartRender())->get_data_chart($item_list, $valueGet, $total);
-    }
+	function bear_framework_default_get_data_chart($item_list, $valueGet, $total)
+	{
+		return (new \nguyenanhung\CodeIgniter\BasicHelper\ChartRender())->get_data_chart($item_list, $valueGet, $total);
+	}
 }
 if (!function_exists('bear_framework_default_get_data_chart_report')) {
-    function bear_framework_default_get_data_chart_report($item_list, $valueGet)
-    {
-        return (new \nguyenanhung\CodeIgniter\BasicHelper\ChartRender())->get_data_chart_report($item_list, $valueGet);
-    }
+	function bear_framework_default_get_data_chart_report($item_list, $valueGet)
+	{
+		return (new \nguyenanhung\CodeIgniter\BasicHelper\ChartRender())->get_data_chart_report($item_list, $valueGet);
+	}
 }
