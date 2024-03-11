@@ -19,44 +19,44 @@ namespace nguyenanhung\CodeIgniter\BasicHelper;
  */
 class SimpleVerifiedKey extends BaseHelper
 {
-    public $remotePublicKey  = <<<EOD
+	public $remotePublicKey = <<<EOD
 -----BEGIN PUBLIC KEY-----
 Remote-Public-Key-Example
 -----END PUBLIC KEY-----
 EOD;
-    public $remotePrivateKey = <<<EOD
+	public $remotePrivateKey = <<<EOD
 -----BEGIN RSA PRIVATE KEY-----
 Remote-Private-Key-Example
 -----END RSA PRIVATE KEY-----
 EOD;
-    public $clientPublicKey  = <<<EOD
+	public $clientPublicKey = <<<EOD
 -----BEGIN PUBLIC KEY-----
 Client-Public-Key-Example
 -----END PUBLIC KEY-----
 EOD;
-    public $clientPrivateKey = <<<EOD
+	public $clientPrivateKey = <<<EOD
 -----BEGIN RSA PRIVATE KEY-----
 Client-Private-Key-Example
 -----END RSA PRIVATE KEY-----
 EOD;
 
-    public function getRemotePrivateKey()
-    {
-        return $this->remotePrivateKey;
-    }
+	public function getRemotePrivateKey()
+	{
+		return $this->remotePrivateKey;
+	}
 
-    public function getRemotePublicKey()
-    {
-        return $this->remotePublicKey;
-    }
+	public function getRemotePublicKey()
+	{
+		return $this->remotePublicKey;
+	}
 
-    public function getClientPrivateKey()
-    {
-        return $this->clientPrivateKey;
-    }
+	public function getClientPrivateKey()
+	{
+		return $this->clientPrivateKey;
+	}
 
-    public function getClientPublicKey()
-    {
-        return $this->clientPublicKey;
-    }
+	public function getClientPublicKey()
+	{
+		return $this->clientPublicKey;
+	}
 }

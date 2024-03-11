@@ -12,17 +12,17 @@ namespace nguyenanhung\CodeIgniter\BasicHelper;
 
 class JapanUtils extends BaseHelper
 {
-    public static function getData($configName)
-    {
-        $path = __DIR__ . '/japan/' . trim($configName) . '.php';
-        if (is_file($path) && file_exists($path)) {
-            return require $path;
-        }
-        return array();
-    }
+	public static function getData($configName)
+	{
+		$path = __DIR__ . '/japan/' . trim($configName) . '.php';
+		if (is_file($path) && file_exists($path)) {
+			return require $path;
+		}
+		return array();
+	}
 
-    public static function getJapanPrefCode()
-    {
-        return self::getData('pref_code');
-    }
+	public static function getJapanPrefCode()
+	{
+		return self::getData('pref_code');
+	}
 }
