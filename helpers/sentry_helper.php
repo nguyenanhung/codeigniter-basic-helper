@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Project codeigniter-basic-helper
  * Created by PhpStorm
@@ -7,13 +8,13 @@
  * Date: 08/01/2023
  * Time: 23:34
  */
-if (!function_exists('log_to_sentry')) {
+if ( ! function_exists('log_to_sentry')) {
 	/**
 	 * Function log_to_sentry
 	 *
-	 * @param string $message
-	 * @param array $context
-	 * @param string $name
+	 * @param  string  $message
+	 * @param  array  $context
+	 * @param  string  $name
 	 *
 	 * @return bool|string
 	 * @author   : 713uk13m <dev@nguyenanhung.com>
@@ -22,7 +23,9 @@ if (!function_exists('log_to_sentry')) {
 	 */
 	function log_to_sentry($message, $context, $name = 'hungng')
 	{
-		if (!function_exists('get_instance') || !function_exists('config_item') || !class_exists('\Sentry\ClientBuilder')) {
+		if ( ! function_exists('get_instance') || ! function_exists('config_item') || ! class_exists(
+				'\Sentry\ClientBuilder'
+			)) {
 			return false;
 		}
 		try {

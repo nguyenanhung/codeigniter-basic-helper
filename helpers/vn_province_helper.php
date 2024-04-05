@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Project codeigniter-basic-helper
  * Created by PhpStorm
@@ -7,11 +8,11 @@
  * Date: 16/06/2022
  * Time: 10:12
  */
-if (!function_exists('check_vn_province_code')) {
+if ( ! function_exists('check_vn_province_code')) {
 	/**
 	 * Function check_vn_province_code
 	 *
-	 * @param string $code
+	 * @param  string  $code
 	 *
 	 * @return bool|string
 	 * @author   : 713uk13m <dev@nguyenanhung.com>

@@ -160,8 +160,10 @@ final class BasicCurl extends BaseHelper
 	 */
 	public function __construct()
 	{
-		if (!extension_loaded('curl')) {
-			throw new \RuntimeException('The cURL extensions is not loaded, make sure you have installed the cURL extension: https://php.net/manual/curl.setup.php');
+		if ( ! extension_loaded('curl')) {
+			throw new \RuntimeException(
+				'The cURL extensions is not loaded, make sure you have installed the cURL extension: https://php.net/manual/curl.setup.php'
+			);
 		}
 
 		$this->init();
@@ -190,8 +192,8 @@ final class BasicCurl extends BaseHelper
 	/**
 	 * Handle writing the response headers
 	 *
-	 * @param resource $curl The current curl resource
-	 * @param string $header_line A line from the list of response headers
+	 * @param  resource  $curl  The current curl resource
+	 * @param  string  $header_line  A line from the list of response headers
 	 *
 	 * @return int Returns the length of the $header_line
 	 */
@@ -203,7 +205,7 @@ final class BasicCurl extends BaseHelper
 			$this->response_header_continue = false;
 		} elseif (strtolower($trimmed_header) === 'http/1.1 100 continue') {
 			$this->response_header_continue = true;
-		} elseif (!$this->response_header_continue) {
+		} elseif ( ! $this->response_header_continue) {
 			$this->response_headers[] = $trimmed_header;
 		}
 
@@ -224,12 +226,17 @@ final class BasicCurl extends BaseHelper
 		$this->response = curl_exec($this->curl);
 		$this->curl_error_code = curl_errno($this->curl);
 		$this->curl_error_message = curl_error($this->curl);
-		$this->curl_error = !($this->getErrorCode() === 0);
+		$this->curl_error = ! ($this->getErrorCode() === 0);
 		$this->http_status_code = intval(curl_getinfo($this->curl, CURLINFO_HTTP_CODE));
 		$this->http_error = $this->isError();
 		$this->error = $this->curl_error || $this->http_error;
 		$this->error_code = $this->error ? ($this->curl_error ? $this->getErrorCode() : $this->getHttpStatus()) : 0;
-		$this->request_headers = preg_split('/\r\n/', curl_getinfo($this->curl, CURLINFO_HEADER_OUT), -1, PREG_SPLIT_NO_EMPTY);
+		$this->request_headers = preg_split(
+			'/\r\n/',
+			curl_getinfo($this->curl, CURLINFO_HEADER_OUT),
+			-1,
+			PREG_SPLIT_NO_EMPTY
+		);
 		$this->http_error_message = $this->error ? (isset($this->response_headers['0']) ? $this->response_headers['0'] : '') : '';
 		$this->error_message = $this->curl_error ? $this->getErrorMessage() : $this->http_error_message;
 		$this->setOpt(CURLOPT_HEADERFUNCTION, null);
@@ -237,7 +244,7 @@ final class BasicCurl extends BaseHelper
 	}
 
 	/**
-	 * @param array|object|string $data
+	 * @param  array|object|string  $data
 	 */
 	protected function preparePayload($data)
 	{
@@ -254,7 +261,7 @@ final class BasicCurl extends BaseHelper
 				}
 			}
 
-			if (!$skip) {
+			if ( ! $skip) {
 				$data = http_build_query($data);
 			}
 		}
@@ -265,7 +272,7 @@ final class BasicCurl extends BaseHelper
 	/**
 	 * Set the json payload informations to the postfield curl option.
 	 *
-	 * @param array $data The data to be sent.
+	 * @param  array  $data  The data to be sent.
 	 *
 	 * @return void
 	 */
@@ -287,7 +294,7 @@ final class BasicCurl extends BaseHelper
 	 * + self::AUTH_ANY
 	 * + self::AUTH_ANYSAFE
 	 *
-	 * @param int $httpauth The type of authentication
+	 * @param  int  $httpauth  The type of authentication
 	 */
 	protected function setHttpAuth($httpauth)
 	{
@@ -311,8 +318,8 @@ final class BasicCurl extends BaseHelper
 	 *
 	 * The get request has no body data, the data will be correctly added to the $url with the http_build_query() method.
 	 *
-	 * @param string $url The url to make the get request for
-	 * @param array $data Optional arguments who are part of the url
+	 * @param  string  $url  The url to make the get request for
+	 * @param  array  $data  Optional arguments who are part of the url
 	 *
 	 * @return self
 	 */
@@ -335,8 +342,8 @@ final class BasicCurl extends BaseHelper
 	 * A very common scenario to send a purge request is within the use of varnish, therefore
 	 * the optional hostname can be defined.
 	 *
-	 * @param string $url The url to make the purge request
-	 * @param string $hostName An optional hostname which will be sent as http host header
+	 * @param  string  $url  The url to make the purge request
+	 * @param  string  $hostName  An optional hostname which will be sent as http host header
 	 *
 	 * @return self
 	 * @since 2.4.0
@@ -355,9 +362,9 @@ final class BasicCurl extends BaseHelper
 	/**
 	 * Make a post request with optional post data.
 	 *
-	 * @param string $url The url to make the post request
-	 * @param array|object|string $data Post data to pass to the url
-	 * @param boolean $asJson Whether the data should be passed as json or not. {@insce 2.2.1}
+	 * @param  string  $url  The url to make the post request
+	 * @param  array|object|string  $data  Post data to pass to the url
+	 * @param  boolean  $asJson  Whether the data should be passed as json or not. {@insce 2.2.1}
 	 *
 	 * @return self
 	 */
@@ -379,16 +386,16 @@ final class BasicCurl extends BaseHelper
 	 *
 	 * The put request data can be either sent via payload or as get parameters of the string.
 	 *
-	 * @param string $url The url to make the put request
-	 * @param array $data Optional data to pass to the $url
-	 * @param bool $payload Whether the data should be transmitted trough payload or as get parameters of the string
-	 * @param boolean $asJson Whether the data should be passed as json or not. {@insce 2.4.0}
+	 * @param  string  $url  The url to make the put request
+	 * @param  array  $data  Optional data to pass to the $url
+	 * @param  bool  $payload  Whether the data should be transmitted trough payload or as get parameters of the string
+	 * @param  boolean  $asJson  Whether the data should be passed as json or not. {@insce 2.4.0}
 	 *
 	 * @return self
 	 */
 	public function put($url, $data = array(), $payload = false, $asJson = false)
 	{
-		if (!empty($data)) {
+		if ( ! empty($data)) {
 			if ($payload === false) {
 				$url .= '?' . http_build_query($data);
 			} else {
@@ -411,16 +418,16 @@ final class BasicCurl extends BaseHelper
 	 *
 	 * The patch request data can be either sent via payload or as get parameters of the string.
 	 *
-	 * @param string $url The url to make the patch request
-	 * @param array $data Optional data to pass to the $url
-	 * @param bool $payload Whether the data should be transmitted trough payload or as get parameters of the string
-	 * @param boolean $asJson Whether the data should be passed as json or not. {@insce 2.4.0}
+	 * @param  string  $url  The url to make the patch request
+	 * @param  array  $data  Optional data to pass to the $url
+	 * @param  bool  $payload  Whether the data should be transmitted trough payload or as get parameters of the string
+	 * @param  boolean  $asJson  Whether the data should be passed as json or not. {@insce 2.4.0}
 	 *
 	 * @return self
 	 */
 	public function patch($url, $data = array(), $payload = false, $asJson = false)
 	{
-		if (!empty($data)) {
+		if ( ! empty($data)) {
 			if ($payload === false) {
 				$url .= '?' . http_build_query($data);
 			} else {
@@ -441,15 +448,15 @@ final class BasicCurl extends BaseHelper
 	/**
 	 * Make a delete request with optional data.
 	 *
-	 * @param string $url The url to make the delete request
-	 * @param array $data Optional data to pass to the $url
-	 * @param bool $payload Whether the data should be transmitted trough payload or as get parameters of the string
+	 * @param  string  $url  The url to make the delete request
+	 * @param  array  $data  Optional data to pass to the $url
+	 * @param  bool  $payload  Whether the data should be transmitted trough payload or as get parameters of the string
 	 *
 	 * @return self
 	 */
 	public function delete($url, $data = array(), $payload = false)
 	{
-		if (!empty($data)) {
+		if ( ! empty($data)) {
 			if ($payload === false) {
 				$url .= '?' . http_build_query($data);
 			} else {
@@ -476,8 +483,8 @@ final class BasicCurl extends BaseHelper
 	 * $curl->get('http://example.com/secure.php');
 	 * ```
 	 *
-	 * @param string $username The username for the authentication
-	 * @param string $password The password for the given username for the authentication
+	 * @param  string  $username  The username for the authentication
+	 * @param  string  $password  The password for the given username for the authentication
 	 *
 	 * @return self
 	 */
@@ -499,8 +506,8 @@ final class BasicCurl extends BaseHelper
 	 * $curl->get('http://example.com/request.php');
 	 * ```
 	 *
-	 * @param string $key The header key
-	 * @param string $value The value for the given header key
+	 * @param  string  $key  The header key
+	 * @param  string  $value  The value for the given header key
 	 *
 	 * @return self
 	 */
@@ -522,7 +529,7 @@ final class BasicCurl extends BaseHelper
 	 * $curl->get('http://example.com/request.php');
 	 * ```
 	 *
-	 * @param string $useragent The name of the user agent to set for the current request
+	 * @param  string  $useragent  The name of the user agent to set for the current request
 	 *
 	 * @return self
 	 */
@@ -550,7 +557,7 @@ final class BasicCurl extends BaseHelper
 	 *
 	 * The $referer Information can help identify the requested client where the requested was made.
 	 *
-	 * @param string $referer An url to pass and will be set as referer header
+	 * @param  string  $referer  An url to pass and will be set as referer header
 	 *
 	 * @return self
 	 */
@@ -563,8 +570,8 @@ final class BasicCurl extends BaseHelper
 	/**
 	 * Set contents of HTTP Cookie header.
 	 *
-	 * @param string $key The name of the cookie
-	 * @param string $value The value for the provided cookie name
+	 * @param  string  $key  The name of the cookie
+	 * @param  string  $value  The value for the provided cookie name
 	 *
 	 * @return self
 	 */
@@ -582,8 +589,8 @@ final class BasicCurl extends BaseHelper
 	 *
 	 * @see http://php.net/curl_setopt
 	 *
-	 * @param int $option The curl option constant e.g. `CURLOPT_AUTOREFERER`, `CURLOPT_COOKIESESSION`
-	 * @param mixed $value The value to pass for the given $option
+	 * @param  int  $option  The curl option constant e.g. `CURLOPT_AUTOREFERER`, `CURLOPT_COOKIESESSION`
+	 * @param  mixed  $value  The value to pass for the given $option
 	 *
 	 * @return bool
 	 */
@@ -599,7 +606,7 @@ final class BasicCurl extends BaseHelper
 	 *
 	 * @see http://php.net/curl_getinfo
 	 *
-	 * @param int $option The curl option constant e.g. `CURLOPT_AUTOREFERER`, `CURLOPT_COOKIESESSION`
+	 * @param  int  $option  The curl option constant e.g. `CURLOPT_AUTOREFERER`, `CURLOPT_COOKIESESSION`
 	 *
 	 * @return mixed
 	 */
@@ -636,7 +643,7 @@ final class BasicCurl extends BaseHelper
 	/**
 	 * Enable verbosity.
 	 *
-	 * @param bool $on
+	 * @param  bool  $on
 	 *
 	 * @return self
 	 */
@@ -647,7 +654,7 @@ final class BasicCurl extends BaseHelper
 	}
 
 	/**
-	 * @param bool $on
+	 * @param  bool  $on
 	 *
 	 * @return self
 	 * @deprecated Call setVerbose() instead. Will be removed in 3.0
@@ -786,7 +793,7 @@ final class BasicCurl extends BaseHelper
 	 * var_dump($curl->getResponseHeaders());
 	 * ```
 	 *
-	 * @param string $headerKey Optional key to get from the array.
+	 * @param  string  $headerKey  Optional key to get from the array.
 	 *
 	 * @return bool|string|array
 	 * @since 1.9
@@ -794,7 +801,7 @@ final class BasicCurl extends BaseHelper
 	public function getResponseHeaders($headerKey = null)
 	{
 		$headers = array();
-		if (!is_null($headerKey)) {
+		if ( ! is_null($headerKey)) {
 			$headerKey = strtolower($headerKey);
 		}
 

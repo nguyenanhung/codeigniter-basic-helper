@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Project codeigniter-basic-helper
  * Created by PhpStorm
@@ -7,7 +8,7 @@
  * Date: 09/14/2021
  * Time: 13:06
  */
-if (!function_exists('randomNanoId')) {
+if ( ! function_exists('randomNanoId')) {
 	/**
 	 * Function randomNanoId
 	 *

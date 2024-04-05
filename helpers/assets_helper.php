@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Project codeigniter-basic-helper
  * Created by PhpStorm
@@ -7,12 +8,12 @@
  * Date: 08/07/2021
  * Time: 01:11
  */
-if (!function_exists('assets_url')) {
+if ( ! function_exists('assets_url')) {
 	/**
 	 * Function assets_url
 	 *
-	 * @param string $uri
-	 * @param string|null $protocol
+	 * @param  string  $uri
+	 * @param  string|null  $protocol
 	 *
 	 * @return string
 	 * @author   : 713uk13m <dev@nguyenanhung.com>
@@ -33,11 +34,11 @@ if (!function_exists('assets_url')) {
 		return trim($uri);
 	}
 }
-if (!function_exists('static_url')) {
+if ( ! function_exists('static_url')) {
 	/**
 	 * Function static_url
 	 *
-	 * @param string $uri
+	 * @param  string  $uri
 	 *
 	 * @return string
 	 * @author   : 713uk13m <dev@nguyenanhung.com>
@@ -59,12 +60,12 @@ if (!function_exists('static_url')) {
 		return trim($uri);
 	}
 }
-if (!function_exists('templates_url')) {
+if ( ! function_exists('templates_url')) {
 	/**
 	 * Function templates_url
 	 *
-	 * @param string $uri
-	 * @param string|null $protocol
+	 * @param  string  $uri
+	 * @param  string|null  $protocol
 	 *
 	 * @return string
 	 * @author   : 713uk13m <dev@nguyenanhung.com>
@@ -85,12 +86,12 @@ if (!function_exists('templates_url')) {
 		return trim($uri);
 	}
 }
-if (!function_exists('editor_url')) {
+if ( ! function_exists('editor_url')) {
 	/**
 	 * Function editor_url
 	 *
-	 * @param string $uri
-	 * @param string|null $protocol
+	 * @param  string  $uri
+	 * @param  string|null  $protocol
 	 *
 	 * @return string
 	 * @author   : 713uk13m <dev@nguyenanhung.com>
@@ -103,12 +104,12 @@ if (!function_exists('editor_url')) {
 		return assets_url($uri, $protocol);
 	}
 }
-if (!function_exists('favicon_url')) {
+if ( ! function_exists('favicon_url')) {
 	/**
 	 * Function favicon_url
 	 *
-	 * @param string $uri
-	 * @param string|null $protocol
+	 * @param  string  $uri
+	 * @param  string|null  $protocol
 	 *
 	 * @return string
 	 * @author   : 713uk13m <dev@nguyenanhung.com>
@@ -121,12 +122,12 @@ if (!function_exists('favicon_url')) {
 		return assets_url($uri, $protocol);
 	}
 }
-if (!function_exists('fav_url')) {
+if ( ! function_exists('fav_url')) {
 	/**
 	 * Function fav_url - alias of favicon_url
 	 *
-	 * @param string $uri
-	 * @param string|null $protocol
+	 * @param  string  $uri
+	 * @param  string|null  $protocol
 	 *
 	 * @return string
 	 * @author   : 713uk13m <dev@nguyenanhung.com>
@@ -139,7 +140,7 @@ if (!function_exists('fav_url')) {
 		return assets_url($uri, $protocol);
 	}
 }
-if (!function_exists('favicon_html_tag')) {
+if ( ! function_exists('favicon_html_tag')) {
 	/**
 	 * Function favicon_html_tag
 	 *
@@ -155,11 +156,11 @@ if (!function_exists('favicon_html_tag')) {
 		return (new \nguyenanhung\CodeIgniter\BasicHelper\Favicon())->faviconHtml($baseUrl);
 	}
 }
-if (!function_exists('storage_url')) {
+if ( ! function_exists('storage_url')) {
 	/**
 	 * Function storage_url
 	 *
-	 * @param string $uri
+	 * @param  string  $uri
 	 *
 	 * @return string
 	 * @author   : 713uk13m <dev@nguyenanhung.com>
@@ -181,12 +182,12 @@ if (!function_exists('storage_url')) {
 		return $uri;
 	}
 }
-if (!function_exists('public_storage_tmp_url')) {
+if ( ! function_exists('public_storage_tmp_url')) {
 	/**
 	 * Function public_storage_tmp_url
 	 *
-	 * @param string $uri
-	 * @param string|null $protocol
+	 * @param  string  $uri
+	 * @param  string|null  $protocol
 	 *
 	 * @return string
 	 * @author   : 713uk13m <dev@nguyenanhung.com>
@@ -207,11 +208,11 @@ if (!function_exists('public_storage_tmp_url')) {
 		return trim($uri);
 	}
 }
-if (!function_exists('go_url')) {
+if ( ! function_exists('go_url')) {
 	/**
 	 * Function go_url
 	 *
-	 * @param string $uri
+	 * @param  string  $uri
 	 *
 	 * @return string
 	 * @author   : 713uk13m <dev@nguyenanhung.com>
@@ -227,12 +228,12 @@ if (!function_exists('go_url')) {
 		return $uri;
 	}
 }
-if (!function_exists('assets_mobile')) {
+if ( ! function_exists('assets_mobile')) {
 	/**
 	 * Function assets_mobile
 	 *
-	 * @param string $uri
-	 * @param string|null $protocol
+	 * @param  string  $uri
+	 * @param  string|null  $protocol
 	 *
 	 * @return string
 	 * @author   : 713uk13m <dev@nguyenanhung.com>
@@ -245,14 +246,14 @@ if (!function_exists('assets_mobile')) {
 		return assets_url($uri, $protocol);
 	}
 }
-if (!function_exists('assets_themes')) {
+if ( ! function_exists('assets_themes')) {
 	/**
 	 * Function assets_themes
 	 *
-	 * @param string $themes
-	 * @param string $uri
-	 * @param string $folder
-	 * @param string|null $protocol
+	 * @param  string  $themes
+	 * @param  string  $uri
+	 * @param  string  $folder
+	 * @param  string|null  $protocol
 	 *
 	 * @return string
 	 * @author   : 713uk13m <dev@nguyenanhung.com>
@@ -278,14 +279,14 @@ if (!function_exists('assets_themes')) {
 		return assets_url($uri, $protocol);
 	}
 }
-if (!function_exists('assets_themes_dashboard')) {
+if ( ! function_exists('assets_themes_dashboard')) {
 	/**
 	 * Function assets_themes_dashboard
 	 *
-	 * @param string $themes
-	 * @param string $uri
-	 * @param string $folder
-	 * @param string|null $protocol
+	 * @param  string  $themes
+	 * @param  string  $uri
+	 * @param  string  $folder
+	 * @param  string|null  $protocol
 	 *
 	 * @return string
 	 * @author   : 713uk13m <dev@nguyenanhung.com>
@@ -297,14 +298,14 @@ if (!function_exists('assets_themes_dashboard')) {
 		return assets_themes($themes, $uri, $folder, $protocol);
 	}
 }
-if (!function_exists('assets_themes_comingsoon')) {
+if ( ! function_exists('assets_themes_comingsoon')) {
 	/**
 	 * Function assets_themes_comingsoon
 	 *
-	 * @param string $themes
-	 * @param string $uri
-	 * @param string $folder
-	 * @param string|null $protocol
+	 * @param  string  $themes
+	 * @param  string  $uri
+	 * @param  string  $folder
+	 * @param  string|null  $protocol
 	 *
 	 * @return string
 	 * @author   : 713uk13m <dev@nguyenanhung.com>
@@ -316,14 +317,14 @@ if (!function_exists('assets_themes_comingsoon')) {
 		return assets_themes($themes, $uri, $folder, $protocol);
 	}
 }
-if (!function_exists('assets_themes_error')) {
+if ( ! function_exists('assets_themes_error')) {
 	/**
 	 * Function assets_themes_error
 	 *
-	 * @param string $themes
-	 * @param string $uri
-	 * @param string $folder
-	 * @param string|null $protocol
+	 * @param  string  $themes
+	 * @param  string  $uri
+	 * @param  string  $folder
+	 * @param  string|null  $protocol
 	 *
 	 * @return string
 	 * @author   : 713uk13m <dev@nguyenanhung.com>
@@ -335,12 +336,12 @@ if (!function_exists('assets_themes_error')) {
 		return assets_themes($themes, $uri, $folder, $protocol);
 	}
 }
-if (!function_exists('assets_themes_metronic')) {
+if ( ! function_exists('assets_themes_metronic')) {
 	/**
 	 * Function assets_themes_metronic
 	 *
-	 * @param string $uri
-	 * @param string|null $protocol
+	 * @param  string  $uri
+	 * @param  string|null  $protocol
 	 *
 	 * @return string
 	 * @author   : 713uk13m <dev@nguyenanhung.com>
@@ -352,11 +353,11 @@ if (!function_exists('assets_themes_metronic')) {
 		return assets_themes('metronic', $uri, 'yes', $protocol);
 	}
 }
-if (!function_exists('cdn_js_url')) {
+if ( ! function_exists('cdn_js_url')) {
 	/**
 	 * Function cdn_js_url
 	 *
-	 * @param string $uri
+	 * @param  string  $uri
 	 *
 	 * @return string
 	 * @author   : 713uk13m <dev@nguyenanhung.com>
@@ -369,11 +370,11 @@ if (!function_exists('cdn_js_url')) {
 		return $cdnJs . trim($uri);
 	}
 }
-if (!function_exists('google_fonts_url')) {
+if ( ! function_exists('google_fonts_url')) {
 	/**
 	 * Function google_fonts_url
 	 *
-	 * @param string $family
+	 * @param  string  $family
 	 *
 	 * @return string
 	 * @author   : 713uk13m <dev@nguyenanhung.com>
@@ -386,11 +387,11 @@ if (!function_exists('google_fonts_url')) {
 		return $fonts . trim($family);
 	}
 }
-if (!function_exists('bootstrapcdn_url')) {
+if ( ! function_exists('bootstrapcdn_url')) {
 	/**
 	 * Function bootstrapcdn_url
 	 *
-	 * @param string $uri
+	 * @param  string  $uri
 	 *
 	 * @return string
 	 * @author   : 713uk13m <dev@nguyenanhung.com>

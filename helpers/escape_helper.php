@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Project codeigniter-basic-helper
  * Created by PhpStorm
@@ -7,7 +8,7 @@
  * Date: 09/02/2023
  * Time: 22:25
  */
-if (!function_exists('bear_framework_basic_clean_str')) {
+if ( ! function_exists('bear_framework_basic_clean_str')) {
 	function bear_framework_basic_clean_str($str = '')
 	{
 		if (empty($str)) {

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Project codeigniter-basic-helper
  * Created by PhpStorm
@@ -7,12 +8,12 @@
  * Date: 10/05/2021
  * Time: 04:11
  */
-if (!function_exists('dayFloor')) {
+if ( ! function_exists('dayFloor')) {
 	/**
 	 * Function dayFloor
 	 *
-	 * @param string $beginTime
-	 * @param string $endTime
+	 * @param  string  $beginTime
+	 * @param  string  $endTime
 	 *
 	 * @return int
 	 * @author   : 713uk13m <dev@nguyenanhung.com>
@@ -28,7 +29,7 @@ if (!function_exists('dayFloor')) {
 		return (int)floor($floor / (60 * 60 * 24));
 	}
 }
-if (!function_exists('getZuluTime')) {
+if ( ! function_exists('getZuluTime')) {
 	/**
 	 * Function getZuluTime
 	 *
@@ -49,7 +50,7 @@ if (!function_exists('getZuluTime')) {
 		}
 	}
 }
-if (!function_exists('iso_8601_utc_time')) {
+if ( ! function_exists('iso_8601_utc_time')) {
 	/**
 	 * Function iso_8601_utc_time
 	 *
@@ -63,13 +64,13 @@ if (!function_exists('iso_8601_utc_time')) {
 		return getZuluTime();
 	}
 }
-if (!function_exists('getYesterday')) {
+if ( ! function_exists('getYesterday')) {
 	function getYesterday($format = 'Y-m-d')
 	{
 		return date($format, strtotime("-1 days"));
 	}
 }
-if (!function_exists('smart_bear_date_range')) {
+if ( ! function_exists('smart_bear_date_range')) {
 	function smart_bear_date_range($first, $last, $step = '+1 day', $format = 'Y-m-d')
 	{
 		$dates = array();
@@ -82,7 +83,7 @@ if (!function_exists('smart_bear_date_range')) {
 		return $dates;
 	}
 }
-if (!function_exists('format_datetime_vn')) {
+if ( ! function_exists('format_datetime_vn')) {
 	function format_datetime_vn($datetime = '', $type = 'datetime')
 	{
 		if (empty($datetime)) {
@@ -99,7 +100,7 @@ if (!function_exists('format_datetime_vn')) {
 		return date('d-m-Y H:i:s', $timestamp);
 	}
 }
-if (!function_exists('get_start_and_end_date_for_week')) {
+if ( ! function_exists('get_start_and_end_date_for_week')) {
 	/**
 	 * Function get_start_and_end_date_for_week
 	 *

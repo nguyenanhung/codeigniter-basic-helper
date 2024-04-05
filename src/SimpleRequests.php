@@ -59,11 +59,15 @@ class SimpleRequests
 
 		// create a log channel
 		$formatter = new LineFormatter($monolog['outputFormat'], $monolog['dateFormat']);
-		$stream = new StreamHandler($this->logger_path . 'Simple-Requests/Log-' . date('Y-m-d') . '.log', Logger::INFO, $monolog['monoBubble'], $monolog['monoFilePermission']);
+		$stream = new StreamHandler(
+			$this->logger_path . 'Simple-Requests/Log-' . date('Y-m-d') . '.log',
+			Logger::INFO,
+			$monolog['monoBubble'],
+			$monolog['monoFilePermission']
+		);
 		$stream->setFormatter($formatter);
 		$this->logger = new Logger('SimpleRequests');
 		$this->logger->pushHandler($stream);
-
 	}
 
 	/**
@@ -85,7 +89,7 @@ class SimpleRequests
 	/**
 	 * Function setHeader
 	 *
-	 * @param array $header
+	 * @param  array  $header
 	 *
 	 * @return $this
 	 * @author   : 713uk13m <dev@nguyenanhung.com>
@@ -101,9 +105,9 @@ class SimpleRequests
 	/**
 	 * Function sendRequest
 	 *
-	 * @param string $url
-	 * @param array $data
-	 * @param string $method
+	 * @param  string  $url
+	 * @param  array  $data
+	 * @param  string  $method
 	 *
 	 * @return string|null
 	 * @author   : 713uk13m <dev@nguyenanhung.com>
@@ -178,9 +182,9 @@ class SimpleRequests
 	/**
 	 * Function xmlRequest
 	 *
-	 * @param string $url
-	 * @param string $data
-	 * @param int $timeout
+	 * @param  string  $url
+	 * @param  string  $data
+	 * @param  int  $timeout
 	 *
 	 * @return bool|string|null
 	 * @author   : 713uk13m <dev@nguyenanhung.com>

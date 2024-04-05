@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Project codeigniter-basic-helper
  * Created by PhpStorm
@@ -7,14 +8,14 @@
  * Date: 08/07/2021
  * Time: 01:07
  */
-if (!function_exists('google_image_resize')) {
+if ( ! function_exists('google_image_resize')) {
 	/**
 	 * Function google_image_resize
 	 *
-	 * @param string $url
-	 * @param int|null $width
-	 * @param int|null $height
-	 * @param string|null $server
+	 * @param  string  $url
+	 * @param  int|null  $width
+	 * @param  int|null  $height
+	 * @param  string|null  $server
 	 *
 	 * @return string
 	 * @author   : 713uk13m <dev@nguyenanhung.com>
@@ -26,7 +27,7 @@ if (!function_exists('google_image_resize')) {
 		return nguyenanhung\CodeIgniter\BasicHelper\ImageHelper::googleGadgetsProxy($url, $width, $height, $server);
 	}
 }
-if (!function_exists('google_image_proxy_dns_prefetch')) {
+if ( ! function_exists('google_image_proxy_dns_prefetch')) {
 	/**
 	 * Function google_image_proxy_dns_prefetch
 	 *
@@ -40,14 +41,14 @@ if (!function_exists('google_image_proxy_dns_prefetch')) {
 		return nguyenanhung\CodeIgniter\BasicHelper\ImageHelper::googleGadgetsProxyDnsPrefetch();
 	}
 }
-if (!function_exists('wordpress_proxy')) {
+if ( ! function_exists('wordpress_proxy')) {
 	/**
 	 * Function wordpress_proxy
 	 *
-	 * @param string $imageUrl
-	 * @param string $server
-	 * @param int|string|null $width
-	 * @param int|string|null $height
+	 * @param  string  $imageUrl
+	 * @param  string  $server
+	 * @param  int|string|null  $width
+	 * @param  int|string|null  $height
 	 *
 	 * @return string
 	 * @author   : 713uk13m <dev@nguyenanhung.com>
@@ -59,7 +60,7 @@ if (!function_exists('wordpress_proxy')) {
 		return nguyenanhung\CodeIgniter\BasicHelper\ImageHelper::wordpressProxy($imageUrl, $server, $width, $height);
 	}
 }
-if (!function_exists('wordpress_proxy_dns_prefetch')) {
+if ( ! function_exists('wordpress_proxy_dns_prefetch')) {
 	/**
 	 * Function wordpress_proxy_dns_prefetch
 	 *
@@ -73,7 +74,7 @@ if (!function_exists('wordpress_proxy_dns_prefetch')) {
 		return nguyenanhung\CodeIgniter\BasicHelper\ImageHelper::wordpressProxyDnsPrefetch();
 	}
 }
-if (!function_exists('bear_framework_image_url')) {
+if ( ! function_exists('bear_framework_image_url')) {
 	/**
 	 * Function bear_framework_image_url
 	 *
@@ -91,7 +92,7 @@ if (!function_exists('bear_framework_image_url')) {
 		return nguyenanhung\CodeIgniter\BasicHelper\ImageHelper::formatImageUrl($input, $server, $base);
 	}
 }
-if (!function_exists('bear_framework_create_image_thumbnail')) {
+if ( ! function_exists('bear_framework_create_image_thumbnail')) {
 	/**
 	 * Function bear_framework_create_image_thumbnail
 	 *
@@ -109,7 +110,7 @@ if (!function_exists('bear_framework_create_image_thumbnail')) {
 		return create_image_thumbnail($url, $width, $height);
 	}
 }
-if (!function_exists('create_image_thumbnail')) {
+if ( ! function_exists('create_image_thumbnail')) {
 	/**
 	 * Function create_image_thumbnail
 	 *
@@ -127,7 +128,7 @@ if (!function_exists('create_image_thumbnail')) {
 		return nguyenanhung\CodeIgniter\BasicHelper\ImageHelper::createThumbnail($url, $width, $height);
 	}
 }
-if (!function_exists('bear_framework_create_image_thumbnail_with_cache')) {
+if ( ! function_exists('bear_framework_create_image_thumbnail_with_cache')) {
 	/**
 	 * Function bear_framework_create_image_thumbnail_with_cache
 	 *
@@ -142,6 +143,10 @@ if (!function_exists('bear_framework_create_image_thumbnail_with_cache')) {
 	 */
 	function bear_framework_create_image_thumbnail_with_cache($url = '', $width = 100, $height = 100)
 	{
-		return nguyenanhung\CodeIgniter\BasicHelper\ImageHelper::createThumbnailWithCodeIgniterCache($url, $width, $height);
+		return nguyenanhung\CodeIgniter\BasicHelper\ImageHelper::createThumbnailWithCodeIgniterCache(
+			$url,
+			$width,
+			$height
+		);
 	}
 }

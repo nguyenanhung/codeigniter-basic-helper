@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Project codeigniter-basic-helper
  * Created by PhpStorm
@@ -7,7 +8,7 @@
  * Date: 30/07/2022
  * Time: 15:50
  */
-if (!function_exists('bytesHumanFormat')) {
+if ( ! function_exists('bytesHumanFormat')) {
 	/**
 	 * Function bytesHumanFormat
 	 *

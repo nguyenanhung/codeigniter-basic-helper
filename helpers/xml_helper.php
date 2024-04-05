@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Project codeigniter-basic-helper
  * Created by PhpStorm
@@ -7,14 +8,14 @@
  * Date: 09/11/2021
  * Time: 08:55
  */
-if (!function_exists('parse_sitemap_index')) {
+if ( ! function_exists('parse_sitemap_index')) {
 	/**
 	 * Function parse_sitemap_index
 	 *
-	 * @param string|array $loc
-	 * @param string $lastmod
-	 * @param string $type
-	 * @param string $newline
+	 * @param  string|array  $loc
+	 * @param  string  $lastmod
+	 * @param  string  $type
+	 * @param  string  $newline
 	 *
 	 * @return string|null
 	 * @author   : 713uk13m <dev@nguyenanhung.com>
@@ -26,7 +27,7 @@ if (!function_exists('parse_sitemap_index')) {
 		if (function_exists('base_url')) {
 			// Since we allow the data to be passes as a string, a simple array
 			// or a multidimensional one, we need to do a little prepping.
-			if (!is_array($loc)) {
+			if ( ! is_array($loc)) {
 				$loc = array(
 					array(
 						'loc' => $loc,
@@ -58,15 +59,15 @@ if (!function_exists('parse_sitemap_index')) {
 		return null;
 	}
 }
-if (!function_exists('parse_sitemap')) {
+if ( ! function_exists('parse_sitemap')) {
 	/**
 	 * Function parse_sitemap
 	 *
-	 * @param string|array $domain
-	 * @param string|array $loc
-	 * @param string $lastmod
-	 * @param string $type
-	 * @param string $newline
+	 * @param  string|array  $domain
+	 * @param  string|array  $loc
+	 * @param  string  $lastmod
+	 * @param  string  $type
+	 * @param  string  $newline
 	 *
 	 * @return string
 	 * @author   : 713uk13m <dev@nguyenanhung.com>
@@ -77,7 +78,7 @@ if (!function_exists('parse_sitemap')) {
 	{
 		// Since we allow the data to be passes as a string, a simple array
 		// or a multidimensional one, we need to do a little prepping.
-		if (!is_array($loc)) {
+		if ( ! is_array($loc)) {
 			$loc = array(
 				array(
 					'loc' => $loc,
@@ -106,7 +107,7 @@ if (!function_exists('parse_sitemap')) {
 		return $str;
 	}
 }
-if (!function_exists('xml_convert')) {
+if ( ! function_exists('xml_convert')) {
 	/**
 	 * Function xml_convert - Convert Reserved XML characters to Entities
 	 *
@@ -130,7 +131,9 @@ if (!function_exists('xml_convert')) {
 			$str = preg_replace('/&(\w+);/', $temp . '\\1;', $str);
 		}
 
-		$str = str_replace(array('&', '<', '>', '"', "'", '-'), array('&amp;', '&lt;', '&gt;', '&quot;', '&apos;', '&#45;'), $str);
+		$str = str_replace(array('&', '<', '>', '"', "'", '-'),
+			array('&amp;', '&lt;', '&gt;', '&quot;', '&apos;', '&#45;'),
+			$str);
 
 		// Decode the temp markers back to entities
 		$str = preg_replace('/' . $temp . '(\d+);/', '&#\\1;', $str);
@@ -142,7 +145,7 @@ if (!function_exists('xml_convert')) {
 		return $str;
 	}
 }
-if (!function_exists('xml_get_value')) {
+if ( ! function_exists('xml_get_value')) {
 	/**
 	 * Function xml_get_value
 	 *
@@ -163,7 +166,7 @@ if (!function_exists('xml_get_value')) {
 		return ($f <= $l) ? mb_substr($xml, $f, $l - $f) : "";
 	}
 }
-if (!function_exists('xml_to_json')) {
+if ( ! function_exists('xml_to_json')) {
 	/**
 	 * Function xml_to_json
 	 *

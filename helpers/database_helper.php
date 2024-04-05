@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Project codeigniter-basic-helper
  * Created by PhpStorm
@@ -7,15 +8,15 @@
  * Date: 08/02/2023
  * Time: 16:16
  */
-if (!function_exists('generate_list_id_with_parent_id')) {
+if ( ! function_exists('generate_list_id_with_parent_id')) {
 	/**
 	 * Function generate_list_id_with_parent_id - Tạo 1 list các ID, trong đó chứa các tập con phụ thuộc của ID đó
 	 *
 	 * VD: Dùng trong trường hợp muốn hiển thị nội dung của category cha và các category con trong cùng 1 page content
 	 *
-	 * @param array|object|mixed $allSubId
-	 * @param string|int $parentId
-	 * @param string $field
+	 * @param  array|object|mixed  $allSubId
+	 * @param  string|int  $parentId
+	 * @param  string  $field
 	 *
 	 * @return array|string|int
 	 * @author   : 713uk13m <dev@nguyenanhung.com>
@@ -40,5 +41,4 @@ if (!function_exists('generate_list_id_with_parent_id')) {
 		}
 		return $parentId;
 	}
-
 }

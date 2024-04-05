@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Project codeigniter-basic-helper
  * Created by PhpStorm
@@ -7,7 +8,7 @@
  * Date: 09/11/2021
  * Time: 08:52
  */
-if (!function_exists('generateAlphaId')) {
+if ( ! function_exists('generateAlphaId')) {
 	/**
 	 * Translates a number to a short alphanumeric version
 	 *
@@ -50,10 +51,10 @@ if (!function_exists('generateAlphaId')) {
 	 * but I haven't really dugg into this. If you have more info on those
 	 * matters feel free to leave a comment.
 	 *
-	 * @param mixed $in String or long input to translate
-	 * @param bool $to_num Reverses translation when true
-	 * @param mixed $pad_up Number or boolean padds the result up to a specified length
-	 * @param mixed $passKey Supplying a password makes it harder to calculate the original ID
+	 * @param  mixed  $in  String or long input to translate
+	 * @param  bool  $to_num  Reverses translation when true
+	 * @param  mixed  $pad_up  Number or boolean padds the result up to a specified length
+	 * @param  mixed  $passKey  Supplying a password makes it harder to calculate the original ID
 	 *
 	 * @return string string or long
 	 * @author    Kevin van Zonneveld <kevin@vanzonneveld.net>

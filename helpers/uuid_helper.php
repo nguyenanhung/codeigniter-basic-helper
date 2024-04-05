@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Project codeigniter-basic-helper
  * Created by PhpStorm
@@ -7,7 +8,7 @@
  * Date: 09/11/2021
  * Time: 08:52
  */
-if (!function_exists('uuid_is_valid')) {
+if ( ! function_exists('uuid_is_valid')) {
 	/**
 	 * @param $uuid
 	 *
@@ -15,10 +16,13 @@ if (!function_exists('uuid_is_valid')) {
 	 */
 	function uuid_is_valid($uuid)
 	{
-		return preg_match('/^\{?[0-9a-f]{8}\-?[0-9a-f]{4}\-?[0-9a-f]{4}\-?' . '[0-9a-f]{4}\-?[0-9a-f]{12}\}?$/i', $uuid) === 1;
+		return preg_match(
+				'/^\{?[0-9a-f]{8}\-?[0-9a-f]{4}\-?[0-9a-f]{4}\-?' . '[0-9a-f]{4}\-?[0-9a-f]{12}\}?$/i',
+				$uuid
+			) === 1;
 	}
 }
-if (!function_exists('generate_uuid_v3')) {
+if ( ! function_exists('generate_uuid_v3')) {
 	/**
 	 * Generate v3 UUID
 	 *
@@ -29,7 +33,7 @@ if (!function_exists('generate_uuid_v3')) {
 	 */
 	function generate_uuid_v3($namespace, $name)
 	{
-		if (!uuid_is_valid($namespace)) {
+		if ( ! uuid_is_valid($namespace)) {
 			return false;
 		}
 		// Get hexadecimal components of namespace
@@ -44,7 +48,8 @@ if (!function_exists('generate_uuid_v3')) {
 		// Calculate hash value
 		$hash = md5($nstr . $name);
 
-		return sprintf('%08s-%04s-%04x-%04x-%12s', // 32 bits for "time_low"
+		return sprintf(
+			'%08s-%04s-%04x-%04x-%12s', // 32 bits for "time_low"
 			mb_substr($hash, 0, 8), // 16 bits for "time_mid"
 			mb_substr($hash, 8, 4), // 16 bits for "time_hi_and_version",
 
@@ -55,10 +60,11 @@ if (!function_exists('generate_uuid_v3')) {
 
 			// two most significant bits holds zero and one for variant DCE1.1
 			(hexdec(mb_substr($hash, 16, 4)) & 0x3fff) | 0x8000, // 48 bits for "node"
-			mb_substr($hash, 20, 12));
+			mb_substr($hash, 20, 12)
+		);
 	}
 }
-if (!function_exists('generate_uuid_v4')) {
+if ( ! function_exists('generate_uuid_v4')) {
 	/**
 	 * Function generate_uuid_v4
 	 *
@@ -69,7 +75,9 @@ if (!function_exists('generate_uuid_v4')) {
 	 */
 	function generate_uuid_v4()
 	{
-		return sprintf('%04x%04x-%04x-%04x-%04x-%04x%04x%04x', mt_rand(0, 0xffff), // 32 bits for "time_low"
+		return sprintf(
+			'%04x%04x-%04x-%04x-%04x-%04x%04x%04x',
+			mt_rand(0, 0xffff), // 32 bits for "time_low"
 			mt_rand(0, 0xffff), // 16 bits for "time_mid"
 			mt_rand(0, 0xffff), // 16 bits for "time_hi_and_version",
 
@@ -80,10 +88,13 @@ if (!function_exists('generate_uuid_v4')) {
 
 			// two most significant bits holds zero and one for variant DCE1.1
 			mt_rand(0, 0x3fff) | 0x8000, // 48 bits for "node"
-			mt_rand(0, 0xffff), mt_rand(0, 0xffff), mt_rand(0, 0xffff));
+			mt_rand(0, 0xffff),
+			mt_rand(0, 0xffff),
+			mt_rand(0, 0xffff)
+		);
 	}
 }
-if (!function_exists('generate_uuid_v5')) {
+if ( ! function_exists('generate_uuid_v5')) {
 	/**
 	 * Generate v5 UUID
 	 *
@@ -94,7 +105,7 @@ if (!function_exists('generate_uuid_v5')) {
 	 */
 	function generate_uuid_v5($namespace, $name)
 	{
-		if (!uuid_is_valid($namespace)) {
+		if ( ! uuid_is_valid($namespace)) {
 			return false;
 		}
 		// Get hexadecimal components of namespace
@@ -109,7 +120,8 @@ if (!function_exists('generate_uuid_v5')) {
 		// Calculate hash value
 		$hash = sha1($nstr . $name);
 
-		return sprintf('%08s-%04s-%04x-%04x-%12s', // 32 bits for "time_low"
+		return sprintf(
+			'%08s-%04s-%04x-%04x-%12s', // 32 bits for "time_low"
 			mb_substr($hash, 0, 8), // 16 bits for "time_mid"
 			mb_substr($hash, 8, 4), // 16 bits for "time_hi_and_version",
 
@@ -120,6 +132,7 @@ if (!function_exists('generate_uuid_v5')) {
 
 			// two most significant bits holds zero and one for variant DCE1.1
 			(hexdec(mb_substr($hash, 16, 4)) & 0x3fff) | 0x8000, // 48 bits for "node"
-			mb_substr($hash, 20, 12));
+			mb_substr($hash, 20, 12)
+		);
 	}
 }

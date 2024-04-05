@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Project codeigniter-basic-helper
  * Created by PhpStorm
@@ -7,7 +8,7 @@
  * Date: 09/01/2023
  * Time: 00:26
  */
-if (!function_exists('blogspotDescSortWithPublishedTime')) {
+if ( ! function_exists('blogspotDescSortWithPublishedTime')) {
 	function blogspotDescSortWithPublishedTime($item1, $item2)
 	{
 		if ($item1['published']['$t'] === $item2['published']['$t']) {
@@ -16,14 +17,14 @@ if (!function_exists('blogspotDescSortWithPublishedTime')) {
 		return ($item1['published']['$t'] < $item2['published']['$t']) ? 1 : -1;
 	}
 }
-if (!function_exists('blogspotUSort')) {
+if ( ! function_exists('blogspotUSort')) {
 	function blogspotUSort($data)
 	{
 		usort($data, 'blogspotDescSortWithPublishedTime');
 		return $data;
 	}
 }
-if (!function_exists('blogspotFormatInformationItem')) {
+if ( ! function_exists('blogspotFormatInformationItem')) {
 	function blogspotFormatInformationItem($blog)
 	{
 		if (isset($blog['media$thumbnail']['url'])) {

@@ -1,5 +1,6 @@
 <?php
-if (!function_exists('dd')) {
+
+if ( ! function_exists('dd')) {
 	function dd($var)
 	{
 		echo '<pre>';
@@ -9,7 +10,7 @@ if (!function_exists('dd')) {
 		die;
 	}
 }
-if (!function_exists('ddd')) {
+if ( ! function_exists('ddd')) {
 	function ddd($str)
 	{
 		echo "<pre>";
@@ -18,7 +19,7 @@ if (!function_exists('ddd')) {
 		die;
 	}
 }
-if (!function_exists('dump')) {
+if ( ! function_exists('dump')) {
 	function dump($str = '')
 	{
 		echo "<pre>";

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Project codeigniter-basic-helper
  * Created by PhpStorm
@@ -7,11 +8,11 @@
  * Date: 09/15/2021
  * Time: 00:37
  */
-if (!function_exists('setupMetaDnsPrefetch')) {
+if ( ! function_exists('setupMetaDnsPrefetch')) {
 	/**
 	 * Function setupMetaDnsPrefetch
 	 *
-	 * @param string|array $dns
+	 * @param  string|array  $dns
 	 *
 	 * @return string
 	 * @author   : 713uk13m <dev@nguyenanhung.com>

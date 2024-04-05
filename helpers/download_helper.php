@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Project codeigniter-basic-helper
  * Created by PhpStorm
@@ -7,7 +8,7 @@
  * Date: 17/05/2023
  * Time: 11:02
  */
-if (!function_exists('download_file_chunked')) {
+if ( ! function_exists('download_file_chunked')) {
 	function download_file_chunked($path)
 	{
 		$file_name = basename($path);
@@ -47,12 +48,11 @@ if (!function_exists('download_file_chunked')) {
 		//$newf = fopen ($newfname, "wb");
 
 		ob_start();
-		while (!feof($handle)) {
+		while ( ! feof($handle)) {
 			$buffer = fread($handle, $chunkSize);
 			echo $buffer;
 			ob_flush();
 			flush();
-
 			//fwrite($newf, $buffer, $chunkSize);
 		}
 
@@ -63,7 +63,7 @@ if (!function_exists('download_file_chunked')) {
 		exit;
 	}
 }
-if (!function_exists('download_large_file')) {
+if ( ! function_exists('download_large_file')) {
 	function download_large_file($path)
 	{
 		// the file name of the download, change this if needed
