@@ -62,7 +62,7 @@ class SimpleVisitor extends BaseHelper
 	public function totalVisitor()
 	{
 		$CountFile = $this->filename;
-		if (!file_exists($CountFile)) {
+		if ( ! file_exists($CountFile)) {
 			return 0;
 		}
 		$CF = fopen($CountFile, 'rb');
@@ -79,7 +79,7 @@ class SimpleVisitor extends BaseHelper
 	public function ccuOnload()
 	{
 		$CountFile = $this->filename;
-		if (!file_exists($CountFile)) {
+		if ( ! file_exists($CountFile)) {
 			return 0;
 		}
 		$myfile = fopen($CountFile, "r") or die("Unable to open file!");
@@ -113,7 +113,7 @@ class SimpleVisitor extends BaseHelper
 
 		$this->sessClass->unset_userdata($this->sessId . date('Y_m_d'));
 		$CountFile = $this->filename;
-		if (!file_exists($CountFile)) {
+		if ( ! file_exists($CountFile)) {
 			return 0;
 		}
 		$myfile = fopen($CountFile, "r") or die("Unable to open file!");
@@ -129,12 +129,12 @@ class SimpleVisitor extends BaseHelper
 
 	public function ccuTruncate()
 	{
-		if (!is_cli()) {
+		if ( ! is_cli()) {
 			show_404();
 			exit();
 		}
 		$CountFile = $this->filename;
-		if (!file_exists($CountFile)) {
+		if ( ! file_exists($CountFile)) {
 			return 0;
 		}
 		$myfile = fopen($CountFile, "w") or die("Unable to open file!");

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Project codeigniter-basic-helper
  * Created by PhpStorm
@@ -7,7 +8,7 @@
  * Date: 20/01/2023
  * Time: 00:30
  */
-if (!function_exists('bear_framework_gravatar_init')) {
+if ( ! function_exists('bear_framework_gravatar_init')) {
 	/**
 	 * Function bear_framework_gravatar_init
 	 *
@@ -20,7 +21,7 @@ if (!function_exists('bear_framework_gravatar_init')) {
 	 */
 	function bear_framework_gravatar_init($username = 'nguyenanhung')
 	{
-		if (!function_exists('config_item') || !function_exists('get_instance')) {
+		if ( ! function_exists('config_item') || ! function_exists('get_instance')) {
 			return '';
 		}
 
@@ -29,7 +30,7 @@ if (!function_exists('bear_framework_gravatar_init')) {
 
 		$cms = &get_instance();
 		$cms->load->driver('cache', array('adapter' => 'file', 'backup' => 'dummy'));
-		if (!$res = $cms->cache->get($file)) {
+		if ( ! $res = $cms->cache->get($file)) {
 			$respond = sendSimpleGetRequest($url);
 			$res = json_decode($respond, false);
 			$cms->cache->save($file, $res, 86400);
@@ -38,7 +39,7 @@ if (!function_exists('bear_framework_gravatar_init')) {
 		return $res;
 	}
 }
-if (!function_exists('bear_framework_show_gravatar')) {
+if ( ! function_exists('bear_framework_show_gravatar')) {
 	/**
 	 * Function bear_framework_show_gravatar
 	 *
@@ -52,6 +53,8 @@ if (!function_exists('bear_framework_show_gravatar')) {
 	 */
 	function bear_framework_show_gravatar($username = 'nguyenanhung', $size = 300)
 	{
-		return bear_framework_gravatar_init($username)->entry[0]->thumbnailUrl . '?' . http_build_query(array('size' => $size));
+		return bear_framework_gravatar_init($username)->entry[0]->thumbnailUrl . '?' . http_build_query(
+				array('size' => $size)
+			);
 	}
 }

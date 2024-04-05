@@ -55,8 +55,8 @@ final class SimpleCurl extends BaseHelper
 	/**
 	 * SimpleCurl constructor.
 	 *
-	 * @param string $url
-	 * @param array $options
+	 * @param  string  $url
+	 * @param  array  $options
 	 *
 	 * @author   : 713uk13m <dev@nguyenanhung.com>
 	 * @copyright: 713uk13m <dev@nguyenanhung.com>
@@ -245,12 +245,12 @@ final class SimpleCurl extends BaseHelper
 		curl_setopt($s, CURLOPT_RETURNTRANSFER, true);
 		curl_setopt($s, CURLOPT_FOLLOWLOCATION, $this->followLocation);
 
-		if (!empty($this->cookieFileLocation) && file_exists($this->cookieFileLocation)) {
+		if ( ! empty($this->cookieFileLocation) && file_exists($this->cookieFileLocation)) {
 			curl_setopt($s, CURLOPT_COOKIEJAR, $this->cookieFileLocation);
 			curl_setopt($s, CURLOPT_COOKIEFILE, $this->cookieFileLocation);
 		}
 
-		if (!empty($this->sslVersion)) {
+		if ( ! empty($this->sslVersion)) {
 			curl_setopt($s, CURLOPT_SSLVERSION, $this->sslVersion);
 		}
 

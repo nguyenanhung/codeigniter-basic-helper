@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Project codeigniter-basic-helper
  * Created by PhpStorm
@@ -7,11 +8,11 @@
  * Date: 09/15/2021
  * Time: 00:23
  */
-if (!function_exists('short_url_with_tinyurl')) {
+if ( ! function_exists('short_url_with_tinyurl')) {
 	/**
 	 * Function short_url_with_tinyurl
 	 *
-	 * @param string $longUrl
+	 * @param  string  $longUrl
 	 *
 	 * @return bool|string
 	 * @author   : 713uk13m <dev@nguyenanhung.com>

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Project codeigniter-basic-helper
  * Created by PhpStorm
@@ -7,13 +8,13 @@
  * Date: 09/11/2021
  * Time: 09:17
  */
-if (!function_exists('smart_bear_copyright_date')) {
+if ( ! function_exists('smart_bear_copyright_date')) {
 	function smart_bear_copyright_date($startYear = 2016)
 	{
 		return $startYear . '-' . date('Y');
 	}
 }
-if (!function_exists('smart_bear_copyright_line')) {
+if ( ! function_exists('smart_bear_copyright_line')) {
 	function smart_bear_copyright_line()
 	{
 		$helper = new \nguyenanhung\CodeIgniter\BasicHelper\BaseHelper();
@@ -21,7 +22,7 @@ if (!function_exists('smart_bear_copyright_line')) {
 		return '&copy; <a href="' . $author['web'] . '" title="' . $author['full_name'] . '">' . $author['name'] . '</a>';
 	}
 }
-if (!function_exists('smart_bear_copyright_powered_line')) {
+if ( ! function_exists('smart_bear_copyright_powered_line')) {
 	function smart_bear_copyright_powered_line()
 	{
 		$helper = new \nguyenanhung\CodeIgniter\BasicHelper\BaseHelper();
@@ -29,24 +30,24 @@ if (!function_exists('smart_bear_copyright_powered_line')) {
 		return 'Powered by <a href="' . $author['web'] . '" title="' . $author['full_name'] . '">' . $author['name'] . '</a>';
 	}
 }
-if (!function_exists('smart_bear_basic_helper_version')) {
+if ( ! function_exists('smart_bear_basic_helper_version')) {
 	function smart_bear_basic_helper_version()
 	{
 		return \nguyenanhung\CodeIgniter\BasicHelper\BaseHelper::version();
 	}
 }
-if (!function_exists('smart_bear_basic_helper_author')) {
+if ( ! function_exists('smart_bear_basic_helper_author')) {
 	function smart_bear_basic_helper_author()
 	{
 		$helper = new \nguyenanhung\CodeIgniter\BasicHelper\BaseHelper();
 		return $helper->getAuthor();
 	}
 }
-if (!function_exists('isEmpty')) {
+if ( ! function_exists('isEmpty')) {
 	/**
 	 * Function isEmpty
 	 *
-	 * @param mixed $input
+	 * @param  mixed  $input
 	 *
 	 * @return bool
 	 * @author   : 713uk13m <dev@nguyenanhung.com>
@@ -69,11 +70,11 @@ if (!function_exists('isEmpty')) {
 		return true;
 	}
 }
-if (!function_exists('defaultCompressHtmlOutput')) {
+if ( ! function_exists('defaultCompressHtmlOutput')) {
 	/**
 	 * Function defaultCompressHtmlOutput
 	 *
-	 * @param mixed $html
+	 * @param  mixed  $html
 	 *
 	 * @return array|string|string[]|null
 	 * @author   : 713uk13m <dev@nguyenanhung.com>
@@ -95,7 +96,7 @@ if (!function_exists('defaultCompressHtmlOutput')) {
 		return preg_replace($search, $replace, $html);
 	}
 }
-if (!function_exists('generateRandomUniqueId')) {
+if ( ! function_exists('generateRandomUniqueId')) {
 	function generateRandomUniqueId()
 	{
 		$uniqid = uniqid('-bear-', true);
@@ -103,7 +104,7 @@ if (!function_exists('generateRandomUniqueId')) {
 		return date('Ymd') . '-' . generate_uuid_v4() . $uniqid;
 	}
 }
-if (!function_exists('generateRandomNanoUniqueId')) {
+if ( ! function_exists('generateRandomNanoUniqueId')) {
 	function generateRandomNanoUniqueId()
 	{
 		$uniqid = uniqid('-bear-', true);
@@ -111,11 +112,11 @@ if (!function_exists('generateRandomNanoUniqueId')) {
 		return date('Ymd') . '-' . randomNanoId(16) . $uniqid;
 	}
 }
-if (!function_exists('__get_error_message__')) {
+if ( ! function_exists('__get_error_message__')) {
 	/**
 	 * Function __get_error_message__
 	 *
-	 * @param \Exception|\Throwable $e
+	 * @param  \Exception|\Throwable  $e
 	 *
 	 * @return string
 	 * @author   : 713uk13m <dev@nguyenanhung.com>
@@ -124,14 +125,15 @@ if (!function_exists('__get_error_message__')) {
 	 */
 	function __get_error_message__($e)
 	{
-		return "Error Code: " . $e->getCode() . " - File: " . $e->getFile() . " - Line: " . $e->getLine() . " - Message: " . $e->getMessage();
+		return "Error Code: " . $e->getCode() . " - File: " . $e->getFile() . " - Line: " . $e->getLine(
+			) . " - Message: " . $e->getMessage();
 	}
 }
-if (!function_exists('__get_error_trace__')) {
+if ( ! function_exists('__get_error_trace__')) {
 	/**
 	 * Function __get_error_trace__
 	 *
-	 * @param \Exception|\Throwable $e
+	 * @param  \Exception|\Throwable  $e
 	 *
 	 * @return string
 	 * @author   : 713uk13m <dev@nguyenanhung.com>

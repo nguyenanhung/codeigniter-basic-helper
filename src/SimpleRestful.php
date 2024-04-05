@@ -22,10 +22,10 @@ class SimpleRestful extends BaseHelper
 	/**
 	 * Function execute
 	 *
-	 * @param string $url
-	 * @param string $type
-	 * @param string $data
-	 * @param mixed $header
+	 * @param  string  $url
+	 * @param  string  $type
+	 * @param  string  $data
+	 * @param  mixed  $header
 	 *
 	 * @return array|int
 	 * @author   : 713uk13m <dev@nguyenanhung.com>

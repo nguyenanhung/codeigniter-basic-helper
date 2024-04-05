@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Project codeigniter-basic-helper
  * Created by PhpStorm

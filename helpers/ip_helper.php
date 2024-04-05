@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Project codeigniter-basic-helper
  * Created by PhpStorm
@@ -7,11 +8,11 @@
  * Date: 08/07/2021
  * Time: 01:09
  */
-if (!function_exists('getIPAddress')) {
+if ( ! function_exists('getIPAddress')) {
 	/**
 	 * Function getIPAddress
 	 *
-	 * @param bool $convertToInteger
+	 * @param  bool  $convertToInteger
 	 *
 	 * @return bool|int|string
 	 * @author   : 713uk13m <dev@nguyenanhung.com>
@@ -53,11 +54,11 @@ if (!function_exists('getIPAddress')) {
 		return false;
 	}
 }
-if (!function_exists('getIPAddressByHaProxy')) {
+if ( ! function_exists('getIPAddressByHaProxy')) {
 	/**
 	 * Function getIPAddressByHaProxy
 	 *
-	 * @param bool $convertToInteger
+	 * @param  bool  $convertToInteger
 	 *
 	 * @return bool|int|string
 	 * @author   : 713uk13m <dev@nguyenanhung.com>
@@ -86,11 +87,11 @@ if (!function_exists('getIPAddressByHaProxy')) {
 		return false;
 	}
 }
-if (!function_exists('get_ip_by_ha_proxy')) {
+if ( ! function_exists('get_ip_by_ha_proxy')) {
 	/**
 	 * Function get_ip_by_ha_proxy
 	 *
-	 * @param bool $convertToInteger
+	 * @param  bool  $convertToInteger
 	 *
 	 * @return bool|int|string
 	 * @author   : 713uk13m <dev@nguyenanhung.com>
@@ -102,11 +103,11 @@ if (!function_exists('get_ip_by_ha_proxy')) {
 		return getIPAddressByHaProxy($convertToInteger);
 	}
 }
-if (!function_exists('get_ip_address_2017')) {
+if ( ! function_exists('get_ip_address_2017')) {
 	/**
 	 * Function get_ip_address_2017
 	 *
-	 * @param bool $convertToInteger
+	 * @param  bool  $convertToInteger
 	 *
 	 * @return bool|int|string
 	 * @author   : 713uk13m <dev@nguyenanhung.com>
@@ -118,11 +119,11 @@ if (!function_exists('get_ip_address_2017')) {
 		return getIPAddress($convertToInteger);
 	}
 }
-if (!function_exists('get_ip_address')) {
+if ( ! function_exists('get_ip_address')) {
 	/**
 	 * Function get_ip_address
 	 *
-	 * @param bool $convertToInteger
+	 * @param  bool  $convertToInteger
 	 *
 	 * @return bool|int|string
 	 * @author   : 713uk13m <dev@nguyenanhung.com>
@@ -134,11 +135,11 @@ if (!function_exists('get_ip_address')) {
 		return getIPAddress($convertToInteger);
 	}
 }
-if (!function_exists('getUserIP')) {
+if ( ! function_exists('getUserIP')) {
 	/**
 	 * Function getUserIP
 	 *
-	 * @param bool $convertToInteger
+	 * @param  bool  $convertToInteger
 	 *
 	 * @return bool|int|string
 	 * @author   : 713uk13m <dev@nguyenanhung.com>
@@ -150,7 +151,7 @@ if (!function_exists('getUserIP')) {
 		return getIPAddress($convertToInteger);
 	}
 }
-if (!function_exists('validate_ip')) {
+if ( ! function_exists('validate_ip')) {
 	/**
 	 * Function validate_ip
 	 *
@@ -166,7 +167,7 @@ if (!function_exists('validate_ip')) {
 		return validateIP($ip);
 	}
 }
-if (!function_exists('validateIP')) {
+if ( ! function_exists('validateIP')) {
 	/**
 	 * Function validateIP
 	 *
@@ -179,10 +180,10 @@ if (!function_exists('validateIP')) {
 	 */
 	function validateIP($ip)
 	{
-		return !(filter_var($ip, FILTER_VALIDATE_IP) === false);
+		return ! (filter_var($ip, FILTER_VALIDATE_IP) === false);
 	}
 }
-if (!function_exists('validateIPV4')) {
+if ( ! function_exists('validateIPV4')) {
 	/**
 	 * Function validateIPV4
 	 *
@@ -195,10 +196,10 @@ if (!function_exists('validateIPV4')) {
 	 */
 	function validateIPV4($ip)
 	{
-		return !(filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4) === false);
+		return ! (filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4) === false);
 	}
 }
-if (!function_exists('validateIPV6')) {
+if ( ! function_exists('validateIPV6')) {
 	/**
 	 * Function validateIPV6
 	 *
@@ -211,14 +212,14 @@ if (!function_exists('validateIPV6')) {
 	 */
 	function validateIPV6($ip)
 	{
-		return !(filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_IPV6) === false);
+		return ! (filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_IPV6) === false);
 	}
 }
-if (!function_exists('getIpInformation')) {
+if ( ! function_exists('getIpInformation')) {
 	/**
 	 * Function getIpInformation
 	 *
-	 * @param string $ip
+	 * @param  string  $ip
 	 *
 	 * @return bool|string
 	 * @author   : 713uk13m <dev@nguyenanhung.com>

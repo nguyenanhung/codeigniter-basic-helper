@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Project codeigniter-basic-helper
  * Created by PhpStorm
@@ -7,13 +8,13 @@
  * Date: 10/05/2021
  * Time: 03:52
  */
-if (!function_exists('sendSimpleGetRequest')) {
+if ( ! function_exists('sendSimpleGetRequest')) {
 	/**
 	 * Function sendSimpleGetRequest
 	 *
-	 * @param string $url URL Target Endpoint
-	 * @param string|array|object $data Array Data to Request
-	 * @param string $method GET or POST
+	 * @param  string  $url  URL Target Endpoint
+	 * @param  string|array|object  $data  Array Data to Request
+	 * @param  string  $method  GET or POST
 	 *
 	 * @return bool|string|null
 	 * @author   : 713uk13m <dev@nguyenanhung.com>
@@ -23,7 +24,7 @@ if (!function_exists('sendSimpleGetRequest')) {
 	function sendSimpleGetRequest($url = '', $data = array(), $method = 'GET')
 	{
 		$method = mb_strtoupper($method);
-		if ((!empty($data) && (is_array($data) || is_object($data)))) {
+		if (( ! empty($data) && (is_array($data) || is_object($data)))) {
 			$target = $url . '?' . http_build_query($data);
 		} else {
 			$target = $url;
@@ -63,21 +64,21 @@ if (!function_exists('sendSimpleGetRequest')) {
 		return $response;
 	}
 }
-if (!function_exists('sendSimpleRestfulExecuteRequest')) {
+if ( ! function_exists('sendSimpleRestfulExecuteRequest')) {
 	function sendSimpleRestfulExecuteRequest($url, $type, $data = "", $header = null)
 	{
 		return \nguyenanhung\CodeIgniter\BasicHelper\SimpleRestful::execute($url, $type, $data, $header);
 	}
 }
-if (!function_exists('bear_post_async_request')) {
+if ( ! function_exists('bear_post_async_request')) {
 	/**
 	 * Make an asynchronous POST request
 	 * Thực hiện yêu cầu POST không đồng bộ trong nội bộ site mà không cần chờ phản hồi
 	 * => Không ảnh hưởng, không trì hoãn tiến trình đang chạy
 	 *
-	 * @param mixed $url
-	 * @param mixed $params
-	 * @param array $headers
+	 * @param  mixed  $url
+	 * @param  mixed  $params
+	 * @param  array  $headers
 	 */
 	function bear_post_async_request($url, $params, $headers = array())
 	{
@@ -86,7 +87,7 @@ if (!function_exists('bear_post_async_request')) {
 		$parts = parse_url($url);
 		$is_https = ($parts['scheme'] === 'https');
 		$referer = $parts['scheme'] . '://' . $parts['host'];
-		if (!$is_https) {
+		if ( ! $is_https) {
 			$port = isset($parts['port']) ? $parts['port'] : 80;
 			$port = (int)$port;
 			$host = $parts['host'] . ($port !== 80 ? ':' . $port : '');
@@ -104,7 +105,14 @@ if (!function_exists('bear_post_async_request')) {
 			$port = (int)$port;
 			$host = $parts['host'] . ($port !== 443 ? ':' . $port : '');
 			$referer .= ':' . (isset($parts['port']) ? $parts['port'] : 443);
-			$fp = stream_socket_client('ssl://' . $parts['host'] . ':' . $port, $errno, $errorMessage, 30, STREAM_CLIENT_CONNECT, $context);
+			$fp = stream_socket_client(
+				'ssl://' . $parts['host'] . ':' . $port,
+				$errno,
+				$errorMessage,
+				30,
+				STREAM_CLIENT_CONNECT,
+				$context
+			);
 		}
 		$path = isset($parts['path']) ? $parts['path'] : '/';
 		if (isset($parts['query'])) {
@@ -116,7 +124,7 @@ if (!function_exists('bear_post_async_request')) {
 		$out .= "Referer: " . $referer . "\r\n";
 		$out .= "Content-Type: application/x-www-form-urlencoded\r\n";
 		$out .= "Content-Length: " . mb_strlen($post_string) . "\r\n";
-		if (!empty($headers)) {
+		if ( ! empty($headers)) {
 			foreach ($headers as $key => $value) {
 				$out .= $key . ": " . $value . "\r\n";
 			}
@@ -132,7 +140,7 @@ if (!function_exists('bear_post_async_request')) {
 		fclose($fp);
 	}
 }
-if (!function_exists('get_http_response_code')) {
+if ( ! function_exists('get_http_response_code')) {
 	/**
 	 * Function get_http_response_code
 	 *

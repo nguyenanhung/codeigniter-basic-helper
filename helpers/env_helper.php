@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Project codeigniter-basic-helper
  * Created by PhpStorm
@@ -7,7 +8,7 @@
  * Date: 30/07/2022
  * Time: 15:47
  */
-if (!function_exists('bear_get_env')) {
+if ( ! function_exists('bear_get_env')) {
 	/**
 	 * Function bear_get_env
 	 *
@@ -20,7 +21,7 @@ if (!function_exists('bear_get_env')) {
 	 */
 	function bear_get_env($a)
 	{
-		if (!is_array($a)) {
+		if ( ! is_array($a)) {
 			$a = array($a);
 		}
 

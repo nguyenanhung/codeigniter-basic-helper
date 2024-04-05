@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Project codeigniter-basic-helper
  * Created by PhpStorm
@@ -7,7 +8,7 @@
  * Date: 09/11/2021
  * Time: 08:59
  */
-if (!function_exists('meta_dns_prefetch')) {
+if ( ! function_exists('meta_dns_prefetch')) {
 	/**
 	 * Function meta_dns_prefetch
 	 *
@@ -21,14 +22,14 @@ if (!function_exists('meta_dns_prefetch')) {
 		return "<!-- DNS prefetch -->\n<link rel='dns-prefetch' href='//www.google-analytics.com/'>\n<link rel='dns-prefetch' href='//fonts.googleapis.com'>\n<link rel='dns-prefetch' href='//ajax.googleapis.com'>\n<link rel='dns-prefetch' href='//maps.google.com'>\n<link rel='dns-prefetch' href='//connect.facebook.net/'>\n";
 	}
 }
-if (!function_exists('meta_property')) {
+if ( ! function_exists('meta_property')) {
 	/**
 	 * Function meta_property
 	 *
-	 * @param string|array $property
-	 * @param string $content
-	 * @param string $type
-	 * @param string $newline
+	 * @param  string|array  $property
+	 * @param  string  $content
+	 * @param  string  $type
+	 * @param  string  $newline
 	 *
 	 * @return string
 	 * @author   : 713uk13m <dev@nguyenanhung.com>
@@ -39,7 +40,7 @@ if (!function_exists('meta_property')) {
 	{
 		// Since we allow the data to be passes as a string, a simple array
 		// or a multidimensional one, we need to do a little prepping.
-		if (!is_array($property)) {
+		if ( ! is_array($property)) {
 			$property = array(
 				array(
 					'property' => $property,
@@ -64,7 +65,7 @@ if (!function_exists('meta_property')) {
 		return $str;
 	}
 }
-if (!function_exists('tachPage')) {
+if ( ! function_exists('tachPage')) {
 	/**
 	 * Function tachPage
 	 *
@@ -85,7 +86,7 @@ if (!function_exists('tachPage')) {
 		return $output[1];
 	}
 }
-if (!function_exists('stripHtmlTag')) {
+if ( ! function_exists('stripHtmlTag')) {
 	/**
 	 * Function stripHtmlTag
 	 *
@@ -112,13 +113,13 @@ if (!function_exists('stripHtmlTag')) {
 		return $strippedString;
 	}
 }
-if (!function_exists('strip_only_tags')) {
+if ( ! function_exists('strip_only_tags')) {
 	/**
 	 * Function strip_only_tags
 	 *
 	 * @param       $str
 	 * @param       $tags
-	 * @param bool $stripContent
+	 * @param  bool  $stripContent
 	 *
 	 * @return string|string[]|null
 	 * @author   : 713uk13m <dev@nguyenanhung.com>
@@ -133,7 +134,7 @@ if (!function_exists('strip_only_tags')) {
 
 		$content = '';
 
-		if (!is_array($tags)) {
+		if ( ! is_array($tags)) {
 			$tags = (mb_strpos($str, '>') !== false ? explode('>', str_replace('<', '', $tags)) : array($tags));
 			if (end($tags) === '') {
 				array_pop($tags);
@@ -151,12 +152,12 @@ if (!function_exists('strip_only_tags')) {
 		return $str;
 	}
 }
-if (!function_exists('tracking_google_analytics')) {
+if ( ! function_exists('tracking_google_analytics')) {
 	/**
 	 * Function tracking_google_analytics
 	 *
-	 * @param string $analytics_id
-	 * @param string $analytics_mode
+	 * @param  string  $analytics_id
+	 * @param  string  $analytics_mode
 	 *
 	 * @return string
 	 * @author   : 713uk13m <dev@nguyenanhung.com>
@@ -182,11 +183,11 @@ if (!function_exists('tracking_google_analytics')) {
 		return trim($html);
 	}
 }
-if (!function_exists('tracking_google_gtag_analytics_default')) {
+if ( ! function_exists('tracking_google_gtag_analytics_default')) {
 	/**
 	 * Function tracking_google_gtag_analytics_default
 	 *
-	 * @param string $ID
+	 * @param  string  $ID
 	 *
 	 * @return string
 	 * @author   : 713uk13m <dev@nguyenanhung.com>
@@ -199,7 +200,9 @@ if (!function_exists('tracking_google_gtag_analytics_default')) {
 			return $ID;
 		}
 		$html = "<!-- Global site tag (gtag.js) - Google Analytics -->" . PHP_EOL;
-		$html .= "<script async src='https://www.googletagmanager.com/gtag/js?id=" . trim($ID) . "'></script>" . PHP_EOL;
+		$html .= "<script async src='https://www.googletagmanager.com/gtag/js?id=" . trim(
+				$ID
+			) . "'></script>" . PHP_EOL;
 		$html .= "<script>
                      window.dataLayer = window.dataLayer || [];
                         function gtag() {
@@ -212,13 +215,13 @@ if (!function_exists('tracking_google_gtag_analytics_default')) {
 		return $html;
 	}
 }
-if (!function_exists('html_tag')) {
+if ( ! function_exists('html_tag')) {
 	/**
 	 * Create a XHTML tag
 	 *
-	 * @param string $tag The tag name
-	 * @param array|string $attr The tag attributes
-	 * @param string|bool $content The content to place in the tag, or false for no closing tag
+	 * @param  string  $tag  The tag name
+	 * @param  array|string  $attr  The tag attributes
+	 * @param  string|bool  $content  The content to place in the tag, or false for no closing tag
 	 *
 	 * @return    string
 	 */
@@ -227,16 +230,30 @@ if (!function_exists('html_tag')) {
 		// list of void elements (tags that can not have content)
 		static $void_elements = array(
 			// html4
-			"area", "base", "br", "col", "hr", "img", "input", "link", "meta", "param",
+			"area",
+			"base",
+			"br",
+			"col",
+			"hr",
+			"img",
+			"input",
+			"link",
+			"meta",
+			"param",
 			// html5
-			"command", "embed", "keygen", "source", "track", "wbr",
+			"command",
+			"embed",
+			"keygen",
+			"source",
+			"track",
+			"wbr",
 			// html5.1
 			"menuitem",
 		);
 
 		// construct the HTML
 		$html = '<' . $tag;
-		$html .= (!empty($attr)) ? ' ' . (is_array($attr) ? arrayToAttributes($attr) : $attr) : '';
+		$html .= ( ! empty($attr)) ? ' ' . (is_array($attr) ? arrayToAttributes($attr) : $attr) : '';
 
 		// a void element?
 		if (in_array(mb_strtolower($tag), $void_elements)) {
@@ -250,7 +267,7 @@ if (!function_exists('html_tag')) {
 		return $html;
 	}
 }
-if (!function_exists('bear_framework_show_jsonld_script')) {
+if ( ! function_exists('bear_framework_show_jsonld_script')) {
 	function bear_framework_show_jsonld_script($content)
 	{
 		$content = trim($content);

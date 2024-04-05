@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Project codeigniter-basic-helper
  * Created by PhpStorm
@@ -7,7 +8,7 @@
  * Date: 12/02/2023
  * Time: 23:16
  */
-if (!function_exists('convert_video_embed_vimeo')) {
+if ( ! function_exists('convert_video_embed_vimeo')) {
 	function convert_video_embed_vimeo($vimeo)
 	{
 		if (empty($vimeo)) {
@@ -25,7 +26,7 @@ if (!function_exists('convert_video_embed_vimeo')) {
 		return trim($vimeo);
 	}
 }
-if (!function_exists('convert_video_embed_dailymotion')) {
+if ( ! function_exists('convert_video_embed_dailymotion')) {
 	function convert_video_embed_dailymotion($dailymotion)
 	{
 		if (empty($dailymotion)) {
@@ -43,7 +44,7 @@ if (!function_exists('convert_video_embed_dailymotion')) {
 		return trim($dailymotion);
 	}
 }
-if (!function_exists('convert_video_v_embed_youtube')) {
+if ( ! function_exists('convert_video_v_embed_youtube')) {
 	function convert_video_v_embed_youtube($youtube)
 	{
 		if (empty($youtube)) {
@@ -63,7 +64,7 @@ if (!function_exists('convert_video_v_embed_youtube')) {
 		return trim($youtube);
 	}
 }
-if (!function_exists('convert_video_embed_youtube')) {
+if ( ! function_exists('convert_video_embed_youtube')) {
 	function convert_video_embed_youtube($youtube)
 	{
 		if (empty($youtube)) {
@@ -83,7 +84,7 @@ if (!function_exists('convert_video_embed_youtube')) {
 		return trim($youtube);
 	}
 }
-if (!function_exists('clean_youtube_allow_fullscreen')) {
+if ( ! function_exists('clean_youtube_allow_fullscreen')) {
 	function clean_youtube_allow_fullscreen($youtube)
 	{
 		if (empty($youtube)) {
@@ -104,7 +105,7 @@ if (!function_exists('clean_youtube_allow_fullscreen')) {
 		return $youtube;
 	}
 }
-if (!function_exists('youtube_image_thumbnail')) {
+if ( ! function_exists('youtube_image_thumbnail')) {
 	function youtube_image_thumbnail($id, $filename = 'hqdefault.jpg')
 	{
 		if (empty($id)) {

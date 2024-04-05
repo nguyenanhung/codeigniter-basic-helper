@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Project codeigniter-basic-helper
  * Created by PhpStorm
@@ -7,7 +8,7 @@
  * Date: 09/11/2021
  * Time: 09:22
  */
-if (!function_exists('view_paginations')) {
+if ( ! function_exists('view_paginations')) {
 	/**
 	 * Function view_paginations
 	 *
@@ -27,8 +28,18 @@ if (!function_exists('view_paginations')) {
 	 * @copyright: 713uk13m <dev@nguyenanhung.com>
 	 * @time     : 14/02/2023 29:41
 	 */
-	function view_paginations($page_type, $total_item, $item_per_page, $current_page_number, $page_link, $begin, $end, $page_title = '', $page_prefix = '/trang-', $page_suffix = '.html')
-	{
+	function view_paginations(
+		$page_type,
+		$total_item,
+		$item_per_page,
+		$current_page_number,
+		$page_link,
+		$begin,
+		$end,
+		$page_title = '',
+		$page_prefix = '/trang-',
+		$page_suffix = '.html'
+	) {
 		if ($page_type === 'search_page' || $page_type === 'search') {
 			$page_prefix = '&page=';
 			$page_suffix = '';
@@ -59,7 +70,7 @@ if (!function_exists('view_paginations')) {
 		return $pagination->build();
 	}
 }
-if (!function_exists('view_more')) {
+if ( ! function_exists('view_more')) {
 	/**
 	 * Function view_more
 	 *
@@ -77,8 +88,16 @@ if (!function_exists('view_more')) {
 	 * @copyright: 713uk13m <dev@nguyenanhung.com>
 	 * @time     : 14/02/2023 28:06
 	 */
-	function view_more($page_number, $page_total, $page_size, $url = '', $title = '', $more_type = '', $page_prefix = '/trang-', $page_suffix = '.html')
-	{
+	function view_more(
+		$page_number,
+		$page_total,
+		$page_size,
+		$url = '',
+		$title = '',
+		$more_type = '',
+		$page_prefix = '/trang-',
+		$page_suffix = '.html'
+	) {
 		if ($more_type === 'search_page' || $more_type === 'search') {
 			$page_prefix = '&page=';
 			$page_suffix = '';
@@ -101,7 +120,7 @@ if (!function_exists('view_more')) {
 		return $pagination->buildViewMore();
 	}
 }
-if (!function_exists('select_page')) {
+if ( ! function_exists('select_page')) {
 	/**
 	 * Function select_page
 	 *
@@ -121,8 +140,18 @@ if (!function_exists('select_page')) {
 	 * @copyright: 713uk13m <dev@nguyenanhung.com>
 	 * @time     : 14/02/2023 28:40
 	 */
-	function select_page($total_rows, $per_page, $page_number, $type = '', $page_links = '', $begin = '', $end = '', $title = '', $page_prefix = '/trang-', $page_suffix = '.html')
-	{
+	function select_page(
+		$total_rows,
+		$per_page,
+		$page_number,
+		$type = '',
+		$page_links = '',
+		$begin = '',
+		$end = '',
+		$title = '',
+		$page_prefix = '/trang-',
+		$page_suffix = '.html'
+	) {
 		if ($type === 'search_page' || $type === 'search') {
 			$page_prefix = '&page=';
 			$page_suffix = '';
@@ -149,7 +178,7 @@ if (!function_exists('select_page')) {
 		return $pagination->buildSelectPage();
 	}
 }
-if (!function_exists('get_paginations_title')) {
+if ( ! function_exists('get_paginations_title')) {
 	/**
 	 * Function get_paginations_title
 	 *
@@ -166,7 +195,7 @@ if (!function_exists('get_paginations_title')) {
 		return $pagination->getPaginationsTitle($str);
 	}
 }
-if (!function_exists('get_paginations_number')) {
+if ( ! function_exists('get_paginations_number')) {
 	/**
 	 * Function get_paginations_number
 	 *
@@ -183,7 +212,7 @@ if (!function_exists('get_paginations_number')) {
 		return $pagination->getPageNumber($str);
 	}
 }
-if (!function_exists('bear_framework_news_view_pagination')) {
+if ( ! function_exists('bear_framework_news_view_pagination')) {
 	/**
 	 * Function bear_framework_news_view_pagination - Hàm phân trang theo kiểu bear framework
 	 *

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Project codeigniter-basic-helper
  * Created by PhpStorm
@@ -7,22 +8,22 @@
  * Date: 09/11/2021
  * Time: 09:20
  */
-if (!function_exists('write_file')) {
+if ( ! function_exists('write_file')) {
 	/**
 	 * Write File
 	 *
 	 * Writes data to the file specified in the path.
 	 * Creates a new file if non-existent.
 	 *
-	 * @param string $path File path
-	 * @param string $data Data to write
-	 * @param string $mode fopen() mode (default: 'wb')
+	 * @param  string  $path  File path
+	 * @param  string  $data  Data to write
+	 * @param  string  $mode  fopen() mode (default: 'wb')
 	 *
 	 * @return    bool
 	 */
 	function write_file($path, $data, $mode = 'wb')
 	{
-		if (!$fp = @fopen($path, $mode)) {
+		if ( ! $fp = @fopen($path, $mode)) {
 			return false;
 		}
 
@@ -40,7 +41,7 @@ if (!function_exists('write_file')) {
 		return is_int($result);
 	}
 }
-if (!function_exists('delete_files')) {
+if ( ! function_exists('delete_files')) {
 	/**
 	 * Delete Files
 	 *
@@ -49,10 +50,10 @@ if (!function_exists('delete_files')) {
 	 * If the second parameter is set to TRUE, any directories contained
 	 * within the supplied base directory will be nuked as well.
 	 *
-	 * @param string $path File path
-	 * @param bool $del_dir Whether to delete any directories found in the path
-	 * @param bool $htdocs Whether to skip deleting .htaccess and index page files
-	 * @param int $_level Current directory depth level (default: 0; internal use only)
+	 * @param  string  $path  File path
+	 * @param  bool  $del_dir  Whether to delete any directories found in the path
+	 * @param  bool  $htdocs  Whether to skip deleting .htaccess and index page files
+	 * @param  int  $_level  Current directory depth level (default: 0; internal use only)
 	 *
 	 * @return    bool
 	 */
@@ -61,7 +62,7 @@ if (!function_exists('delete_files')) {
 		// Trim the trailing slash
 		$path = rtrim($path, '/\\');
 
-		if (!$current_dir = @opendir($path)) {
+		if ( ! $current_dir = @opendir($path)) {
 			return false;
 		}
 
@@ -69,9 +70,12 @@ if (!function_exists('delete_files')) {
 			if ($filename !== '.' && $filename !== '..') {
 				$filepath = $path . DIRECTORY_SEPARATOR . $filename;
 
-				if (is_dir($filepath) && !is_link($filepath)) {
+				if (is_dir($filepath) && ! is_link($filepath)) {
 					delete_files($filepath, $del_dir, $htdocs, $_level + 1);
-				} elseif ($htdocs !== true || !preg_match('/^(\.htaccess|index\.(html|htm|php)|web\.config)$/i', $filename)) {
+				} elseif ($htdocs !== true || ! preg_match(
+						'/^(\.htaccess|index\.(html|htm|php)|web\.config)$/i',
+						$filename
+					)) {
 					@unlink($filepath);
 				}
 			}
@@ -86,7 +90,7 @@ if (!function_exists('delete_files')) {
 		return true;
 	}
 }
-if (!function_exists('formatSizeUnits')) {
+if ( ! function_exists('formatSizeUnits')) {
 	/**
 	 * Function formatSizeUnits
 	 *
@@ -116,12 +120,12 @@ if (!function_exists('formatSizeUnits')) {
 		return $bytes;
 	}
 }
-if (!function_exists('genarateFileIndex')) {
+if ( ! function_exists('genarateFileIndex')) {
 	/**
 	 * Function genarateFileIndex
 	 *
-	 * @param string $file_path
-	 * @param string $file_name
+	 * @param  string  $file_path
+	 * @param  string  $file_name
 	 *
 	 * @return bool
 	 * @author   : 713uk13m <dev@nguyenanhung.com>
@@ -133,7 +137,7 @@ if (!function_exists('genarateFileIndex')) {
 		if (function_exists('log_message') && function_exists('write_file')) {
 			if ($file_path !== '') {
 				if (is_dir($file_path) === false) {
-					if (!mkdir($file_path) && !is_dir($file_path)) {
+					if ( ! mkdir($file_path) && ! is_dir($file_path)) {
 						throw new RuntimeException(sprintf('Directory "%s" was not created', $file_path));
 					}
 					log_message('debug', 'Genarate new Folder: ' . $file_path);
@@ -160,12 +164,12 @@ if (!function_exists('genarateFileIndex')) {
 		return false;
 	}
 }
-if (!function_exists('genarateFileHtaccess')) {
+if ( ! function_exists('genarateFileHtaccess')) {
 	/**
 	 * Function genarateFileHtaccess
 	 *
-	 * @param string $file_path
-	 * @param string $file_name
+	 * @param  string  $file_path
+	 * @param  string  $file_name
 	 *
 	 * @return bool
 	 * @author   : 713uk13m <dev@nguyenanhung.com>
@@ -178,7 +182,7 @@ if (!function_exists('genarateFileHtaccess')) {
 			if ($file_path !== '') {
 				// SET file Path
 				if (is_dir($file_path) === false) {
-					if (!mkdir($file_path) && !is_dir($file_path)) {
+					if ( ! mkdir($file_path) && ! is_dir($file_path)) {
 						throw new RuntimeException(sprintf('Directory "%s" was not created', $file_path));
 					}
 					log_message('debug', 'Genarate new Folder: ' . $file_path);
@@ -204,12 +208,12 @@ if (!function_exists('genarateFileHtaccess')) {
 		return false;
 	}
 }
-if (!function_exists('genarateFileReadme')) {
+if ( ! function_exists('genarateFileReadme')) {
 	/**
 	 * Function genarateFileReadme
 	 *
-	 * @param string $file_path
-	 * @param string $file_name
+	 * @param  string  $file_path
+	 * @param  string  $file_name
 	 *
 	 * @return bool
 	 * @author   : 713uk13m <dev@nguyenanhung.com>
@@ -221,7 +225,7 @@ if (!function_exists('genarateFileReadme')) {
 		if (function_exists('log_message') && function_exists('write_file')) {
 			if ($file_path !== '') {
 				if (is_dir($file_path) === false) {
-					if (!mkdir($file_path) && !is_dir($file_path)) {
+					if ( ! mkdir($file_path) && ! is_dir($file_path)) {
 						throw new RuntimeException(sprintf('Directory "%s" was not created', $file_path));
 					}
 					log_message('debug', 'Genarate new Folder: ' . $file_path);
@@ -247,11 +251,11 @@ if (!function_exists('genarateFileReadme')) {
 		return false;
 	}
 }
-if (!function_exists('makeNewFolder')) {
+if ( ! function_exists('makeNewFolder')) {
 	/**
 	 * Function makeNewFolder
 	 *
-	 * @param string $folderPath
+	 * @param  string  $folderPath
 	 *
 	 * @return bool
 	 * @author   : 713uk13m <dev@nguyenanhung.com>
@@ -264,7 +268,7 @@ if (!function_exists('makeNewFolder')) {
 			return false;
 		}
 		if (is_dir($folderPath) === false) {
-			if (!mkdir($folderPath) && !is_dir($folderPath)) {
+			if ( ! mkdir($folderPath) && ! is_dir($folderPath)) {
 				throw new RuntimeException(sprintf('Directory "%s" was not created', $folderPath));
 			}
 			genarateFileIndex($folderPath);
@@ -277,11 +281,11 @@ if (!function_exists('makeNewFolder')) {
 		return false;
 	}
 }
-if (!function_exists('new_folder')) {
+if ( ! function_exists('new_folder')) {
 	/**
 	 * Function new_folder
 	 *
-	 * @param string $folder
+	 * @param  string  $folder
 	 *
 	 * @return bool
 	 * @author   : 713uk13m <dev@nguyenanhung.com>
@@ -293,7 +297,7 @@ if (!function_exists('new_folder')) {
 		return makeNewFolder($folder);
 	}
 }
-if (!function_exists('scan_folder')) {
+if ( ! function_exists('scan_folder')) {
 	/**
 	 * Function scan_folder - Quét và lấy ra danh sách các thông tin dữ liệu trong folder
 	 *
@@ -325,7 +329,7 @@ if (!function_exists('scan_folder')) {
 		}
 	}
 }
-if (!function_exists('getAllFileSizeInFolder')) {
+if ( ! function_exists('getAllFileSizeInFolder')) {
 	/**
 	 * Function getAllFileSizeInFolder - Get all File size in Folder
 	 *
@@ -364,7 +368,7 @@ if (!function_exists('getAllFileSizeInFolder')) {
 		return round($size / 1024 / 1024, 2);
 	}
 }
-if (!function_exists('getAllFileInFolder')) {
+if ( ! function_exists('getAllFileInFolder')) {
 	/**
 	 * Function getAllFileInFolder - Get all File in Folder
 	 *

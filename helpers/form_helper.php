@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Project codeigniter-basic-helper
  * Created by PhpStorm
@@ -7,7 +8,7 @@
  * Date: 24/02/2023
  * Time: 00:00
  */
-if (!function_exists('join_value_multiple')) {
+if ( ! function_exists('join_value_multiple')) {
 	/**
 	 * Join value multiple
 	 *

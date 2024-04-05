@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Project codeigniter-basic-helper
  * Created by PhpStorm
@@ -7,7 +8,7 @@
  * Date: 12/12/2022
  * Time: 23:14
  */
-if (!function_exists('countStringsInText')) {
+if ( ! function_exists('countStringsInText')) {
 	/**
 	 * Function countStringsInText - Hàm đếm số từ trong đoạn văn bản
 	 *
@@ -30,13 +31,13 @@ if (!function_exists('countStringsInText')) {
 		return count($arr);
 	}
 }
-if (!function_exists('findMiddleInString')) {
+if ( ! function_exists('findMiddleInString')) {
 	/**
 	 * Function findMiddleInString - Hàm lấy chuỗi ở giữa chuỗi bắt đầu và chuỗi kết thúc
 	 *
-	 * @param $str : toàn bộ chuỗi;
-	 * @param $str_begin : chuỗi bắt đầu cuối cùng.
-	 * @param $str_end : chuỗi kết thúc đầu tiên
+	 * @param $str  : toàn bộ chuỗi;
+	 * @param $str_begin  : chuỗi bắt đầu cuối cùng.
+	 * @param $str_end  : chuỗi kết thúc đầu tiên
 	 *
 	 * @return string: trả về chuỗi ở giữa chuỗi bắt đầu và chuỗi kết thúc, nếu không có thì trả về chính chuỗi đó..
 	 *
@@ -50,7 +51,6 @@ if (!function_exists('findMiddleInString')) {
 		}
 		$from = mb_strrpos($str, $str_begin) + mb_strlen($str_begin) - 1;
 		if (empty($str_end)) {
-
 			return trim(mb_substr($str, $from + 1));
 		}
 		$str = mb_substr($str, $from + 1);
@@ -60,7 +60,7 @@ if (!function_exists('findMiddleInString')) {
 		return trim($str);
 	}
 }
-if (!function_exists('str_insert')) {
+if ( ! function_exists('str_insert')) {
 	/**
 	 * Function str_insert - Inserts one or more strings into another string on a defined position.
 	 *
@@ -86,9 +86,9 @@ if (!function_exists('str_insert')) {
 	 * // The quick brown fox jumps over the lazy dog.
 	 * ```
 	 *
-	 * @param array $keyValue
+	 * @param  array  $keyValue
 	 * An associative array with key => value pairs.
-	 * @param string $string
+	 * @param  string  $string
 	 * The text with the strings to be replaced.
 	 *
 	 * @return string
@@ -105,7 +105,7 @@ if (!function_exists('str_insert')) {
 		return $string;
 	}
 }
-if (!function_exists('str_between')) {
+if ( ! function_exists('str_between')) {
 	/**
 	 * Function str_between - Return the content in a string between a left and right element.
 	 *
@@ -131,11 +131,11 @@ if (!function_exists('str_between')) {
 	 * ```
 	 *
 	 *
-	 * @param string $left
+	 * @param  string  $left
 	 * The left element of the string to search.
-	 * @param string $right
+	 * @param  string  $right
 	 * The right element of the string to search.
-	 * @param string $string
+	 * @param  string  $string
 	 * The string to search in.
 	 *
 	 * @return array
@@ -148,7 +148,7 @@ if (!function_exists('str_between')) {
 		return array_map('trim', $matches[1]);
 	}
 }
-if (!function_exists('str_after')) {
+if ( ! function_exists('str_after')) {
 	/**
 	 * Function str_after - Return the part of a string after a given value.
 	 *
@@ -170,9 +170,9 @@ if (!function_exists('str_after')) {
 	 * // jumps over the lazy dog
 	 * ```
 	 *
-	 * @param string $search
+	 * @param  string  $search
 	 * The string to search for.
-	 * @param string $string
+	 * @param  string  $string
 	 * The string to search in.
 	 *
 	 * @return string
@@ -183,7 +183,7 @@ if (!function_exists('str_after')) {
 		return $search === '' ? $string : ltrim(array_reverse(explode($search, $string, 2))[0]);
 	}
 }
-if (!function_exists('str_before')) {
+if ( ! function_exists('str_before')) {
 	/**
 	 * Function str_before - Get the part of a string before a given value.
 	 *
@@ -205,9 +205,9 @@ if (!function_exists('str_before')) {
 	 * // The quick brown
 	 * ```
 	 *
-	 * @param string $search
+	 * @param  string  $search
 	 * The string to search for.
-	 * @param string $string
+	 * @param  string  $string
 	 * The string to search in.
 	 *
 	 * @return string
@@ -218,7 +218,7 @@ if (!function_exists('str_before')) {
 		return $search === '' ? $string : rtrim(explode($search, $string)[0]);
 	}
 }
-if (!function_exists('str_limit_words')) {
+if ( ! function_exists('str_limit_words')) {
 	/**
 	 * Function str_limit_words - Limit the number of words in a string. Put value of $end to the string end.
 	 *
@@ -240,11 +240,11 @@ if (!function_exists('str_limit_words')) {
 	 * // The quick brown...
 	 * ```
 	 *
-	 * @param string $string
+	 * @param  string  $string
 	 * The string to limit the words.
-	 * @param int $limit
+	 * @param  int  $limit
 	 * The number of words to limit. Defaults to 10.
-	 * @param string $end
+	 * @param  string  $end
 	 * The string to end the cut string. Defaults to '...'
 	 *
 	 * @return string
@@ -261,7 +261,7 @@ if (!function_exists('str_limit_words')) {
 		return implode(' ', array_slice($arrayWords, 0, $limit)) . $end;
 	}
 }
-if (!function_exists('str_limit_characters')) {
+if ( ! function_exists('str_limit_characters')) {
 	/**
 	 * Function str_limit_characters - Limit the number of characters in a string. Put value of $end to the string end.
 	 *
@@ -283,11 +283,11 @@ if (!function_exists('str_limit_characters')) {
 	 * // The quick brown...
 	 * ```
 	 *
-	 * @param string $string
+	 * @param  string  $string
 	 * The string to limit the characters.
-	 * @param int $limit
+	 * @param  int  $limit
 	 * The number of characters to limit. Defaults to 100.
-	 * @param string $end
+	 * @param  string  $end
 	 * The string to end the cut string. Defaults to '...'
 	 *
 	 * @return string
@@ -302,7 +302,7 @@ if (!function_exists('str_limit_characters')) {
 		return rtrim(mb_strimwidth($string, 0, $limit, '', 'UTF-8')) . $end;
 	}
 }
-if (!function_exists('str_contains')) {
+if ( ! function_exists('str_contains')) {
 	/**
 	 * Function str_contains - Tests if a string contains a given element
 	 *
@@ -328,9 +328,9 @@ if (!function_exists('str_contains')) {
 	 * // bool(true)
 	 * ```
 	 *
-	 * @param string|array $needle
+	 * @param  string|array  $needle
 	 * A string or an array of strings.
-	 * @param string $haystack
+	 * @param  string  $haystack
 	 * The string to search in.
 	 *
 	 * @return bool
@@ -347,7 +347,7 @@ if (!function_exists('str_contains')) {
 		return false;
 	}
 }
-if (!function_exists('str_ignore_contains')) {
+if ( ! function_exists('str_ignore_contains')) {
 	/**
 	 * Function str_ignore_contains - Tests if a string contains a given element. Ignore case sensitivity.
 	 *
@@ -373,9 +373,9 @@ if (!function_exists('str_ignore_contains')) {
 	 * // bool(true)
 	 * ```
 	 *
-	 * @param string|array $needle
+	 * @param  string|array  $needle
 	 * A string or an array of strings.
-	 * @param string $haystack
+	 * @param  string  $haystack
 	 * The string to search in.
 	 *
 	 * @return bool
@@ -392,7 +392,7 @@ if (!function_exists('str_ignore_contains')) {
 		return false;
 	}
 }
-if (!function_exists('str_starts_with')) {
+if ( ! function_exists('str_starts_with')) {
 	/**
 	 * Function str_starts_with - Determine if a given string starts with a given substring.
 	 *
@@ -418,9 +418,9 @@ if (!function_exists('str_starts_with')) {
 	 * // bool(true)
 	 * ```
 	 *
-	 * @param string|array $needle
+	 * @param  string|array  $needle
 	 * The string or array of strings to search for.
-	 * @param string $haystack
+	 * @param  string  $haystack
 	 * The string to search in.
 	 *
 	 * @return bool
@@ -437,7 +437,7 @@ if (!function_exists('str_starts_with')) {
 		return false;
 	}
 }
-if (!function_exists('str_ignore_starts_with')) {
+if ( ! function_exists('str_ignore_starts_with')) {
 	/**
 	 * Function str_ignore_starts_with - Determine if a given string starts with a given substring. Ignore case sensitivity.
 	 *
@@ -463,9 +463,9 @@ if (!function_exists('str_ignore_starts_with')) {
 	 * // bool(true)
 	 * ```
 	 *
-	 * @param string|array $needle
+	 * @param  string|array  $needle
 	 * The string or array of strings to search for.
-	 * @param string $haystack
+	 * @param  string  $haystack
 	 * The string to search in.
 	 *
 	 * @return bool
@@ -485,7 +485,7 @@ if (!function_exists('str_ignore_starts_with')) {
 		return false;
 	}
 }
-if (!function_exists('str_ends_with')) {
+if ( ! function_exists('str_ends_with')) {
 	/**
 	 * Function str_ends_with - Determine if a given string ends with a given substring.
 	 *
@@ -511,10 +511,10 @@ if (!function_exists('str_ends_with')) {
 	 * // bool(true)
 	 * ```
 	 *
-	 * @param string|array $needle
+	 * @param  string|array  $needle
 	 * The string or array of strings to search for.
 	 *
-	 * @param string $haystack
+	 * @param  string  $haystack
 	 * The string to search in.
 	 *
 	 * @return bool
@@ -532,7 +532,7 @@ if (!function_exists('str_ends_with')) {
 		return false;
 	}
 }
-if (!function_exists('str_ignore_ends_with')) {
+if ( ! function_exists('str_ignore_ends_with')) {
 	/**
 	 * Function str_ignore_ends_with - Determine if a given string ends with a given substring.
 	 *
@@ -558,9 +558,9 @@ if (!function_exists('str_ignore_ends_with')) {
 	 * // bool(true)
 	 * ```
 	 *
-	 * @param string|array $needle
+	 * @param  string|array  $needle
 	 * The string or array of strings to search for.
-	 * @param string $haystack
+	 * @param  string  $haystack
 	 * The string to search in.
 	 *
 	 * @return bool
@@ -581,7 +581,7 @@ if (!function_exists('str_ignore_ends_with')) {
 		return false;
 	}
 }
-if (!function_exists('str_after_last')) {
+if ( ! function_exists('str_after_last')) {
 	/**
 	 * Function str_after_last - Return the part of a string after the last occurrence of a given search value.
 	 *
@@ -603,9 +603,9 @@ if (!function_exists('str_after_last')) {
 	 * // image.jpg
 	 * ```
 	 *
-	 * @param string $search
+	 * @param  string  $search
 	 * The string to search for.
-	 * @param string $string
+	 * @param  string  $string
 	 * The string to search in.
 	 *
 	 * @return string
@@ -616,7 +616,7 @@ if (!function_exists('str_after_last')) {
 		return $search === '' ? $string : ltrim(array_reverse(explode($search, $string))[0]);
 	}
 }
-if (!function_exists('hide_characters')) {
+if ( ! function_exists('hide_characters')) {
 	function hide_characters($text)
 	{
 		$string_array = str_split($text);

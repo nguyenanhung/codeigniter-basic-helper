@@ -38,7 +38,7 @@ class SimpleParseOpenGraph extends BaseHelper implements \Iterator
 	 * Fetches a URI and parses it for Open Graph data, returns
 	 * false on error.
 	 *
-	 * @param mixed $URI URI to page to parse for Open Graph data
+	 * @param  mixed  $URI  URI to page to parse for Open Graph data
 	 * @return SimpleParseOpenGraph|bool
 	 */
 	static public function fetch($URI)
@@ -54,7 +54,11 @@ class SimpleParseOpenGraph extends BaseHelper implements \Iterator
 		if (isset($_SERVER['HTTP_USER_AGENT'])) {
 			curl_setopt($curl, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
 		} else {
-			curl_setopt($curl, CURLOPT_USERAGENT, "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36");
+			curl_setopt(
+				$curl,
+				CURLOPT_USERAGENT,
+				"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36"
+			);
 		}
 
 
@@ -62,7 +66,7 @@ class SimpleParseOpenGraph extends BaseHelper implements \Iterator
 
 		curl_close($curl);
 
-		if (!empty($response)) {
+		if ( ! empty($response)) {
 			return self::_parse($response);
 		}
 
@@ -73,7 +77,7 @@ class SimpleParseOpenGraph extends BaseHelper implements \Iterator
 	 * Parses HTML and extracts Open Graph data, this assumes
 	 * the document is at least well formed.
 	 *
-	 * @param mixed $HTML HTML to parse
+	 * @param  mixed  $HTML  HTML to parse
 	 * @return SimpleParseOpenGraph
 	 */
 	static private function _parse($HTML)
@@ -86,7 +90,7 @@ class SimpleParseOpenGraph extends BaseHelper implements \Iterator
 		libxml_use_internal_errors($old_libxml_error);
 
 		$tags = $doc->getElementsByTagName('meta');
-		if (!$tags || $tags->length === 0) {
+		if ( ! $tags || $tags->length === 0) {
 			return false;
 		}
 
@@ -111,21 +115,20 @@ class SimpleParseOpenGraph extends BaseHelper implements \Iterator
 			if ($tag->hasAttribute('name') && $tag->getAttribute('name') === 'description') {
 				$nonOgDescription = $tag->getAttribute('content');
 			}
-
 		}
 		//Based on modifications at https://github.com/bashofmann/opengraph/blob/master/src/OpenGraph/OpenGraph.php
-		if (!isset($page->_values['title'])) {
+		if ( ! isset($page->_values['title'])) {
 			$titles = $doc->getElementsByTagName('title');
 			if ($titles->length > 0) {
 				$page->_values['title'] = $titles->item(0)->textContent;
 			}
 		}
-		if (!isset($page->_values['description']) && $nonOgDescription) {
+		if ( ! isset($page->_values['description']) && $nonOgDescription) {
 			$page->_values['description'] = $nonOgDescription;
 		}
 
 		//Fallback to use image_src if ogp::image isn't set.
-		if (!isset($page->values['image'])) {
+		if ( ! isset($page->values['image'])) {
 			$domxpath = new \DOMXPath($doc);
 			$elements = $domxpath->query("//link[@rel='image_src']");
 
@@ -150,7 +153,7 @@ class SimpleParseOpenGraph extends BaseHelper implements \Iterator
 	 * Example:
 	 * $graph->title
 	 *
-	 * @param mixed $key Key to fetch from the lookup
+	 * @param  mixed  $key  Key to fetch from the lookup
 	 */
 	public function __get($key)
 	{
@@ -180,7 +183,7 @@ class SimpleParseOpenGraph extends BaseHelper implements \Iterator
 	/**
 	 * Helper method to check an attribute exists
 	 *
-	 * @param mixed $key
+	 * @param  mixed  $key
 	 */
 	public function __isset($key)
 	{

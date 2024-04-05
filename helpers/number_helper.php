@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Project codeigniter-basic-helper
  * Created by PhpStorm
@@ -7,7 +8,7 @@
  * Date: 18/01/2023
  * Time: 00:36
  */
-if (!function_exists('convertNumberToWords')) {
+if ( ! function_exists('convertNumberToWords')) {
 	function convertNumberToWords($num)
 	{
 		$ones = array(
@@ -87,7 +88,7 @@ if (!function_exists('convertNumberToWords')) {
 		return $returnTxt;
 	}
 }
-if (!function_exists('convert_number_to_words')) {
+if ( ! function_exists('convert_number_to_words')) {
 	function convert_number_to_words($num)
 	{
 		return convertNumberToWords($num);

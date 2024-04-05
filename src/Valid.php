@@ -27,14 +27,14 @@ class Valid extends BaseHelper
 		}
 
 		// Value cannot be NULL, FALSE, '', or an empty array
-		return !in_array($value, array(null, false, '', array()), true);
+		return ! in_array($value, array(null, false, '', array()), true);
 	}
 
 	/**
 	 * Checks a field against a regular expression.
 	 *
-	 * @param string $value value
-	 * @param string $expression regular expression to match (including delimiters)
+	 * @param  string  $value  value
+	 * @param  string  $expression  regular expression to match (including delimiters)
 	 *
 	 * @return  boolean
 	 */
@@ -46,8 +46,8 @@ class Valid extends BaseHelper
 	/**
 	 * Checks that a field is long enough.
 	 *
-	 * @param string $value value
-	 * @param integer $length minimum length required
+	 * @param  string  $value  value
+	 * @param  integer  $length  minimum length required
 	 *
 	 * @return  boolean
 	 */
@@ -59,8 +59,8 @@ class Valid extends BaseHelper
 	/**
 	 * Checks that a field is short enough.
 	 *
-	 * @param string $value value
-	 * @param integer $length maximum length required
+	 * @param  string  $value  value
+	 * @param  integer  $length  maximum length required
 	 *
 	 * @return  boolean
 	 */
@@ -72,8 +72,8 @@ class Valid extends BaseHelper
 	/**
 	 * Checks that a field is exactly the right length.
 	 *
-	 * @param string $value value
-	 * @param integer|array $length exact length required, or array of valid lengths
+	 * @param  string  $value  value
+	 * @param  integer|array  $length  exact length required, or array of valid lengths
 	 *
 	 * @return  boolean
 	 */
@@ -93,8 +93,8 @@ class Valid extends BaseHelper
 	/**
 	 * Checks that a field is exactly the value required.
 	 *
-	 * @param string $value value
-	 * @param string $required required value
+	 * @param  string  $value  value
+	 * @param  string  $required  required value
 	 *
 	 * @return  boolean
 	 */
@@ -109,8 +109,8 @@ class Valid extends BaseHelper
 	 * @link  http://www.iamcal.com/publish/articles/php/parsing_email/
 	 * @link  http://www.w3.org/Protocols/rfc822/
 	 *
-	 * @param string $email email address
-	 * @param boolean $strict strict RFC compatibility
+	 * @param  string  $email  email address
+	 * @param  boolean  $strict  strict RFC compatibility
 	 *
 	 * @return  boolean
 	 */
@@ -147,13 +147,13 @@ class Valid extends BaseHelper
 	 *
 	 * @link  http://php.net/checkdnsrr  not added to Windows until PHP 5.3.0
 	 *
-	 * @param string $email email address
+	 * @param  string  $email  email address
 	 *
 	 * @return  boolean
 	 */
 	public static function email_domain($email)
 	{
-		if (!self::not_empty($email)) {
+		if ( ! self::not_empty($email)) {
 			return false;
 		} // Empty fields cause issues with checkdnsrr()
 
@@ -164,14 +164,14 @@ class Valid extends BaseHelper
 	/**
 	 * Validate a URL.
 	 *
-	 * @param string $url URL
+	 * @param  string  $url  URL
 	 *
 	 * @return  boolean
 	 */
 	public static function url($url)
 	{
 		// Based on http://www.apps.ietf.org/rfc/rfc1738.html#sec-5
-		if (!preg_match(
+		if ( ! preg_match(
 			'~^
 
 			# scheme
@@ -203,12 +203,15 @@ class Valid extends BaseHelper
 			# path (optional)
 			(?:/.*)?
 
-			$~iDx', $url, $matches)) {
+			$~iDx',
+			$url,
+			$matches
+		)) {
 			return false;
 		}
 
 		// We matched an IP address
-		if (!isset($matches[1])) {
+		if ( ! isset($matches[1])) {
 			return true;
 		}
 
@@ -228,8 +231,8 @@ class Valid extends BaseHelper
 	/**
 	 * Validate an IP.
 	 *
-	 * @param string $ip IP address
-	 * @param boolean $allow_private allow private IP networks
+	 * @param  string  $ip  IP address
+	 * @param  boolean  $allow_private  allow private IP networks
 	 *
 	 * @return  boolean
 	 */
@@ -249,8 +252,8 @@ class Valid extends BaseHelper
 	/**
 	 * Validates a credit card number, with a Luhn check if possible.
 	 *
-	 * @param integer $number credit card number
-	 * @param string|array $type card type, or an array of card types
+	 * @param  integer  $number  credit card number
+	 * @param  string|array  $type  card type, or an array of card types
 	 *
 	 * @return  boolean
 	 */
@@ -338,7 +341,7 @@ class Valid extends BaseHelper
 		// Check card type
 		$type = mb_strtolower($type);
 
-		if (!isset($cards[$type])) {
+		if ( ! isset($cards[$type])) {
 			return false;
 		}
 
@@ -346,12 +349,12 @@ class Valid extends BaseHelper
 		$length = mb_strlen($number);
 
 		// Validate the card length by the card type
-		if (!in_array($length, preg_split('/\D+/', $cards[$type]['length']))) {
+		if ( ! in_array($length, preg_split('/\D+/', $cards[$type]['length']))) {
 			return false;
 		}
 
 		// Check card number prefix
-		if (!preg_match('/^' . $cards[$type]['prefix'] . '/', $number)) {
+		if ( ! preg_match('/^' . $cards[$type]['prefix'] . '/', $number)) {
 			return false;
 		}
 
@@ -367,7 +370,7 @@ class Valid extends BaseHelper
 	 * Validate a number against the [Luhn](http://en.wikipedia.org/wiki/Luhn_algorithm)
 	 * (mod10) formula.
 	 *
-	 * @param string $number number to check
+	 * @param  string  $number  number to check
 	 *
 	 * @return  boolean
 	 */
@@ -377,7 +380,7 @@ class Valid extends BaseHelper
 		// Converting to an integer may pass PHP_INT_MAX and result in an error!
 		$number = (string)$number;
 
-		if (!ctype_digit($number)) {
+		if ( ! ctype_digit($number)) {
 			// Luhn can only be used on numbers!
 			return false;
 		}
@@ -408,14 +411,14 @@ class Valid extends BaseHelper
 	/**
 	 * Checks if a phone number is valid.
 	 *
-	 * @param string $number phone number to check
-	 * @param array $lengths
+	 * @param  string  $number  phone number to check
+	 * @param  array  $lengths
 	 *
 	 * @return  boolean
 	 */
 	public static function phone($number, $lengths = null)
 	{
-		if (!is_array($lengths)) {
+		if ( ! is_array($lengths)) {
 			$lengths = array(7, 10, 11);
 		}
 
@@ -429,7 +432,7 @@ class Valid extends BaseHelper
 	/**
 	 * Tests if a string is a valid date string.
 	 *
-	 * @param string $str date to check
+	 * @param  string  $str  date to check
 	 *
 	 * @return  boolean
 	 */
@@ -441,8 +444,8 @@ class Valid extends BaseHelper
 	/**
 	 * Checks whether a string consists of alphabetical characters only.
 	 *
-	 * @param string $str input string
-	 * @param boolean $utf8 trigger UTF-8 compatibility
+	 * @param  string  $str  input string
+	 * @param  boolean  $utf8  trigger UTF-8 compatibility
 	 *
 	 * @return  boolean
 	 */
@@ -460,8 +463,8 @@ class Valid extends BaseHelper
 	/**
 	 * Checks whether a string consists of alphabetical characters and numbers only.
 	 *
-	 * @param string $str input string
-	 * @param boolean $utf8 trigger UTF-8 compatibility
+	 * @param  string  $str  input string
+	 * @param  boolean  $utf8  trigger UTF-8 compatibility
 	 *
 	 * @return  boolean
 	 */
@@ -477,8 +480,8 @@ class Valid extends BaseHelper
 	/**
 	 * Checks whether a string consists of alphabetical characters, numbers, underscores and dashes only.
 	 *
-	 * @param string $str input string
-	 * @param boolean $utf8 trigger UTF-8 compatibility
+	 * @param  string  $str  input string
+	 * @param  boolean  $utf8  trigger UTF-8 compatibility
 	 *
 	 * @return  boolean
 	 */
@@ -496,8 +499,8 @@ class Valid extends BaseHelper
 	/**
 	 * Checks whether a string consists of digits only (no dots or dashes).
 	 *
-	 * @param string $str input string
-	 * @param boolean $utf8 trigger UTF-8 compatibility
+	 * @param  string  $str  input string
+	 * @param  boolean  $utf8  trigger UTF-8 compatibility
 	 *
 	 * @return  boolean
 	 */
@@ -516,7 +519,7 @@ class Valid extends BaseHelper
 	 * Uses {@link http://www.php.net/manual/en/function.localeconv.php locale conversion}
 	 * to allow decimal point to be locale specific.
 	 *
-	 * @param string $str input string
+	 * @param  string  $str  input string
 	 *
 	 * @return  boolean
 	 */
@@ -532,10 +535,10 @@ class Valid extends BaseHelper
 	/**
 	 * Tests if a number is within a range.
 	 *
-	 * @param string $number number to check
-	 * @param integer $min minimum value
-	 * @param integer $max maximum value
-	 * @param integer $step increment size
+	 * @param  string  $number  number to check
+	 * @param  integer  $min  minimum value
+	 * @param  integer  $max  maximum value
+	 * @param  integer  $step  increment size
 	 *
 	 * @return  boolean
 	 */
@@ -546,7 +549,7 @@ class Valid extends BaseHelper
 			return false;
 		}
 
-		if (!$step) {
+		if ( ! $step) {
 			// Default to steps of 1
 			$step = 1;
 		}
@@ -559,9 +562,9 @@ class Valid extends BaseHelper
 	 * Checks if a string is a proper decimal format. Optionally, a specific
 	 * number of digits can be checked too.
 	 *
-	 * @param string $str number to check
-	 * @param integer $places number of decimal places
-	 * @param integer $digits number of digits
+	 * @param  string  $str  number to check
+	 * @param  integer  $places  number of decimal places
+	 * @param  integer  $digits  number of digits
 	 *
 	 * @return  boolean
 	 */
@@ -578,7 +581,10 @@ class Valid extends BaseHelper
 		// Get the decimal point for the current locale
 		list($decimal) = array_values(localeconv());
 
-		return (bool)preg_match('/^[+-]?[0-9]' . $digits . preg_quote($decimal) . '[0-9]{' . ((int)$places) . '}$/D', $str);
+		return (bool)preg_match(
+			'/^[+-]?[0-9]' . $digits . preg_quote($decimal) . '[0-9]{' . ((int)$places) . '}$/D',
+			$str
+		);
 	}
 
 	/**
@@ -586,7 +592,7 @@ class Valid extends BaseHelper
 	 * is quite flexible as it does not require an initial "#" and also allows for
 	 * the short notation using only three instead of six hexadecimal characters.
 	 *
-	 * @param string $str input string
+	 * @param  string  $str  input string
 	 *
 	 * @return  boolean
 	 */
@@ -598,9 +604,9 @@ class Valid extends BaseHelper
 	/**
 	 * Checks if a field matches the value of another field.
 	 *
-	 * @param array $array array of values
-	 * @param string $field field name
-	 * @param string $match field name to match
+	 * @param  array  $array  array of values
+	 * @param  string  $field  field name
+	 * @param  string  $match  field name to match
 	 *
 	 * @return  boolean
 	 */

@@ -27,7 +27,7 @@ class SimpleElasticsearch extends BaseHelper
 	/**
 	 *  Function setHost
 	 *
-	 * @param string $host
+	 * @param  string  $host
 	 *
 	 * @author   : 713uk13m <dev@nguyenanhung.com>
 	 * @copyright: 713uk13m <dev@nguyenanhung.com>
@@ -55,7 +55,7 @@ class SimpleElasticsearch extends BaseHelper
 	/**
 	 *  Function setPort
 	 *
-	 * @param int $port
+	 * @param  int  $port
 	 *
 	 * @author   : 713uk13m <dev@nguyenanhung.com>
 	 * @copyright: 713uk13m <dev@nguyenanhung.com>
@@ -80,8 +80,16 @@ class SimpleElasticsearch extends BaseHelper
 		return $this->port;
 	}
 
-	public function complexSearch($string = null, $fields = array("_all"), $sort = array(), $index = null, $page = 1, $limit = 10, $fullResponse = false, $extraParams = null)
-	{
+	public function complexSearch(
+		$string = null,
+		$fields = array("_all"),
+		$sort = array(),
+		$index = null,
+		$page = 1,
+		$limit = 10,
+		$fullResponse = false,
+		$extraParams = null
+	) {
 		try {
 			$elasticHost = $this->host;
 			$elasticPort = $this->port;
@@ -101,7 +109,7 @@ class SimpleElasticsearch extends BaseHelper
 				),
 				"size" => $limit
 			);
-			if (!empty($sort) && is_array($sort)) {
+			if ( ! empty($sort) && is_array($sort)) {
 				$query_string['sort'] = $sort;
 			}
 
@@ -153,8 +161,14 @@ class SimpleElasticsearch extends BaseHelper
 		}
 	}
 
-	public function filterSearch($index, $query_string, $page = 1, $limit = 10, $fullResponse = false, $extraParams = null)
-	{
+	public function filterSearch(
+		$index,
+		$query_string,
+		$page = 1,
+		$limit = 10,
+		$fullResponse = false,
+		$extraParams = null
+	) {
 		try {
 			$elasticHost = $this->host;
 			$elasticPort = $this->port;
@@ -217,14 +231,14 @@ class SimpleElasticsearch extends BaseHelper
 			);
 		}
 
-		if (!$data) {
+		if ( ! $data) {
 			return false;
 		}
 
 		$response = json_decode($data, false);
 
 		$total = isset($response->hits->total->value) ? $response->hits->total->value : 0;
-		if (isset($response->hits->hits[0]->_source) && !empty($response->hits->hits[0]->_source)) {
+		if (isset($response->hits->hits[0]->_source) && ! empty($response->hits->hits[0]->_source)) {
 			$data = $response->hits->hits[0]->_source;
 		} else {
 			$data = array();
@@ -250,13 +264,13 @@ class SimpleElasticsearch extends BaseHelper
 			);
 		}
 
-		if (!$data) {
+		if ( ! $data) {
 			return false;
 		}
 
 		$response = json_decode($data, false);
 		$total = isset($response->hits->total->value) ? $response->hits->total->value : 0;
-		if (isset($response->hits->hits) && !empty($response->hits->hits)) {
+		if (isset($response->hits->hits) && ! empty($response->hits->hits)) {
 			$data = $response->hits->hits;
 		} else {
 			$data = array();
@@ -287,7 +301,7 @@ class SimpleElasticsearch extends BaseHelper
 			if ($action !== 'delete' && empty($data)) {
 				return false;
 			}
-			if ($action === 'create' && !($data instanceof Model)) {
+			if ($action === 'create' && ! ($data instanceof Model)) {
 				return false;
 			}
 
@@ -309,7 +323,7 @@ class SimpleElasticsearch extends BaseHelper
 
 			switch ($action) {
 				case 'delete':
-					if (!$id) {
+					if ( ! $id) {
 						return false;
 					}
 					$data_config_url[CURLOPT_URL] = $url;
@@ -318,7 +332,7 @@ class SimpleElasticsearch extends BaseHelper
 					break;
 				case 'update_or_create':
 					$data = is_array($data) ? $data : (array)$data;
-					if (!$id) {
+					if ( ! $id) {
 						return false;
 					}
 					if ($data === null) {
@@ -330,7 +344,6 @@ class SimpleElasticsearch extends BaseHelper
 					break;
 				default:
 					return false;
-
 			}
 
 
@@ -339,7 +352,10 @@ class SimpleElasticsearch extends BaseHelper
 			curl_setopt_array($curl, $data_config_url);
 			$response = curl_exec($curl);
 
-			echo PHP_EOL . $data_config_url[CURLOPT_CUSTOMREQUEST] . ' - ' . $url . ' |-> ' . json_encode($data, JSON_PRETTY_PRINT) . ' | -> Response: ' . $response . PHP_EOL;
+			echo PHP_EOL . $data_config_url[CURLOPT_CUSTOMREQUEST] . ' - ' . $url . ' |-> ' . json_encode(
+					$data,
+					JSON_PRETTY_PRINT
+				) . ' | -> Response: ' . $response . PHP_EOL;
 
 			if (curl_errno($curl)) {
 				$error_msg = curl_error($curl);
@@ -348,7 +364,9 @@ class SimpleElasticsearch extends BaseHelper
 
 			if (isset($error_msg)) {
 				// echo 'error sync :' . $id . '__:' . json_encode($error_msg) . 'id :' . $index . 'action :' . $action . PHP_EOL;
-				Log::info('error sync :' . $id . '__:' . json_encode($error_msg) . 'id :' . $index . 'action :' . $action);
+				Log::info(
+					'error sync :' . $id . '__:' . json_encode($error_msg) . 'id :' . $index . 'action :' . $action
+				);
 			}
 
 			return true;
@@ -464,7 +482,10 @@ class SimpleElasticsearch extends BaseHelper
 			curl_setopt_array($curl, $data_config_url);
 			$response = curl_exec($curl);
 
-			echo PHP_EOL . $data_config_url[CURLOPT_CUSTOMREQUEST] . ' - ' . $url . ' |-> ' . json_encode($data, JSON_PRETTY_PRINT) . ' | -> Response: ' . $response . PHP_EOL;
+			echo PHP_EOL . $data_config_url[CURLOPT_CUSTOMREQUEST] . ' - ' . $url . ' |-> ' . json_encode(
+					$data,
+					JSON_PRETTY_PRINT
+				) . ' | -> Response: ' . $response . PHP_EOL;
 
 			if (curl_errno($curl)) {
 				$error_msg = curl_error($curl);
