@@ -14,18 +14,18 @@ use nguyenanhung\Libraries\Basic\Miscellaneous\Miscellaneous;
 
 class ChartRender extends BaseHelper
 {
-	protected function misc()
-	{
-		return new Miscellaneous();
-	}
+    protected function misc()
+    {
+        return new Miscellaneous();
+    }
 
-	public function get_data_chart($item_list, $valueGet, $total)
-	{
-		return $this->misc()->metronic_get_data_chart($item_list, $valueGet, $total);
-	}
+    public function get_data_chart($item_list, $valueGet, $total)
+    {
+        return $this->misc()->metronic_get_data_chart($item_list, $valueGet, $total);
+    }
 
-	public function get_data_chart_report($item_list, $valueGet)
-	{
-		return $this->misc()->metronic_get_data_chart_report($item_list, $valueGet);
-	}
+    public function get_data_chart_report($item_list, $valueGet)
+    {
+        return $this->misc()->metronic_get_data_chart_report($item_list, $valueGet);
+    }
 }
