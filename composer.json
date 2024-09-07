@@ -69,6 +69,7 @@
       "helpers/money_helper.php",
       "helpers/nanoid_helper.php",
       "helpers/number_helper.php",
+      "helpers/old_polyfill_function.php",
       "helpers/paging_helper.php",
       "helpers/placeholder_helper.php",
       "helpers/request_helper.php",

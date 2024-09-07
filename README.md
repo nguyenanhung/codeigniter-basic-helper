@@ -194,11 +194,11 @@ Các hàm này dùng debug
 ### File Helper
 
 - [x] Helper Function: `formatSizeUnits` - Hàm format 1 int đầu vào thành 1 format để dễ đọc dung lượng file
-- [x] Helper Function: `genarateFileIndex` - Tự động tạo nội dung file `index.html`
-- [x] Helper Function: `genarateFileHtaccess` - Tự động tạo nội dung file `.htaccess`
-- [x] Helper Function: `genarateFileReadme` - Tự động tạo nội dung file `README.md`
-- [x] Helper Function: `makeNewFolder` - Hàm tạo 1 thư mục mới và genre sẵn trong đó 3 file: `README.md`, `index.html`
-  , `.htaccess`
+- [x] Helper Function: `generateFileIndex` - Tự động tạo nội dung file `index.html`
+- [x] Helper Function: `generateFileHtaccess` - Tự động tạo nội dung file `.htaccess`
+- [x] Helper Function: `generateFileReadme` - Tự động tạo nội dung file `README.md`
+- [x] Helper Function: `makeNewFolder` - Hàm tạo 1 thư mục mới và generate sẵn trong đó 3 file: `README.md`, `index.html`
+  , `.htaccess`. Tạo thêm file `.gitkeep` nếu tham số thứ 2 được truyền là true
 - [x] Helper Function: `new_folder` - Chức năng tương tự với hàm `makeNewFolder`
 - [x] Helper Function: `scan_folder` - Quét và lấy ra danh sách các thông tin dữ liệu trong folder
 - [x] Helper Function: `getAllFileSizeInFolder` - Get all File size in Folder

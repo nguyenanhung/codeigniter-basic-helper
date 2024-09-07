@@ -120,9 +120,9 @@ if (!function_exists('formatSizeUnits')) {
         return $bytes;
     }
 }
-if (!function_exists('genarateFileIndex')) {
+if ( ! function_exists('generateFileIndex')) {
     /**
-     * Function genarateFileIndex
+     * Function generateFileIndex
      *
      * @param string $file_path
      * @param string $file_name
@@ -132,7 +132,7 @@ if (!function_exists('genarateFileIndex')) {
      * @copyright: 713uk13m <dev@nguyenanhung.com>
      * @time     : 09/11/2021 55:13
      */
-    function genarateFileIndex($file_path = '', $file_name = 'index.html')
+    function generateFileIndex($file_path = '', $file_name = 'index.html')
     {
         if (function_exists('log_message') && function_exists('write_file')) {
             if ($file_path !== '') {
@@ -164,9 +164,9 @@ if (!function_exists('genarateFileIndex')) {
         return false;
     }
 }
-if (!function_exists('genarateFileHtaccess')) {
+if ( ! function_exists('generateFileHtaccess')) {
     /**
-     * Function genarateFileHtaccess
+     * Function generateFileHtaccess
      *
      * @param string $file_path
      * @param string $file_name
@@ -176,7 +176,7 @@ if (!function_exists('genarateFileHtaccess')) {
      * @copyright: 713uk13m <dev@nguyenanhung.com>
      * @time     : 09/11/2021 55:51
      */
-    function genarateFileHtaccess($file_path = '', $file_name = '.htaccess')
+    function generateFileHtaccess($file_path = '', $file_name = '.htaccess')
     {
         if (function_exists('log_message') && function_exists('write_file')) {
             if ($file_path !== '') {
@@ -208,7 +208,7 @@ if (!function_exists('genarateFileHtaccess')) {
         return false;
     }
 }
-if (!function_exists('genarateFileReadme')) {
+if ( ! function_exists('generateFileReadme')) {
     /**
      * Function genarateFileReadme
      *
@@ -220,7 +220,7 @@ if (!function_exists('genarateFileReadme')) {
      * @copyright: 713uk13m <dev@nguyenanhung.com>
      * @time     : 09/15/2021 58:14
      */
-    function genarateFileReadme($file_path = '', $file_name = 'README.md')
+    function generateFileReadme($file_path = '', $file_name = 'README.md')
     {
         if (function_exists('log_message') && function_exists('write_file')) {
             if ($file_path !== '') {
@@ -256,13 +256,14 @@ if (!function_exists('makeNewFolder')) {
      * Function makeNewFolder
      *
      * @param string $folderPath
+     * @param  bool  $gitkeep
      *
      * @return bool
      * @author   : 713uk13m <dev@nguyenanhung.com>
      * @copyright: 713uk13m <dev@nguyenanhung.com>
      * @time     : 09/11/2021 57:33
      */
-    function makeNewFolder($folderPath = '')
+    function makeNewFolder($folderPath = '', $gitkeep = false)
     {
         if (empty($folderPath)) {
             return false;
@@ -271,10 +272,26 @@ if (!function_exists('makeNewFolder')) {
             if (!mkdir($folderPath) && !is_dir($folderPath)) {
                 throw new RuntimeException(sprintf('Directory "%s" was not created', $folderPath));
             }
-            genarateFileIndex($folderPath);
-            genarateFileHtaccess($folderPath);
-            genarateFileReadme($folderPath);
-
+            $createIndex = generateFileIndex($folderPath);
+            $createHtaccess = generateFileHtaccess($folderPath);
+            $createReadme = generateFileReadme($folderPath);
+            if (is_cli()) {
+                if ($createIndex) {
+                    echo "Create file index.html in " . $folderPath . " successfully";
+                }
+                if ($createHtaccess) {
+                    echo "Create file .htaccess in " . $folderPath . " successfully";
+                }
+                if ($createReadme) {
+                    echo "Create file README.md in " . $folderPath . " successfully";
+                }
+            }
+            if ($gitkeep === true) {
+                $createGitkeep = touch($folderPath . '/.gitkeep');
+                if (is_cli() && $createGitkeep) {
+                    echo "Create file .gitkeep in " . $folderPath . " successfully";
+                }
+            }
             return true;
         }
 
@@ -286,15 +303,16 @@ if (!function_exists('new_folder')) {
      * Function new_folder
      *
      * @param string $folder
+     * @param  bool  $gitkeep
      *
      * @return bool
      * @author   : 713uk13m <dev@nguyenanhung.com>
      * @copyright: 713uk13m <dev@nguyenanhung.com>
      * @time     : 09/11/2021 58:13
      */
-    function new_folder($folder = '')
+    function new_folder($folder = '', $gitkeep = false)
     {
-        return makeNewFolder($folder);
+        return makeNewFolder($folder, $gitkeep);
     }
 }
 if (!function_exists('scan_folder')) {
