@@ -277,19 +277,19 @@ if (!function_exists('makeNewFolder')) {
             $createReadme = generateFileReadme($folderPath);
             if (is_cli()) {
                 if ($createIndex) {
-                    echo "Create file index.html in " . $folderPath . " successfully";
+                    echo "Create file index.html in " . $folderPath . " successfully" . PHP_EOL;
                 }
                 if ($createHtaccess) {
-                    echo "Create file .htaccess in " . $folderPath . " successfully";
+                    echo "Create file .htaccess in " . $folderPath . " successfully" . PHP_EOL;
                 }
                 if ($createReadme) {
-                    echo "Create file README.md in " . $folderPath . " successfully";
+                    echo "Create file README.md in " . $folderPath . " successfully" . PHP_EOL;
                 }
             }
             if ($gitkeep === true) {
                 $createGitkeep = touch($folderPath . '/.gitkeep');
                 if (is_cli() && $createGitkeep) {
-                    echo "Create file .gitkeep in " . $folderPath . " successfully";
+                    echo "Create file .gitkeep in " . $folderPath . " successfully" . PHP_EOL;
                 }
             }
             return true;
