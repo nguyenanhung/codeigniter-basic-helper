@@ -120,7 +120,7 @@ if (!function_exists('formatSizeUnits')) {
         return $bytes;
     }
 }
-if ( ! function_exists('generateFileIndex')) {
+if (!function_exists('generateFileIndex')) {
     /**
      * Function generateFileIndex
      *
@@ -164,7 +164,7 @@ if ( ! function_exists('generateFileIndex')) {
         return false;
     }
 }
-if ( ! function_exists('generateFileHtaccess')) {
+if (!function_exists('generateFileHtaccess')) {
     /**
      * Function generateFileHtaccess
      *
@@ -208,7 +208,7 @@ if ( ! function_exists('generateFileHtaccess')) {
         return false;
     }
 }
-if ( ! function_exists('generateFileReadme')) {
+if (!function_exists('generateFileReadme')) {
     /**
      * Function genarateFileReadme
      *
@@ -256,7 +256,7 @@ if (!function_exists('makeNewFolder')) {
      * Function makeNewFolder
      *
      * @param string $folderPath
-     * @param  bool  $gitkeep
+     * @param bool $gitkeep
      *
      * @return bool
      * @author   : 713uk13m <dev@nguyenanhung.com>
@@ -303,7 +303,7 @@ if (!function_exists('new_folder')) {
      * Function new_folder
      *
      * @param string $folder
-     * @param  bool  $gitkeep
+     * @param bool $gitkeep
      *
      * @return bool
      * @author   : 713uk13m <dev@nguyenanhung.com>
@@ -423,5 +423,34 @@ if (!function_exists('getAllFileInFolder')) {
         } else {
             echo "ERROR: Folder not Found.";
         }
+    }
+}
+if (!function_exists('init_basic_codeigniter_storage_directory')) {
+    function init_basic_codeigniter_storage_directory()
+    {
+        if (is_cli() && (defined('APPPATH') && defined('FCPATH'))) {
+            echo "Initialize storage directory" . PHP_EOL;
+
+            makeNewFolder(APPPATH . 'cache');
+            makeNewFolder(APPPATH . 'cache/ci_sessions');
+            makeNewFolder(APPPATH . 'logs');
+            makeNewFolder(APPPATH . 'logs-data');
+
+            makeNewFolder(FCPATH . 'storage');
+            makeNewFolder(FCPATH . 'storage/cache');
+            makeNewFolder(FCPATH . 'storage/cache_db');
+            makeNewFolder(FCPATH . 'storage/cache_page');
+            makeNewFolder(FCPATH . 'storage/ci_sessions');
+            makeNewFolder(FCPATH . 'storage/cookies');
+            makeNewFolder(FCPATH . 'storage/htmlPurity');
+            makeNewFolder(FCPATH . 'storage/tmp');
+            makeNewFolder(FCPATH . 'storage/logs');
+            makeNewFolder(FCPATH . 'storage/logs/Requests');
+            makeNewFolder(FCPATH . 'storage/logs-vendor');
+            file_create(FCPATH . 'storage/logs/accessDenied.log');
+
+            echo "Storage directory initialized successfully" . PHP_EOL;
+        }
+        exit();
     }
 }
