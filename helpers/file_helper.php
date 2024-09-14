@@ -426,7 +426,7 @@ if (!function_exists('getAllFileInFolder')) {
     }
 }
 if (!function_exists('init_basic_codeigniter_storage_directory')) {
-    function init_basic_codeigniter_storage_directory()
+    function init_basic_codeigniter_storage_directory($customizes = array())
     {
         if (is_cli() && (defined('APPPATH') && defined('FCPATH'))) {
             echo "Initialize storage directory" . PHP_EOL;
@@ -448,6 +448,12 @@ if (!function_exists('init_basic_codeigniter_storage_directory')) {
             makeNewFolder(FCPATH . 'storage/logs/Requests');
             makeNewFolder(FCPATH . 'storage/logs-vendor');
             file_create(FCPATH . 'storage/logs/accessDenied.log');
+
+            if (!empty($customizes) && is_array($customizes)) {
+                foreach ($customizes as $folder) {
+                    makeNewFolder($folder);
+                }
+            }
 
             echo "Storage directory initialized successfully" . PHP_EOL;
         }
