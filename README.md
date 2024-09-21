@@ -1,6 +1,9 @@
 # CodeIgniter Basic Helper
 
-[![Latest Stable Version](http://poser.pugx.org/nguyenanhung/codeigniter-basic-helper/v)](https://packagist.org/packages/nguyenanhung/codeigniter-basic-helper) [![Total Downloads](http://poser.pugx.org/nguyenanhung/codeigniter-basic-helper/downloads)](https://packagist.org/packages/nguyenanhung/codeigniter-basic-helper) [![Latest Unstable Version](http://poser.pugx.org/nguyenanhung/codeigniter-basic-helper/v/unstable)](https://packagist.org/packages/nguyenanhung/codeigniter-basic-helper) [![License](http://poser.pugx.org/nguyenanhung/codeigniter-basic-helper/license)](https://packagist.org/packages/nguyenanhung/codeigniter-basic-helper) [![PHP Version Require](http://poser.pugx.org/nguyenanhung/codeigniter-basic-helper/require/php)](https://packagist.org/packages/nguyenanhung/codeigniter-basic-helper)
+[![Latest Stable Version](https://img.shields.io/packagist/v/nguyenanhung/codeigniter-basic-helper.svg?style=flat-square)](https://packagist.org/packages/nguyenanhung/codeigniter-basic-helper)
+[![Total Downloads](https://img.shields.io/packagist/dt/nguyenanhung/codeigniter-basic-helper.svg?style=flat-square)](https://packagist.org/packages/nguyenanhung/codeigniter-basic-helper)
+[![License](https://img.shields.io/packagist/l/nguyenanhung/codeigniter-basic-helper.svg?style=flat-square)](https://packagist.org/packages/nguyenanhung/codeigniter-basic-helper)
+[![PHP Version Require](https://img.shields.io/packagist/dependency-v/nguyenanhung/codeigniter-basic-helper/php)](https://packagist.org/packages/nguyenanhung/codeigniter-basic-helper)
 
 ## Summary
 
