@@ -199,7 +199,7 @@ final class BasicCurl extends BaseHelper
      */
     public function addResponseHeaderLine($curl, $header_line)
     {
-        $trimmed_header = trim($header_line, "\r\n");
+        $trimmed_header = trim((string) $header_line, "\r\n");
 
         if ($trimmed_header === "") {
             $this->response_header_continue = false;
@@ -802,7 +802,7 @@ final class BasicCurl extends BaseHelper
     {
         $headers = array();
         if (!is_null($headerKey)) {
-            $headerKey = strtolower($headerKey);
+            $headerKey = strtolower((string) $headerKey);
         }
 
         foreach ($this->response_headers as $header) {
@@ -811,7 +811,7 @@ final class BasicCurl extends BaseHelper
             $key = isset($parts[0]) ? $parts[0] : '';
             $value = isset($parts[1]) ? $parts[1] : '';
 
-            $headers[strtolower(trim($key))] = trim($value);
+            $headers[strtolower(trim((string) $key))] = trim($value);
         }
 
         if ($headerKey) {

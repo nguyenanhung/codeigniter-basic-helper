@@ -23,7 +23,7 @@ if (!function_exists('sendSimpleGetRequest')) {
      */
     function sendSimpleGetRequest($url = '', $data = array(), $method = 'GET')
     {
-        $method = mb_strtoupper($method);
+        $method = mb_strtoupper((string)$method);
         if ((!empty($data) && (is_array($data) || is_object($data)))) {
             $target = $url . '?' . http_build_query($data);
         } else {
@@ -39,7 +39,7 @@ if (!function_exists('sendSimpleGetRequest')) {
             CURLOPT_MAXREDIRS => 10,
             CURLOPT_TIMEOUT => 30,
             CURLOPT_FOLLOWLOCATION => true,
-            CURLOPT_CUSTOMREQUEST => "GET",
+            CURLOPT_CUSTOMREQUEST => $method,
             CURLOPT_HTTPHEADER => array($UA),
         );
         if (isset($parseUrl['scheme']) && $parseUrl['scheme'] === 'https') {

@@ -118,7 +118,7 @@ if (!function_exists('decodeId_Url_byHungDEV')) {
      */
     function decodeId_Url_byHungDEV($id)
     {
-        $id = mb_strtoupper($id);
+        $id = mb_strtoupper((string) $id);
         $id = str_replace(
             array('E', 'R', 'M', 'N', 'J', 'I', 'Z', 'K', 'L', 'O'),
             array('0', '1', '2', '3', '4', '5', '6', '7', '8', '9'),
@@ -567,7 +567,7 @@ if (!function_exists('convertToLatin')) {
                 $output = alphabetOnly($output);
             }
             if ($toLower) {
-                $output = mb_strtolower($output);
+                $output = mb_strtolower((string) $output);
             }
         }
 

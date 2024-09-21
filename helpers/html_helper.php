@@ -256,7 +256,7 @@ if (!function_exists('html_tag')) {
         $html .= (!empty($attr)) ? ' ' . (is_array($attr) ? arrayToAttributes($attr) : $attr) : '';
 
         // a void element?
-        if (in_array(mb_strtolower($tag), $void_elements)) {
+        if (in_array(mb_strtolower((string) $tag), $void_elements)) {
             // these can not have content
             $html .= ' />';
         } else {

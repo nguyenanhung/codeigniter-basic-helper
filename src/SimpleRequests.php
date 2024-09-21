@@ -117,7 +117,7 @@ class SimpleRequests
     public function sendRequest($url = '', $data = array(), $method = 'GET')
     {
         try {
-            $getMethod = mb_strtoupper($method);
+            $getMethod = mb_strtoupper((string) $method);
             if ($this->DEBUG === true) {
                 $this->logger->info('||=========== Logger Send Requests ===========||');
                 $this->logger->info('Send ' . $getMethod . ' Request to URL: ' . $url, $data);
