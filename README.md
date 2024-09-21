@@ -2,6 +2,8 @@
 
 [![Latest Stable Version](https://img.shields.io/packagist/v/nguyenanhung/codeigniter-basic-helper.svg?style=flat-square)](https://packagist.org/packages/nguyenanhung/codeigniter-basic-helper)
 [![Total Downloads](https://img.shields.io/packagist/dt/nguyenanhung/codeigniter-basic-helper.svg?style=flat-square)](https://packagist.org/packages/nguyenanhung/codeigniter-basic-helper)
+[![Daily Downloads](https://img.shields.io/packagist/dd/nguyenanhung/codeigniter-basic-helper.svg?style=flat-square)](https://packagist.org/packages/nguyenanhung/codeigniter-basic-helper)
+[![Monthly Downloads](https://img.shields.io/packagist/dm/nguyenanhung/codeigniter-basic-helper.svg?style=flat-square)](https://packagist.org/packages/nguyenanhung/codeigniter-basic-helper)
 [![License](https://img.shields.io/packagist/l/nguyenanhung/codeigniter-basic-helper.svg?style=flat-square)](https://packagist.org/packages/nguyenanhung/codeigniter-basic-helper)
 [![PHP Version Require](https://img.shields.io/packagist/dependency-v/nguyenanhung/codeigniter-basic-helper/php)](https://packagist.org/packages/nguyenanhung/codeigniter-basic-helper)
 
