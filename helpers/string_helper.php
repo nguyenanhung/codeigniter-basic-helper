@@ -473,10 +473,10 @@ if (!function_exists('str_ignore_starts_with')) {
      */
     function str_ignore_starts_with($needle, $haystack)
     {
-        $hs = mb_strtolower($haystack);
+        $hs = mb_strtolower((string) $haystack);
 
         foreach ((array)$needle as $ndl) {
-            $n = mb_strtolower($ndl);
+            $n = mb_strtolower((string) $ndl);
             if ($n !== '' && mb_strpos($hs, $n) === 0) {
                 return true;
             }
@@ -568,10 +568,10 @@ if (!function_exists('str_ignore_ends_with')) {
      */
     function str_ignore_ends_with($needle, $haystack)
     {
-        $hs = mb_strtolower($haystack);
+        $hs = mb_strtolower((string) $haystack);
 
         foreach ((array)$needle as $ndl) {
-            $n = mb_strtolower($ndl);
+            $n = mb_strtolower((string) $ndl);
             $length = mb_strlen($ndl);
             if ($length === 0 || (mb_substr($hs, -$length) === $n)) {
                 return true;

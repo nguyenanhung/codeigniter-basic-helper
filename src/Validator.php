@@ -725,7 +725,7 @@ class Validator
 
         foreach ($this->validUrlPrefixes as $prefix) {
             if (mb_strpos($value, $prefix) !== false) {
-                $host = parse_url(mb_strtolower($value), PHP_URL_HOST);
+                $host = parse_url(mb_strtolower((string) $value), PHP_URL_HOST);
 
                 return checkdnsrr($host, 'A') || checkdnsrr($host, 'AAAA') || checkdnsrr($host, 'CNAME');
             }

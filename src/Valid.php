@@ -339,7 +339,7 @@ class Valid extends BaseHelper
         );
 
         // Check card type
-        $type = mb_strtolower($type);
+        $type = mb_strtolower((string) $type);
 
         if (!isset($cards[$type])) {
             return false;
