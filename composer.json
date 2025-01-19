@@ -27,7 +27,7 @@
     "ext-curl": "*",
     "ext-json": "*",
     "ext-mbstring": "*",
-    "nguyenanhung/html-helper": "^2.0 || ^1.0",
+    "nguyenanhung/html-helper": "^3.0 || ^2.0 || ^1.0",
     "nguyenanhung/mobile-helper": "^2.0 || ^1.0",
     "nguyenanhung/image-helper": "^2.0 || ^1.0",
     "nguyenanhung/basic-miscellaneous-helper": "^2.0 || ^1.0"
