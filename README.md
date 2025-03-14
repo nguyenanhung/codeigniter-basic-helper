@@ -9,15 +9,16 @@
 
 ## Summary
 
-1 vài helper cơ bản khi sử dụng với CodeIgniter 3.
+Some basic helpers when using with CodeIgniter 3.
 
-Có thể đưa vào nhiều bộ code hay framework khác, tuy nhiên có 1 số function require framework `CodeIgniter`, tuy nhiên
-không ảnh hưởng tới hiệu suất sử dụng
+Can be included in many other code sets or frameworks, however, there are some functions that require the `CodeIgniter`
+framework, however
+it does not affect the performance
 
-Trong trường hợp tích hợp gói này vào các framework, source khác ngoài `CodeIgniter`, bạn cần cài kèm thêm
-gói `nguyenanhung/polyfill-codeigniter-built-in` để sử dụng tốt nhất
+In case of integrating this package into other frameworks, sources other than `CodeIgniter`, you need to install the
+`nguyenanhung/polyfill-codeigniter-built-in` package for best use
 
-1 vài framework tôi cũng thường dùng với gói này là
+Some frameworks I often use with this package are
 
 - CodeIgniter
 - Slim framework
@@ -72,21 +73,22 @@ gói `nguyenanhung/polyfill-codeigniter-built-in` để sử dụng tốt nhất
         + [Simple Image Library](#simple-image-library)
     * [Maintainer & Supporter](#maintainer--supporter)
 
-## 1 số helper được hỗ trợ sẵn
+## Some Supported Helpers
 
-Dưới đây là danh sách các Helper được hỗ trợ trong bộ thư viện này
+Here is a list of supported Helpers in this library
 
 ### AlphaID Helper
 
-- [x] Helper Function: `generateAlphaId` - Hàm giúp tạo 1 Id unique `4ew68i32xc` dựa trên 1 int đầu vào như `1234`
+- [x] Helper Function: `generateAlphaId` - Function to generate a unique Id `4ew68i32xc` based on an input int like
+  `1234`
 
 ### Array Helper
 
-- [x] Helper Function: `arrayToObject `- Hàm giúp chuyển 1 array thành 1 object
+- [x] Helper Function: `arrayToObject` - Function to convert an array to an object
 - [x] Helper Function: `to_array` - Converts a string or an object to an array.
-- [x] Helper Function: `arrayToXml` - Hàm giúp chuyển array thành 1 chuỗi XML
-- [x] Helper Function: `removeArrayElementWithValue` - Loại bỏ 1 giá trị trong array theo key và value
-- [x] Helper Function: `arrayRecursiveDiff` - Diff 2 array bằng đệ quy
+- [x] Helper Function: `arrayToXml` - Function to help convert array into an XML string
+- [x] Helper Function: `removeArrayElementWithValue` - Remove 1 value in the array by key and value
+- [x] Helper Function: `arrayRecursiveDiff` - Diff 2 arrays recursively
 - [x] Helper Function: `arrayIsAssoc` - Detects if the given value is an associative array.
 - [x] Helper Function: `arrayFirstElement` - Returns the first element of an array.
 - [x] Helper Function: `arrayLastElement` - Returns the last element of an array.
@@ -95,53 +97,70 @@ Dưới đây là danh sách các Helper được hỗ trợ trong bộ thư vi�
 
 ### Assets Helper
 
-- [x] Helper Function: `assets_url` - Hàm lấy ra Assets Url, điều kiện tồn tại thư mục `assets` trong thư mục `public/`.
-  Trong trường hợp trong file `config.php` tồn tại biến `assets_version` sẽ tự động thêm version vào đằng sau các file
-  CSS, JS
-- [x] Helper Function: `static_url` - Hàm lấy ra Static Resource Url, điều kiện tồn tại cấu
-  hình `config_item('static_url')` trong config của website. Trong trường hợp trong file `config.php` tồn tại
-  biến `assets_version` sẽ tự động thêm version vào
-  đằng sau các file CSS, JS
-- [x] Helper Function: `templates_url` - Hàm lấy ra Assets Url, điều kiện tồn tại thư mục `templates` trong thư
-  mục `public/`. Trong trường hợp trong file `config.php` tồn tại biến `assets_version` sẽ tự động thêm version vào đằng
-  sau các file CSS,
-  JS
-- [x] Helper Function: `editor_url` - Hàm lấy ra Assets Url, điều kiện tồn tại thư mục `assets/editors/` trong thư
-  mục `public/`. Trong trường hợp trong file `config.php` tồn tại biến `assets_version` sẽ tự động thêm version vào đằng
-  sau các file
-  CSS, JS
-- [x] Helper Function: `favicon_url`- Hàm lấy ra Assets Url, điều kiện tồn tại thư mục `assets/favicon/` trong thư
-  mục `public/`. Trong trường hợp trong file `config.php` tồn tại biến `assets_version` sẽ tự động thêm version vào đằng
-  sau các file
-  CSS, JS
-- [x] Helper Function: `favicon_html_tag`- Hàm lấy ra đoạn HTML thể hiện Favicon dựa vào URL folder favicon đầu vào
+- [x] Helper Function: `assets_url` - Function to get Assets Url, condition for existence of `assets` folder in
+  `public/` folder.
+
+In case in `config.php` file exists `assets_version` variable, it will automatically add version behind the files
+
+CSS, JS
+
+- [x] Helper Function: `static_url` - Function to get Static Resource Url, condition for existence of
+  `config_item('static_url')` configuration in website config. In case in `config.php` file exists `assets_version`
+  variable, it will automatically add version behind the files
+
+CSS, JS
+
+- [x] Helper Function: `templates_url` - Function to get Assets Url, condition for existence of `templates` folder in
+  `public/` folder. In case the `config.php` file contains the variable `assets_version`, it will automatically add the
+  version behind
+  the CSS,
+  JS files
+- [x] Helper Function: `editor_url` - Function to get Assets Url, condition that the `assets/editors/` folder exists in
+  the
+  `public/` folder. In case the `config.php` file contains the variable `assets_version`, it will automatically add the
+  version behind
+  the CSS,
+  JS files
+- [x] Helper Function: `favicon_url` - Function to get Assets Url, condition that the `assets/favicon/` folder exists in
+  the
+  `public/` folder. In case the `config.php` file contains the `assets_version` variable, it will automatically add the
+  version behind the
+
+CSS, JS files
+
+- [x] Helper Function: `favicon_html_tag`- Function to get the HTML segment representing the Favicon based on the input
+  favicon folder URL
 - [x] Helper Function: `storage_url` - Need config `storage_url` item in config.php file.
-  VD: `$config['storage_url'] = 'https://storage.nguyenanhung.com/';`
+  Example: `$config['storage_url'] = 'https://storage.nguyenanhung.com/';`
 - [x] Helper Function: `go_url` - Need config `go_url` item in `config.php` file.
-  VD: `$config['go_url'] = 'https://go.nguyenanhung.com/';`
-- [x] Helper Function: `assets_mobile` - Lấy ra đường dẫn assets của giao diện mobile (thực tế ít dùng, duy trì cho các
-  dự án cũ)
-- [x] Helper Function: `assets_themes` - Lấy ra đường dẫn assets của giao diện pc (thực tế ít dùng, duy trì cho các dự
-  án cũ)
-- [x] Helper Function: `assets_themes_dashboard` - Lấy ra đường dẫn assets của giao diện dashboard (thực tế ít dùng, duy
-  trì cho các dự án cũ)
-- [x] Helper Function: `assets_themes_comingsoon` - Lấy ra đường dẫn assets của giao diện coming soon (thực tế ít dùng,
-  duy trì cho các dự án cũ)
-- [x] Helper Function: `assets_themes_error` - Lấy ra đường dẫn assets của giao diện error (thực tế ít dùng, duy trì cho
-  các dự án cũ)
-- [x] Helper Function: `cdn_js_url` - Resource JS, CSS từ CDN của Cloudflare
-- [x] Helper Function: `google_fonts_url` - Resource Google Font
-- [x] Helper Function: `bootstrapcdn_url` - Resource CDN từ Bootstrap
+  Eg: `$config['go_url'] = 'https://go.nguyenanhung.com/';`
+- [x] Helper Function: `assets_mobile` - Get the assets path of the mobile interface (rarely used, maintained for old
+  projects)
+- [x] Helper Function: `assets_themes` - Get the assets path of the pc interface (rarely used, maintained for old
+  projects)
+- [x] Helper Function: `assets_themes_dashboard` - Get the assets path of the dashboard interface (rarely used,
+  maintained for old
+  projects)
+- [x] Helper Function: `assets_themes_comingsoon` - Get the assets path of the coming soon interface (rarely used,
+  maintained for old
+  projects)
+- [x] Helper Function: `assets_themes_error` - Get the assets path of the error interface (rarely used, maintained for
+  old
+  projects) maintenance for
+  old projects)
+- [x] Helper Function: `cdn_js_url` - JS, CSS resource from Cloudflare CDN
+- [x] Helper Function: `google_fonts_url` - Google Font resource
+- [x] Helper Function: `bootstrapcdn_url` - CDN resource from Bootstrap
 
 ### Blogspot Helper
 
-- [x] Helper Function: `blogspotDescSortWithPublishedTime` - Sắp xếp dữ liệu feed từ blogspot theo Published Time
-- [x] Helper Function: `blogspotUSort` - Sắp xếp dữ liệu feed từ blogspot theo USort và Published Time theo DESC
-- [x] Helper Function: `blogspotFormatInformationItem` - Format dữ liệu đầu vào blogspot item
+- [x] Helper Function: `blogspotDescSortWithPublishedTime` - Sort feed data from blogspot by Published Time
+- [x] Helper Function: `blogspotUSort` - Sort feed data from blogspot by USort and Published Time by DESC
+- [x] Helper Function: `blogspotFormatInformationItem` - Format input data blogspot item
 
 ### Bytes Helper
 
-- [x] Helper Function: `bytesHumanFormat` - Hiển thị format nội dung dễ đọc từ byte dữ liệu
+- [x] Helper Function: `bytesHumanFormat` - Display readable content format from data bytes
 
 ### Chart Render Helper
 
@@ -150,25 +169,27 @@ Dưới đây là danh sách các Helper được hỗ trợ trong bộ thư vi�
 
 ### Common Helper
 
-- [x] Helper Function: `isEmpty ` - Kiểm tra 1 input đầu vào xem có phải là rỗng hay không
-- [x] Helper Function: `defaultCompressHtmlOutput ` - Compress HTML output, default configure
-- [x] Helper Function: `generateRandomUniqueId ` - Tạo 1 chuỗi Unique ID ngẫu nhiên, sử dụng UUID
-- [x] Helper Function: `generateRandomNanoUniqueId ` - Tạo 1 chuỗi Unique ID ngẫu nhiên, sử dụng NanoID
+- [x] Helper Function: `isEmpty ` - Checks whether an input is empty
+- [x] Helper Function: `defaultCompressHtmlOutput ` - Compresses HTML output, default configure
+- [x] Helper Function: `generateRandomUniqueId ` - Generates a random Unique ID string, using UUID
+- [x] Helper Function: `generateRandomNanoUniqueId ` - Generates a random Unique ID string, using NanoID
 
 ### Database Helper
 
-- [x] Helper Function: `generate_list_id_with_parent_id ` - Tạo 1 list các ID, trong đó chứa các tập con phụ thuộc của
-  ID đó. VD: Dùng trong trường hợp muốn hiển thị nội dung của category cha và các category con trong cùng 1 page content
+- [x] Helper Function: `generate_list_id_with_parent_id ` - Generates a list of IDs, containing dependent subsets of
+
+that ID. Example: Used in case you want to display the content of the parent category and the child categories in the
+same page content
 
 ### Date Helper
 
-- [x] Helper Function: `dayFloor` - Hàm lấy ra khoảng cách giữa 2 ngày
-- [x] Helper Function: `getZuluTime` - Hàm lấy ra tham số date theo Zulu time
-- [x] Helper Function: `iso_8601_utc_time` - tương tự hàm getZuluTime
-- [x] Helper Function: `getYesterday` - Hàm ấy ra ngày trước đó liền kề
-- [x] Helper Function: `smart_bear_date_range` - Lấy ra 1 mảng dữ liệu chứa các ngày theo khoảng cách
-- [x] Helper Function: `format_datetime_vn` - Format lại thông tin ngày theo kiểu Việt Nam
-- [x] Helper Function: `get_start_and_end_date_for_week` - Lấy ra ngày đầu và ngày cuối của 1 tuần
+- [x] Helper Function: `dayFloor` - Function to get the distance between 2 days
+- [x] Helper Function: `getZuluTime` - Function to get the date parameter according to Zulu time
+- [x] Helper Function: `iso_8601_utc_time` - Similar to the getZuluTime function
+- [x] Helper Function: `getYesterday` - Function to get the previous day
+- [x] Helper Function: `smart_bear_date_range` - Get an array of data containing dates according to the distance
+- [x] Helper Function: `format_datetime_vn` - Format the date information according to Vietnamese style
+- [x] Helper Function: `get_start_and_end_date_for_week` - Get the first and last days of a week
 
 ### Debug Helper
 
@@ -188,24 +209,27 @@ Các hàm này dùng debug
 
 ### Facebook Helper
 
-- [x] Helper Function: `widget_facebook_div_init` - Hàm tạo ra `<div id="fb-root"></div>`
-- [x] Helper Function: `widget_facebook_script_init` - Hạm tạo ra đoạn script init trong trường hợp cần nhúng JS
-  Facebook
-- [x] Helper Function: `widget_facebook_comments` - Hàm tạo ra khung comment facebook
-- [x] Helper Function: `widget_facebook_share_button` - Hàm tạo ra nút share facebook
-- [x] Helper Function: `widget_facebook_like_button` - Hàm tạo ra nút like facebook
-- [x] Helper Function: `widget_facebook_save_button` - Hàm tạo ra nút lưu nội dung vào facebook
+- [x] Helper Function: `widget_facebook_div_init` - Function to create `<div id="fb-root"></div>`
+- [x] Helper Function: `widget_facebook_script_init` - Function to create init script in case JS needs to be embedded
+
+Facebook
+
+- [x] Helper Function: `widget_facebook_comments` - Function to create facebook comment box
+- [x] Helper Function: `widget_facebook_share_button` - Function to create facebook share button
+- [x] Helper Function: `widget_facebook_like_button` - Function to create facebook like button
+- [x] Helper Function: `widget_facebook_save_button` - Function to create save content button to facebook
 
 ### File Helper
 
-- [x] Helper Function: `formatSizeUnits` - Hàm format 1 int đầu vào thành 1 format để dễ đọc dung lượng file
-- [x] Helper Function: `generateFileIndex` - Tự động tạo nội dung file `index.html`
-- [x] Helper Function: `generateFileHtaccess` - Tự động tạo nội dung file `.htaccess`
-- [x] Helper Function: `generateFileReadme` - Tự động tạo nội dung file `README.md`
-- [x] Helper Function: `makeNewFolder` - Hàm tạo 1 thư mục mới và generate sẵn trong đó 3 file: `README.md`, `index.html`
-  , `.htaccess`. Tạo thêm file `.gitkeep` nếu tham số thứ 2 được truyền là true
-- [x] Helper Function: `new_folder` - Chức năng tương tự với hàm `makeNewFolder`
-- [x] Helper Function: `scan_folder` - Quét và lấy ra danh sách các thông tin dữ liệu trong folder
+- [x] Helper Function: `formatSizeUnits` - Function to format 1 input int into 1 format for easy read file size
+- [x] Helper Function: `generateFileIndex` - Automatically generate the content of the file `index.html`
+- [x] Helper Function: `generateFileHtaccess` - Automatically generate the content of the file `.htaccess`
+- [x] Helper Function: `generateFileReadme` - Automatically generate the content of the file `README.md`
+- [x] Helper Function: `makeNewFolder` - The function creates a new folder and generates 3 files in it: `README.md`,
+  `index.html`
+  , `.htaccess`. Create additional `.gitkeep` file if the second parameter passed is true
+- [x] Helper Function: `new_folder` - Similar function to `makeNewFolder`
+- [x] Helper Function: `scan_folder` - Scan and get list of data information in folder
 - [x] Helper Function: `getAllFileSizeInFolder` - Get all File size in Folder
 - [x] Helper Function: `getAllFileInFolder` - Get all File in Folder
 
@@ -230,29 +254,29 @@ Các hàm này dùng debug
 
 ### Image Helper
 
-- [x] Helper Function: `google_image_resize` - Resize Image sử dụng Google Gadget Proxy
-- [x] Helper Function: `google_image_proxy_dns_prefetch` - Hàm cung cấp DNS Prefetch trong trường hợp sử
-  dụng `google_image_resize`
-- [x] Helper Function: `wordpress_proxy` - Resize & Cache Image sử dụng WordPress Proxy
-- [x] Helper Function: `wordpress_proxy_dns_prefetch` - Hàm cung cấp DNS Prefetch trong trường hợp sử
-  dụng `wordpress_proxy`
-- [x] Helper Function: `bear_framework_image_url` - Hàm format Image Url - dành riêng cho BEAR framework
-- [x] Helper Function: `create_image_thumbnail` - Hàm create thumbnail - dành riêng cho BEAR framework
+- [x] Helper Function: `google_image_resize` - Resize Image using Google Gadget Proxy
+- [x] Helper Function: `google_image_proxy_dns_prefetch` - Function to provide DNS Prefetch in case of using
+  `google_image_resize`
+- [x] Helper Function: `wordpress_proxy` - Resize & Cache Image using WordPress Proxy
+- [x] Helper Function: `wordpress_proxy_dns_prefetch` - Function to provide DNS Prefetch in case of using
+  `wordpress_proxy`
+- [x] Helper Function: `bear_framework_image_url` - Function to format Image Url - specific to BEAR framework
+- [x] Helper Function: `create_image_thumbnail` - Function to create thumbnail - specific to BEAR framework
 
 ### IP Helper
 
-- [x] Helper Function: `getIPAddress` - Hàm lấy ra địa chỉ IP thực tế của người dùng
-- [x] Helper Function: `getIPAddressByHaProxy` - Hàm lấy ra địa chỉ IP thực tế của người dùng nhưng ở server có chạy Ha
-  Proxy, thông qua biến `HTTP_X_FORWARDED_FOR`
-- [x] Helper Function: `validateIP` - Hàm validate 1 string có phải IP ko. TRUE nếu đó là IP
-- [x] Helper Function: `validateIPV4` - Hàm validate 1 string có phải IP v4 ko. TRUE nếu đó là IP
-- [x] Helper Function: `validateIPV6` - Hàm validate 1 string có phải IP v6 ko. TRUE nếu đó là IP
-- [x] Helper Function: `getIpInformation` - Khởi tạo 1 request đến `IP-API` để lấy thông tin của địa chỉ IP
+- [x] Helper Function: `getIPAddress` - Function to get the user's actual IP address
+- [x] Helper Function: `getIPAddressByHaProxy` - Function to get the user's actual IP address but on the server running
+  Ha
+  Proxy, through the variable `HTTP_X_FORWARDED_FOR`
+- [x] Helper Function: `validateIP` - Function to validate whether a string is an IP. TRUE if it is an IP
+- [x] Helper Function: `validateIPV4` - Function to validate whether a string is an IP v4. TRUE if it is an IP
+- [x] Helper Function: `validateIPV6` - Function to validate whether a string is an IP v6. TRUE if it is an IP
+- [x] Helper Function: `getIpInformation` - Initiate a request to `IP-API` to get information about the IP address
 
 ### Meta Helper
 
-- [x] Helper Function: `setupMetaDnsPrefetch` - Hàm hỗ trợ gen ra 1 đoạn HTML Dns Prefetch tương
-  tự `<link href='//data.nguyenanhung.com/' rel='dns-prefetch' />`
+- [x] Helper Function: `setupMetaDnsPrefetch` - Function to generate a similar HTML Dns Prefetch segment
 
 ### Money Helper
 
@@ -260,19 +284,20 @@ Các hàm này dùng debug
 
 ### NanoID Helper
 
-Helper này sử dụng gói `hidehalo/nanoid-php` để gen ra 1 mã random Id nhỏ, nhẹ và an toàn hơn nhiều so với UUID.
+This helper uses the `hidehalo/nanoid-php` package to generate a random Id code that is small, lightweight and much
+safer than UUID.
 
-Hiện tại việc sử dụng nanoid đang là xu hướng so với uuid truyền thống
+Currently, using nanoid is a trend compared to traditional uuid
 
-Để sử dụng được gói này, cần cài packages `nguyenanhung/nanoid-helper` bằng
-lệnh `composer require nguyenanhung/nanoid-helper`
+To use this package, you need to install the `nguyenanhung/nanoid-helper` package by
+command `composer require nguyenanhung/nanoid-helper`
 
 - [x] Helper Function: `randomNanoId`
 
 ### Number Helper
 
-- [x] Helper Function: `convertNumberToWords` - Tác dụng convert 1 số thành chữ, ví dụ `123`
-  thành `One Hundred Twenty Three`
+- [x] Helper Function: `convertNumberToWords` - Effect of converting a number into words, for example `123`
+  to `One Hundred Twenty Three`
 
 ### Paging Helper
 
@@ -281,7 +306,7 @@ lệnh `composer require nguyenanhung/nanoid-helper`
 - [x] Helper Function: `select_page`
 - [x] Helper Function: `get_paginations_title`
 - [x] Helper Function: `get_paginations_number`
-- [x] Helper Function: `bear_framework_news_view_pagination` - Hàm phân trang chế riêng cho BEAR Project
+- [x] Helper Function: `bear_framework_news_view_pagination` - Pagination function specifically for BEAR Project
 
 ### PlaceHolder Helper
 
@@ -289,25 +314,25 @@ lệnh `composer require nguyenanhung/nanoid-helper`
 
 ### Request Helper
 
-- [x] Helper Function: `sendSimpleGetRequest` - Tiến hành thực thi 1 request đơn giản sử dụng CURL với phương thức GET
-- [x] Helper Function: `sendSimpleRestfulExecuteRequest` - Thực thi 1 simple request tới Restful API sử dụng CURL
-- [x] Helper Function: `bear_post_async_request` - Make an asynchronous POST request - Thực hiện yêu cầu POST không đồng
-  bộ trong nội bộ site mà không cần chờ phản hồi => Không ảnh hưởng, không trì hoãn tiến trình đang chạy
+- [x] Helper Function: `sendSimpleGetRequest` - Execute a simple request using CURL with GET method
+- [x] Helper Function: `sendSimpleRestfulExecuteRequest` - Execute a simple request to Restful API using CURL
+- [x] Helper Function: `bear_post_async_request` - Make an asynchronous POST request - Execute asynchronous POST request
+  within the site without waiting for a response => No impact, no delay in the running process
 - [x] Helper Function: `get_http_response_code` - Get HTTP Response Code with `get_headers`
 
 ### Security Helper
 
-- [x] Helper Function: `xssValidation` - Validation dữ liệu đầu vào có bị dính lỗi XSS hay không. Hàm này không có tác
-  dụng escape, nếu muốn, hãy cài thêm packages `nguyenanhung/security`
+- [x] Helper Function: `xssValidation` - Validate whether the input data is vulnerable to XSS or not. This function does
+  not have an escape function, if you want, install the package `nguyenanhung/security`
 
 ### Sentry Helper
 
-- [x] Helper Function: `log_to_sentry` - Logging lên Sentry thông qua Monolog Handler
+- [x] Helper Function: `log_to_sentry` - Logging to Sentry via Monolog Handler
 
 ### String Helper
 
-- [x] Helper Function: `countStringsInText` - Hàm đếm số từ trong đoạn văn bản
-- [x] Helper Function: `findMiddleInString` - Hàm lấy chuỗi ở giữa chuỗi bắt đầu và chuỗi kết thúc
+- [x] Helper Function: `countStringsInText` - Function to count the number of words in a text paragraph
+- [x] Helper Function: `findMiddleInString` - Function to get the string between the start string and the end string
 - [x] Helper Function: `str_insert` - Inserts one or more strings into another string on a defined position.
 - [x] Helper Function: `str_between` - Return the content in a string between a left and right element.
 - [x] Helper Function: `str_after` - Return the part of a string after a given value.
@@ -344,7 +369,7 @@ lệnh `composer require nguyenanhung/nanoid-helper`
 
 ### TinyUrl Helper
 
-- [x] Helper Function: `short_url_with_tinyurl` - Hàm hỗ trợ shortUrl dựa trên API của TinyURL
+- [x] Helper Function: `short_url_with_tinyurl` - ShortUrl helper function based on TinyURL API
 
 ### URL Helper
 
@@ -356,53 +381,58 @@ lệnh `composer require nguyenanhung/nanoid-helper`
 - [x] Helper Function: `boDauTiengViet`
 - [x] Helper Function: `removeSpecialChar`
 - [x] Helper Function: `getPermalinksSEO`
-- [x] Helper Function: `share_url` - Create ra URL share chuẩn cho các MXH, hỗ trợ rất tốt cho SEO
-- [x] Helper Function: `private_url` - Hàm customize dành riêng cho framework CodeIgniter
-- [x] Helper Function: `private_api_url` - Hàm customize dành riêng cho framework CodeIgniter
-- [x] Helper Function: `cdn_url` - Hàm customize dành riêng cho framework CodeIgniter
-- [x] Helper Function: `images_url` - Hàm customize dành riêng cho framework CodeIgniter
-- [x] Helper Function: `audio_url` - Hàm customize dành riêng cho framework CodeIgniter
+- [x] Helper Function: `share_url` - Create standard sharing URL for social networks, very good support for SEO
+- [x] Helper Function: `private_url` - Customize function specifically for CodeIgniter framework
+- [x] Helper Function: `private_api_url` - Customize function specifically for CodeIgniter framework
+- [x] Helper Function: `cdn_url` - Customize function specifically for CodeIgniter framework
+- [x] Helper Function: `images_url` - Customize function specifically for CodeIgniter framework
+- [x] Helper Function: `audio_url` - Customize function specifically for CodeIgniter framework
 - [x] Helper Function: `append_params_into_url` - Append parameters to URL
-- [x] Helper Function: `append_query_string_to_current_url` - Get current URL including query string - Hàm customize
-  dành riêng cho framework CodeIgniter
+- [x] Helper Function: `append_query_string_to_current_url` - Get current URL including query string - Customize
+  function
+  specific to CodeIgniter framework
 
 ### UUID Helper
 
-- [x] Helper Function: `generate_uuid_v4` - Hàm tạo ra 1 chuỗi UUID v4 ngẫu nhiên
+- [x] Helper Function: `generate_uuid_v4` - Function to generate a random v4 UUID string
 
 ### VN Province Helper
 
-- [x] Helper Function: `check_vn_province_code` - Check Provin Code của 1 số tỉnh thành Việt Nam
+- [x] Helper Function: `check_vn_province_code` - Check Provin Code of some provinces in Vietnam
 
 ### Video Embed Helper
 
-- [x] Helper Function: `convert_video_embed_vimeo` - Convert Video URL to Embed Vimeo (ít dùng, lưu tại đây vì còn nhiều
-  project cũ đang sử dụng)
-- [x] Helper Function: `convert_video_embed_dailymotion` - Convert Video URL to Embed DailyMotion (ít dùng, lưu tại đây
-  vì còn nhiều project cũ đang sử dụng)
-- [x] Helper Function: `convert_video_embed_youtube` - Convert Video URL to Embed YouTube (ít dùng, lưu tại đây vì còn
-  nhiều project cũ đang sử dụng)
-- [x] Helper Function: `convert_video_v_embed_youtube` - Convert Video URL to Embed YouTube (ít dùng, lưu tại đây vì còn
-  nhiều project cũ đang sử dụng)
+- [x] Helper Function: `convert_video_embed_vimeo` - Convert Video URL to Embed Vimeo (rarely used, save here because
+  there are still
+  many old projects using it)
+- [x] Helper Function: `convert_video_embed_dailymotion` - Convert Video URL to Embed DailyMotion (rarely used, save
+  here because there are still
+  many old projects using it)
+- [x] Helper Function: `convert_video_embed_youtube` - Convert Video URL to Embed YouTube (rarely used, save here
+  because there are still
+  many old projects using it)
+- [x] Helper Function: `convert_video_v_embed_youtube` - Convert Video URL to Embed YouTube (rarely used, save here
+  because there are still
+  many old projects using it)
 - [x] Helper Function: `youtube_image_thumbnail` - Convert YoutubeID to Youtube Thumbnail URL
 
 ### XML Helper
 
-- [x] Helper Function: `parse_sitemap` - Hàm hỗ trợ render ra nội dung cho Sitemap
-- [x] Helper Function: `parse_sitemap_index` - Hàm hỗ trợ render ra nội dung cho Sitemap Index
+- [x] Helper Function: `parse_sitemap` - Support function to render content for Sitemap
+- [x] Helper Function: `parse_sitemap_index` - Support function to render content for Sitemap Index
 - [x] Helper Function: `xml_convert` - Convert Reserved XML characters to Entities
 - [x] Helper Function: `xml_get_value` - Get Value from XML string
 - [x] Helper Function: `xml_to_json` - Convert XML string to JSON
 
 ### Simple RESTful Helper
 
-Class cung cấp phương thức nhanh gọn để gọi tới các API tuân chuẩn RESTful
+Class provides a quick way to call RESTful APIs
 
 - [x] Execute request to RESTful API Service: `SimpleRestful::execute($url, $type, $data)`
 
 ### Simple cURL Helper
 
-Class cung cấp phương thức nhanh gọn để gọi để thực hiện các request ra bên ngoài, sử dụng Curl đơn giản, ví dụ
+Class provides a quick way to call to make external requests, using simple Curl, for example
 
 ```php
 <?php
@@ -419,15 +449,16 @@ $response = $curl->getResponse();
 
 ### Simple Image Library
 
-Class cung cấp 1 số phương thức giúp xử lý hình ảnh
+Class provides some methods to help process images
 
-- [x] Method `googleGadgetsProxy` - Tạo URL Resize sử dụng Google Gadgets Proxy
-- [x] Method `googleGadgetsProxyDnsPrefetch` - Setup DNS Prefetch cho Google Gadgets Proxy, nhằm tăng tốc độ truy vấn
-- [x] Method `wordpressProxy` - Tạo URL Resize sử dụng WordPress Proxy
-- [x] Method `wordpressProxyDnsPrefetch` - Setup DNS Prefetch cho WordPress Proxy, nhằm tăng tốc độ truy vấn
-- [x] Method `createThumbnail` - Hàm tạo Thumbnail, để sử dụng cần cài thêm gói `nguyenanhung/image`
-- [x] Method `createThumbnailWithCodeIgniterCache` - Hàm tạo Thumbnail kết hợp thư viện Cache của CodeIgniter, để sử
-  dụng cần cài thêm gói `nguyenanhung/image`
+- [x] Method `googleGadgetsProxy` - Create Resize URL using Google Gadgets Proxy
+- [x] Method `googleGadgetsProxyDnsPrefetch` - Setup DNS Prefetch for Google Gadgets Proxy, to increase query speed
+- [x] Method `wordpressProxy` - Create Resize URL using WordPress Proxy
+- [x] Method `wordpressProxyDnsPrefetch` - Setup DNS Prefetch for WordPress Proxy, to increase query speed
+- [x] Method `createThumbnail` - Thumbnail creation function, to use it, you need to install the package
+  `nguyenanhung/image`
+- [x] Method `createThumbnailWithCodeIgniterCache` - Thumbnail creation function combined with CodeIgniter Cache
+  library, to use it, you need to install the package `nguyenanhung/image`
 
 ## Maintainer & Supporter
 
