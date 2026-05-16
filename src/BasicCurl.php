@@ -700,7 +700,7 @@ final class BasicCurl extends BaseHelper
      */
     public function close()
     {
-        if (is_resource($this->curl)) {
+        if (PHP_VERSION_ID < 80000) {
             curl_close($this->curl);
         }
         return $this;

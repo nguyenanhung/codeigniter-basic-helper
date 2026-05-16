@@ -63,8 +63,9 @@ class SimpleParseOpenGraph extends BaseHelper implements \Iterator
 
 
         $response = curl_exec($curl);
-
-        curl_close($curl);
+        if (PHP_VERSION_ID < 80000) {
+            curl_close($curl);
+        }
 
         if (!empty($response)) {
             return self::_parse($response);
