@@ -214,7 +214,9 @@ class SimpleRequests
             curl_setopt($ch, CURLOPT_POST, 1);
             curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
             $response = curl_exec($ch);
-            curl_close($ch);
+            if (PHP_VERSION_ID < 80000) {
+                curl_close($ch);
+            }
 
             if ($this->DEBUG === true) {
                 $this->logger->info('Response from Request: ' . $response);

@@ -146,7 +146,9 @@ class SimpleElasticsearch extends BaseHelper
                 $httpCode = curl_getinfo($curl, CURLINFO_HTTP_CODE);
             }
 
-            curl_close($curl);
+            if (PHP_VERSION_ID < 80000) {
+                curl_close($curl);
+            }
             if ($fullResponse === true) {
                 return self::fullDataResponse($response, $page, $limit, $error_msg, $httpCode);
             }
@@ -205,7 +207,9 @@ class SimpleElasticsearch extends BaseHelper
                 $httpCode = curl_getinfo($curl, CURLINFO_HTTP_CODE);
             }
 
-            curl_close($curl);
+            if (PHP_VERSION_ID < 80000) {
+                curl_close($curl);
+            }
             if ($fullResponse === true) {
                 return self::fullDataResponse($response, $page, $limit, $error_msg, $httpCode);
             }
@@ -360,7 +364,9 @@ class SimpleElasticsearch extends BaseHelper
             if (curl_errno($curl)) {
                 $error_msg = curl_error($curl);
             }
-            curl_close($curl);
+            if (PHP_VERSION_ID < 80000) {
+                curl_close($curl);
+            }
 
             if (isset($error_msg)) {
                 // echo 'error sync :' . $id . '__:' . json_encode($error_msg) . 'id :' . $index . 'action :' . $action . PHP_EOL;
@@ -490,7 +496,9 @@ class SimpleElasticsearch extends BaseHelper
             if (curl_errno($curl)) {
                 $error_msg = curl_error($curl);
             }
-            curl_close($curl);
+            if (PHP_VERSION_ID < 80000) {
+                curl_close($curl);
+            }
 
             if (isset($error_msg)) {
                 // Log::info('error sync :' . $index . '__:' . json_encode($error_msg));

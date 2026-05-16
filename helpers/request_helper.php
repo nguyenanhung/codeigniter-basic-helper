@@ -51,7 +51,9 @@ if (!function_exists('sendSimpleGetRequest')) {
         curl_setopt_array($curl, $options);
         $response = curl_exec($curl);
         $err = curl_error($curl);
-        curl_close($curl);
+        if (PHP_VERSION_ID < 80000) {
+            curl_close($curl);
+        }
         if ($err) {
             $message = "cURL Error #: " . $err;
             if (function_exists('log_message')) {
